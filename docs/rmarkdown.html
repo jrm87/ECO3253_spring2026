@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 RMarkdown / Quarto output | Economics of Public and Social Issues</title>
-  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 RMarkdown / Quarto output | Economics of Public and Social Issues" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="github-repo" content="jrm87/ECO3253_spring2026" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 15 RMarkdown / Quarto output | Economics of Public and Social Issues" />
   
-  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
+  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
   
 
 <meta name="author" content="Jonathan Moreno-Medina" />
 
 
-<meta name="date" content="2024-08-29" />
+<meta name="date" content="2026-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,6 +57,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -139,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Eco of Public and Social Issues (ECO 3253), Fall 2022</a></li>
+<li><a href="./">Economics of Public and Social Issues (ECO 3253) – Spring 2026</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
@@ -539,14 +540,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="how-to-create-an-output-file" class="section level2 hasAnchor" number="15.1">
 <h2><span class="header-section-number">15.1</span> How to create an output file<a href="rmarkdown.html#how-to-create-an-output-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are several options when creating a Quarto file. You would go to the New file symbol (white page with green plus), and select the <strong>Quarto Document</strong> option</p>
-<p><img src="images/quarto_newfile.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_newfile.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>Then you select the title for the project you want to create, and add your name for the authorship. Select the <strong>PDF</strong> option (instead of the HTML), but leave all other default options unchanged. Then click <strong>Create</strong></p>
-<p><img src="images/quarto_newdocument.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_newdocument.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>You should have a new Quarto document now. Save it a name by clicking on the floppy disk.</p>
 <p>Now just try to render the file. This will create the final PDF document that you need to deliver. To do that, click on <strong>Render</strong> (it as a blue arrow on the top). A new tab or window should open showing you the PDF document. It is possible you see a window like the one below, but in that case, just click on ‘Try Again’.</p>
-<p><img src="images/quarto_newfile_popup.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_newfile_popup.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>Alternatively, you should be able to see the <strong>PDF</strong> on the <strong>Files</strong> tab on the right of the screen with the same name as the document you saved, but with a ‘.pdf’ extension.</p>
-<p><img src="images/quarto_newfile_files.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_newfile_files.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
 <div id="error-when-rendering-file" class="section level3 hasAnchor" number="15.1.1">
 <h3><span class="header-section-number">15.1.1</span> Error when rendering file<a href="rmarkdown.html#error-when-rendering-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Maybe you clicked on <strong>Render</strong> and got this message in the **Background Jobs” tab, by the console:</p>
@@ -565,12 +566,12 @@ R installation:
 The rmarkdown package is not available in this R installation.
 Install with install.packages(&quot;rmarkdown&quot;)</code></pre>
 <p>If that is the case, it’s because the package <code>rmarkdown</code> is not installed. There are a couple of options here. First, if you see a yellow messaage on top of your document, saying that “Package rmarkdown required but not installed.”, you can just click in “Install”, wait for it to install, and render the document again.</p>
-<p><img src="images/quarto_rmarkdown.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_rmarkdown.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>Alternatively, you can go to the console and install that package manually by running:</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="rmarkdown.html#cb87-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>)</span></code></pre></div>
 <p>Now click on <strong>Render</strong> once more. It should work, and you should see a new html window with your document.</p>
 <p>Once you Render you should see a new pop up window with the final pdf document, in which this example, would be something like this:</p>
-<p><img src="images/quarto_output.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_output.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>Once more, remember you will be able to see the final pdf document on the bottom right pane called ‘Files’ with the same name as the main Quarto Document.</p>
 </div>
 </div>
@@ -578,7 +579,7 @@ Install with install.packages(&quot;rmarkdown&quot;)</code></pre>
 <h2><span class="header-section-number">15.2</span> Add new code<a href="rmarkdown.html#add-new-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You add code by adding ‘chunks’ of code. You do that by clicking on <strong>Insert</strong>, then <strong>Code Chunk</strong>, and then <strong>R</strong>.</p>
 <p>Also, notice that if you add to the first line of the chunk a line like this <code>#| echo:false</code>, then when you render you will not see the code, but only the output of the code. This is convenient when the output is too long or distracting, or when you don’t want to show the code necessarily.</p>
-<p><img src="images/quarto_codechunk.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_codechunk.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
 </div>
 <div id="add-a-title" class="section level2 hasAnchor" number="15.3">
 <h2><span class="header-section-number">15.3</span> Add a title<a href="rmarkdown.html#add-a-title" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -587,13 +588,13 @@ Install with install.packages(&quot;rmarkdown&quot;)</code></pre>
 <div id="add-an-image" class="section level2 hasAnchor" number="15.4">
 <h2><span class="header-section-number">15.4</span> Add an image<a href="rmarkdown.html#add-an-image" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>What if you want to add an image? For example, you might have downloaded an image like this from the Opportunity Atlas website:</p>
-<p><img src="images/fips_tract.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/fips_tract.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>How do you add it? Well, you need to do it in two steps. The first, is to <strong>upload</strong> the image to the directory. To do that, go to the <strong>Files</strong> tab, and click on <strong>Upload</strong>, and select your image:</p>
-<p><img src="images/quarto_imageupload.png" width="\textwidth" style="display: block; margin: auto;" /></p>
-<p><img src="images/quarto_imageupload2.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_imageupload.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_imageupload2.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>You should now see your image in the <strong>Files</strong> tab. Now, you can add the image to the document by clicking on the image symbol on the top (close to the <strong>Insert</strong> option). Then browse and select the image you just uploaded, add a caption for it, and add it. You should then see it in the main document.</p>
-<p><img src="images/quarto_imageupload3.png" width="\textwidth" style="display: block; margin: auto;" /></p>
-<p><img src="images/quarto_imageupload4.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_imageupload3.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p><img src="images/quarto_imageupload4.png" alt="" width="\textwidth" style="display: block; margin: auto;" /></p>
 </div>
 <div id="submit-your-work" class="section level2 hasAnchor" number="15.5">
 <h2><span class="header-section-number">15.5</span> Submit your work<a href="rmarkdown.html#submit-your-work" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -624,42 +625,42 @@ Install with install.packages(&quot;rmarkdown&quot;)</code></pre>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-rmarkdown.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jrm87/ECO3253_spring2026/edit/main/06-rmarkdown.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

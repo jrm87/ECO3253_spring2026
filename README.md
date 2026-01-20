@@ -31,13 +31,22 @@ If you want to run and build this website on your own computer, follow these ste
 
 ### Prerequisites
 
-1. **Install R**: Download and install R from [CRAN](https://cran.r-project.org/)
-2. **Install RStudio**: Download and install RStudio from [RStudio's website](https://posit.co/download/rstudio-desktop/)
-3. **Install Required R Packages**: Open R or RStudio and run:
+1. **Install Conda**: Download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/products/distribution).
+2. **Install RStudio**: Download and install RStudio from [RStudio's website](https://posit.co/download/rstudio-desktop/) (Optional but recommended).
 
-```r
-install.packages(c("bookdown", "tidyverse", "knitr", "rmarkdown"))
-```
+### Environment Setup
+
+1. **Clone this repository**:
+   ```bash
+   git clone https://github.com/jrm87/ECO3253_spring2026.git
+   cd ECO3253_spring2026
+   ```
+
+2. **Create and Activate the Environment**:
+   ```bash
+   conda env create -f environment.yml
+   conda activate eco3253
+   ```
 
 ### Building the Site
 

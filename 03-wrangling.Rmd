@@ -8,17 +8,17 @@ rq <- 0
 # **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
 
 knitr::opts_chunk$set(
-  tidy = FALSE, 
-  out.width = '\\textwidth', 
+  tidy = FALSE,
+  out.width = "\\textwidth",
   fig.height = 4,
-  fig.align='center',
+  fig.align = "center",
   warning = FALSE
 )
 
 options(scipen = 99, digits = 3)
 
 # In knitr::kable printing replace all NA's with blanks
-options(knitr.kable.NA = '')
+options(knitr.kable.NA = "")
 
 # Set random number generator see value for replicable pseudorandomness. Why 76?
 # https://www.youtube.com/watch?v=xjJ7FheCkCU
@@ -36,10 +36,10 @@ We created these visualizations using the "Grammar of Graphics", which maps vari
 Recall however in previous chapters we discussed that for two of our visualizations we needed transformed/modified versions of existing data frames. Recall for example the scatterplot of economic mobility *only* for neighborhoods in Wisconsin. In order to create this visualization, we needed to first pare down the `atlas` data frame to a new data frame `atlas_wisconsin.` consisting of only `state == 55` neighborhoods using the `filter()` function.
 
 ```{r, eval=FALSE}
-atlas_wisconsin <- atlas %>% 
+atlas_wisconsin <- atlas %>%
   filter(state == 55)
 
-ggplot(data = atlas_wisconsin, mapping = aes(x = med_hhinc2016, y = kfr_pooled_p25)) + 
+ggplot(data = atlas_wisconsin, mapping = aes(x = med_hhinc2016, y = kfr_pooled_p25)) +
   geom_point()
 ```
 
@@ -96,9 +96,9 @@ h(g(f(x)))
 The above code isn't so hard to read since we are applying only three functions: `f()`, then `g()`, then `h()`. However, you can imagine that this can get progressively harder and harder to read as the number of functions applied in your sequence increases. This is where the pipe operator `%>%` comes in handy. `%>%` takes one output of one function and then "pipes" it to be the input of the next function. Furthermore, a helpful trick is to read `%>%` as "then." For example, you can obtain the same output as the above sequence of operations as follows:
 
 ```{r, eval = FALSE}
-x %>% 
-  f() %>% 
-  g() %>% 
+x %>%
+  f() %>%
+  g() %>%
   h()
 ```
 
@@ -118,7 +118,7 @@ So while both approaches above would achieve the same goal, the latter is much m
 Much like when adding layers to a `ggplot()` using the `+` sign at the end of lines, you form a single *chain* of data wrangling operations by combining verb-named functions into a single sequence with pipe operators `%>%` at the end of lines. So continuing our example involving neighborhoods in Wisconsin, we form a chain using the pipe operator `%>%` and save the resulting data frame in `atlas_wisconsin`:
 
 ```{r, eval=FALSE}
-atlas_wisconsin <- atlas %>% 
+atlas_wisconsin <- atlas %>%
   filter(state == 55)
 ```
 
@@ -139,7 +139,7 @@ knitr::include_graphics("images/filter.png")
 The `filter()` function here works much like the "Filter" option in Microsoft Excel; it allows you to specify criteria about the values of a variable in your dataset and then filters out only those rows that match that criteria. We begin by focusing only on neighborhoods from the state of North Carolina.  The `state` code (or airport code) for Portland, Oregon is `37`. Run the following and look at the resulting spreadsheet to ensure that only neighborhoods from North Carolina are chosen here:
 
 ```{r, eval=FALSE}
-atlas_nc<- atlas %>% 
+atlas_nc <- atlas %>%
   filter(state == 37)
 View(atlas_nc)
 ```
@@ -173,8 +173,8 @@ To see many of these in action, let's filter `atlas` for all rows that:
 Run the following:
 
 ```{r, eval=FALSE}
-atlas_filter1 <- atlas %>% 
-  filter(hhinc_mean2000 >30000 & (state ==37  | state == 25) & emp2000 >= 0.8)
+atlas_filter1 <- atlas %>%
+  filter(hhinc_mean2000 > 30000 & (state == 37 | state == 25) & emp2000 >= 0.8)
 View(atlas_filter1)
 ```
 
@@ -183,24 +183,24 @@ Note that even though colloquially speaking one might say "all neighborhoods fro
 We can often skip the use of `&` and just separate our conditions with a comma. In other words the code above will return the identical output `atlas_filter1` as this code below:
 
 ```{r, eval=FALSE}
-atlas_filter1 <- atlas %>% 
-  filter(hhinc_mean2000 >30000, (state ==37  | state == 25), emp2000 >= 0.8)
+atlas_filter1 <- atlas %>%
+  filter(hhinc_mean2000 > 30000, (state == 37 | state == 25), emp2000 >= 0.8)
 View(atlas_filter1)
 ```
 
 Let's present another example that uses the `!` "not" operator to pick rows that *don't* match a criteria. As mentioned earlier, the `!` can be read as "not." Here we are filtering rows corresponding to neighborhoods that are **not** in North Carolina or Massachusetts.
 
 ```{r, eval=FALSE}
-atlas_not_nc_ma <- atlas %>% 
-  filter(!(state ==37  | state == 25))
+atlas_not_nc_ma <- atlas %>%
+  filter(!(state == 37 | state == 25))
 View(atlas_not_nc_ma)
 ```
 
 Again, note the careful use of parentheses around the `(state ==37  | state == 25)`. If we didn't use parentheses as follows:
 
 ```{r, eval=FALSE}
-atlas %>% 
-  filter(!state ==37  | state == 25)
+atlas %>%
+  filter(!state == 37 | state == 25)
 ```
 
 We would be returning all neighborhoods not in `37` *or* those in `25`, which is an entirely different resulting data frame. 
@@ -208,15 +208,15 @@ We would be returning all neighborhoods not in `37` *or* those in `25`, which is
 Now say we have a large list of airports we want to filter for, say NC (`37`), MA (`25`), FL(`12`) and PA(`42`). We could continue to use the `|` or operator as so:
 
 ```{r, eval=FALSE}
-atlas_many_states <- atlas %>% 
-  filter(state ==37  | state == 25 | state == 12 | state == 42)
+atlas_many_states <- atlas %>%
+  filter(state == 37 | state == 25 | state == 12 | state == 42)
 View(atlas_many_states)
 ```
 
 but as we progressively include more airports, this will get unwieldy. A slightly shorter approach uses the `%in%` operator:
 
 ```{r, eval=FALSE}
-atlas_many_states <- atlas %>% 
+atlas_many_states <- atlas %>%
   filter(state %in% c(37, 25, 12, 42))
 View(atlas_many_states)
 ```
@@ -252,10 +252,10 @@ $$
 We can apply this formula to the `hhinc_mean2000` variable using the `mutate()` function, which takes existing variables and mutates them to create new ones.
 
 ```{r, eval=FALSE}
-atlas <- atlas %>% 
-  mutate(log_hhinc_mean2000= log(hhinc_mean2000))
+atlas <- atlas %>%
+  mutate(log_hhinc_mean2000 = log(hhinc_mean2000))
 View(atlas)
-````
+```
 
 Note that we have overwritten the original `atlas` data frame with a new version that now includes the additional variable `log_hhinc_mean2000`. In other words, the `mutate()` command outputs a new data frame which then gets saved over the original `atlas` data frame. Furthermore, note how in `mutate()` we used `log_hhinc_mean2000= log(hhinc_mean2000)` to create a new variable `log_hhinc_mean2000`.
 
@@ -294,7 +294,7 @@ glimpse(atlas)
 However, say you only need two of these variables, say `state` and `emp2000`. You can `select()` these two variables:
 
 ```{r, eval=FALSE}
-atlas %>% 
+atlas %>%
   select(state, emp2000)
 ```
 
@@ -303,7 +303,7 @@ This function makes exploring data frames with a very large number of variables 
 Lastly, the helper functions `starts_with()`, `ends_with()`, and `contains()` can be used to select variables/column that match those conditions. For example:
 
 ```{r, eval=FALSE}
-atlas_begin_kfr <- atlas %>% 
+atlas_begin_kfr <- atlas %>%
   select(starts_with("kfr"))
 atlas_begin_kfr
 ```
@@ -314,9 +314,11 @@ atlas_begin_kfr
 Another useful function is `rename()`, which as you may have guessed renames one column to another name.  Suppose we want `emp2000` and `popdensity2010` to be `employmentrate2000` and `populationdensity2010` instead in the `atlas` data frame:
 
 ```{r, eval=FALSE}
-atlas <- atlas %>% 
-  rename(populationdensity2010 = popdensity2010,
-         employmentrate2000 = emp2000)
+atlas <- atlas %>%
+  rename(
+    populationdensity2010 = popdensity2010,
+    employmentrate2000 = emp2000
+  )
 glimpse(atlas)
 ```
 
@@ -327,15 +329,15 @@ Note that in this case we used a single `=` sign within the `rename()`. This is 
 We can also return the top `n` values of a variable using the `top_n()` function. For example, we can return a data frame of the top neighborhoods by mobility for children from parents in the percentile 25. Observe that we set the number of values to return to `n = 10` and `wt = kfr_pooled_p25` to indicate that we want the rows of corresponding to the top 10 values of `kfr_pooled_p25`. See the help file for `top_n()` by running `?top_n` for more information. 
 
 ```{r, eval=FALSE}
-atlas %>% 
+atlas %>%
   top_n(n = 10, wt = kfr_pooled_p25)
 ```
 
 Let's further `arrange()` these results in descending order of `kfr_pooled_p25`:
 
 ```{r, eval=FALSE}
-atlas  %>% 
-  top_n(n = 10, wt = kfr_pooled_p25) %>% 
+atlas %>%
+  top_n(n = 10, wt = kfr_pooled_p25) %>%
   arrange(desc(kfr_pooled_p25))
 ```
 

@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 14 Simple and Multivariate Regression | Economics of Public and Social Issues</title>
-  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 14 Simple and Multivariate Regression | Economics of Public and Social Issues" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="github-repo" content="jrm87/ECO3253_spring2026" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 14 Simple and Multivariate Regression | Economics of Public and Social Issues" />
   
-  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
+  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
   
 
 <meta name="author" content="Jonathan Moreno-Medina" />
 
 
-<meta name="date" content="2024-08-29" />
+<meta name="date" content="2026-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,6 +57,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -139,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Eco of Public and Social Issues (ECO 3253), Fall 2022</a></li>
+<li><a href="./">Economics of Public and Social Issues (ECO 3253) – Spring 2026</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
@@ -607,7 +608,7 @@ Let's briefly recap where we have been so far and where we are headed.  In Chapt
 <span id="cb53-2"><a href="regression.html#cb53-2" tabindex="-1"></a>  <span class="fu">select</span>(tract, county, state, kfr_pooled_p25, ann_avg_job_growth_2004_2013)</span></code></pre></div>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="regression.html#cb54-1" tabindex="-1"></a>atlas_mob_jobs <span class="sc">%&gt;%</span> </span>
 <span id="cb54-2"><a href="regression.html#cb54-2" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">5</span>)</span></code></pre></div>
-<table class="table" style="font-size: 16px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:unnamed-chunk-106">Table 14.1: </span><span id="tab:unnamed-chunk-106">Table 14.2: </span>Random sample of 5 neighborhoods
 </caption>
@@ -729,7 +730,7 @@ ann_avg_job_growth_2004_2013
 <p>An alternative way to look at the raw data values is by choosing a random sample of the rows in <code>atlas_mob_jobs</code> by piping it into the <code>sample_n()</code> function from the <code>dplyr</code> package. Here we set the <code>size</code> argument to be <code>5</code>, indicating that we want a random sample of 5 rows. We display the results in Table <a href="regression.html#tab:five-random-courses">14.3</a>. Note that due to the random nature of the sampling, you will likely end up with a different subset of 5 rows.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="regression.html#cb55-1" tabindex="-1"></a>atlas_mob_jobs <span class="sc">%&gt;%</span></span>
 <span id="cb55-2"><a href="regression.html#cb55-2" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">5</span>)</span></code></pre></div>
-<table class="table" style="font-size: 16px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:five-random-courses">Table 14.3: </span><span id="tab:five-random-courses">Table 14.4: </span>A random sample of 5 neighborhoods
 </caption>
@@ -842,9 +843,11 @@ ann_avg_job_growth_2004_2013
 </table>
 <p>Now that we’ve looked at the raw values in our <code>atlas_mob_jobs</code> data frame and got a preliminary sense of the data, let’s move on to the next common step in an exploratory data analysis: computing summary statistics. Let’s start by computing the mean and median of our numerical outcome variable <code>kfr_pooled_p25</code> and our numerical explanatory variable on ob growth denoted as <code>ann_avg_job_growth_2004_2013</code>. We’ll do this by using the <code>summarize()</code> function from <code>dplyr</code> along with the <code>mean()</code> and <code>median()</code> summary functions, in a function that although we did not cover, is fairly intuitive: <code>summarize</code>. It will take some data, and summarize it according to what you ask.</p>
 <pre><code>## # A tibble: 1 × 4
-##   mean_ann_avg_job_growth_2004_2013 mean_kfr_pooled_p25 median_ann_avg_job_growth_2004_2013 median_kfr_pooled_p25
-##                               &lt;dbl&gt;               &lt;dbl&gt;                               &lt;dbl&gt;                 &lt;dbl&gt;
-## 1                            0.0153              34443.                             0.00850                33733.</code></pre>
+##   mean_ann_avg_job_growth_2004_2013 mean_kfr_pooled_p25 median_ann_avg_job_gro…¹
+##                               &lt;dbl&gt;               &lt;dbl&gt;                    &lt;dbl&gt;
+## 1                            0.0153              34443.                  0.00850
+## # ℹ abbreviated name: ¹​median_ann_avg_job_growth_2004_2013
+## # ℹ 1 more variable: median_kfr_pooled_p25 &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="regression.html#cb57-1" tabindex="-1"></a>atlas_mob_jobs <span class="sc">%&gt;%</span></span>
 <span id="cb57-2"><a href="regression.html#cb57-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_ann_avg_job_growth_2004_2013 =</span> <span class="fu">mean</span>(ann_avg_job_growth_2004_2013, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
 <span id="cb57-3"><a href="regression.html#cb57-3" tabindex="-1"></a>            <span class="at">mean_kfr_pooled_p25 =</span> <span class="fu">mean</span>(kfr_pooled_p25, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
@@ -1023,9 +1026,12 @@ Figure 14.4: Regression line without error bands
 ## -35002  -5437   -719   4656  69932 
 ## 
 ## Coefficients:
-##                              Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept)                   34276.3       31.2    1097 &lt;0.0000000000000002 ***
-## ann_avg_job_growth_2004_2013   7782.8      409.2      19 &lt;0.0000000000000002 ***
+##                              Estimate Std. Error t value            Pr(&gt;|t|)
+## (Intercept)                   34276.3       31.2    1097 &lt;0.0000000000000002
+## ann_avg_job_growth_2004_2013   7782.8      409.2      19 &lt;0.0000000000000002
+##                                 
+## (Intercept)                  ***
+## ann_avg_job_growth_2004_2013 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -1035,7 +1041,7 @@ Figure 14.4: Regression line without error bands
 ## F-statistic:  362 on 1 and 70230 DF,  p-value: &lt;0.0000000000000002</code></pre>
 <p>Note how we took the output of the model fit saved in <code>mob_model</code> and used it as an input to the subsequent <code>summary()</code> function. The raw output of the <code>summary()</code> function above gives lots of information about the regression model that we won’t cover in this introductory course (e.g., Multiple R-squared, F-statistic, etc.). We will only consider the “Coefficients” section of the output. We can print these relevant results only by accessing the <code>coefficients</code> object stored in the summary results.</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="regression.html#cb73-1" tabindex="-1"></a><span class="fu">summary</span>(mob_model)<span class="sc">$</span>coefficients</span></code></pre></div>
-<table class="table" style="font-size: 16px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:numxplot4b">Table 14.5: </span><span id="tab:numxplot4b">Table 14.6: </span>Linear regression table
 </caption>
@@ -1197,7 +1203,7 @@ Figure 14.7: Causal graph.
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="regression.html#cb78-1" tabindex="-1"></a>atlas_mob_jobs_poor <span class="sc">%&gt;%</span></span>
 <span id="cb78-2"><a href="regression.html#cb78-2" tabindex="-1"></a>  <span class="fu">select</span>(kfr_pooled_p25, ann_avg_job_growth_2004_2013, poor_share2010) <span class="sc">%&gt;%</span> </span>
 <span id="cb78-3"><a href="regression.html#cb78-3" tabindex="-1"></a>  <span class="fu">cor</span>()</span></code></pre></div>
-<table class="table" style="font-size: 16px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:model3-correlation">Table 14.7: </span><span id="tab:model3-correlation">Table 14.8: </span>Correlation coefficients between mobility, job growth and poverty rate.
 </caption>
@@ -1314,7 +1320,7 @@ Figure 14.9: 3D scatterplot and regression plane.
 <span id="cb81-2"><a href="regression.html#cb81-2" tabindex="-1"></a>mob_model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(kfr_pooled_p25 <span class="sc">~</span> ann_avg_job_growth_2004_2013 <span class="sc">+</span> poor_share2010, <span class="at">data =</span> atlas_mob_jobs_poor)</span>
 <span id="cb81-3"><a href="regression.html#cb81-3" tabindex="-1"></a><span class="co"># Get regression table:</span></span>
 <span id="cb81-4"><a href="regression.html#cb81-4" tabindex="-1"></a><span class="fu">summary</span>(mob_model2)<span class="sc">$</span>coefficients</span></code></pre></div>
-<table class="table" style="font-size: 16px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:model3-table-output">Table 14.9: </span><span id="tab:model3-table-output">Table 14.10: </span>Multiple regression table
 </caption>
@@ -1409,10 +1415,14 @@ poor_share2010
 <h2><span class="header-section-number">14.4</span> How to read p-values<a href="regression.html#how-to-read-p-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now that you know what the <strong>coefficients</strong> in a regression table mean, let’s briefly discuss now how to asses if the relationship you estimated (the coefficients) estimated with sufficient precision or not. Let’s recap our latest regression table. We had this:</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="regression.html#cb82-1" tabindex="-1"></a><span class="fu">summary</span>(mob_model2)<span class="sc">$</span>coefficients</span></code></pre></div>
-<pre><code>##                              Estimate Std. Error t value                       Pr(&gt;|t|)
-## (Intercept)                     39714       41.4   959.1 0.0000000000000000000000000000
-## ann_avg_job_growth_2004_2013     3684      345.4    10.7 0.0000000000000000000000000152
-## poor_share2010                 -36371      214.1  -169.8 0.0000000000000000000000000000</code></pre>
+<pre><code>##                              Estimate Std. Error t value
+## (Intercept)                     39714       41.4   959.1
+## ann_avg_job_growth_2004_2013     3684      345.4    10.7
+## poor_share2010                 -36371      214.1  -169.8
+##                                                    Pr(&gt;|t|)
+## (Intercept)                  0.0000000000000000000000000000
+## ann_avg_job_growth_2004_2013 0.0000000000000000000000000152
+## poor_share2010               0.0000000000000000000000000000</code></pre>
 <p>We will now focus on the last column of these tables - the one that says <strong>Pr(&gt;|t|)</strong>. These numbers are called <strong>p-values</strong>. This is a big topic and I will not do it justice. In fact, I will be very loose in this explanation as this is not a course in statistics, but I do want to give you the intuition for how to read it. If you want to dig more, please see <a href="https://nustat.github.io/intro-stat-ds/9-sampling.html">here</a> and <a href="https://nustat.github.io/intro-stat-ds/11-pvalues.html">here</a>.</p>
 <p>In essence, when we run a regression like the one above, we usually have at hand a sample of observations out of a universe. For example, in the <code>atlas</code> instance, we do not have information on all the neighborhoods in the US, although we do have most of them in the data. But that means that we could have ended with a different set of observations (or neighborhoods) in an alternative world that is slightly different from the one we actually see.</p>
 <p>To assess how much of an issue this is, we use p-values. I will not get into any details of how you can calculate p-values, but the idea is fairly simple: a p-value is the probability that you would observe data that is as extreme as the data you do if, in fact, the true slope (or coefficient) was zero.</p>
@@ -1428,10 +1438,14 @@ poor_share2010
 <h3><span class="header-section-number">14.4.1</span> An Example<a href="regression.html#an-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s present our latest regression table for the multivariate case once more. We had this table:</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="regression.html#cb84-1" tabindex="-1"></a><span class="fu">summary</span>(mob_model2)<span class="sc">$</span>coefficients</span></code></pre></div>
-<pre><code>##                              Estimate Std. Error t value                       Pr(&gt;|t|)
-## (Intercept)                     39714       41.4   959.1 0.0000000000000000000000000000
-## ann_avg_job_growth_2004_2013     3684      345.4    10.7 0.0000000000000000000000000152
-## poor_share2010                 -36371      214.1  -169.8 0.0000000000000000000000000000</code></pre>
+<pre><code>##                              Estimate Std. Error t value
+## (Intercept)                     39714       41.4   959.1
+## ann_avg_job_growth_2004_2013     3684      345.4    10.7
+## poor_share2010                 -36371      214.1  -169.8
+##                                                    Pr(&gt;|t|)
+## (Intercept)                  0.0000000000000000000000000000
+## ann_avg_job_growth_2004_2013 0.0000000000000000000000000152
+## poor_share2010               0.0000000000000000000000000000</code></pre>
 <p>Notice that the <strong>p-values</strong> for all three estimates (the intercept, and our coefficients for <code>ann_avg_job_growth_2004_2013</code> and <code>poor_share2010</code>) are 0. What does that mean? Well, that means that it would be very very unlikely that we could get data like the one we have (or more extreme) if the intercept was 0, or if the coefficient of <code>ann_avg_job_growth_2004_2013</code> were 0, or if the coefficient for <code>poor_share2010</code> was 0. That is, in a loose way, we believe these estimates are not just coincidence. If those numbers would be higher than 0.05 we should perhaps trust those numbers a bit less, as there would be a higher probability that they were produced almost by chance.</p>
 </div>
 </div>
@@ -1464,42 +1478,42 @@ poor_share2010
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-regression.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jrm87/ECO3253_spring2026/edit/main/05-regression.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

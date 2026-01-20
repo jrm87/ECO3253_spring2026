@@ -1,0 +1,29 @@
+name: eco3253
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - r-base
+  - r-tidyverse
+  - r-bookdown
+  - r-knitr
+  - r-rmarkdown
+  - r-skimr
+  - r-caret
+  - r-rpart
+  - r-rpart.plot
+  - r-randomforest
+  - r-mvtnorm
+  - r-kableextra
+  - r-patchwork
+  - r-rockchalk
+  - r-pacman
+  - r-broom
+  - r-ggthemes
+  - r-ggforce
+  - r-viridis
+  - r-gridextra
+  - r-here
+  - r-magrittr
+  - r-gapminder
+  - pandoc

@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Improving Judicial Decisions | Economics of Public and Social Issues</title>
-  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Improving Judicial Decisions | Economics of Public and Social Issues" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="github-repo" content="jrm87/ECO3253_spring2026" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 10 Improving Judicial Decisions | Economics of Public and Social Issues" />
   
-  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
+  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
   
 
 <meta name="author" content="Jonathan Moreno-Medina" />
 
 
-<meta name="date" content="2024-08-29" />
+<meta name="date" content="2026-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,6 +57,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -139,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Eco of Public and Social Issues (ECO 3253), Fall 2022</a></li>
+<li><a href="./">Economics of Public and Social Issues (ECO 3253) – Spring 2026</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
@@ -541,7 +542,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>They sent 5,000 resumes in response to 1300 real “Help Wanted” ads in newspapers in Boston and Chicago.</li>
 </ul></li>
 </ul>
-<p><img src="images/lec10_criminal_justice/bertrand1.png" width="90%" /></p>
+<p><img src="images/lec10_criminal_justice/bertrand1.png" alt="" width="90%" /></p>
 <ul>
 <li>This is a randomized trial. The resumes are identical in everything including education and work history, except for the name. So you’re seeing whether the name matters, presumably because people are making an inference about race from that name.</li>
 <li>A simple comparison of callback rates: systematically across all different groups, in Chicago, in Boston, among women, and among men, there are always significantly higher callback rates for white-sounding names than black-sounding names.
@@ -563,7 +564,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Judges review about 20 cases on average each day in succession. The order in which these cases appear before a judge is essentially random. There are two breaks during the day, during which the judges take meals.</li>
 </ul></li>
 </ul>
-<p><img src="images/lec10_criminal_justice/danzinger1.png" width="90%" /></p>
+<p><img src="images/lec10_criminal_justice/danzinger1.png" alt="" width="90%" /></p>
 <ul>
 <li>If you happen to be the person who came up right before the judges broke for their snack, your odds of getting parole are almost zero. It then jumps up to 60% immediately after that meal break, and then it comes down again. After the lunch break, it goes up again and then comes back down.
 <ul>
@@ -581,7 +582,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="data-used-for-empirical-analysis" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Data Used for Empirical Analysis<a href="lec10_criminal-justice.html#data-used-for-empirical-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><img src="images/lec10_criminal_justice/kleinberg1.png" width="90%" /></p>
+<p><img src="images/lec10_criminal_justice/kleinberg1.png" alt="" width="90%" /></p>
 <ul>
 <li>You start out with your set of data (left side of this flow chart). You then break it into three sets.</li>
 <li>Middle set: the training set. That is the data that you use to actually fit your crime prediction model (80% of the data).</li>
@@ -613,7 +614,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>I’ve split the data into these two groups. I do the same exercise within each of the two groups. Looking in just the felony category, I determine which variable is most predictive of the probability of not showing up at the trial among the people who’ve committed felonies.</li>
 </ul></li>
 </ul>
-<p><img src="images/lec10_criminal_justice/tree3.png" width="90%" /></p>
+<p><img src="images/lec10_criminal_justice/tree3.png" alt="" width="90%" /></p>
 <ul>
 <li>At each point we’re going to make a split based on the variables we have. We keep growing this tree up to n nodes, or levels in the tree.</li>
 <li>Cross validation helps answer where do you want to stop and how many layers do you want in your tree.
@@ -628,7 +629,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Overfitting: if you go beyond that with a deeper tree, you have higher prediction errors.</li>
 </ul></li>
 </ul>
-<p><img src="images/lec10_criminal_justice/loss1.png" width="90%" /></p>
+<p><img src="images/lec10_criminal_justice/loss1.png" alt="" width="90%" /></p>
 <ul>
 <li>Green curve: if instead, you looked at prediction errors within the sample that you used for estimation, as you add more information, you start to fit the observations that you’re trying to predict in that estimation sample better and better.
 <ul>
@@ -643,7 +644,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Kleinberg et al fit the model and get a prediction for every defendant on the probability that they’re going to show up at the trial.</li>
 <li>The decision rule, if you’re just using the machine predictions, is a simple threshold, above which everyone is jailed, and below which everyone is granted parole.</li>
 </ul>
-<p><img src="images/lec10_criminal_justice/kleinberg6.png" width="90%" /></p>
+<p><img src="images/lec10_criminal_justice/kleinberg6.png" alt="" width="90%" /></p>
 <ul>
 <li>3D plot: the predicted crime risk from the model is on the horizontal axis. They also show the the observed crime rate, whether or not people actually showed up. Lastly, the decision that is being made in terms of the release rate is shown on the vertical axis.</li>
 <li>The relationship between predicted crime risk and observed crime rate is on the plane at the bottom. Those shadowy dots there are a projection of the 3D plot onto the two dimensions.
@@ -675,7 +676,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>An area level approach makes sense fundamentally because there tends to be a clustering of criminal activity by place and time. Plot a frequency distribution of the time between burglaries that are separated by .1 miles or less.</li>
 <li>To think about this mechanically, suppose you take a .1-mile radius in a neighborhood in which a crime occurred on January 1st, how likely was it that there was also a burglary that also occurred on January 2nd, 3rd, or 4th? How large is the gap between two burglaries, and what is the empirical distribution of those gaps? You can see here that there is a sharp spike at zero and one. When there’s a burglary on a given day, it’s very likely that there’s another burglary in that same neighborhood on that same day or the next day. There’s a type, spatial, and temporal clustering of crime.</li>
 </ul>
-<p><img src="images/lec10_criminal_justice/mohler1.png" width="90%" /></p>
+<p><img src="images/lec10_criminal_justice/mohler1.png" alt="" width="90%" /></p>
 <ul>
 <li>Why is that?
 <ul>
@@ -737,42 +738,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-criminal-justice.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jrm87/ECO3253_spring2026/edit/main/10-criminal-justice.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

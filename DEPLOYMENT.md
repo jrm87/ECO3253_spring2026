@@ -7,9 +7,21 @@ The `docs/` folder currently contains pre-built HTML from Fall 2024. After updat
 ## How to Rebuild the Site
 
 ### Prerequisites
-- R (version 4.0 or higher)
-- RStudio (recommended)
-- Required R packages: `bookdown`, `tidyverse`, `knitr`, `rmarkdown`
+- Conda (Miniconda or Anaconda)
+- Git
+
+### Environment Setup
+
+1. **Create the Conda Environment**:
+   ```bash
+   conda env create -f environment.yml
+   ```
+
+2. **Activate the Environment**:
+   ```bash
+   conda activate eco3253
+   ```
+
 
 ### Steps to Rebuild
 

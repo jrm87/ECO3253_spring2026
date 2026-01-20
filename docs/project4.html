@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Project 4 | Economics of Public and Social Issues</title>
-  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Project 4 | Economics of Public and Social Issues" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="github-repo" content="jrm87/ECO3253_spring2026" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Project 4 | Economics of Public and Social Issues" />
   
-  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
+  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
   
 
 <meta name="author" content="Jonathan Moreno-Medina" />
 
 
-<meta name="date" content="2024-08-29" />
+<meta name="date" content="2026-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,6 +57,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -139,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Eco of Public and Social Issues (ECO 3253), Fall 2022</a></li>
+<li><a href="./">Economics of Public and Social Issues (ECO 3253) – Spring 2026</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
@@ -535,8 +536,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="using-google-datacommons-to-predict-social-mobility" class="section level2 unnumbered hasAnchor">
 <h2>Using Google DataCommons to Predict Social Mobility<a href="project4.html#using-google-datacommons-to-predict-social-mobility" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p><strong>Posted</strong>: Wednesday, August 28, 2024</p></li>
-<li><p><strong>Due</strong>: Midnight on Friday, November 27, 2024</p></li>
+<li><p><strong>Posted</strong>: Tuesday, January 20, 2026</p></li>
+<li><p><strong>Due</strong>: Midnight on Friday, April 25, 2026</p></li>
 </ul>
 <p>You have already explored the <a href="https://www.opportunityatlas.org/">Opportunity Atlas</a> in <a href="project1.html#project1">Project 1</a> and the <a href="https://socialcapital.org/">Social Capital Atlas</a>. In this this empirical project, you will use the Opportunity Atlas mapping tool and the underlying data, plus data from <a href="https://www.datacommons.org/">Google DataCommons</a>, to predict intergenerational mobility using <strong>machine learning</strong> methods. The measure of intergenerational mobility that we will focus on, as usual, is the mean rank of a child whose parents were at the 25th percentile of the national income distribution in each county (<code>kfr_pooled_p25</code>). Your goal is to construct the best predictions of this outcome using other variables, an important step in creating forecasts of upward mobility that could be used for future generations, before data on their outcomes become available.</p>
 <p>I am passing along a “training” dataset, made of a random sample of 70% of all neighborhoods in the original Opportunity Atlas (<code>train.rds</code>). You will use predictors, presented in <strong>Table 1</strong>, to predict the variable <code>kfr_pooled_p25</code>. There are 121 predictors in these data. Obviously, you do not need to use all the 121 variables for your prediction. You then need to test your model on the 50% that I have passed along in a different file for testing (<code>test.rds</code>).</p>
@@ -1197,42 +1198,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/project4.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jrm87/ECO3253_spring2026/edit/main/project4.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>

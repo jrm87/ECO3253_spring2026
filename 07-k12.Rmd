@@ -53,7 +53,7 @@ knitr::include_graphics("images/lec7_k12/earningstest.png")
 	If California students score five percentiles below the national average on the national test. In the district-specific data, suppose you've got a California school that's 10 percentiles below the California average. And we know California on average relative to the nation is five percentile points below the national mean. That tells you that this specific district in California is 15 percentile points below the national mean, because it's 10 percentiles below the California average and California itself is five percentiles below the nation. 
     -  Reardon converted everything into grade-level equivalents: if a kid is reading at a fifth grade level, etc.
     
-    ```{r , echo=FALSE, out.width = '90%'}
+```{r , echo=FALSE, out.width = '90%'}
 knitr::include_graphics("images/lec7_k12/achievementdis.png")
 ```
 
@@ -64,7 +64,7 @@ knitr::include_graphics("images/lec7_k12/achievementdis.png")
     - This is somewhat similar to the maps of upward mobility. The Northeast, parts of the West Coast, and much of the Great Plains have particularly good outcomes.
     - This shows how there is tremendous local variation in these test score outcomes.
     
-    ```{r , echo=FALSE, out.width = '90%'}
+```{r , echo=FALSE, out.width = '90%'}
 knitr::include_graphics("images/lec7_k12/map1.png")
 ```
 

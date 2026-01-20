@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 Data Visualization | Economics of Public and Social Issues</title>
-  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 Data Visualization | Economics of Public and Social Issues" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="github-repo" content="jrm87/ECO3253_spring2026" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 12 Data Visualization | Economics of Public and Social Issues" />
   
-  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
+  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
   
 
 <meta name="author" content="Jonathan Moreno-Medina" />
 
 
-<meta name="date" content="2024-08-29" />
+<meta name="date" content="2026-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,6 +57,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -139,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Eco of Public and Social Issues (ECO 3253), Fall 2022</a></li>
+<li><a href="./">Economics of Public and Social Issues (ECO 3253) – Spring 2026</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
@@ -567,7 +568,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gapminder" class="section level3 hasAnchor" number="12.1.2">
 <h3><span class="header-section-number">12.1.2</span> Gapminder data<a href="viz.html#gapminder" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In February 2006, a statistician named Hans Rosling gave a TED talk titled <a href="https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen">“The best stats you’ve ever seen”</a> where he presented global economic, health, and development data from the website <a href="http://www.gapminder.org/tools/#_locale_id=en;&amp;chart-type=bubbles">gapminder.org</a>. For example, for the 142 countries included from 2007, let’s consider only the first 6 countries when listed alphabetically in Table <a href="viz.html#tab:gapminder-2007">12.1</a>.</p>
-<table class="table" style="font-size: 16px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:gapminder-2007">Table 12.1: </span><span id="tab:gapminder-2007">Table 12.2: </span>Gapminder 2007 Data: First 6 of 142 countries
 </caption>
@@ -722,7 +723,7 @@ Figure 12.1: Life Expectancy over GDP per Capita in 2007
 </ol>
 <p>We’ll see shortly that <code>data</code> corresponds to the particular data frame where our data is saved and a “data variable” corresponds to a particular column in the data frame. Furthermore, the type of <code>geom</code>etric object considered in this plot are points. That being said, while in this example we are considering points, graphics are not limited to just points. Other plots involve lines while others involve bars.</p>
 <p>Let’s summarize the three essential components of the Grammar in Table <a href="viz.html#tab:summary-table-gapminder">12.3</a>.</p>
-<table class="table" style="font-size: 16px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:summary-table-gapminder">Table 12.3: </span><span id="tab:summary-table-gapminder">Table 12.4: </span>Summary of Grammar of Graphics for this plot
 </caption>
@@ -853,7 +854,8 @@ point
 </ul>
 <p>After running the above code, you’ll notice two outputs: a warning message and the graphic shown in Figure <a href="viz.html#fig:noalpha">12.2</a>. Let’s first unpack the warning message:
 “y” axis</p>
-<pre><code>## Warning: Removed 1372 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>## Warning: Removed 1372 rows containing missing values or values
+## outside the scale range (`geom_point()`).</code></pre>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:noalpha"></span>
 <img src="_main_files/figure-html/noalpha-1.png" alt="Median Household Income in 2016 vs Mobility for Children with Parents in Percentile 25" width="\textwidth" />
 <p class="caption">
@@ -955,8 +957,10 @@ Figure 12.5: Example histogram.
 <p>Let’s now present the <code>ggplot()</code> code to plot your first histogram! Unlike with scatterplots and linegraphs, there is now only one variable being mapped in <code>aes()</code>: the single numerical variable <code>temp</code>. The y-aesthetic of a histogram gets computed for you automatically. Furthermore, the geometric object layer is now a <code>geom_histogram()</code></p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="viz.html#cb18-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> atlas, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> kfr_pooled_p25)) <span class="sc">+</span></span>
 <span id="cb18-2"><a href="viz.html#cb18-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<pre><code>## Warning: Removed 1267 rows containing non-finite values (`stat_bin()`).</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
+## `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 1267 rows containing non-finite outside the
+## scale range (`stat_bin()`).</code></pre>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:weather-histogram"></span>
 <img src="_main_files/figure-html/weather-histogram-1.png" alt="Histogram of mobility for children of p25 in the US." width="\textwidth" />
 <p class="caption">
@@ -1159,42 +1163,42 @@ Figure 12.14: Data Visualization with ggplot2 cheatsheat
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-visualization.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["_main.pdf", "_main.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jrm87/ECO3253_spring2026/edit/main/02-visualization.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>
