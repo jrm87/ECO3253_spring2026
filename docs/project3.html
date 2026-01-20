@@ -296,6 +296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="11.2.1" data-path="getting-started.html"><a href="getting-started.html#r-rstudio"><i class="fa fa-check"></i><b>11.2.1</b> What are R and RStudio?</a></li>
 <li class="chapter" data-level="11.2.2" data-path="getting-started.html"><a href="getting-started.html#r-and-rstudio-in-your-computer-or-in-the-cloud-the-benefit-of-posit-cloud"><i class="fa fa-check"></i><b>11.2.2</b> R and RStudio: In your computer or in the cloud? The benefit of Posit Cloud</a></li>
+<li class="chapter" data-level="11.2.3" data-path="getting-started.html"><a href="getting-started.html#installing-r-and-rstudio-locally"><i class="fa fa-check"></i><b>11.2.3</b> Installing R and RStudio Locally</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="getting-started.html"><a href="getting-started.html#lets-open-r"><i class="fa fa-check"></i><b>11.3</b> Let’s open R!</a>
 <ul>
@@ -413,6 +414,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.1" data-path="rmarkdown.html"><a href="rmarkdown.html#how-to-create-an-output-file"><i class="fa fa-check"></i><b>15.1</b> How to create an output file</a>
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#error-when-rendering-file"><i class="fa fa-check"></i><b>15.1.1</b> Error when rendering file</a></li>
+<li class="chapter" data-level="15.1.2" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-tinytex"><i class="fa fa-check"></i><b>15.1.2</b> Installing TinyTeX</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="rmarkdown.html"><a href="rmarkdown.html#add-new-code"><i class="fa fa-check"></i><b>15.2</b> Add new code</a></li>
 <li class="chapter" data-level="15.3" data-path="rmarkdown.html"><a href="rmarkdown.html#add-a-title"><i class="fa fa-check"></i><b>15.3</b> Add a title</a></li>
@@ -432,6 +434,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A.1.6" data-path="appendixA.html"><a href="appendixA.html#appDistributions"><i class="fa fa-check"></i><b>A.1.6</b> Distribution</a></li>
 <li class="chapter" data-level="A.1.7" data-path="appendixA.html"><a href="appendixA.html#outliers"><i class="fa fa-check"></i><b>A.1.7</b> Outliers</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project0.html"><a href="project0.html"><i class="fa fa-check"></i>Project 0</a>
+<ul>
+<li class="chapter" data-level="A.2" data-path="project0.html"><a href="project0.html#question-1"><i class="fa fa-check"></i><b>A.2</b> Question 1</a></li>
+<li class="chapter" data-level="A.3" data-path="project0.html"><a href="project0.html#question-2"><i class="fa fa-check"></i><b>A.3</b> Question 2</a></li>
+<li class="chapter" data-level="A.4" data-path="project0.html"><a href="project0.html#question-3"><i class="fa fa-check"></i><b>A.4</b> Question 3</a></li>
+<li class="chapter" data-level="A.5" data-path="project0.html"><a href="project0.html#question-4"><i class="fa fa-check"></i><b>A.5</b> Question 4</a></li>
+<li class="chapter" data-level="A.6" data-path="project0.html"><a href="project0.html#question-5"><i class="fa fa-check"></i><b>A.6</b> Question 5</a></li>
 </ul></li>
 <li class="part"><span><b>III Projects</b></span></li>
 <li class="chapter" data-level="" data-path="project1.html"><a href="project1.html"><i class="fa fa-check"></i>Project 1</a>
@@ -537,7 +547,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Social Capital and Economic Mobility<a href="project3.html#social-capital-and-economic-mobility" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p><strong>Posted</strong>: Tuesday, January 20, 2026</p></li>
-<li><p><strong>Due</strong>: Midnight on Friday, April 11, 2026</p></li>
+<li><p><strong>Due</strong>: Midnight on Saturday, April 11, 2026 <a href="https://utsa.instructure.com/courses/79928/assignments/1203200">Canvas Link</a></p></li>
 </ul>
 <p>You have already explored the <a href="https://www.opportunityatlas.org/">Opportunity Atlas</a> in <a href="project1.html#project1">Project 1</a>. Now you will explore the new data on economic mobility that some of the previous researchers and new ones have made freely available in the <a href="https://socialcapital.org/">Social Capital Atlas</a>. It also provides an interactive mapping tool, as before, that attempts to trace the strength of our relationships and communities.</p>
 <p>In this empirical project, you will use new data on social capital to estimate it’s relationship to economic mobility. To answer some of the questions you will need to refer to the following papers (both of which are in Blackboard under Supplementary Readings):</p>
@@ -547,7 +557,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>The data file <code>atlas_socialk.rds</code> consists of the same information in <code>atlas</code> that you used for Project 1, but it now includes information from the Social Captal Atlas as well. This version includes the new estimates of social capital described in the papers above at the ZIP level, which in this case have been connected with the tract-level data.</p>
 <p>You can load the data by using the following code:</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="project3.html#cb119-1" tabindex="-1"></a>atlas_socialk <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">gzcon</span>(<span class="fu">url</span>(<span class="st">&quot;https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_socialk_tract.rds&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="project3.html#cb120-1" tabindex="-1"></a>atlas_socialk <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">gzcon</span>(<span class="fu">url</span>(<span class="st">&quot;https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_socialk_tract.rds&quot;</span>)))</span></code></pre></div>
 </div>
 <div id="instructions-2" class="section level2 unnumbered hasAnchor">
 <h2>Instructions<a href="project3.html#instructions-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1003,15 +1013,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="unweighted-summary-statistics-1" class="section level3 unnumbered hasAnchor">
 <h3>Unweighted summary statistics<a href="project3.html#unweighted-summary-statistics-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="project3.html#cb120-1" tabindex="-1"></a><span class="fu">summary</span>(atlas<span class="sc">$</span>yvar)</span>
-<span id="cb120-2"><a href="project3.html#cb120-2" tabindex="-1"></a><span class="fu">mean</span>(atlas<span class="sc">$</span>yvar, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb120-3"><a href="project3.html#cb120-3" tabindex="-1"></a><span class="fu">sd</span>(atlas<span class="sc">$</span>yvar, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="project3.html#cb121-1" tabindex="-1"></a><span class="fu">summary</span>(atlas<span class="sc">$</span>yvar)</span>
+<span id="cb121-2"><a href="project3.html#cb121-2" tabindex="-1"></a><span class="fu">mean</span>(atlas<span class="sc">$</span>yvar, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb121-3"><a href="project3.html#cb121-3" tabindex="-1"></a><span class="fu">sd</span>(atlas<span class="sc">$</span>yvar, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="load-package-1" class="section level3 unnumbered hasAnchor">
 <h3>Load package<a href="project3.html#load-package-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you wanted to install and open the package <code>Hmisc</code> (which you will need to calculate the weighted statistics), run:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="project3.html#cb121-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Hmisc&quot;</span>)</span>
-<span id="cb121-2"><a href="project3.html#cb121-2" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="project3.html#cb122-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Hmisc&quot;</span>)</span>
+<span id="cb122-2"><a href="project3.html#cb122-2" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span></code></pre></div>
 </div>
 <div id="weighted-summary-statistics-1" class="section level3 unnumbered hasAnchor">
 <h3>Weighted summary statistics<a href="project3.html#weighted-summary-statistics-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1019,11 +1029,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Weighted mean:</li>
 </ol>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="project3.html#cb122-1" tabindex="-1"></a><span class="fu">wtd.mean</span>(atlas<span class="sc">$</span>yvar, atlas<span class="sc">$</span>count_pooled)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="project3.html#cb123-1" tabindex="-1"></a><span class="fu">wtd.mean</span>(atlas<span class="sc">$</span>yvar, atlas<span class="sc">$</span>count_pooled)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Weighted standard deviation:</li>
 </ol>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="project3.html#cb123-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">wtd.var</span>(atlas<span class="sc">$</span>yvar, atlas<span class="sc">$</span>count_pooled))</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="project3.html#cb124-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">wtd.var</span>(atlas<span class="sc">$</span>yvar, atlas<span class="sc">$</span>count_pooled))</span></code></pre></div>
 </div>
 <div id="subset-observations-2" class="section level3 unnumbered hasAnchor">
 <h3>Subset observations<a href="project3.html#subset-observations-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1031,24 +1041,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>State level:</li>
 </ol>
 <p>If you want to select a subset of observations, you can add the rule for selecting those observations, and the <code>filter</code> function. Here we subset the observations for the State of Wisconsin, and called the resulting dataset <code>atlas_wisconsin</code>.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="project3.html#cb124-1" tabindex="-1"></a>atlas_wisconsin <span class="ot">&lt;-</span> atlas <span class="sc">%&gt;%</span> </span>
-<span id="cb124-2"><a href="project3.html#cb124-2" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="dv">55</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="project3.html#cb125-1" tabindex="-1"></a>atlas_wisconsin <span class="ot">&lt;-</span> atlas <span class="sc">%&gt;%</span></span>
+<span id="cb125-2"><a href="project3.html#cb125-2" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="dv">55</span>)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>County level:</li>
 </ol>
 <p>We can do the same but now for a specific county, adding an extra rule after a comma <code>,</code> or <code>&amp;</code>. Here we subset the observations for Milwaukee County in Wisconsin:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="project3.html#cb125-1" tabindex="-1"></a>atlas_milwaukee <span class="ot">&lt;-</span> atlas <span class="sc">%&gt;%</span> </span>
-<span id="cb125-2"><a href="project3.html#cb125-2" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="dv">55</span> <span class="sc">&amp;</span> county <span class="sc">==</span> <span class="dv">079</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="project3.html#cb126-1" tabindex="-1"></a>atlas_milwaukee <span class="ot">&lt;-</span> atlas <span class="sc">%&gt;%</span></span>
+<span id="cb126-2"><a href="project3.html#cb126-2" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="dv">55</span> <span class="sc">&amp;</span> county <span class="sc">==</span> <span class="dv">079</span>)</span></code></pre></div>
 </div>
 <div id="standardize-variables-1" class="section level3 unnumbered hasAnchor">
 <h3>Standardize variables<a href="project3.html#standardize-variables-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can standardize variables by substracting the mean and dividing by the standard deviation. Let us say that you want to standardize only considering the variables in Milwaukee, then you can do this:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="project3.html#cb126-1" tabindex="-1"></a>atlas_milwaukee<span class="ot">&lt;-</span> atlas_milwaukee <span class="sc">%&gt;%</span></span>
-<span id="cb126-2"><a href="project3.html#cb126-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x_std=</span>(xvar <span class="sc">-</span> <span class="fu">mean</span>(atlas_milwaukee<span class="sc">$</span>xvar, <span class="at">na.rm=</span><span class="cn">TRUE</span>))<span class="sc">/</span><span class="fu">sd</span>(atlas_milwaukee<span class="sc">$</span>xvar, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="project3.html#cb127-1" tabindex="-1"></a>atlas_milwaukee <span class="ot">&lt;-</span> atlas_milwaukee <span class="sc">%&gt;%</span></span>
+<span id="cb127-2"><a href="project3.html#cb127-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x_std =</span> (xvar <span class="sc">-</span> <span class="fu">mean</span>(atlas_milwaukee<span class="sc">$</span>xvar, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(atlas_milwaukee<span class="sc">$</span>xvar, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <p>As an example, let’s say you want to standardize both the measure of mobility and the annual job growth for the data in Wisconsin:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="project3.html#cb127-1" tabindex="-1"></a>atlas_wisconsin<span class="ot">&lt;-</span> atlas_wisconsin <span class="sc">%&gt;%</span></span>
-<span id="cb127-2"><a href="project3.html#cb127-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">kfr_pooled_p25_std=</span>(kfr_pooled_p25 <span class="sc">-</span> <span class="fu">mean</span>(atlas_wisconsin<span class="sc">$</span>kfr_pooled_p25, <span class="at">na.rm=</span><span class="cn">TRUE</span>))<span class="sc">/</span><span class="fu">sd</span>(atlas_wisconsin<span class="sc">$</span>kfr_pooled_p25, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb127-3"><a href="project3.html#cb127-3" tabindex="-1"></a>         <span class="at">ann_avg_job_growth_2004_2013_std=</span>(ann_avg_job_growth_2004_2013 <span class="sc">-</span> <span class="fu">mean</span>(atlas_wisconsin<span class="sc">$</span>ann_avg_job_growth_2004_2013, <span class="at">na.rm=</span><span class="cn">TRUE</span>))<span class="sc">/</span><span class="fu">sd</span>(atlas_wisconsin<span class="sc">$</span>ann_avg_job_growth_2004_2013, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="project3.html#cb128-1" tabindex="-1"></a>atlas_wisconsin <span class="ot">&lt;-</span> atlas_wisconsin <span class="sc">%&gt;%</span></span>
+<span id="cb128-2"><a href="project3.html#cb128-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb128-3"><a href="project3.html#cb128-3" tabindex="-1"></a>    <span class="at">kfr_pooled_p25_std =</span> (kfr_pooled_p25 <span class="sc">-</span> <span class="fu">mean</span>(atlas_wisconsin<span class="sc">$</span>kfr_pooled_p25, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(atlas_wisconsin<span class="sc">$</span>kfr_pooled_p25, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb128-4"><a href="project3.html#cb128-4" tabindex="-1"></a>    <span class="at">ann_avg_job_growth_2004_2013_std =</span> (ann_avg_job_growth_2004_2013 <span class="sc">-</span> <span class="fu">mean</span>(atlas_wisconsin<span class="sc">$</span>ann_avg_job_growth_2004_2013, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sd</span>(atlas_wisconsin<span class="sc">$</span>ann_avg_job_growth_2004_2013, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb128-5"><a href="project3.html#cb128-5" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
 <div id="run-regression-1" class="section level3 unnumbered hasAnchor">
 <h3>Run regression<a href="project3.html#run-regression-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1057,22 +1069,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Simple linear regression</li>
 </ol>
 <p>Let’s say you want to run a simple regression of variable <code>yvar</code> on variable <code>xvar1</code> for the county of Milwaukee. We will save the results of that regression in an object call <code>mod1</code> (we could give it any name). Then you would do this:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="project3.html#cb128-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(yvar<span class="sc">~</span>xvar1, <span class="at">data =</span> atlas_milwaukee)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="project3.html#cb129-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(yvar <span class="sc">~</span> xvar1, <span class="at">data =</span> atlas_milwaukee)</span></code></pre></div>
 <p>To see what the outcome of the regression is, you would use the function <code>summary</code> and apply it to our new object <code>mod1</code>, like this:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="project3.html#cb129-1" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="project3.html#cb130-1" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
 <p>As an example, we could regress the mobility of children from parents in the 25th percentile (<code>kfr_pooled_p25</code>) on the average annual job growth rate between 2004 and 2013 (<code>ann_avg_job_growth_2004_2013</code>). To do that, we would run:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="project3.html#cb130-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(kfr_pooled_p25<span class="sc">~</span>ann_avg_job_growth_2004_2013, <span class="at">data =</span> atlas_milwaukee)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="project3.html#cb131-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(kfr_pooled_p25 <span class="sc">~</span> ann_avg_job_growth_2004_2013, <span class="at">data =</span> atlas_milwaukee)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Multivariate linear regression</li>
 </ol>
 <p>You might want to understand the relationship between <code>yvar</code> and variable <code>xvar1</code> <strong>while holding fixed</strong> another variable <code>xvar2</code> for neighborhoods only in Milwaukee. You can do this:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="project3.html#cb131-1" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(yvar<span class="sc">~</span>xvar1<span class="sc">+</span>xvar2 <span class="sc">+</span> xvar3, <span class="at">data =</span> atlas_milwaukee)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="project3.html#cb132-1" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(yvar <span class="sc">~</span> xvar1 <span class="sc">+</span> xvar2 <span class="sc">+</span> xvar3, <span class="at">data =</span> atlas_milwaukee)</span></code></pre></div>
 </div>
 <div id="how-to-read-the-regression-output-1" class="section level3 unnumbered hasAnchor">
 <h3>How to read the regression output?<a href="project3.html#how-to-read-the-regression-output-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To simplify the interpretation, let’s run a regression where you use the standardize both the measure of mobility and the annual job growth for the data in Wisconsin:</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="project3.html#cb132-1" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(kfr_pooled_p25_std <span class="sc">~</span> ann_avg_job_growth_2004_2013_std, <span class="at">data =</span> atlas_wisconsin)</span>
-<span id="cb132-2"><a href="project3.html#cb132-2" tabindex="-1"></a><span class="fu">summary</span>(mod3)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="project3.html#cb133-1" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(kfr_pooled_p25_std <span class="sc">~</span> ann_avg_job_growth_2004_2013_std, <span class="at">data =</span> atlas_wisconsin)</span>
+<span id="cb133-2"><a href="project3.html#cb133-2" tabindex="-1"></a><span class="fu">summary</span>(mod3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = kfr_pooled_p25_std ~ ann_avg_job_growth_2004_2013_std, 
@@ -1101,7 +1113,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="confidence-intervals" class="section level3 unnumbered hasAnchor">
 <h3>Confidence Intervals<a href="project3.html#confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To see the confidence intervals for the coefficients, you can run the function <code>confint</code> on the saved linear regression model:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="project3.html#cb134-1" tabindex="-1"></a><span class="fu">confint</span>(mod3)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="project3.html#cb135-1" tabindex="-1"></a><span class="fu">confint</span>(mod3)</span></code></pre></div>
 <pre><code>##                                    2.5 %  97.5 %
 ## (Intercept)                      -0.0526 0.05259
 ## ann_avg_job_growth_2004_2013_std -0.1039 0.00125</code></pre>
@@ -1110,10 +1122,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="plotting-the-linear-relationship-1" class="section level3 unnumbered hasAnchor">
 <h3>Plotting the linear relationship<a href="project3.html#plotting-the-linear-relationship-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You need to load the <code>ggplot2</code> package (which should be installed already).</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="project3.html#cb136-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="project3.html#cb137-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <p>Suppose you want to visually see the linear relationship between two variables in the <code>atlas_milwaukee</code> dataset that we filtered above. Then, you can do this:</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="project3.html#cb137-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> atlas_milwaukee) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> xvar1, <span class="at">y =</span> yvar)) <span class="sc">+</span> </span>
-<span id="cb137-2"><a href="project3.html#cb137-2" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> xvar1, <span class="at">y =</span> yvar), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="project3.html#cb138-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> atlas_milwaukee) <span class="sc">+</span></span>
+<span id="cb138-2"><a href="project3.html#cb138-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> xvar1, <span class="at">y =</span> yvar)) <span class="sc">+</span></span>
+<span id="cb138-3"><a href="project3.html#cb138-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> xvar1, <span class="at">y =</span> yvar), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F)</span></code></pre></div>
 <p>The function <code>geom_smooth()</code> adds the line that you calculated above for <code>mod1</code>, where you ran <code>mod1 &lt;- lm(yvar~xvar1, data = atlas_milwaukee)</code>.</p>
 <p>For more, see Section <a href="viz.html#viz">12</a>.</p>
 

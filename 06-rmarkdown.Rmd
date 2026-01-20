@@ -7,15 +7,15 @@ rq <- 0
 # **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
 # **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
 knitr::opts_chunk$set(
-  tidy = FALSE, 
-  out.width = '\\textwidth', 
+  tidy = FALSE,
+  out.width = "\\textwidth",
   fig.height = 4,
-  fig.align='center',
+  fig.align = "center",
   warning = FALSE
 )
 options(scipen = 99, digits = 3)
 # In knitr::kable printing replace all NA's with blanks
-options(knitr.kable.NA = '')
+options(knitr.kable.NA = "")
 # Set random number generator see value for replicable pseudorandomness.
 set.seed(76)
 ```
@@ -87,6 +87,17 @@ install.packages("rmarkdown")
 ```
 
 Now click on **Render** once more. It should work, and you should see a new html window with your document. 
+
+### Installing TinyTeX
+
+If you are unable to render to PDF and receive an error related to LaTeX, you may need to install `tinytex`. Run the following commands in your Console:
+
+```r
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+This will install a lightweight LaTeX distribution needed to create PDF documents. 
 
 Once you Render you should see a new pop up window with the final pdf document, in which this example, would be something like this: 
 

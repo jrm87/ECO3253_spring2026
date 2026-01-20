@@ -296,6 +296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="11.2.1" data-path="getting-started.html"><a href="getting-started.html#r-rstudio"><i class="fa fa-check"></i><b>11.2.1</b> What are R and RStudio?</a></li>
 <li class="chapter" data-level="11.2.2" data-path="getting-started.html"><a href="getting-started.html#r-and-rstudio-in-your-computer-or-in-the-cloud-the-benefit-of-posit-cloud"><i class="fa fa-check"></i><b>11.2.2</b> R and RStudio: In your computer or in the cloud? The benefit of Posit Cloud</a></li>
+<li class="chapter" data-level="11.2.3" data-path="getting-started.html"><a href="getting-started.html#installing-r-and-rstudio-locally"><i class="fa fa-check"></i><b>11.2.3</b> Installing R and RStudio Locally</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="getting-started.html"><a href="getting-started.html#lets-open-r"><i class="fa fa-check"></i><b>11.3</b> Let’s open R!</a>
 <ul>
@@ -413,6 +414,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.1" data-path="rmarkdown.html"><a href="rmarkdown.html#how-to-create-an-output-file"><i class="fa fa-check"></i><b>15.1</b> How to create an output file</a>
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#error-when-rendering-file"><i class="fa fa-check"></i><b>15.1.1</b> Error when rendering file</a></li>
+<li class="chapter" data-level="15.1.2" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-tinytex"><i class="fa fa-check"></i><b>15.1.2</b> Installing TinyTeX</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="rmarkdown.html"><a href="rmarkdown.html#add-new-code"><i class="fa fa-check"></i><b>15.2</b> Add new code</a></li>
 <li class="chapter" data-level="15.3" data-path="rmarkdown.html"><a href="rmarkdown.html#add-a-title"><i class="fa fa-check"></i><b>15.3</b> Add a title</a></li>
@@ -432,6 +434,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A.1.6" data-path="appendixA.html"><a href="appendixA.html#appDistributions"><i class="fa fa-check"></i><b>A.1.6</b> Distribution</a></li>
 <li class="chapter" data-level="A.1.7" data-path="appendixA.html"><a href="appendixA.html#outliers"><i class="fa fa-check"></i><b>A.1.7</b> Outliers</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project0.html"><a href="project0.html"><i class="fa fa-check"></i>Project 0</a>
+<ul>
+<li class="chapter" data-level="A.2" data-path="project0.html"><a href="project0.html#question-1"><i class="fa fa-check"></i><b>A.2</b> Question 1</a></li>
+<li class="chapter" data-level="A.3" data-path="project0.html"><a href="project0.html#question-2"><i class="fa fa-check"></i><b>A.3</b> Question 2</a></li>
+<li class="chapter" data-level="A.4" data-path="project0.html"><a href="project0.html#question-3"><i class="fa fa-check"></i><b>A.4</b> Question 3</a></li>
+<li class="chapter" data-level="A.5" data-path="project0.html"><a href="project0.html#question-4"><i class="fa fa-check"></i><b>A.5</b> Question 4</a></li>
+<li class="chapter" data-level="A.6" data-path="project0.html"><a href="project0.html#question-5"><i class="fa fa-check"></i><b>A.6</b> Question 5</a></li>
 </ul></li>
 <li class="part"><span><b>III Projects</b></span></li>
 <li class="chapter" data-level="" data-path="project1.html"><a href="project1.html"><i class="fa fa-check"></i>Project 1</a>
@@ -537,7 +547,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Do Smaller Classes Improve Test Scores? Evidence from a Regression Discontinuity Design<a href="project2.html#do-smaller-classes-improve-test-scores-evidence-from-a-regression-discontinuity-design" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p><strong>Posted</strong>: Tuesday, January 20, 2026</p></li>
-<li><p><strong>Due</strong>: At midnight on Thursday, March 5, 2026</p></li>
+<li><p><strong>Due</strong>: At midnight on Saturday, March 7, 2026 <a href="https://utsa.instructure.com/courses/79928/assignments/1203158">Canvas Link</a></p></li>
 </ul>
 <p>In this empirical project, you will use a regression discontinuity design to estimate the causal effect of class size on test scores. To answer some of the questions, you will need to refer to the following papers:</p>
 <ol style="list-style-type: decimal">
@@ -667,31 +677,31 @@ d. Produce a histogram of the number of schools by total school enrollment.  Not
 <div id="packages-needed" class="section level3 unnumbered hasAnchor">
 <h3>Packages needed<a href="project2.html#packages-needed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You should use the usual packages for data wrangling and visualization:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="project2.html#cb108-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="project2.html#cb109-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>Additionally, we will use the following packages for the estimation of the Regression Discontinuity Design (remember that if this code does not run, you need to install the library first):</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="project2.html#cb109-1" tabindex="-1"></a><span class="fu">library</span>(rdrobust)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="project2.html#cb110-1" tabindex="-1"></a><span class="fu">library</span>(rdrobust)</span></code></pre></div>
 </div>
 <div id="subset-observations-1" class="section level3 unnumbered hasAnchor">
 <h3>Subset observations<a href="project2.html#subset-observations-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you want to subset the data for schools with enrollment between 20 and 60 and create a dataset from those observations, you would do the following:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="project2.html#cb110-1" tabindex="-1"></a>narrow_data <span class="ot">&lt;-</span> grade5<span class="sc">%&gt;%</span></span>
-<span id="cb110-2"><a href="project2.html#cb110-2" tabindex="-1"></a>  <span class="fu">filter</span>(school_enrollment <span class="sc">&lt;=</span> <span class="dv">60</span> <span class="sc">&amp;</span> school_enrollment <span class="sc">&gt;=</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="project2.html#cb111-1" tabindex="-1"></a>narrow_data <span class="ot">&lt;-</span> grade5 <span class="sc">%&gt;%</span></span>
+<span id="cb111-2"><a href="project2.html#cb111-2" tabindex="-1"></a>  <span class="fu">filter</span>(school_enrollment <span class="sc">&lt;=</span> <span class="dv">60</span> <span class="sc">&amp;</span> school_enrollment <span class="sc">&gt;=</span> <span class="dv">20</span>)</span></code></pre></div>
 </div>
 <div id="draw-binned-scatterplots" class="section level3 unnumbered hasAnchor">
 <h3>Draw binned scatterplots<a href="project2.html#draw-binned-scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For the plot with a linear fit, we will use the function <code>rdplot</code> from the <code>rdrobust</code> package. The following command produces a binned scatter plot of <code>yvar</code> against the total school enrollment with a linear best fit line, restricting the graph to observations with total school enrollment in [20,60]. You can do so by doing this:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="project2.html#cb111-1" tabindex="-1"></a><span class="fu">rdplot</span>(narrow_data<span class="sc">$</span>yvar, narrow_data<span class="sc">$</span>school_enrollment, <span class="at">c =</span> <span class="fl">40.5</span>, <span class="at">p =</span> <span class="dv">1</span>, <span class="at">nbins =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="project2.html#cb112-1" tabindex="-1"></a><span class="fu">rdplot</span>(narrow_data<span class="sc">$</span>yvar, narrow_data<span class="sc">$</span>school_enrollment, <span class="at">c =</span> <span class="fl">40.5</span>, <span class="at">p =</span> <span class="dv">1</span>, <span class="at">nbins =</span> <span class="dv">20</span>)</span></code></pre></div>
 <p>For the plot with a quadratic fit, you can similarly do this, now changing the option <code>p</code> from <code>1</code> to <code>2</code>:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="project2.html#cb112-1" tabindex="-1"></a><span class="fu">rdplot</span>(narrow_data<span class="sc">$</span>yvar, narrow_data<span class="sc">$</span>school_enrollment, <span class="at">c =</span> <span class="fl">40.5</span>, <span class="at">p =</span> <span class="dv">2</span>, <span class="at">nbins =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="project2.html#cb113-1" tabindex="-1"></a><span class="fu">rdplot</span>(narrow_data<span class="sc">$</span>yvar, narrow_data<span class="sc">$</span>school_enrollment, <span class="at">c =</span> <span class="fl">40.5</span>, <span class="at">p =</span> <span class="dv">2</span>, <span class="at">nbins =</span> <span class="dv">20</span>)</span></code></pre></div>
 </div>
 <div id="collapse-or-summarize-datasets" class="section level3 unnumbered hasAnchor">
 <h3>Collapse or summarize datasets<a href="project2.html#collapse-or-summarize-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The next two commands show how to create a graph showing the number of schools that have each value of <code>school_enrollment</code>.</p>
 <p>First, we collapse the data to convert from school-grade level data to school level data.</p>
 <p>You can create datasets that are based on summaries of other data. For example, to create a dataset by school instead of by grade (as the original <code>grade5.rds</code> is), you can use the function <code>group_by</code> and select the variables that you want to use for the summary, proceeded by the function <code>summarise</code>, in which you include the specific statistic you want to create. Int he following example, we want the average of the variable <code>school_enrollment</code> by school:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="project2.html#cb113-1" tabindex="-1"></a>narrow_data_school <span class="ot">&lt;-</span> narrow_data<span class="sc">%&gt;%</span></span>
-<span id="cb113-2"><a href="project2.html#cb113-2" tabindex="-1"></a>  <span class="fu">group_by</span>(schlcode)<span class="sc">%&gt;%</span></span>
-<span id="cb113-3"><a href="project2.html#cb113-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">school_enrollment =</span> <span class="fu">mean</span>(school_enrollment, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="project2.html#cb114-1" tabindex="-1"></a>narrow_data_school <span class="ot">&lt;-</span> narrow_data <span class="sc">%&gt;%</span></span>
+<span id="cb114-2"><a href="project2.html#cb114-2" tabindex="-1"></a>  <span class="fu">group_by</span>(schlcode) <span class="sc">%&gt;%</span></span>
+<span id="cb114-3"><a href="project2.html#cb114-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">school_enrollment =</span> <span class="fu">mean</span>(school_enrollment, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <blockquote>
 <p>Notice that we used the <code>na.rm=TRUE</code> option to avoid any complications coming from missing values.</p>
 </blockquote>
@@ -700,26 +710,28 @@ d. Produce a histogram of the number of schools by total school enrollment.  Not
 <h3>Draw graph of count of schools<a href="project2.html#draw-graph-of-count-of-schools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Second, we draw a graph of the counts of schools, restricting the graph to schools with between 20 and 60 students enrolled.</p>
 <p>Here we draw a graph of the counts of schools with the package <code>ggplot2</code> (which is loaded by <code>tidyverse</code>), restricting the graph to schools with between 20 and 60 students enrolled:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="project2.html#cb114-1" tabindex="-1"></a><span class="fu">ggplot</span>(narrow_data_school, <span class="fu">aes</span>(school_enrollment)) <span class="sc">+</span></span>
-<span id="cb114-2"><a href="project2.html#cb114-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
-<span id="cb114-3"><a href="project2.html#cb114-3" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="fl">40.5</span>,  <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="project2.html#cb115-1" tabindex="-1"></a><span class="fu">ggplot</span>(narrow_data_school, <span class="fu">aes</span>(school_enrollment)) <span class="sc">+</span></span>
+<span id="cb115-2"><a href="project2.html#cb115-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb115-3"><a href="project2.html#cb115-3" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">40.5</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 </div>
 <div id="estimate-the-discontinuity" class="section level3 unnumbered hasAnchor">
 <h3>Estimate the discontinuity<a href="project2.html#estimate-the-discontinuity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>These commands show how to run a regression to quantify the discontinuity in <code>yvar</code> at the 40 student threshold. We first subset the data to observations with <code>school_enrollment</code> between 0 and 80.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="project2.html#cb115-1" tabindex="-1"></a>grade_u80 <span class="ot">&lt;-</span> grade5<span class="sc">%&gt;%</span></span>
-<span id="cb115-2"><a href="project2.html#cb115-2" tabindex="-1"></a>  <span class="fu">filter</span>(school_enrollment <span class="sc">&lt;=</span> <span class="dv">80</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="project2.html#cb116-1" tabindex="-1"></a>grade_u80 <span class="ot">&lt;-</span> grade5 <span class="sc">%&gt;%</span></span>
+<span id="cb116-2"><a href="project2.html#cb116-2" tabindex="-1"></a>  <span class="fu">filter</span>(school_enrollment <span class="sc">&lt;=</span> <span class="dv">80</span>)</span></code></pre></div>
 <p>Next we generate an indicator variable (that is a variable that is either equal to <code>1</code> when the condition is true, or <code>0</code> when it is not) for <code>school_enrollment</code> being above 40.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="project2.html#cb116-1" tabindex="-1"></a>grade_u80 <span class="ot">&lt;-</span> grade5<span class="sc">%&gt;%</span></span>
-<span id="cb116-2"><a href="project2.html#cb116-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">above40=</span>(school_enrollment <span class="sc">&gt;</span> <span class="dv">40</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="project2.html#cb117-1" tabindex="-1"></a>grade_u80 <span class="ot">&lt;-</span> grade5 <span class="sc">%&gt;%</span></span>
+<span id="cb117-2"><a href="project2.html#cb117-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">above40 =</span> (school_enrollment <span class="sc">&gt;</span> <span class="dv">40</span>))</span></code></pre></div>
 <p>You can verify that <code>above40</code> is only equal to <code>1</code> when <code>school_enrollment</code> is greater than 40.</p>
 <p>We then generate a variable that equals <code>school_enrollment</code> minus 40, and the interaction term between this variable and the indicator for <code>school_enrollment</code> being above 40.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="project2.html#cb117-1" tabindex="-1"></a>grade_u80 <span class="ot">&lt;-</span> grade_u80<span class="sc">%&gt;%</span></span>
-<span id="cb117-2"><a href="project2.html#cb117-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x=</span>school_enrollment <span class="sc">-</span> <span class="dv">40</span>,</span>
-<span id="cb117-3"><a href="project2.html#cb117-3" tabindex="-1"></a>         <span class="at">x_above =</span> above40<span class="sc">*</span>x)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="project2.html#cb118-1" tabindex="-1"></a>grade_u80 <span class="ot">&lt;-</span> grade_u80 <span class="sc">%&gt;%</span></span>
+<span id="cb118-2"><a href="project2.html#cb118-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb118-3"><a href="project2.html#cb118-3" tabindex="-1"></a>    <span class="at">x =</span> school_enrollment <span class="sc">-</span> <span class="dv">40</span>,</span>
+<span id="cb118-4"><a href="project2.html#cb118-4" tabindex="-1"></a>    <span class="at">x_above =</span> above40 <span class="sc">*</span> x</span>
+<span id="cb118-5"><a href="project2.html#cb118-5" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Finally, we run a linear regression of <code>yvar</code> on these three variables, restricting the regression to observations with <code>school_enrollment</code> between 0 and 80 (we will call this model <code>mod1</code>).</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="project2.html#cb118-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(yvar<span class="sc">~</span>above40 <span class="sc">+</span> x <span class="sc">+</span> x_above, <span class="at">data =</span> grade_u80)</span>
-<span id="cb118-2"><a href="project2.html#cb118-2" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="project2.html#cb119-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(yvar <span class="sc">~</span> above40 <span class="sc">+</span> x <span class="sc">+</span> x_above, <span class="at">data =</span> grade_u80)</span>
+<span id="cb119-2"><a href="project2.html#cb119-2" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
 </div>
 <div id="interpretation" class="section level3 unnumbered hasAnchor">
 <h3>Interpretation<a href="project2.html#interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>

@@ -4,7 +4,7 @@
 
 - **Posted**: Tuesday, January 20, 2026
 
-- **Due**: Midnight on Friday, April 11, 2026
+- **Due**: Midnight on Saturday, April 11, 2026 [Canvas Link](https://utsa.instructure.com/courses/79928/assignments/1203200)
 
 You have already explored the [Opportunity Atlas](https://www.opportunityatlas.org/) in [Project 1](#project1). Now you will explore the new data on economic mobility that some of the previous researchers and new ones have made freely available in the [Social Capital Atlas](https://socialcapital.org/). It also provides an interactive mapping tool, as before, that attempts to trace the strength of our relationships and communities.  
 
@@ -176,8 +176,8 @@ Careful with missing values (also called **'NA'**)! We will use *'na.rm=TRUE'* a
 
 ```{r, eval=FALSE}
 summary(atlas$yvar)
-mean(atlas$yvar, na.rm=TRUE)
-sd(atlas$yvar, na.rm=TRUE)
+mean(atlas$yvar, na.rm = TRUE)
+sd(atlas$yvar, na.rm = TRUE)
 ```
 
 ###  Load package {-}
@@ -210,7 +210,7 @@ sqrt(wtd.var(atlas$yvar, atlas$count_pooled))
 If you want to select a subset of observations, you can add the rule for selecting those observations, and the `filter` function. Here we subset the observations for the State of Wisconsin, and called the resulting dataset `atlas_wisconsin`.
 
 ```{r}
-atlas_wisconsin <- atlas %>% 
+atlas_wisconsin <- atlas %>%
   filter(state == 55)
 ```
 
@@ -219,8 +219,8 @@ atlas_wisconsin <- atlas %>%
 We can do the same but now for a specific county, adding an extra rule after a comma `,` or `&`. Here we subset the observations for Milwaukee County in Wisconsin:
 
 ```{r}
-atlas_milwaukee <- atlas %>% 
-  filter(state == 55 & county == 079) 
+atlas_milwaukee <- atlas %>%
+  filter(state == 55 & county == 079)
 ```
 
 ### Standardize variables {-}
@@ -228,17 +228,19 @@ atlas_milwaukee <- atlas %>%
 You can standardize variables by substracting the mean and dividing by the standard deviation. Let us say that you want to standardize only considering the variables in Milwaukee, then you can do this: 
 
 ```{r, eval=FALSE}
-atlas_milwaukee<- atlas_milwaukee %>%
-  mutate(x_std=(xvar - mean(atlas_milwaukee$xvar, na.rm=TRUE))/sd(atlas_milwaukee$xvar, na.rm=TRUE))
+atlas_milwaukee <- atlas_milwaukee %>%
+  mutate(x_std = (xvar - mean(atlas_milwaukee$xvar, na.rm = TRUE)) / sd(atlas_milwaukee$xvar, na.rm = TRUE))
 ```
 
 As an example, let's say you want to standardize both the measure of mobility and the annual job growth for the data in Wisconsin:
 
 
 ```{r}
-atlas_wisconsin<- atlas_wisconsin %>%
-  mutate(kfr_pooled_p25_std=(kfr_pooled_p25 - mean(atlas_wisconsin$kfr_pooled_p25, na.rm=TRUE))/sd(atlas_wisconsin$kfr_pooled_p25, na.rm=TRUE),
-         ann_avg_job_growth_2004_2013_std=(ann_avg_job_growth_2004_2013 - mean(atlas_wisconsin$ann_avg_job_growth_2004_2013, na.rm=TRUE))/sd(atlas_wisconsin$ann_avg_job_growth_2004_2013, na.rm=TRUE))
+atlas_wisconsin <- atlas_wisconsin %>%
+  mutate(
+    kfr_pooled_p25_std = (kfr_pooled_p25 - mean(atlas_wisconsin$kfr_pooled_p25, na.rm = TRUE)) / sd(atlas_wisconsin$kfr_pooled_p25, na.rm = TRUE),
+    ann_avg_job_growth_2004_2013_std = (ann_avg_job_growth_2004_2013 - mean(atlas_wisconsin$ann_avg_job_growth_2004_2013, na.rm = TRUE)) / sd(atlas_wisconsin$ann_avg_job_growth_2004_2013, na.rm = TRUE)
+  )
 ```
 
 ### Run regression {-}
@@ -250,7 +252,7 @@ I have written a whole section explaining regression in more detail: Section \@r
 Let's say you want to run a simple regression of variable `yvar` on variable `xvar1` for the county of Milwaukee. We will save the results of that regression in an object call `mod1` (we could give it any name). Then you would do this:
 
 ``` {r, eval=FALSE}
-mod1 <- lm(yvar~xvar1, data = atlas_milwaukee)
+mod1 <- lm(yvar ~ xvar1, data = atlas_milwaukee)
 ```
 
 To see what the outcome of the regression is, you would use the function `summary` and apply it to our new object `mod1`, like this:
@@ -262,7 +264,7 @@ summary(mod1)
 As an example, we could regress the mobility of children from parents in the 25th percentile (`kfr_pooled_p25`) on the average annual job growth rate between 2004 and 2013 (`ann_avg_job_growth_2004_2013`). To do that, we would run: 
 
 ``` {r, eval=FALSE}
-mod1 <- lm(kfr_pooled_p25~ann_avg_job_growth_2004_2013, data = atlas_milwaukee)
+mod1 <- lm(kfr_pooled_p25 ~ ann_avg_job_growth_2004_2013, data = atlas_milwaukee)
 ```
 
 2. Multivariate linear regression
@@ -270,7 +272,7 @@ mod1 <- lm(kfr_pooled_p25~ann_avg_job_growth_2004_2013, data = atlas_milwaukee)
 You might want to understand the relationship between `yvar` and variable `xvar1` **while holding fixed** another variable `xvar2` for neighborhoods only in Milwaukee. You can do this: 
 
 ``` {r, eval=FALSE}
-mod2 <- lm(yvar~xvar1+xvar2 + xvar3, data = atlas_milwaukee)
+mod2 <- lm(yvar ~ xvar1 + xvar2 + xvar3, data = atlas_milwaukee)
 ```
 
 ### How to read the regression output? {-}
@@ -309,7 +311,8 @@ library(ggplot2)
 Suppose you want to visually see the linear relationship between two variables in the `atlas_milwaukee` dataset that we filtered above. Then, you can do this: 
 
 ``` {r, eval=FALSE}
-ggplot(data = atlas_milwaukee) + geom_point(aes(x = xvar1, y = yvar)) + 
+ggplot(data = atlas_milwaukee) +
+  geom_point(aes(x = xvar1, y = yvar)) +
   geom_smooth(aes(x = xvar1, y = yvar), method = "lm", se = F)
 ```
 

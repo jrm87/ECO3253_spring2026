@@ -146,17 +146,25 @@ To use R and RStudio, you can:
 - install it in your computer (see the book) or ...
 - run it on someone else's computer (the cloud!). We will do that, so you don't have to worry about installations. 
 
-In this course I won't require you to install R and RStudio in your own computer. Instead, we will use the cloud! In particular, the website that we will use to manage RStudio is called Posit Cloud. 
-
-You should have received an invitation for the course in your email. If you would still like to install R and RStudio in your own computer, please follow the instructions in Section 1.1.1 in this [link](https://nulib.github.io/moderndive_book/1-getting-started.html). Of course, you are encouraged to experiment in your own machine as well. Notice, however, that you should carry out the assignments and projects in Posit Cloud. 
+If you want to use Posit Cloud, you need to tell me in advance and I will send out the invite. If you would still like to install R and RStudio in your own computer, please follow the instructions in Section 1.1.1 in this [link](https://nulib.github.io/moderndive_book/1-getting-started.html). Of course, you are encouraged to experiment in your own machine as well. Notice, however, that you should carry out the assignments and projects in Posit Cloud. 
 
 :::: {.blackbox data-latex=""}
 ::: {.center data-latex=""}
 **Important!**
 :::
 
-Homework and projects should be carried in Posit Cloud (not your personal computer). 
+
+You can use either method, but regardless of which one you choose, homework and projects should be uploaded as pdf to Canvas.
 ::::
+
+### Installing R and RStudio Locally
+
+If you prefer to work locally, you will need to install both R and RStudio.
+
+1.  **Install R**: Go to the [CRAN website](https://cran.r-project.org/) and download the version of R appropriate for your operating system (Windows, Mac, or Linux).
+2.  **Install RStudio**: Go to the [Posit website](https://posit.co/download/rstudio-desktop/) and download the free RStudio Desktop version.
+
+Once installed, open RStudio to begin. You will need to install the necessary packages as described in the [Package installation](#package-installation) section.
 
 
 ## Let's open R!

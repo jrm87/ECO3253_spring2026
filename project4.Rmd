@@ -4,7 +4,7 @@
 
 - **Posted**: Tuesday, January 20, 2026
 
-- **Due**: Midnight on Friday, April 25, 2026
+- **Due**: Midnight on Saturday, April 25, 2026 [Canvas Link](https://utsa.instructure.com/courses/79928/assignments/1203213)
 
 You have already explored the [Opportunity Atlas](https://www.opportunityatlas.org/) in [Project 1](#project1) and the [Social Capital Atlas](https://socialcapital.org/). In this this empirical project, you will use the Opportunity Atlas mapping tool and the underlying data, plus data from [Google DataCommons](https://www.datacommons.org/), to predict intergenerational mobility using **machine learning** methods. The measure of intergenerational mobility that we will focus on, as usual, is the mean rank of a child whose parents were at the 25th percentile of the national income distribution in each county (`kfr_pooled_p25`). Your goal is to construct the best predictions of this outcome using other variables, an important step in creating forecasts of upward mobility that could be used for future generations, before data on their outcomes become available.
 
@@ -21,8 +21,8 @@ You do not need to use all the variables in atlas_training for your prediction! 
 You can load the data by using the following code:
 
 ```{r eval=FALSE}
-train<- readRDS(gzcon(url("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_train.rds")))
-test<-readRDS(gzcon(url("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_test.rds")))
+train <- readRDS(gzcon(url("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_train.rds")))
+test <- readRDS(gzcon(url("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_test.rds")))
 ```
 
 ## Instructions {-}
@@ -182,7 +182,7 @@ Recall that if you modify one variable in one data set, you should do the same o
 Below `X` is just a placeholder for the actual variable you want to converto into a factor. 
 
 ```{r, eval=FALSE}
-atlas_train$X<-as.factor(atlas_train$X)
+atlas_train$X <- as.factor(atlas_train$X)
 ```
 
 ###  Load package {-}
@@ -207,7 +207,7 @@ As before, I have written a whole section explaining regression in more detail: 
 You might want to understand the relationship between `yvar` and variable `xvar1` **while holding fixed** another variable `xvar2` for neighborhoods only in Milwaukee. You can do this: 
 
 ``` {r, eval=FALSE}
-mod2 <- lm(yvar~xvar1+xvar2 + xvar3, data = train)
+mod2 <- lm(yvar ~ xvar1 + xvar2 + xvar3, data = train)
 ```
 
 You would see the output from the model by running:
@@ -233,14 +233,14 @@ where `residuals` is the error that the model predicts for each observation`
 To do it **out-of-sample**, you need to use the function `predict` that requires a model, and a dataset with the same variables for the prediction. In this case, you would do something like this: 
 
 ```{r, eval=FALSE}
-predict_mlr_model<-predict(mlr_model,test)
+predict_mlr_model <- predict(mlr_model, test)
 ```
 
 and then you can do this: 
 
 ```{r, eval=FALSE}
-actual_values<- test$kfr_pooled_p25
-rmse_mlrmodel_outsample <- sqrt(mean((actual_values - predict_mlr_model)^2, na.rm=TRUE))
+actual_values <- test$kfr_pooled_p25
+rmse_mlrmodel_outsample <- sqrt(mean((actual_values - predict_mlr_model)^2, na.rm = TRUE))
 rmse_mlrmodel_outsample
 ```
 
@@ -249,19 +249,19 @@ rmse_mlrmodel_outsample
 To estimate the decision tree, you can choose which variables you want to select for the prediction by listing them as before. Say, you want to use x1, x2 and x3 for the prediction, you can do:
 
 ```{r, eval=FALSE}
-tree <- rpart(kfr_pooled_p25 ~x1+x2+x3, data = train)
+tree <- rpart(kfr_pooled_p25 ~ x1 + x2 + x3, data = train)
 ```
 
 If you wan to use all other variables for the prediction, you can do: 
 
 ```{r, eval=FALSE}
-tree <- rpart(kfr_pooled_p25 ~., data = train)
+tree <- rpart(kfr_pooled_p25 ~ ., data = train)
 ```
 
 To plot the tree you estimated, just do this: 
 
 ```{r, eval=FALSE}
-#Plotting the regression tree
+# Plotting the regression tree
 rpart.plot(tree)
 ```
 
@@ -270,18 +270,18 @@ rpart.plot(tree)
 The measurement is the same, but to calculate it you need to do use the `predict` function as before. For **in-sample** prediction you would do: 
 
 ```{r, eval=FALSE}
-#In-sample prediction
+# In-sample prediction
 p <- predict(tree, train)
-#Root mean squared error = 1944.108 (in sample)
-sqrt(mean((train$kfr_pooled_p25-p)^2))
+# Root mean squared error = 1944.108 (in sample)
+sqrt(mean((train$kfr_pooled_p25 - p)^2))
 ```
 
 
 For **out-of-sample** prediction, you can run: 
 
 ```{r, eval=FALSE}
-pred_tree_outofsample<-predict(tree,test)
-#RMSE out of sample = 5965.278
-sqrt(mean((test$kfr_pooled_p25-pred_tree_outofsample)^2, na.rm=TRUE ))
+pred_tree_outofsample <- predict(tree, test)
+# RMSE out of sample = 5965.278
+sqrt(mean((test$kfr_pooled_p25 - pred_tree_outofsample)^2, na.rm = TRUE))
 ```
 

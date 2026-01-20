@@ -296,6 +296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="11.2.1" data-path="getting-started.html"><a href="getting-started.html#r-rstudio"><i class="fa fa-check"></i><b>11.2.1</b> What are R and RStudio?</a></li>
 <li class="chapter" data-level="11.2.2" data-path="getting-started.html"><a href="getting-started.html#r-and-rstudio-in-your-computer-or-in-the-cloud-the-benefit-of-posit-cloud"><i class="fa fa-check"></i><b>11.2.2</b> R and RStudio: In your computer or in the cloud? The benefit of Posit Cloud</a></li>
+<li class="chapter" data-level="11.2.3" data-path="getting-started.html"><a href="getting-started.html#installing-r-and-rstudio-locally"><i class="fa fa-check"></i><b>11.2.3</b> Installing R and RStudio Locally</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="getting-started.html"><a href="getting-started.html#lets-open-r"><i class="fa fa-check"></i><b>11.3</b> Let’s open R!</a>
 <ul>
@@ -413,6 +414,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.1" data-path="rmarkdown.html"><a href="rmarkdown.html#how-to-create-an-output-file"><i class="fa fa-check"></i><b>15.1</b> How to create an output file</a>
 <ul>
 <li class="chapter" data-level="15.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#error-when-rendering-file"><i class="fa fa-check"></i><b>15.1.1</b> Error when rendering file</a></li>
+<li class="chapter" data-level="15.1.2" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-tinytex"><i class="fa fa-check"></i><b>15.1.2</b> Installing TinyTeX</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="rmarkdown.html"><a href="rmarkdown.html#add-new-code"><i class="fa fa-check"></i><b>15.2</b> Add new code</a></li>
 <li class="chapter" data-level="15.3" data-path="rmarkdown.html"><a href="rmarkdown.html#add-a-title"><i class="fa fa-check"></i><b>15.3</b> Add a title</a></li>
@@ -432,6 +434,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="A.1.6" data-path="appendixA.html"><a href="appendixA.html#appDistributions"><i class="fa fa-check"></i><b>A.1.6</b> Distribution</a></li>
 <li class="chapter" data-level="A.1.7" data-path="appendixA.html"><a href="appendixA.html#outliers"><i class="fa fa-check"></i><b>A.1.7</b> Outliers</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project0.html"><a href="project0.html"><i class="fa fa-check"></i>Project 0</a>
+<ul>
+<li class="chapter" data-level="A.2" data-path="project0.html"><a href="project0.html#question-1"><i class="fa fa-check"></i><b>A.2</b> Question 1</a></li>
+<li class="chapter" data-level="A.3" data-path="project0.html"><a href="project0.html#question-2"><i class="fa fa-check"></i><b>A.3</b> Question 2</a></li>
+<li class="chapter" data-level="A.4" data-path="project0.html"><a href="project0.html#question-3"><i class="fa fa-check"></i><b>A.4</b> Question 3</a></li>
+<li class="chapter" data-level="A.5" data-path="project0.html"><a href="project0.html#question-4"><i class="fa fa-check"></i><b>A.5</b> Question 4</a></li>
+<li class="chapter" data-level="A.6" data-path="project0.html"><a href="project0.html#question-5"><i class="fa fa-check"></i><b>A.6</b> Question 5</a></li>
 </ul></li>
 <li class="part"><span><b>III Projects</b></span></li>
 <li class="chapter" data-level="" data-path="project1.html"><a href="project1.html"><i class="fa fa-check"></i>Project 1</a>
@@ -614,14 +624,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>install it in your computer (see the book) or …</li>
 <li>run it on someone else’s computer (the cloud!). We will do that, so you don’t have to worry about installations.</li>
 </ul>
-<p>In this course I won’t require you to install R and RStudio in your own computer. Instead, we will use the cloud! In particular, the website that we will use to manage RStudio is called Posit Cloud.</p>
-<p>You should have received an invitation for the course in your email. If you would still like to install R and RStudio in your own computer, please follow the instructions in Section 1.1.1 in this <a href="https://nulib.github.io/moderndive_book/1-getting-started.html">link</a>. Of course, you are encouraged to experiment in your own machine as well. Notice, however, that you should carry out the assignments and projects in Posit Cloud.</p>
+<p>If you want to use Posit Cloud, you need to tell me in advance and I will send out the invite. If you would still like to install R and RStudio in your own computer, please follow the instructions in Section 1.1.1 in this <a href="https://nulib.github.io/moderndive_book/1-getting-started.html">link</a>. Of course, you are encouraged to experiment in your own machine as well. Notice, however, that you should carry out the assignments and projects in Posit Cloud.</p>
 <div class="blackbox">
 <div class="center">
 <p><strong>Important!</strong></p>
 </div>
-<p>Homework and projects should be carried in Posit Cloud (not your personal computer).</p>
+<p>You can use either method, but regardless of which one you choose, homework and projects should be uploaded as pdf to Canvas.</p>
 </div>
+</div>
+<div id="installing-r-and-rstudio-locally" class="section level3 hasAnchor" number="11.2.3">
+<h3><span class="header-section-number">11.2.3</span> Installing R and RStudio Locally<a href="getting-started.html#installing-r-and-rstudio-locally" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you prefer to work locally, you will need to install both R and RStudio.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Install R</strong>: Go to the <a href="https://cran.r-project.org/">CRAN website</a> and download the version of R appropriate for your operating system (Windows, Mac, or Linux).</li>
+<li><strong>Install RStudio</strong>: Go to the <a href="https://posit.co/download/rstudio-desktop/">Posit website</a> and download the free RStudio Desktop version.</li>
+</ol>
+<p>Once installed, open RStudio to begin. You will need to install the necessary packages as described in the <a href="getting-started.html#package-installation">Package installation</a> section.</p>
 </div>
 </div>
 <div id="lets-open-r" class="section level2 hasAnchor" number="11.3">

@@ -4,7 +4,7 @@
 
 - **Posted**: Tuesday, January 20, 2026
 
-- **Due**: At midnight on Thursday, March 5, 2026
+- **Due**: At midnight on Saturday, March 7, 2026 [Canvas Link](https://utsa.instructure.com/courses/79928/assignments/1203158)
 
 In this empirical project, you will use a regression discontinuity design to estimate the causal effect of class size on test scores. To answer some of the questions, you will need to refer to the following papers:
 
@@ -133,7 +133,7 @@ library(rdrobust)
 If you want to subset the data for schools with enrollment between 20 and 60 and create a dataset from those observations, you would do the following: 
 
 ```{r, eval=FALSE}
-narrow_data <- grade5%>%
+narrow_data <- grade5 %>%
   filter(school_enrollment <= 60 & school_enrollment >= 20)
 ```
 
@@ -160,8 +160,8 @@ First, we collapse the data to convert from school-grade level data to school le
 You can create datasets that are based on summaries of other data. For example, to create a dataset by school instead of by grade (as the original `grade5.rds` is), you can use the function `group_by` and select the variables that you want to use for the summary, proceeded by the function `summarise`, in which you include the specific statistic you want to create. Int he following example, we want the average of the variable `school_enrollment` by school:
 
 ```{r, eval=FALSE}
-narrow_data_school <- narrow_data%>%
-  group_by(schlcode)%>%
+narrow_data_school <- narrow_data %>%
+  group_by(schlcode) %>%
   summarise(school_enrollment = mean(school_enrollment, na.rm = TRUE))
 ```
 > Notice that we used the `na.rm=TRUE` option to avoid any complications coming from missing values.
@@ -175,7 +175,7 @@ Here we draw a graph of the counts of schools with the package `ggplot2` (which 
 ```{r, eval=FALSE}
 ggplot(narrow_data_school, aes(school_enrollment)) +
   geom_histogram(bins = 40) +
-  geom_vline(xintercept=40.5,  color = "red") 
+  geom_vline(xintercept = 40.5, color = "red")
 ```
 
 
@@ -184,15 +184,15 @@ ggplot(narrow_data_school, aes(school_enrollment)) +
 These commands show how to run a regression to quantify the discontinuity in `yvar` at the 40 student threshold. We first subset the data to observations with `school_enrollment` between 0 and 80. 
 
 ```{r, eval=FALSE}
-grade_u80 <- grade5%>%
+grade_u80 <- grade5 %>%
   filter(school_enrollment <= 80)
 ```
 
 Next we generate an indicator variable (that is a variable that is either equal to `1` when the condition is true, or `0` when it is not) for `school_enrollment` being above 40.
 
 ```{r, eval=FALSE}
-grade_u80 <- grade5%>%
-  mutate(above40=(school_enrollment > 40))
+grade_u80 <- grade5 %>%
+  mutate(above40 = (school_enrollment > 40))
 ```
 
 You can verify that `above40` is only equal to `1` when `school_enrollment` is greater than 40.
@@ -200,15 +200,17 @@ You can verify that `above40` is only equal to `1` when `school_enrollment` is g
 We then generate a variable that equals `school_enrollment` minus 40, and the interaction term between this variable and the indicator for `school_enrollment` being above 40. 
 
 ```{r, eval=FALSE}
-grade_u80 <- grade_u80%>%
-  mutate(x=school_enrollment - 40,
-         x_above = above40*x)
+grade_u80 <- grade_u80 %>%
+  mutate(
+    x = school_enrollment - 40,
+    x_above = above40 * x
+  )
 ```
 
 Finally, we run a linear regression of `yvar` on these three variables, restricting the regression to observations with `school_enrollment` between 0 and 80 (we will call this model `mod1`). 
 
 ```{r, eval=FALSE}
-mod1 <- lm(yvar~above40 + x + x_above, data = grade_u80)
+mod1 <- lm(yvar ~ above40 + x + x_above, data = grade_u80)
 summary(mod1)
 ```
 

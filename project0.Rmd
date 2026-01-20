@@ -1,0 +1,25 @@
+# Project 0 {- #project0}
+
+The goal of this project is to replicate the analysis performed in the [Explore your first dataset](#mobilitydata) section of the "Getting Started" chapter. You should do this on your own and submit the output as a PDF.
+
+- **Due**: In class on Thursday, January 29, 2026 [Canvas Link](https://utsa.instructure.com/courses/79928/assignments/1203152)
+
+## Question 1
+
+Write R code that calculates the square root of 12.
+
+## Question 2
+
+Write R code that loads the data for Project 1 into a dataframe called 'atlas'. (See instructions [here](#project1))
+
+## Question 3
+
+Write R code that estimates the mean and standard deviation of the average income of children of parents in the 25th and 75th percentiles. (See [Appendix A](#appendixA) and [Cheat Sheet](#cheatsheetproject1))
+
+## Question 4
+
+Create a `ggplot` graphic showing the distribution of the variables from Question 3 across the US, Texas, Utah, and South Carolina. (See [Data Visualization](#viz))
+
+## Question 5
+
+Provide a simple description of what you observe in the numbers and plots generated above.

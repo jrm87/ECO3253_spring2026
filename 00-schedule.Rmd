@@ -3,196 +3,250 @@
 I will keep this page with the updated schedule for the semester. You can find these readings on Canvas.
 
 ```{r, echo=FALSE, include=FALSE}
-title_line<-"| Week| Session | Topic| Required reading| Method| Deliverable | \n"
-separation_line<-"| -- | -- | -- | -- | -- | -- | \n"
-create_session<- function(vector){
-  week<-vector[1]
-  session<-vector[2]
-  topic<-vector[3]
-  reading<-vector[4]
-  method<-vector[5]
-  deliverable<-vector[6]
+title_line <- "| Week| Session | Topic| Required reading| Method| Deliverable | \n"
+separation_line <- "| -- | -- | -- | -- | -- | -- | \n"
+create_session <- function(vector) {
+  week <- vector[1]
+  session <- vector[2]
+  topic <- vector[3]
+  reading <- vector[4]
+  method <- vector[5]
+  deliverable <- vector[6]
 
-  line<-paste0(c("|",week,"|",session,"|",topic,"|",reading,"|",method,"|",deliverable, "|", "\n"))
+  line <- paste0(c("|", week, "|", session, "|", topic, "|", reading, "|", method, "|", deliverable, "|", "\n"))
 }
 # Spring 2026 Schedule - Classes on Tuesday and Thursday at 1pm
-s_intro<-c("1: 01/20", "1", "Introduction to the course", " ", " ", " ")
-s_geomob<-c("1: 01/22", #date
-           "2", # session
-           "[Geography of Upward Mobility in America](#lec1_geomobility)", #topic with link
-           "Chetty, Friedman, Hendren, Jones and Porter (2018)- **Non-technical summary** ", #reading
-           " ", # method
-           " ") #deliverable
+s_intro <- c("1: 01/20", "1", "Introduction to the course", " ", " ", " ")
+s_geomob <- c(
+  "1: 01/22", # date
+  "2", # session
+  "[Geography of Upward Mobility in America](#lec1_geomobility)", # topic with link
+  "[Chetty, Friedman, Hendren, Jones and Porter (2018)-<br>**Non-technical summary**](https://utsa.instructure.com/courses/79928/files?preview=13165235) ", # reading
+  " ", # method
+  " "
+) # deliverable
 
-s_introR<-c("2: 01/27", #date
-           "3", # session
-           "[Intro to R and data](#getting-started)", #topic with link
-           " ", #reading
-           " ", # method
-           " ") #deliverable
-s_introR2<-c("2: 01/29", #date
-           "4", # session
-           "Intro to [Visualization](#viz), [Wrangling](#wrangling) and [RMarkdown](#rmarkdown)", #topic with link
-           " ", #reading
-           " ", # method
-           "First short report (In class) - Project 0") #deliverable
+s_introR <- c(
+  "2: 01/27", # date
+  "3", # session
+  "[Intro to R and data](#getting-started)", # topic with link
+  " ", # reading
+  " ", # method
+  " "
+) # deliverable
+s_introR2 <- c(
+  "2: 01/29", # date
+  "4", # session
+  "Intro to [Visualization](#viz), [Wrangling](#wrangling) and [RMarkdown](#rmarkdown)", # topic with link
+  " ", # reading
+  " ", # method
+  "First short report (In class) - [Project 0](#project0) ([Canvas Link](https://utsa.instructure.com/courses/79928/assignments/1203152))"
+) # deliverable
 
-s_causaleffects<-c("3: 02/03", #date
-           "5", # session
-           "[Intro to Causal Effects of Neighborhoods](#lec2_causaleffect) ", #topic with link
-           "Bergman, Chetty, DeLuca, Hendren, Katz and Palmer (2019) **[Non-technical summary]**", #reading
-           "Experiments (RCTs)", # method
-           "[Project 1](#project1) – Part 1 (for Thursday 02/05)") #deliverable
-s_causaleffects2<-c("3: 02/05", #date
-           "6", # session
-           "[Characteristics of High-Mobility Areas](#lec2_causaleffect) and [Correlation Analysis](#regression) ", #topic with link
-           "Bergman, Chetty, DeLuca, Hendren, Katz and Palmer (2019) - Introduction", #reading
-           "Quasi-experiments ", # method
-           " ") #deliverable
+s_causaleffects <- c(
+  "3: 02/03", # date
+  "5", # session
+  "[Intro to Causal Effects of Neighborhoods](#lec2_causaleffect) ", # topic with link
+  "[Bergman, Chetty, DeLuca, Hendren, Katz and Palmer (2019) -<br>Non-technical summary](https://utsa.instructure.com/courses/79928/files?preview=13165236) ", # reading
+  "Experiments (RCTs)", # method
+  ""
+) # deliverable
+s_causaleffects2 <- c(
+  "3: 02/05", # date
+  "6", # session
+  "[Characteristics of High-Mobility Areas](#lec2_causaleffect) and [Correlation Analysis](#regression) ", # topic with link
+  "[Bergman, Chetty, DeLuca, Hendren, Katz and Palmer (2019) -<br>Introduction](https://utsa.instructure.com/courses/79928/files?preview=13165238) ", # reading
+  "Quasi-experiments ", # method
+  "[Project 1](#project1) – Part 1 (for Saturday 02/07) [Canvas Link](https://utsa.instructure.com/courses/79928/assignments/1203153)"
+) # deliverable
 
-s_mto<-c("4: 02/10", #date
-           "7", # session
-           "[Moving to Opportunity and place based policies](#lec3_mto-placebased) ", #topic with link
-           " ", #reading
-           "Cost-benefit analysis ", # method
-           "[Project 1](#project1) – Part 1 and 2 (for Thursday 02/12) ") #deliverable
-s_mob_hist_int<-c("4: 02/12", #date
-           "8", # session
-           "[Historical and International Evidence on](#lec4_mob-hist-int) and [Drivers of Inequality and Mobility](#lec4_mob-hist-int) ", #topic with link
-           " ", #reading
-           " ", # method
-           " ") #deliverable
+s_mto <- c(
+  "4: 02/10", # date
+  "7", # session
+  "[Moving to Opportunity and place based policies](#lec3_mto-placebased) ", # topic with link
+  " ", # reading
+  "Cost-benefit analysis ", # method
+  ""
+) # deliverable
+s_mob_hist_int <- c(
+  "4: 02/12", # date
+  "8", # session
+  "[Historical and International Evidence on](#lec4_mob-hist-int) and [Drivers of Inequality and Mobility](#lec4_mob-hist-int) ", # topic with link
+  " ", # reading
+  " ", # method
+  "[Project 1](#project1) – Part 1 and 2 (for Saturday 02/14) [Canvas Link](https://utsa.instructure.com/courses/79928/assignments/1203154)"
+) # deliverable
 
-s_review_mid<-c("5: 02/17", #date
-           "9", # session
-           "Review for midterm ", #topic with link
-           " ", #reading
-           " ", # method
-           "") #deliverable
-s_mid<-c("5: 02/19", #date
-           "10", # session
-           "**Midterm**  ", #topic with link
-           " ", #reading
-           " ", # method
-           " ") #deliverable
+s_review_mid <- c(
+  "5: 02/17", # date
+  "9", # session
+  "Review for midterm ", # topic with link
+  " ", # reading
+  " ", # method
+  ""
+) # deliverable
+s_mid <- c(
+  "5: 02/19", # date
+  "10", # session
+  "**Midterm**  ", # topic with link
+  " ", # reading
+  " ", # method
+  " "
+) # deliverable
 
-s_inClassR<-c("6: 02/24", #date
-           "11", # session
-           "Work in Class For Project 2 ", #topic with link
-           " ", #reading
-           " ", # method
-           "") #deliverable
+s_inClassR <- c(
+  "6: 02/24", # date
+  "11", # session
+  "Work in Class For Project 2 ", # topic with link
+  " ", # reading
+  " ", # method
+  ""
+) # deliverable
 
-s_noclass1<-c("6: 02/26", #date
-           "-", # session
-           "No Class ", #topic with link
-           " ", #reading
-           " ", # method
-           "") #deliverable
+s_noclass1 <- c(
+  "6: 02/26", # date
+  "-", # session
+  "No Class ", # topic with link
+  " ", # reading
+  " ", # method
+  ""
+) # deliverable
 
-s_mob_ed<-c("7: 03/03", #date
-           "12", # session
-           "[Higher Education and Upward Mobility](#lec5_mob-ed) ", #topic with link
-           "Dynarski, Libassi, Michelmore and Owen (2018) ", #reading
-           "Regression discontinuity ", # method
-           " ") #deliverable
+s_mob_ed <- c(
+  "7: 03/03", # date
+  "12", # session
+  "[Higher Education and Upward Mobility](#lec5_mob-ed) ", # topic with link
+  "[Dynarski, Libassi, Michelmore and Owen (2018)](https://utsa.instructure.com/courses/79928/files?preview=13165240)", # reading
+  "Regression discontinuity ", # method
+  " "
+) # deliverable
 
-s_recap_quarto<-c("7: 03/05", #date
-           "13", # session
-           "Recap of R and Quarto Documents ", #topic with link
-           " ", #reading
-           " ", # method
-           "[Project 2](#project2) (Thursday 03/05)  ") #deliverable
+s_recap_quarto <- c(
+  "7: 03/05", # date
+  "13", # session
+  "Recap of R and Quarto Documents ", # topic with link
+  " ", # reading
+  " ", # method
+  "[Project 2](#project2) (Saturday 03/07) [Canvas Link](https://utsa.instructure.com/courses/79928/assignments/1203158) "
+) # deliverable
 
 # Spring Break Week 8: 03/10-03/14
-s_springbreak1<-c("8: 03/10", #date
-           "-", # session
-           "**Spring Break** - No Class ", #topic with link
-           " ", #reading
-           " ", # method
-           " ") #deliverable
-s_springbreak2<-c("8: 03/12", #date
-           "-", # session
-           "**Spring Break** - No Class ", #topic with link
-           " ", #reading
-           " ", # method
-           " ") #deliverable
+s_springbreak1 <- c(
+  "8: 03/10", # date
+  "-", # session
+  "**Spring Break** - No Class ", # topic with link
+  " ", # reading
+  " ", # method
+  " "
+) # deliverable
+s_springbreak2 <- c(
+  "8: 03/12", # date
+  "-", # session
+  "**Spring Break** - No Class ", # topic with link
+  " ", # reading
+  " ", # method
+  " "
+) # deliverable
 
-s_ed_higher<-c("9: 03/17", #date
-           "14", # session
-           "[Causal Effects of Higher Education](#lec6_ed-higher) ", #topic with link
-           " ", #reading
-           " ", # method
-           " ") #deliverable
+s_ed_higher <- c(
+  "9: 03/17", # date
+  "14", # session
+  "[Causal Effects of Higher Education](#lec6_ed-higher) ", # topic with link
+  " ", # reading
+  " ", # method
+  " "
+) # deliverable
 
-s_k12<-c("9: 03/19", #date
-           "15", # session
-           "[Primary education](#lec7_k12)", #topic with link
-           "Chetty, Friedman and Rockoff (2011) [Non-technical summary]	", #reading
-           "Experiments ", # method
-           " ") #deliverable
-s_teachers<-c("10: 03/24", #date
-           "16", # session
-           "[Teachers and Charter Schools](#lec8_teachers-charters)", #topic with link
-           "	", #reading
-           "Event study designs, competitive equilibrium ", # method
-           " ") #deliverable
-s_racedis<-c("10: 03/26", #date
-           "17", # session
-           "[Racial Disparities in Economic Opportunity](#lec9_race-ineq) ", #topic with link
-           "Bertrand, and Mullainathan (2004)	", #reading
-           "Dynamic models and steady states ", # method
-           " ") #deliverable
+s_k12 <- c(
+  "9: 03/19", # date
+  "15", # session
+  "[Primary education](#lec7_k12)", # topic with link
+  "[Chetty, Friedman and Rockoff (2011)-<br>Non-technical summary](https://utsa.instructure.com/courses/79928/files?preview=13165241)	", # reading
+  "Experiments ", # method
+  " "
+) # deliverable
+s_teachers <- c(
+  "10: 03/24", # date
+  "16", # session
+  "[Teachers and Charter Schools](#lec8_teachers-charters)", # topic with link
+  "	", # reading
+  "Event study designs, competitive equilibrium ", # method
+  " "
+) # deliverable
+s_racedis <- c(
+  "10: 03/26", # date
+  "17", # session
+  "[Racial Disparities in Economic Opportunity](#lec9_race-ineq) ", # topic with link
+  "[Bertrand, and Mullainathan (2004)](https://utsa.instructure.com/courses/79928/files?preview=13165242)	", # reading
+  "Dynamic models and steady states ", # method
+  " "
+) # deliverable
 
-s_jud_sys<-c("11: 03/31", #date
-           "18", # session
-           "[Improving judicial decisions](#lec10_criminal-justice)", #topic with link
-           "Kleinberg, Lakkaraju, Leskovec, Ludwig and Mullainathan (2017) ", #reading
-           "Machine learning, implicit bias ", # method
-           "") #deliverable
-s_immigration<-c("11: 04/02", #date
-           "19", # session
-           "Immigration ", #topic with link
-           "Clemens (2011)  ", #reading
-           "Welfare analysis ", # method
-           "") #deliverable
-s_ml<-c("12: 04/07", #date
-           "20", # session
-           "Implementing a simple machine learning model in R - Part 1", #topic with link
-           "  ", #reading
-           "  ", # method
-           "") #deliverable
-s_ml2<-c("12: 04/09", #date
-           "21", # session
-           "Implementing a simple machine learning model in R - Part 2", #topic with link
-           "  ", #reading
-           "  ", # method
-           "[Project 3](#project3) (for Friday 04/11)") #deliverable
-s_ml3<-c("13: 04/14", #date
-           "22", # session
-           "Implementing a simple machine learning model in R - Part 3", #topic with link
-           "  ", #reading
-           "  ", # method
-           " ") #deliverable
-s_polecon<-c("13: 04/16", #date
-           "23", # session
-           "Political Economy ", #topic with link
-           "  ", #reading
-           " ", # method
-           "") #deliverable
+s_jud_sys <- c(
+  "11: 03/31", # date
+  "18", # session
+  "[Improving judicial decisions](#lec10_criminal-justice)", # topic with link
+  "[Kleinberg, Lakkaraju, Leskovec, Ludwig and Mullainathan (2017)-<br>Non-technical summary](https://utsa.instructure.com/courses/79928/files?preview=13165687) ", # reading
+  "Machine learning, implicit bias ", # method
+  ""
+) # deliverable
+s_immigration <- c(
+  "11: 04/02", # date
+  "19", # session
+  "Immigration ", # topic with link
+  "[Tabellini (2020)](https://utsa.instructure.com/courses/79928/files?preview=13165933)  ", # reading
+  "Instrumental variables ", # method
+  ""
+) # deliverable
+s_ml <- c(
+  "12: 04/07", # date
+  "20", # session
+  "Implementing a simple machine learning model in R - Part 1", # topic with link
+  "  ", # reading
+  "  ", # method
+  ""
+) # deliverable
+s_ml2 <- c(
+  "12: 04/09", # date
+  "21", # session
+  "Implementing a simple machine learning model in R - Part 2", # topic with link
+  "  ", # reading
+  "  ", # method
+  "[Project 3](#project3) (for Saturday 04/11) [Canvas Link](https://utsa.instructure.com/courses/79928/assignments/1203200)"
+) # deliverable
+s_ml3 <- c(
+  "13: 04/14", # date
+  "22", # session
+  "Implementing a simple machine learning model in R - Part 3", # topic with link
+  "  ", # reading
+  "  ", # method
+  " "
+) # deliverable
+s_polecon <- c(
+  "13: 04/16", # date
+  "23", # session
+  "Political Economy ", # topic with link
+  "  ", # reading
+  " ", # method
+  ""
+) # deliverable
 
-s_tax<-c("14: 04/21", #date
-           "24", # session
-           "Income taxation ", #topic with link
-           "Diamond and Saez (2011)  ", #reading
-           "Supply and demand; synthetic control ", # method
-           " ") #deliverable
-s_pollution<-c("14: 04/23", #date
-           "25", # session
-           "Intro to air and water pollution, and externalities ", #topic with link
-           "Moore, Obradovich, Lehner and Baylis (2019)   ", #reading
-           "Difference in difference ", # method
-           "[Project 4](#project4) - (for Friday 04/25)") #deliverable
+s_tax <- c(
+  "14: 04/21", # date
+  "24", # session
+  "Income taxation ", # topic with link
+  "[Diamond and Saez (2011)](https://utsa.instructure.com/courses/79928/files?preview=13165247)  ", # reading
+  "Supply and demand; synthetic control ", # method
+  " "
+) # deliverable
+s_pollution <- c(
+  "14: 04/23", # date
+  "25", # session
+  "Intro to air and water pollution, and externalities ", # topic with link
+  "[Isen, Rossin-Slater, and Walker (2017)-<br>Non-technical summary](https://utsa.instructure.com/courses/79928/files?preview=13167967)", # reading
+  "Difference in difference ", # method
+  "[Project 4](#project4) - (for Saturday 04/25) [Canvas Link](https://utsa.instructure.com/courses/79928/assignments/1203213)"
+) # deliverable
 # s_saving<-c("15: 12/03", #date
 #            "26", # session
 #            "Savings and wealth ", #topic with link
@@ -223,24 +277,30 @@ s_pollution<-c("14: 04/23", #date
 #            " ", #reading
 #            " ", # method
 #            " ") #deliverable
-s_review_final<-c("15: 04/28", #date
-           "26", # session
-           "Review session ", #topic with link
-           " ", #reading
-           " ", # method
-           "") #deliverable
-s_noclass_final<-c("15: 04/30", #date
-           "-", # session
-           "No Class - Reading Day", #topic with link
-           " ", #reading
-           " ", # method
-           "") #deliverable
-s_final<-c("16: 05/07", #date
-           "-", # session
-           "**Final Exam** ", #topic with link
-           " ", #reading
-           " ", # method
-           "") #deliverable
+s_review_final <- c(
+  "15: 04/28", # date
+  "26", # session
+  "Review session ", # topic with link
+  " ", # reading
+  " ", # method
+  ""
+) # deliverable
+s_noclass_final <- c(
+  "15: 04/30", # date
+  "-", # session
+  "No Class - Reading Day", # topic with link
+  " ", # reading
+  " ", # method
+  ""
+) # deliverable
+s_final <- c(
+  "16: 05/12", # date
+  "-", # session
+  "**Final Exam at 1 pm** ", # topic with link
+  " ", # reading
+  " ", # method
+  ""
+) # deliverable
 ```
 
 ```{r tableSchedule, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
@@ -280,39 +340,41 @@ s_final<-c("16: 05/07", #date
 # | 16: 12/05 -12-09  | -      | Final Exam Week                                                                    |                                                                                        |                                              |                               |
 # |                   | -      |                                                                                    |                                                                                        |                                              |                               |
 # "
-tabl<-paste0(c(title_line,
-               separation_line, 
-               create_session(s_intro),
-               create_session(s_geomob), 
-              create_session(s_introR), 
-              create_session(s_introR2), 
-              create_session(s_causaleffects), 
-              create_session(s_causaleffects2), 
-              create_session(s_mto), 
-              create_session(s_mob_hist_int), 
-              create_session(s_review_mid), 
-              create_session(s_mid), 
-              create_session(s_inClassR),
-              create_session(s_noclass1),
-              create_session(s_mob_ed), 
-              create_session(s_recap_quarto),
-              create_session(s_springbreak1),
-              create_session(s_springbreak2),
-              create_session(s_ed_higher), 
-              create_session(s_k12), 
-              create_session(s_teachers), 
-              create_session(s_racedis), 
-              create_session(s_jud_sys), 
-              create_session(s_immigration), 
-              create_session(s_ml), 
-              create_session(s_ml2), 
-              create_session(s_ml3), 
-              create_session(s_polecon),
-              create_session(s_tax), 
-              create_session(s_pollution),
-              create_session(s_review_final),
-              create_session(s_noclass_final),
-              create_session(s_final)))
+tabl <- paste0(c(
+  title_line,
+  separation_line,
+  create_session(s_intro),
+  create_session(s_geomob),
+  create_session(s_introR),
+  create_session(s_introR2),
+  create_session(s_causaleffects),
+  create_session(s_causaleffects2),
+  create_session(s_mto),
+  create_session(s_mob_hist_int),
+  create_session(s_review_mid),
+  create_session(s_mid),
+  create_session(s_inClassR),
+  create_session(s_noclass1),
+  create_session(s_mob_ed),
+  create_session(s_recap_quarto),
+  create_session(s_springbreak1),
+  create_session(s_springbreak2),
+  create_session(s_ed_higher),
+  create_session(s_k12),
+  create_session(s_teachers),
+  create_session(s_racedis),
+  create_session(s_jud_sys),
+  create_session(s_immigration),
+  create_session(s_ml),
+  create_session(s_ml2),
+  create_session(s_ml3),
+  create_session(s_polecon),
+  create_session(s_tax),
+  create_session(s_pollution),
+  create_session(s_review_final),
+  create_session(s_noclass_final),
+  create_session(s_final)
+))
 cat(tabl) # output the table in a format good for HTML/PDF/docx conversion
 ```
 

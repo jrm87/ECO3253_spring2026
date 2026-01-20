@@ -150,6 +150,7 @@ added-benefits-of-learning-r
 key-concepts-before-we-start
 r-rstudio
 r-and-rstudio-in-your-computer-or-in-the-cloud-the-benefit-of-posit-cloud
+installing-r-and-rstudio-locally
 lets-open-r
 rstudio-in-posit-cloud
 using-r-via-rstudio-in-posit-cloud
@@ -218,6 +219,7 @@ additional-resources-basic-regression
 rmarkdown
 how-to-create-an-output-file
 error-when-rendering-file
+installing-tinytex
 add-new-code
 add-a-title
 add-an-image
@@ -231,3 +233,8 @@ five-number-summary
 appPercentiles
 appDistributions
 outliers
+question-1
+question-2
+question-3
+question-4
+question-5
