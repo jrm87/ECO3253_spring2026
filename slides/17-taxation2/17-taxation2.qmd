@@ -1,0 +1,442 @@
+---
+title: "Taxation 2 - Behavioral Public Economics"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+      slide-level: 2
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+## Plan for today
+
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+- Behavioral Public Economics
+
+Three examples: 
+
+1. Sales tax
+2. Income taxation
+3. Savings and retirement
+
+# Behavioral Public Economics
+
+## Behavioral Public Economics
+
+- Traditional economic approach assumes that all individuals are fully aware of taxes that they pay and optimize perfectly in response
+
+- Is this true in practice? 
+
+    - Do you know your marginal income tax rate? 
+
+    - Do you think about it when choosing a job?  When deciding how much to save for retirement?
+
+## Federal Income Tax Rates for a Single Earner with 2 Children in 2006
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/mg_tax.png")
+```
+
+## Number of Pages of Instructions that Come with Form 1040 (Basic Individual Tax Form)
+
+
+```{r, echo=FALSE, source="Gruber (2016)", out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/pages_gruber.png")
+```
+
+## Behavioral Public Economics Example 1: Sales Taxes
+
+- Begin by considering one of the simplest taxes: sales taxes on purchases in grocery stores
+
+- Chetty, Looney, Kroft (2009) test whether consumers are aware of and respond “rationally” to these simple taxes
+
+- Sales taxes not included in posted prices in the U.S.
+
+- Test whether this affects response to sales taxes using an experiment in a grocery store in Northern California
+
+## The experiment
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/exp_sales_tax_pic.png")
+```
+
+
+## Effect of Posting Tax-Inclusive Prices: Mean Quantity Sold
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_exp_table1.png")
+```
+
+## Effects of Changes in State Beer Excise Taxes on Changes in Beer Consumption
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_exp_fig1.png")
+```
+
+
+##  Effects of Changes in State Sales Taxes on Changes in Beer Consumption
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_exp_fig2.png")
+```
+
+
+## Behavioral Public Economics Example 2: Income Taxation
+
+- Next, turn to the Earned Income Tax Credit (EITC): largest cash transfer anti-poverty program in the U.S.
+
+    - $70 billion spent per year, partly with goal of increasing work among low-income families
+
+    - Is the EITC successful in achieving this goal?
+
+- Chetty, Friedman, and Saez (2013) study this question, focusing on importance of knowledge and information about EITC
+
+## 2008 Federal EITC Schedule for a Single Filer with Children
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc1.png")
+```
+
+
+## Income Distributions for Individuals with Children in 2008
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc2.png")
+```
+
+## Earnings Distribution Around EITC-Maximizing Threshold in Texas
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc3.png")
+```
+
+
+## Earnings Distribution Around EITC-Maximizing Threshold in Kansas
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc4.png")
+```
+
+
+## Fraction of Tax Filers Who Report Income that Maximizes EITC Refund in 1996
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc5.png")
+```
+
+
+## Fraction of Tax Filers Who Report Income that Maximizes EITC Refund in 1999
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc6.png")
+```
+
+
+## Fraction of Tax Filers Who Report Income that Maximizes EITC Refund in 2002
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc7.png")
+```
+
+
+## Fraction of Tax Filers Who Report Income that Maximizes EITC Refund in 2005
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc8.png")
+```
+
+
+## Fraction of Tax Filers Who Report Income that Maximizes EITC Refund in 2008
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc9.png")
+```
+
+
+## Is the Spatial Variation Driven by Differences in Knowledge About the EITC?
+
+- Is the spatial variation in EITC response driven by differences in knowledge or other factors, such as differences in tax compliance?
+
+- Knowledge explanation makes a very specific prediction: asymmetric impact of moving
+
+    - Moving to a higher-bunching neighborhood should increase responsiveness to EITC as people learn
+
+    - But moving to a lower-bunching area should not affect responsiveness
+
+## Event Study of Sharp Bunching Around Moves
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc10.png")
+```
+
+
+## Change in EITC Refunds vs. Change in Sharp Bunching for Movers
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc11.png")
+```
+
+
+## Reporting vs. Real Responses
+
+- Audit studies reveal that sharp bunching at EITC refund maximizing threshold is partly due to misreporting of self-employment income
+
+- To isolate real work responses, focus on wage earnings reported on W-2 firms directly by employers
+
+## Income Distribution For Single Wage Earners with One Child
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc12.png")
+```
+
+
+## Income Distribution For Single Wage Earners with One Child
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc13.png")
+```
+
+
+## Income Distribution For Single Wage Earners with One Child: High vs. Low Bunching Areas
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc14.png")
+```
+
+
+## Earnings Distribution in the Year Before First Child Birth for Wage Earners 
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc15.png")
+```
+
+
+## Earnings Distribution in the Year of First Child Birth for Wage Earners 
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_eitc16.png")
+```
+
+
+## Implications for Design of Earned Income Tax Credit
+
+- EITC has significant impacts on labor supply of low-income families with kids
+
+    - But knowledge about the program plays a big role in determining its impacts 
+
+    - If we want to amplify impacts of EITC on labor supply, may be more effective to increase awareness (or include in pre-tax wage) than change credit amount
+
+
+## Behavioral Public Economics Example 3: Retirement Savings
+
+- Widespread concern that many families are not saving enough for retirement
+
+- U.S. government effectively spends $100 billion on programs to increasing saving for retirement
+
+    - Subsidies for retirement savings accounts such as IRAs and 401(k)s
+
+- Is this an effective way to increase retirement saving? 
+
+- Are there other policy instruments that may be more effective?
+
+- Insights from behavioral economics has shifted policy approaches to increasing saving significantly in the past 15 years
+
+## The Power of Defaults
+
+- Madrian and Shea (2001) analyze impacts of employer defaults on individuals' 401(k) retirement account contributions
+
+- Defaults just change whether employees opt-in or opt-out of retirement saving
+
+- Do not change actual incentives to save, so should have no impact under traditional economic model
+
+## Effects of Automatic Enrollment on 401(k) Participation
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec17_tax2/madrian1.png")
+```
+
+
+## Effects of Automatic Enrollment on Distribution of 401(k) Contribution Rates
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec17_tax2/madrian2.png")
+```
+
+
+## Crowdout in Retirement Savings Accounts
+
+- Do defaults increase total savings or just lead to shifting of assets from non-retirement to retirement accounts?
+
+- Impacts of defaults on total saving not obvious despite Madrian and Shea evidence
+
+    - Even inattentive individuals still have to satisfy budget constraint by cutting consumption or savings in non-retirement accounts
+
+-  Chetty et al. (2014) analyze this question using third-party reported data on all financial wealth for population of Denmark
+
+## Impacts of Defaults in Denmark
+
+- Employers make pension contributions on workers behalf automatically
+
+- Contributions vary substantially across employers
+
+- Research design: event study when workers switch firms
+
+    - Retirement savings rate can change sharply when workers switch firms
+
+    - Do workers offset these changes in their own private savings?
+
+## Event Study around Switches to Firm with $>3\%$ Increase in Employer Pension Rate
+
+```{r, echo=FALSE, out.width = '75%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions1.png")
+```
+
+
+## Event Study around Switches to Firm with $>3\%$ Increase in Employer Pension Rate
+
+```{r, echo=FALSE, out.width = '75%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions2.png")
+```
+
+
+## Event Study around Switches to Firm with $>3\%$ Increase in Employer Pension Rate
+
+```{r, echo=FALSE, out.width = '75%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions3.png")
+```
+
+
+## Impacts of Retirement Savings Subsidies
+
+- Next, compare these effects to impacts of standard tax incentives for retirement saving
+
+- Denmark subsidizes individual’s contributions to retirement accounts, analogous to 401(k)’s in the U.S.
+
+- Reform in 1999 in Denmark lowered subsidy for saving in pension accounts by 12 cents per DKr for individuals in top income tax bracket
+
+- Ask two questions analogous to those above:
+
+    - How did this reform affect contributions to pension accounts?
+
+    - How much money was shifted to other non-retirement accounts?
+
+## Impact of 1999 Pension Subsidy Reduction On Pension Contributions
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions4.png")
+```
+
+
+
+## Impact of 1999 Pension Subsidy Reduction On Pension Contributions
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions5.png")
+```
+
+
+## Impact of 1999 Pension Subsidy Reduction On Pension Contributions
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions6.png")
+```
+
+
+## Impact of 1999 Pension Subsidy Reduction On Pension Contributions
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions7.png")
+```
+
+
+## Impact of 1999 Pension Subsidy Reduction On Pension Contributions
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions8.png")
+```
+
+
+## Impact of 1999 Pension Subsidy Reduction On Pension Contributions
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions9.png")
+```
+
+
+## Change in Marginal Propensity to Save in Retirement vs. Non-Retirement Accounts at Top Tax Cutoff by Year
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions10.png")
+```
+
+
+## Change in Marginal Propensity to Save in Retirement vs. Non-Retirement Accounts at Top Tax Cutoff by Year
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions11.png")
+```
+
+
+## Active vs. Passive Savers
+
+- 15$\%$ of people account for entire reduction in pension contributions following reform (“active savers”)
+
+    - But these people simply shift money from retirement account to other accounts, with essentially no net change in total saving
+
+- 85$\%$ of people do not respond to incentives at all (“passive savers”)
+
+    - These people are heavily influenced by defaults and increase total saving in response
+
+## Heterogeneity in Responses to Subsidies by Educational Attainment
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec17_tax2/chetty_pensions12.png")
+```
+
+
+## Implications for Retirement Savings Policies
+
+- Tax incentives for retirement saving have little impact on total savings because they simply induce active savers to switch accounts
+
+    - \$1 of expenditures by government on retirement savings incentives generates only 1 cent of additional saving
+
+- Automatic contributions/defaults have much larger impacts because they influence the behavior of passive savers
+
+- Behavioral economics perspective calls for shift toward automatic enrollment plans and reductions in existing 401(k)-style incentives
+

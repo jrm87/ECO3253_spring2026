@@ -1,0 +1,386 @@
+---
+title: "Immigration"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+      slide-level: 2
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+## Plan for today
+
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+Immigration: 
+
+1. Background facts and trends
+
+2. Why do different kind of immigrants come to the US? Supply and demand…
+
+3. How do economists think about labor market effects of immigration? 
+
+4. Different kinds of evidence
+
+5. Economic mobility on the side of immigrants
+
+6. How does the general public think about migration policy?
+
+
+> Slides based on those of David Card (2017)
+
+# Immigration
+
+## Background
+
+- Very little growth in median real wages for last 40 years
+- Male wages: about the same now as in 1974
+- Female wages: slow growth since 2000
+
+## Background
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("../../images/lec11_immigration/wages1.png")
+```
+:::
+
+::: {.column width="50%"}
+```{r, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("../../images/lec11_immigration/wages2.png")
+```
+::: 
+:::: 
+
+## Background
+
+- Stagnant wages $\rightarrow$ people age 20-50 earn no more than their parents
+
+- And many earn less
+
+- Did something ‘go wrong’ in US labor market? Technology? International trade? Immigration? 
+
+## First and Second Generation Shares of US Population (Actual and Projected)
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/immigratgion_stock.png")
+```
+
+## Percent of immigrants by OECD country (2013)
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/immigratgion_stock_oecd.png")
+```
+
+## How many immigrants?
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/table1.png")
+```
+
+## Top Source Countries
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec11_immigration/table2.png")
+```
+
+Other big sources: El Salvador, Cuba, Korea
+
+## Importance of Education Differences
+
+Immigration from different places could have differential effects for each group of natives: 
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec11_immigration/table3.png")
+```
+
+## Other differences
+
+- Immigrants are clustered in cities/states
+
+    - LA/Miami/TX border: 50%+ immigrant
+
+    - NY/Boston/SF/Chicago: 20%+
+
+    - Pittsburgh/Cleveland: <10%
+
+    - Many rural areas: 2-5%
+
+- Also clustered in jobs/sectors: 
+
+    - Agriculture, food processing: 50%+
+
+    - Health care: 30%
+
+## Why do imms come to US? Supply side
+
+- Rich countries: highly skilled workers most likely want to come to US (lower taxes, very high wages at the top)
+
+- Poor countries: many people would earn more in the US – but gains largest for least skilled
+
+- US immigration combines: high skill (H1-B), family based, low-skill demand (H2-A), and unauthorized
+
+- Different than Canada/Aus/NZ
+
+## Demand side: (1) at the top of skill distribution
+
+- Increasing demand for highly-educated workers throughout 20th C. and into 21st
+
+- Growth in new college grads slowed in 1970s (esp. for men) and has never fully recovered
+
+    - Limited expansion in public sector slots
+
+- Shortfalls in STEM
+
+## Demand side: (2) at the bottom of skill distribution
+
+- High demand for low-wage services
+
+- Relative few regulations that limit low-wage jobs
+
+- Low wage jobs subsidized by EITC, health insurance subsidies
+
+- Flexible institutions (e.g. subcontracting) tolerance for untaxed/undocumented workes
+
+## Insights
+
+- Supply/demand and institutional policies are all adopted to supply 2 main groups: 
+
+    - High skilled imms (mostly Asian, European)
+
+    - Low skilled imms (mostly South and Central America, some Asian)
+
+- They are targeting different jobs!
+
+## How do immigrants affect Labor Markets?:
+
+- Most people intuition: 
+    - More people $\rightarrow$ lower wages
+
+- This idea was proposed by Malthus in 1826 (or more recently by Thanos in Avengers)
+
+- But: 
+    - Larger countries do not have lower income
+    - Larger cities typically have higher pay
+    - Many countries try to promote population growth and immigration!
+    
+## How do immigrants affect Labor Markets?:
+
+- Malthus was thinking of the medieval world with fixed land
+
+- In the late 1800s it was pointed out that as long as capital expand with population, you can avoid Malthusian trap
+
+- Increase in population by itself does no mean doom! (Thanos was wrong…)
+
+## First order effects of immigration
+
+- Rise in labor force leads to increase in investment, wages unaffected if K/L stays on trend
+
+- In fact, many economic models suggest ‘size matters’: larger economy is more productive
+
+- What is the historical record of K/L?
+
+## Long Run Trend in Capital per Unit of Labor
+
+```{r, echo=FALSE, source="BLS Multifactor Productivity Tables ", out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/KL1.png")
+```
+
+
+## What happens to capital after big increase in population?
+
+- Best example is in Israel: increase of 25% in population in 1990 from former Soviet Union
+
+- Labor ratio goes back on track soon after
+
+## What happens to capital after big increase in population?
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/KL_synth_israel.png")
+```
+
+
+## Methodology: Synthetic Controls
+
+- Can we say something of causal effects when the number of observations is small? 
+
+- Say because we are looking at aggregates? 
+    
+    - To see the effect of a policy in a state, we can only have a total of 50 states
+
+- Synthetic Controls averages other observations ‘not-treated’ with specific weights so that the Synthetic Control and the treated unit look the same in the period before the intervention and along other characteristics. 
+
+- The estimated effects are the difference between treated unit and synthetic control. 
+
+## What about different skill groups?
+
+- As we saw, US immigration flows include excess shares of workers from the bottom and top
+
+- Does this matter? Maybe…
+
+- Agreement on 2 major skill groups
+
+    A) Bottom + lower-middle
+    B) Upper-middle + top
+
+- Imms and natives nearly equal in these two groups
+
+## Different types of evidence
+
+A)
+
+- Cross-city comparisons: Immigrants are clustered in selected cities: 
+
+- On average: more immigrants -> more low education workers in city
+
+- But relative wages of lowest-education natives are very stable across cities
+
+- Comparison enhanced by isolating ‘supply push’ components of immigrant inflow to different cities
+
+## Inflows of Mexican Immigrants  vs. the Change in Relative Wages of Native Male Dropouts
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/city_wage_changes.png")
+```
+
+## Even using feature of composition of imms gives same answer
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/card17.png")
+```
+
+## Different types of evidence
+
+B)
+
+- Big shocks  - Mariel Boatlift (1980)
+
+- Arrival of about 150,000 Cuban migrants to Miami in a few months
+
+    - Non-English speaking, low skilled
+
+- Many stayed
+
+- What happened to wages in Miami?
+
+
+## Miami vs Synthetic Miami
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/peri_yasenov.png")
+```
+
+## Miami vs Synthetic Miami
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/peri_yasenov2.png")
+```
+
+## Similar evidence
+
+B) 
+
+- Big shocks in reverse:
+
+- Mexican ‘Repatriation’ program, 1929 – 1937
+
+- 400-500k Mexican imms and 2nd generation removed
+
+- Brownsville, El Paso : 24% loss of labor force
+
+- Anaheim, Tucson: 10% loss
+
+- Lee, Peri and Yasenov (2017) find no effect on ‘native’ employment, unemployment. 
+
+    - If anything, where more people left, there are lower wages
+
+## What about mobility of immigrant population?
+
+- So, no effect on native population. 
+
+- How do immigrants do in terms of mobility versus natives?
+
+- Abramitzky, Boustan, Jacome and Perez (2019) use millions of father-son pairs across more than 100 years of US history
+
+- Big recent study using same (and more) big data as Chetty et al (2017) + GSS Survey to capture unauthorized immigrants
+
+Findings: 
+
+- Immigrant have higher mobility than natives. That advantage is similar today as it was historically (even if sending countries are changing)
+
+- Advantage explained by immigrants moving to areas with better prospect for their kids and ‘under placement’ of the first generation
+
+## Cross-Sectional Earning Gaps for First and Second-Generation Imms and US-born men by Country of Origin
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/abramitzky1.png")
+```
+
+
+## Cross-Sectional Earning Gaps for First and Second-Generation Imms and US-born men by Country of Origin
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/abramitzky2.png")
+```
+
+## Cross-Sectional Earning Gaps for First and Second-Generation Imms and US-born men by Country of Origin
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/abramitzky3.png")
+```
+
+## Intergenerational mobility of Imms and US-born (rank-rank)
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec11_immigration/abramitzky4.png")
+```
+
+## Conclusion
+
+- No evidence of effects on native population (at most are small)
+
+- Evidence of gains for migrant population, and to aggregate productivity in many cases
+
+- So, what explains many native’s attitudes of opposition (or deep ambivalence) to immigration? 
+
+- Not necessarily the economics of it. 
+
+- We will explore it more on next lecture on political economy
+

@@ -1,0 +1,35 @@
+# R files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store
+.Rbuildignore
+
+# RStudio files
+moderndive_book.Rproj
+*.Rproj
+
+
+# bookdown output files
+*_bookdown_files
+moderndive.Rmd
+moderndive.pdf
+*.tex
+*.auc
+*.aux
+*.idx
+*.log
+*.out
+*.toc
+bib/packages.bib
+purl.Rout
+#docs/*
+
+# other files
+.httr-oauth
+*rsconnect/
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms

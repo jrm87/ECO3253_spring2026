@@ -1,0 +1,387 @@
+---
+title: "K-12 Education"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+      slide-level: 2
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+## Plan for today
+
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+- K-12 Education Review 
+- Education Production Function
+
+# K-12 Education 
+
+## K-12 Education: Background
+
+- U.S. spends nearly $1 trillion per year on K-12 education
+
+- Decentralized system with substantial variation across schools
+
+
+    - Private schools and growing presence of charter schools
+
+## K-12 Education: Overview
+
+- Main question: how can we maximize the effectiveness of this system to produce the best outcomes for students?
+
+    - Traditional approach to study this question: qualitative work in schools
+
+    - More recent approach: analyzing big data to evaluate impacts
+
+
+>Reference 1: Chetty, Friedman, Hilger, Saez, Schanzenbach, Yagan. “How Does Your Kindergarten Classroom Affect Your Earnings? Evidence from Project STAR” QJE 2011.
+
+>Reference 2: Reardon, Kalogrides, Fahle, Shores. “The Geography of Racial/Ethnic Test Score Gaps.” Stanford CEPA Working Paper 2016
+
+>Reference 3: Fredriksson, Ockert, Oosterbeek. “Long-Term Effects of Class Size.” QJE 2012
+
+>Reference 4: Chetty, Friedman, Rockoff. “Measuring the Impacts of Teachers I and II” AER 2014
+
+
+## Using Test Score Data to Study K-12 Education
+
+- Primary source of big data on education: standardized test scores obtained from school districts
+
+    - Quantitative outcome recorded in existing administrative databases for virtually all students
+
+    - Observed much more quickly than long-term outcomes like college attendance and earnings
+
+
+## Using Test Score Data to Evaluate Primary Education
+
+- Common concern: are test scores a good measure of learning?
+
+    - Do improvements in test scores reflect better test-taking ability or acquisition of skills that have value later in life?
+
+- Chetty et al. (2011) examine this issue using data on 12,000 children who were in Kindergarten in Tennessee in 1985
+
+    - Link school district and test score data to tax records
+
+    - Ask whether KG test score performance predicts later outcomes
+
+
+## A Kindergarten Test
+
+- I’ll say a word to you.  Listen for the ending sound.
+
+- You circle the picture that starts with the same sound
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/testkind.png")
+```
+
+## Earnings vs. Kindergarten Test Score
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/earningstest.png")
+```
+
+## Earnings vs. Kindergarten Test Score
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/earningstest2.png")
+```
+
+## Earnings vs. Kindergarten Test Score
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/earningstest3.png")
+```
+
+## Earnings vs. Kindergarten Test Score
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/earningstest4.png")
+```
+
+## Earnings vs. Kindergarten Test Score
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/earningstest5.png")
+```
+
+## College Attendance Rates vs. KG Test Score
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/collegetest.png")
+```
+
+##  Marriage by Age 27 vs. KG Test Score
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/marriagetest.png")
+```
+
+## Studying Differences in Test Score Outcomes
+
+- Test scores can provide a powerful data source to compare performance across schools and subgroups (e.g., poor vs. rich)
+
+- Problem: tests are not the same across school districts and grades 
+    - $\rightarrow$ makes comparisons very difficult
+
+- Reardon et al. (2016) solve this problem and create a standardized measure of test score performance for all schools in America
+
+    - Use 215 million test scores for students from 11,000 school districts across the U.S. from 2009-13 in grades 3-8
+
+## Making Test Score Scales Comparable Across the U.S.
+
+- Convert test scores to a single national scale in three steps:
+
+    1. Rank each school district’s average scores in the statewide distribution (for a given grade-year-subject)
+
+    2. Use data from a national test administered to a sample of students by Dept. of Education to convert state-specific rankings to national scale
+
+        - Ex: suppose CA students score 5 percentiles below national average
+
+        - Then a CA school whose mean score is 10 percentiles below CA mean is 15 percentiles below national mean
+
+    3. Convert mean test scores to “grade level” equivalents
+
+
+## Nationwide District Achievement Variation, 2009-2013
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/achievementdis.png")
+```
+
+## Geography of District Achievement Variation, 2009-2013
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/map1.png")
+```
+
+## Geography of District Achievement Variation, 2009-2013
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/map2.png")
+```
+## Achievement Gaps in Test Scores by Socioeconomic Status
+
+- Next, use these data to examine how test scores vary across socioeconomic groups
+
+- Define an index of socioeconomic status (SES) using Census data on income, fraction of college graduates, single parent rates, etc.
+
+## Academic Achievement and SES 
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/academicses.png")
+```
+
+## Academic Achievement and SES 
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/academicses2.png")
+```
+
+## Academic Achievement and SES 
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/academicses3.png")
+```
+
+
+## How Can We Improve Poorly Performing Schools?
+
+- There are many school districts in America where students are two grade levels behind national average, controlling for SES
+
+- How can we improve performance in these schools?
+
+    - Simply spending more money on schools is not necessarily the solution…
+
+## Test Scores vs. Expenditures on Primary Education Across Countries
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/test_exp.png")
+```
+
+## Two Policy Paradigms to Improve Schools
+
+- Two distinct policy paradigms to improve schools
+
+    1. Government-based solutions: improve public schools by reducing class size, increasing teacher quality, etc.
+
+    2. Market-based solutions: charter schools or vouchers for private schools
+
+- Contentious policy debate between these two approaches
+
+- We will consider each approach in turn
+
+# Government-Based Solutions: Improving Schools
+
+## Improving Schools: The Education Production Function
+
+- Improving public schools requires understanding the education production function
+
+- How should we change schools to produce better outcomes?
+
+    - Better Teachers?
+    - Smaller Classes?
+    - Better Technology?
+
+## Effects of Class Size: Tennessee STAR Experiment
+
+- Student/Teacher Achievement Ratio (STAR) experiment
+
+    - Conducted from 1985 to 1989 in Tennessee
+
+    - About 12,000 children in grades K-3 at 79 schools
+
+- Students and teachers randomized into classrooms within schools
+
+    - Class size differs: small (~15 students) or large (~22 students)
+
+    - Classes also differ in teachers and peers
+
+## Effects of Class Size: Tennessee STAR Experiment
+
+- Evaluate impacts of STAR experiment by comparing mean outcomes of students in small vs. large classes.
+
+- Report impacts using regressions of outcomes on an indicator (0-1 variable) for being in a small class [Krueger 1999, Chetty et al. 2011]
+
+## STAR Experiment: Impacts of Class Size
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/star1.png")
+```
+
+## STAR Experiment: Impacts of Class Size
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/star2.png")
+```
+
+
+## STAR Experiment: Impacts of Class Size
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec7_k12/star3.png")
+```
+
+## STAR Experiment: Impacts of Class Size
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/star4.png")
+```
+
+## STAR Experiment: Impacts of Class Size
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/star5.png")
+```
+
+## STAR Experiment: Impacts of Class Size
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/star6.png")
+```
+
+## Effects of Class Size: Quasi-Experimental Evidence
+
+- Limitation of STAR experiment: sample is too small to estimate impacts of class size on earnings precisely
+
+- Fredriksson et al. (2013) use administrative data from Sweden to obtain more precise estimates
+
+    - No experiment here; instead use a quasi-experimental method: regression discontinuity.
+
+## Regression Discontinuity Using Class Size Cutoffs
+
+- Sweden imposes a maximum class size of 25 students
+
+    - School that has 26 students in a given grade will therefore have two classes of 13 students each
+
+    - School that has 25 students may have one class of 25 students
+
+- School that have 26 students in a grade are likely to be comparable to those that have 25 students
+
+    - $\rightarrow$ Can identify causal effects of class size by comparing outcomes in schools with 26 vs. 25 students in a given grade
+
+## Discontinuities in Class Size Created by Maximum Class Size Rule
+
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/fredriksson1.png")
+```
+
+## Discontinuities in Class Size Created by Maximum Class Size Rule
+
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/fredriksson2.png")
+```
+
+## Discontinuities in Class Size Created by Maximum Class Size Rule
+
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/fredriksson3.png")
+```
+
+## Test Score Achievement: Regression Discontinuity Estimates
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec7_k12/fredriksson4.png")
+```
+
+## Test Score Achievement: Regression Discontinuity Estimates
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec7_k12/fredriksson5.png")
+```
+
+## Earnings Impacts: Regression Discontinuity Estimates
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec7_k12/fredriksson6.png")
+```
+
+## Lessons on Class Size
+
+- Reducing class sizes in primary school by hiring more teachers can have large returns
+
+    - Present value of lifetime earnings of a child growing up in a family at 25th percentile is about $500,000 on average
+
+    - 4% earnings gain from smaller class = $20,000
+
+    - Dividing a class of 30 students into two would increase total earnings of students by more than $600,000
+
+    - Costs (hiring another teacher and an additional room) likely to be well below $600,000

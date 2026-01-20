@@ -1,0 +1,322 @@
+---
+title: "Causal Effect of Neighborhoods"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+## Clarifications for project
+
+1. When you create the Quarto/RMarkdown file, **do not change anything besides title and author** between the `---` lines (this is called YAML code).
+
+```
+---
+title: "Project 1"
+author: "Your name here"
+format: html
+editor: visual
+---
+```
+
+## Causal Effects of Neighborhoods vs. Sorting
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+Two very different explanations for variation in children’s outcomes across areas:
+
+1. Sorting: different people live in different places
+
+2. Causal effects: places have a causal effect on upward mobility for a given person
+
+## Identifying Causal Effects of Neighborhoods
+
+- Ideal experiment: randomly assign children to neighborhoods and compare outcomes in adulthood
+
+- We approximate this experiment using a quasi-experimental design
+
+    - Study 3 million families who move across Census tracts in observational data
+
+    - Key idea: exploit variation in age of child when family moves to identify causal effects of environment
+
+## Income Gain from Moving to a Better Neighborhood
+
+```{r fig_mob_better1, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/mob_better1.png")
+```
+
+## Income Gain from Moving to a Better Neighborhood
+
+```{r fig_mob_better2, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/mob_better2.png")
+```
+
+## Income Gain from Moving to a Better Neighborhood
+
+```{r fig_mob_better3, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/mob_better3.png")
+```
+
+## Income Gain from Moving to a Better Neighborhood
+
+```{r fig_mob_better4, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/mob_better4.png")
+```
+
+## Income Gain from Moving to a Better Neighborhood
+
+```{r fig_mob_better5, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/mob_better5.png")
+```
+
+## Identifying Causal Effects of Neighborhoods
+
+- Key assumption: timing of moves to a better/worse area unrelated to other determinants of child’s outcomes
+
+- This assumption might not hold for two reasons:
+
+    1. Parents who move to good areas when their children are young might be different from those who move later
+
+    2. Moving may be related to other factors (e.g., change in parents’ job) that affect children directly
+
+## Identifying Causal Effects of Neighborhoods
+
+- Two approaches to evaluating validity of this assumption:
+
+    1. Compare siblings’ outcomes to control for family effects
+    
+    2. Use differences in neighborhood effects across subgroups to implement “placebo” tests
+
+        - Ex: some places (e.g., low-crime areas) have better outcomes for boys than girls 
+
+        - Move to a place where boys have high earnings  son improves in proportion to exposure but daughter does not
+
+- Conclude that about two-thirds of the variation in upward mobility across areas is due to causal effects
+        
+# Characteristics of High-Mobility Areas
+
+## Why Does Upward Mobility Differ Across Areas?
+
+- Why do some places produce much better outcomes for disadvantaged children than others?
+
+- Begin by characterizing the properties of areas with high rates of upward mobility using correlational analysis
+
+- Do places with higher mobility tend to have better jobs, schools, different institutions, …?
+
+
+## Upward Mobility vs. Job Growth in the 30 Largest Metro Areas
+
+```{r fig_mob_jobs, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/mob_jobs.png")
+```
+
+## Racial Segregation in Atlanta
+
+Residents: White (\textcolor{blue}{blue}), Black (\textcolor{green}{green}), Asian (\textcolor{red}{red}), Hispanic (\textcolor{orange}{orange})
+
+```{r fig_seg_atlanta, fig.cap="Source: Source: Cable (2013) based on Census 2010", echo=FALSE, out.width = '60%'}
+knitr::include_graphics("../../images/seg_atlanta.png")
+```
+
+## Racial Segregation in Sacramento
+
+Residents: White (\textcolor{blue}{blue}), Black (\textcolor{green}{green}), Asian (\textcolor{red}{red}), Hispanic (\textcolor{orange}{orange})
+
+```{r fig_seg_sacramento, fig.cap="Source: Source: Cable (2013) based on Census 2010", echo=FALSE, out.width = '60%'}
+knitr::include_graphics("../../images/seg_sacramento.png")
+```
+
+## Racial Segregation in San Antonio
+
+Residents: White (\textcolor{blue}{blue}), Black (\textcolor{green}{green}), Asian (\textcolor{red}{red}), Hispanic (\textcolor{orange}{orange})
+
+```{r fig_seg_sanantonio, fig.cap="Source: Source: Cable (2013) based on Census 2010", echo=FALSE, out.width = '60%'}
+knitr::include_graphics("../../images/seg_sanantonio.png")
+```
+
+## Five Strongest Correlates of Upward Mobility
+
+1. Segregation
+
+2. Income Inequality
+
+    - Places with smaller middle class have much less mobility
+
+3. School Quality
+
+    - Higher expenditure, smaller classes, higher test scores correlated with more mobility
+
+4. Family Structure
+
+    - Areas with more single parents have much lower mobility
+    - Strong correlation even for kids whose own parents are married
+
+5. Social Capital
+
+    - “It takes a village to raise a child”
+    - Putnam (1995): “Bowling Alone”
+
+## New Map of Social Capital
+
+A few weeks ago Chetty and co-authors published a paper and a website exploring social capital across the US:
+
+- [https://socialcapital.org/](https://socialcapital.org/)
+
+## Check the correlation yourself
+
+Go to the Section on [Simple and Multivariate Regression](https://jrm87.github.io/ECO3253_repo/regression.html) and check for yourself the correlation of `kfr_pooled_p25` and at least one of these: 
+
+- `gsmn_math_g3_2013`
+- `ann_avg_job_growth_2004_2013`
+- `frac_coll_plus2000`
+- `frac_coll_plus2010`
+- `med_hhinc1990`
+
+
+# Policies to Improve Upward Mobility
+
+## Two Approaches to Increasing Upward Mobility
+
+- Moving to Opportunity: Provide Affordable Housing in High-Opportunity Areas
+
+- Place-Based Investments: Increase Upward Mobility in Low-Opportunity Areas
+
+# Moving to Opportunity
+
+## Affordable Housing Policies in the United States
+
+- Many potential policies to help low-income families move to better neighborhoods:
+
+    - Subsidized housing vouchers to rent better apartments
+
+    - Mixed-income affordable housing developments (LIHTC – Low Income Housing Tax Credit)
+
+    - Changes in zoning regulations and building restrictions
+
+- Are such housing policies effective in increasing social mobility?
+
+    - Useful benchmark: cash grants of an equivalent dollar amount to families with children
+
+> Based on Chetty, Hendren, Katz. “The Long-Term Effects of Exposure to Better Neighborhoods: New Evidence from the Moving to Opportunity Experiment” AER 2016
+
+## Affordable Housing Policies
+
+- Economic theory predicts that cash grants of an equivalent dollar amount are better than expenditures on housing
+
+- Yet the U.S. spends $45 billion per year on housing vouchers, tax credits for developers, and public housing
+
+- Are these policies effective, and how can they be better designed to improve social mobility?
+
+- Study this question here by focusing specifically on the role of housing vouchers for low-income families
+
+## Studying the Effects of Housing Vouchers
+
+- Question: will a given child i’s earnings at age 30 ($Y_i$) be higher if his/her family receives a housing voucher ($10,000)?
+
+Definitions:
+
+$Y_i(V=1)$ : child’s earnings if family gets voucher
+
+$Y_i(V=0)$ : child’s earnings if family does not get voucher
+
+Goal: estimate treatment effect of voucher on child $i$:
+
+$$G_i = Y_i(V=1) – Y_i(V=0)$$
+
+## Studying the Effects of Housing Vouchers
+
+- Fundamental problem in empirical science: we do not observe $Y_i(V=1)$ and $Y_i(V=0)$ for the same person
+
+    - We only see one of the two potential outcomes for each child
+
+    - Either the family received a voucher or didn’t…
+
+- How can we solve this problem?
+
+    - This is the focus of research on causality in statistics
+
+## Randomized Experiments
+
+- Gold standard solution: run a randomized experiment (A/B testing in the lingo of tech firms)
+
+- Example: take 10,000 children and flip a coin to determine if they get a voucher or not
+
+- Difference in average earnings across the two groups is the average treatment effect of getting the voucher (average value of $G_i$)
+
+    - Intuition: two groups are identical except for getting voucher $\rightarrow$ difference in earnings capture causal effect of voucher
+
+## Importance of Randomization
+
+- Suppose we instead compared 10,000 people, half of whom applied for a voucher and half of whom didn’t
+
+- Could still compare average earnings in these two groups
+
+- But in this case, there is no guarantee that differences in earnings are only driven by the voucher
+
+- There could be many other differences across the groups: 
+
+    - Those who applied may be more educated
+    - Or they may live in worse areas to begin with
+
+- Randomization eliminates all other such differences
+
+## Non-Compliance in Randomized Experiments
+
+- Common problem in randomized experiments: non-compliance
+
+    - In medical trials: patients may not take prescribed drugs
+
+    - In voucher experiment: families offered a voucher may not actually use it to rent a new apartment
+
+- We can’t force people to comply with treatments; we can only offer them a treatment
+
+    - How can we learn from experiments in the presence of such non-compliance?
+    
+## Adjusting for Non-Compliance
+
+- Solution: adjust estimated impact for rate of compliance
+
+- Example: suppose half the people offered a voucher actually used it to rent a new apartment
+
+    - Suppose raw difference in earnings between those offered voucher and not offered voucher is $1,000
+
+    - Then effect of using voucher to rent a new apartment must be $2,000 (since there is no effect on those who don’t move)
+
+- More generally, divide estimated effect by rate of compliance:
+
+    - True Impact = Estimated Impact/Compliance Rate (in this case 1,000/0.5)

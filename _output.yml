@@ -1,0 +1,18 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><a href="./">Economics of Public and Social Issues (ECO 3253) – Spring 2026</a></li>
+      after: |
+        <li><a href="https://www.jmorenomedina.com/" target="blank">By Jon Moreno-Medina</a></li>
+    edit: https://github.com/jrm87/ECO3253_spring2026/edit/main/%s
+    download: ["pdf", "epub"]
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default

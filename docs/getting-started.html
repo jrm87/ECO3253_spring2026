@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Very Brief Intro to Data in R | Economics of Public and Social Issues</title>
+  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 Very Brief Intro to Data in R | Economics of Public and Social Issues" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  <meta name="github-repo" content="jrm87/ECO3253_spring2026" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 Very Brief Intro to Data in R | Economics of Public and Social Issues" />
+  
+  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Spring of 2026." />
+  
+
+<meta name="author" content="Jonathan Moreno-Medina" />
+
+
+<meta name="date" content="2026-01-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lec10_criminal-justice.html"/>
+<link rel="next" href="viz.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Economics of Public and Social Issues (ECO 3253) – Spring 2026</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aboutme"><i class="fa fa-check"></i>About me</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organization-of-this-site"><i class="fa fa-check"></i>Organization of this site</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#data-driven-course"><i class="fa fa-check"></i>Data-driven course</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#topics-to-be-covered"><i class="fa fa-check"></i>Topics to be covered</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#statistical-tools"><i class="fa fa-check"></i>Statistical tools</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#economic-concepts"><i class="fa fa-check"></i>Economic Concepts</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#projects"><i class="fa fa-check"></i>Projects</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#faqs"><i class="fa fa-check"></i>FAQs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i>Updated Schedule</a></li>
+<li class="part"><span><b>I Ec. &amp; Soc. Issues</b></span></li>
+<li class="chapter" data-level="1" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html"><i class="fa fa-check"></i><b>1</b> Upward Mobility in the US</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#parental-and-children-income-rank"><i class="fa fa-check"></i><b>1.1</b> Parental and children income rank</a></li>
+<li class="chapter" data-level="1.2" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#interpreting-the-regression-line"><i class="fa fa-check"></i><b>1.2</b> Interpreting the regression line</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#percentiles"><i class="fa fa-check"></i><b>1.2.1</b> Percentiles</a></li>
+<li class="chapter" data-level="1.2.2" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#what-is-a-tract"><i class="fa fa-check"></i><b>1.2.2</b> What is a tract?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#geographic-variation-in-upward-mobility-by-commuting-zone"><i class="fa fa-check"></i><b>1.3</b> Geographic Variation in Upward Mobility by Commuting Zone</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#adjustments-for-cost-of-living"><i class="fa fa-check"></i><b>1.3.1</b> Adjustments for cost of living</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#local-area-variation-in-upward-mobility-los-angeles-ca"><i class="fa fa-check"></i><b>1.4</b> Local Area Variation in Upward Mobility: Los Angeles, CA</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html"><i class="fa fa-check"></i><b>2</b> The Causal Effect of Neighborhoods</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#causal-effects-of-neighborhoods-vs.-sorting"><i class="fa fa-check"></i><b>2.2</b> Causal Effects of Neighborhoods vs. Sorting</a></li>
+<li class="chapter" data-level="2.3" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#identifying-causal-effects-of-neighborhoods"><i class="fa fa-check"></i><b>2.3</b> Identifying Causal Effects of Neighborhoods</a></li>
+<li class="chapter" data-level="2.4" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#stating-and-assessing-the-identification-assumption-for-the-movers-research-design"><i class="fa fa-check"></i><b>2.4</b> Stating and assessing the identification assumption for the movers research design</a></li>
+<li class="chapter" data-level="2.5" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#why-does-upward-mobility-differ-across-areas"><i class="fa fa-check"></i><b>2.5</b> Why Does Upward Mobility Differ Across Areas?</a></li>
+<li class="chapter" data-level="2.6" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#the-five-strongest-correlates-of-upward-mobility"><i class="fa fa-check"></i><b>2.6</b> The Five Strongest Correlates of Upward Mobility</a></li>
+<li class="chapter" data-level="2.7" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#policy-interest-in-increasing-upward-mobility"><i class="fa fa-check"></i><b>2.7</b> Policy Interest in Increasing Upward Mobility</a></li>
+<li class="chapter" data-level="2.8" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#policies-to-improve-upward-mobility"><i class="fa fa-check"></i><b>2.8</b> Policies to Improve Upward Mobility</a></li>
+<li class="chapter" data-level="2.9" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#affordable-housing-policies-in-the-united-states"><i class="fa fa-check"></i><b>2.9</b> Affordable Housing Policies in the United States</a></li>
+<li class="chapter" data-level="2.10" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#a-framework-for-studying-the-effects-of-housing-vouchers"><i class="fa fa-check"></i><b>2.10</b> A Framework for Studying the Effects of Housing Vouchers</a></li>
+<li class="chapter" data-level="2.11" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#randomized-experiments"><i class="fa fa-check"></i><b>2.11</b> Randomized Experiments</a></li>
+<li class="chapter" data-level="2.12" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#non-compliance-in-randomized-experiments"><i class="fa fa-check"></i><b>2.12</b> Non-Compliance in Randomized Experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html"><i class="fa fa-check"></i><b>3</b> Policies to Increase Upward Mobility</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#the-moving-to-opportunity-experiment"><i class="fa fa-check"></i><b>3.1</b> The Moving to Opportunity Experiment</a></li>
+<li class="chapter" data-level="3.2" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#reevaluating-the-moving-to-opportunities-experiment-with-a-big-data-approach"><i class="fa fa-check"></i><b>3.2</b> Reevaluating the Moving to Opportunities Experiment with a Big Data Approach</a></li>
+<li class="chapter" data-level="3.3" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#the-three-limits-of-randomized-controlled-trials"><i class="fa fa-check"></i><b>3.3</b> The Three Limits of Randomized Controlled Trials</a></li>
+<li class="chapter" data-level="3.4" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#how-quasi-experimental-methods-can-address-randomized-controlled-trial-limitations"><i class="fa fa-check"></i><b>3.4</b> How Quasi-Experimental Methods can Address Randomized Controlled Trial Limitations</a></li>
+<li class="chapter" data-level="3.5" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#implications-for-housing-voucher-policies"><i class="fa fa-check"></i><b>3.5</b> Implications for Housing Voucher Policies</a></li>
+<li class="chapter" data-level="3.6" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#the-stability-of-historical-measures-of-opportunity"><i class="fa fa-check"></i><b>3.6</b> The Stability of Historical Measures of Opportunity</a></li>
+<li class="chapter" data-level="3.7" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#the-creating-moves-to-opportunity-pilot-in-seattle"><i class="fa fa-check"></i><b>3.7</b> The Creating Moves to Opportunity Pilot in Seattle</a></li>
+<li class="chapter" data-level="3.8" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#three-concerns-about-the-cmto-approach"><i class="fa fa-check"></i><b>3.8</b> Three Concerns about the CMTO Approach</a></li>
+<li class="chapter" data-level="3.9" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#the-idea-behind-place-based-investment"><i class="fa fa-check"></i><b>3.9</b> The Idea Behind Place Based Investment</a></li>
+<li class="chapter" data-level="3.10" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#place-based-intervention-policies"><i class="fa fa-check"></i><b>3.10</b> Place Based Intervention Policies</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html"><i class="fa fa-check"></i><b>4</b> The American Dream in Historical Perspective</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#a-historical-perspective-on-the-american-dream"><i class="fa fa-check"></i><b>4.1</b> A Historical Perspective on the American Dream</a></li>
+<li class="chapter" data-level="4.2" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#measuring-the-american-dream"><i class="fa fa-check"></i><b>4.2</b> Measuring the American Dream</a></li>
+<li class="chapter" data-level="4.3" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#what-policies-can-increase-economic-mobility"><i class="fa fa-check"></i><b>4.3</b> What Policies Can Increase Economic Mobility?</a></li>
+<li class="chapter" data-level="4.4" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#policies-to-revive-absolute-mobility"><i class="fa fa-check"></i><b>4.4</b> Policies to Revive Absolute Mobility</a></li>
+<li class="chapter" data-level="4.5" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#trends-in-upward-mobility-international-comparisons"><i class="fa fa-check"></i><b>4.5</b> Trends in Upward Mobility: International Comparisons</a></li>
+<li class="chapter" data-level="4.6" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#restoring-the-american-dream-two-approaches"><i class="fa fa-check"></i><b>4.6</b> Restoring the American Dream: Two Approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html"><i class="fa fa-check"></i><b>5</b> Higher Education and Upward Mobility</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#education-and-upward-mobility"><i class="fa fa-check"></i><b>5.1</b> Education and Upward Mobility</a></li>
+<li class="chapter" data-level="5.2" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#how-do-colleges-shape-income-mobility-in-the-u.s."><i class="fa fa-check"></i><b>5.2</b> How do Colleges Shape Income Mobility in the U.S.?</a></li>
+<li class="chapter" data-level="5.3" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#effect-of-the-higher-education-system-on-mobility"><i class="fa fa-check"></i><b>5.3</b> Effect of the Higher Education System on Mobility</a></li>
+<li class="chapter" data-level="5.4" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#estimating-the-three-parameters-data."><i class="fa fa-check"></i><b>5.4</b> Estimating the Three Parameters: Data.</a></li>
+<li class="chapter" data-level="5.5" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#parents-income-distributions-by-college-income-segregation-in-the-american-higher-education-system.-measuring-parents-income."><i class="fa fa-check"></i><b>5.5</b> Parents’ Income Distributions by College: Income Segregation in the American Higher Education System. Measuring Parents’ Income.</a></li>
+<li class="chapter" data-level="5.6" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#trends-in-income-segregation"><i class="fa fa-check"></i><b>5.6</b> Trends in Income Segregation</a></li>
+<li class="chapter" data-level="5.7" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#outcomes-students-earnings-distributions"><i class="fa fa-check"></i><b>5.7</b> Outcomes: Students’ Earnings Distributions</a></li>
+<li class="chapter" data-level="5.8" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#differences-in-mobility-rates-across-colleges"><i class="fa fa-check"></i><b>5.8</b> Differences in Mobility Rates Across Colleges</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html"><i class="fa fa-check"></i><b>6</b> The Causal Effect of Colleges</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#causal-effects-of-colleges"><i class="fa fa-check"></i><b>6.1</b> Causal Effects of Colleges</a></li>
+<li class="chapter" data-level="6.2" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#estimating-the-causal-effects-of-colleges"><i class="fa fa-check"></i><b>6.2</b> Estimating the Causal Effects of Colleges</a></li>
+<li class="chapter" data-level="6.3" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#regression-discontinuity-methods"><i class="fa fa-check"></i><b>6.3</b> Regression Discontinuity Methods</a></li>
+<li class="chapter" data-level="6.4" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#zimmerman-study"><i class="fa fa-check"></i><b>6.4</b> Zimmerman Study</a></li>
+<li class="chapter" data-level="6.5" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#causal-effects-of-colleges-1"><i class="fa fa-check"></i><b>6.5</b> Causal Effects of Colleges</a></li>
+<li class="chapter" data-level="6.6" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#university-of-michigan-hail-experiment"><i class="fa fa-check"></i><b>6.6</b> University of Michigan HAIL Experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lec7_k12.html"><a href="lec7_k12.html"><i class="fa fa-check"></i><b>7</b> Primary Education</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lec7_k12.html"><a href="lec7_k12.html#a-recap-of-the-discussion-on-the-causal-effects-of-college"><i class="fa fa-check"></i><b>7.1</b> A Recap of the Discussion on the Causal Effects of College</a></li>
+<li class="chapter" data-level="7.2" data-path="lec7_k12.html"><a href="lec7_k12.html#questions-on-causal-effects-of-college"><i class="fa fa-check"></i><b>7.2</b> Questions on Causal Effects of College</a></li>
+<li class="chapter" data-level="7.3" data-path="lec7_k12.html"><a href="lec7_k12.html#an-overview-of-the-k-12-system-in-the-us"><i class="fa fa-check"></i><b>7.3</b> An Overview of the K-12 System in the US</a></li>
+<li class="chapter" data-level="7.4" data-path="lec7_k12.html"><a href="lec7_k12.html#do-test-scores-predict-long-run-outcomes"><i class="fa fa-check"></i><b>7.4</b> Do Test Scores Predict Long-Run Outcomes?</a></li>
+<li class="chapter" data-level="7.5" data-path="lec7_k12.html"><a href="lec7_k12.html#making-test-scores-comparable"><i class="fa fa-check"></i><b>7.5</b> Making Test Scores Comparable</a></li>
+<li class="chapter" data-level="7.6" data-path="lec7_k12.html"><a href="lec7_k12.html#achievement-gaps-in-test-scores-by-socioeconomic-status"><i class="fa fa-check"></i><b>7.6</b> Achievement Gaps in Test Scores by Socioeconomic Status</a></li>
+<li class="chapter" data-level="7.7" data-path="lec7_k12.html"><a href="lec7_k12.html#two-policy-paradigms"><i class="fa fa-check"></i><b>7.7</b> Two Policy Paradigms</a></li>
+<li class="chapter" data-level="7.8" data-path="lec7_k12.html"><a href="lec7_k12.html#government-based-solutions-to-improving-schools"><i class="fa fa-check"></i><b>7.8</b> Government Based Solutions to Improving Schools</a></li>
+<li class="chapter" data-level="7.9" data-path="lec7_k12.html"><a href="lec7_k12.html#the-effect-of-class-size"><i class="fa fa-check"></i><b>7.9</b> The Effect of Class Size</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="lec7_k12.html"><a href="lec7_k12.html#the-tennessee-star-experiment"><i class="fa fa-check"></i><b>7.9.1</b> The Tennessee Star Experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="lec7_k12.html"><a href="lec7_k12.html#class-size-cutoffs-in-sweden"><i class="fa fa-check"></i><b>7.10</b> Class Size Cutoffs in Sweden</a></li>
+<li class="chapter" data-level="7.11" data-path="lec7_k12.html"><a href="lec7_k12.html#questions-on-primary-education"><i class="fa fa-check"></i><b>7.11</b> Questions on Primary Education</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html"><i class="fa fa-check"></i><b>8</b> Teachers and Charter School</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#using-big-data-to-study-teachers-impacts"><i class="fa fa-check"></i><b>8.1</b> Using Big Data to Study Teachers’ Impacts</a></li>
+<li class="chapter" data-level="8.2" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#measuring-teacher-quality-test-score-based-metrics"><i class="fa fa-check"></i><b>8.2</b> Measuring Teacher Quality: Test-Score Based Metrics</a></li>
+<li class="chapter" data-level="8.3" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#debate-about-teacher-value-added-measures"><i class="fa fa-check"></i><b>8.3</b> Debate about Teacher Value-Added Measures</a></li>
+<li class="chapter" data-level="8.4" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#measuring-the-impacts-of-teachers"><i class="fa fa-check"></i><b>8.4</b> Measuring the Impacts of Teachers</a></li>
+<li class="chapter" data-level="8.5" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#a-quasi-experiment-entry-of-a-high-value-added-teacher"><i class="fa fa-check"></i><b>8.5</b> A Quasi-Experiment: Entry of a High Value-Added Teacher</a></li>
+<li class="chapter" data-level="8.6" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#lesson-1-va-estimates-are-unbiased-measures-of-teacher-effectiveness"><i class="fa fa-check"></i><b>8.6</b> Lesson 1: VA Estimates are Unbiased Measures of Teacher Effectiveness</a></li>
+<li class="chapter" data-level="8.7" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#lesson-2-va-estimates-based-on-test-scores-predict-teachers-long-term-impacts"><i class="fa fa-check"></i><b>8.7</b> Lesson 2: VA Estimates Based on Test Scores Predict Teachers’ Long Term Impacts</a></li>
+<li class="chapter" data-level="8.8" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#lesson-3-va-estimates-based-on-a-few-years-of-data-are-sufficiently-reliable-to-generate-large-gains-on-average"><i class="fa fa-check"></i><b>8.8</b> Lesson 3: VA Estimates Based on a Few Years of Data are Sufficiently Reliable to Generate Large Gains on Average</a></li>
+<li class="chapter" data-level="8.9" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#policy-impacts"><i class="fa fa-check"></i><b>8.9</b> Policy Impacts</a></li>
+<li class="chapter" data-level="8.10" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#market-based-solutions-charter-schools"><i class="fa fa-check"></i><b>8.10</b> Market Based-Solutions: Charter Schools</a></li>
+<li class="chapter" data-level="8.11" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#do-charter-schools-work"><i class="fa fa-check"></i><b>8.11</b> Do Charter Schools Work?</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html"><i class="fa fa-check"></i><b>9</b> Racial Disparities in Economic Opportunity</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#theories-of-racial-disparities"><i class="fa fa-check"></i><b>9.2</b> Theories of Racial Disparities</a></li>
+<li class="chapter" data-level="9.3" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#an-intergenerational-perspective-on-racial-disparities"><i class="fa fa-check"></i><b>9.3</b> An Intergenerational Perspective on Racial Disparities</a></li>
+<li class="chapter" data-level="9.4" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#intergenerational-mobility-in-the-u.s."><i class="fa fa-check"></i><b>9.4</b> Intergenerational Mobility in the U.S.</a></li>
+<li class="chapter" data-level="9.5" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#intergenerational-mobility-for-whites-vs.-blacks"><i class="fa fa-check"></i><b>9.5</b> Intergenerational Mobility for Whites vs. Blacks</a></li>
+<li class="chapter" data-level="9.6" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#steady-states"><i class="fa fa-check"></i><b>9.6</b> Steady States</a></li>
+<li class="chapter" data-level="9.7" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#other-racial-disparities"><i class="fa fa-check"></i><b>9.7</b> Other Racial Disparities</a></li>
+<li class="chapter" data-level="9.8" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#gender-differences-in-racial-gaps"><i class="fa fa-check"></i><b>9.8</b> Gender Differences in Racial Gaps</a></li>
+<li class="chapter" data-level="9.9" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#explaining-the-black-white-intergenerational-income-gap-family-level-factors"><i class="fa fa-check"></i><b>9.9</b> Explaining the Black-White Intergenerational Income Gap: Family Level Factors</a></li>
+<li class="chapter" data-level="9.10" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#the-role-of-environmental-factors"><i class="fa fa-check"></i><b>9.10</b> The Role of Environmental Factors</a></li>
+<li class="chapter" data-level="9.11" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#neighborhood-environments-and-the-black-white-gap"><i class="fa fa-check"></i><b>9.11</b> Neighborhood Environments and the Black-White Gap</a></li>
+<li class="chapter" data-level="9.12" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#conclusions"><i class="fa fa-check"></i><b>9.12</b> Conclusions</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html"><i class="fa fa-check"></i><b>10</b> Improving Judicial Decisions</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#motivation-bias-in-human-decision-making"><i class="fa fa-check"></i><b>10.1</b> Motivation: Bias in Human Decision Making</a></li>
+<li class="chapter" data-level="10.2" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#decisions-to-jail-vs.-release-defendants"><i class="fa fa-check"></i><b>10.2</b> Decisions to Jail vs. Release Defendants</a></li>
+<li class="chapter" data-level="10.3" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#data-used-for-empirical-analysis"><i class="fa fa-check"></i><b>10.3</b> Data Used for Empirical Analysis</a></li>
+<li class="chapter" data-level="10.4" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#methodology"><i class="fa fa-check"></i><b>10.4</b> Methodology</a></li>
+<li class="chapter" data-level="10.5" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#comparing-machine-predictions-to-human-predictions"><i class="fa fa-check"></i><b>10.5</b> Comparing Machine Predictions to Human Predictions</a></li>
+<li class="chapter" data-level="10.6" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#predictive-policing"><i class="fa fa-check"></i><b>10.6</b> Predictive Policing</a></li>
+<li class="chapter" data-level="10.7" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#conclusion"><i class="fa fa-check"></i><b>10.7</b> Conclusion</a></li>
+</ul></li>
+<li class="part"><span><b>II Tools</b></span></li>
+<li class="chapter" data-level="11" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>11</b> Very Brief Intro to Data in R</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="getting-started.html"><a href="getting-started.html#why-r-again"><i class="fa fa-check"></i><b>11.1</b> Why R again?</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="getting-started.html"><a href="getting-started.html#why-are-we-learning-r-i-wanted-to-learn-about-economics-of-public-and-social-issues"><i class="fa fa-check"></i><b>11.1.1</b> Why are we learning R? I wanted to learn about economics of public and social issues…</a></li>
+<li class="chapter" data-level="11.1.2" data-path="getting-started.html"><a href="getting-started.html#ok-but-why-r"><i class="fa fa-check"></i><b>11.1.2</b> Ok, but why R?</a></li>
+<li class="chapter" data-level="11.1.3" data-path="getting-started.html"><a href="getting-started.html#added-benefits-of-learning-r"><i class="fa fa-check"></i><b>11.1.3</b> Added benefits of learning R</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="getting-started.html"><a href="getting-started.html#key-concepts-before-we-start"><i class="fa fa-check"></i><b>11.2</b> Key concepts before we start:</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="getting-started.html"><a href="getting-started.html#r-rstudio"><i class="fa fa-check"></i><b>11.2.1</b> What are R and RStudio?</a></li>
+<li class="chapter" data-level="11.2.2" data-path="getting-started.html"><a href="getting-started.html#r-and-rstudio-in-your-computer-or-in-the-cloud-the-benefit-of-posit-cloud"><i class="fa fa-check"></i><b>11.2.2</b> R and RStudio: In your computer or in the cloud? The benefit of Posit Cloud</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="getting-started.html"><a href="getting-started.html#lets-open-r"><i class="fa fa-check"></i><b>11.3</b> Let’s open R!</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="getting-started.html"><a href="getting-started.html#rstudio-in-posit-cloud"><i class="fa fa-check"></i><b>11.3.1</b> RStudio in Posit cloud</a></li>
+<li class="chapter" data-level="11.3.2" data-path="getting-started.html"><a href="getting-started.html#using-r-via-rstudio-in-posit-cloud"><i class="fa fa-check"></i><b>11.3.2</b> Using R via RStudio in Posit Cloud</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="getting-started.html"><a href="getting-started.html#code"><i class="fa fa-check"></i><b>11.4</b> How do I code in R?</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="getting-started.html"><a href="getting-started.html#programming-concepts"><i class="fa fa-check"></i><b>11.4.1</b> Basic programming concepts and terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="getting-started.html"><a href="getting-started.html#in-class-exercise"><i class="fa fa-check"></i><b>11.5</b> In Class Exercise</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="getting-started.html"><a href="getting-started.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>11.5.1</b> Errors, warnings, and messages</a></li>
+<li class="chapter" data-level="11.5.2" data-path="getting-started.html"><a href="getting-started.html#tips-on-learning-to-code"><i class="fa fa-check"></i><b>11.5.2</b> Tips on learning to code</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="getting-started.html"><a href="getting-started.html#packages"><i class="fa fa-check"></i><b>11.6</b> What are R packages?</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="getting-started.html"><a href="getting-started.html#package-installation"><i class="fa fa-check"></i><b>11.6.1</b> Package installation</a></li>
+<li class="chapter" data-level="11.6.2" data-path="getting-started.html"><a href="getting-started.html#package-loading"><i class="fa fa-check"></i><b>11.6.2</b> Package loading</a></li>
+<li class="chapter" data-level="11.6.3" data-path="getting-started.html"><a href="getting-started.html#package-use"><i class="fa fa-check"></i><b>11.6.3</b> Package use</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="getting-started.html"><a href="getting-started.html#hands-on-exercise"><i class="fa fa-check"></i><b>11.7</b> Hands-on exercise!</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="getting-started.html"><a href="getting-started.html#mobilitydata"><i class="fa fa-check"></i><b>11.7.1</b> Explore your first dataset: economic mobility in the US</a></li>
+<li class="chapter" data-level="11.7.2" data-path="getting-started.html"><a href="getting-started.html#economic-mobility-data"><i class="fa fa-check"></i><b>11.7.2</b> Economic mobility data</a></li>
+<li class="chapter" data-level="11.7.3" data-path="getting-started.html"><a href="getting-started.html#atlas-data-frame"><i class="fa fa-check"></i><b>11.7.3</b> <code>atlas</code> data frame</a></li>
+<li class="chapter" data-level="11.7.4" data-path="getting-started.html"><a href="getting-started.html#exploredataframes"><i class="fa fa-check"></i><b>11.7.4</b> Exploring data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="getting-started.html"><a href="getting-started.html#conclusion-1"><i class="fa fa-check"></i><b>11.8</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="11.8.1" data-path="getting-started.html"><a href="getting-started.html#additional-resources"><i class="fa fa-check"></i><b>11.8.1</b> Additional resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>12</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="viz.html"><a href="viz.html#needed-data-and-packages"><i class="fa fa-check"></i>Needed data and packages</a></li>
+<li class="chapter" data-level="12.1" data-path="viz.html"><a href="viz.html#grammarofgraphics"><i class="fa fa-check"></i><b>12.1</b> The Grammar of Graphics</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="viz.html"><a href="viz.html#components-of-the-grammar"><i class="fa fa-check"></i><b>12.1.1</b> Components of the Grammar</a></li>
+<li class="chapter" data-level="12.1.2" data-path="viz.html"><a href="viz.html#gapminder"><i class="fa fa-check"></i><b>12.1.2</b> Gapminder data</a></li>
+<li class="chapter" data-level="12.1.3" data-path="viz.html"><a href="viz.html#other-components"><i class="fa fa-check"></i><b>12.1.3</b> Other components</a></li>
+<li class="chapter" data-level="12.1.4" data-path="viz.html"><a href="viz.html#ggplot2-package"><i class="fa fa-check"></i><b>12.1.4</b> ggplot2 package</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="viz.html"><a href="viz.html#FiveNG"><i class="fa fa-check"></i><b>12.2</b> Three Important Graphs -</a></li>
+<li class="chapter" data-level="12.3" data-path="viz.html"><a href="viz.html#scatterplots"><i class="fa fa-check"></i><b>12.3</b> Scatterplots</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="viz.html"><a href="viz.html#geompoint"><i class="fa fa-check"></i><b>12.3.1</b> Scatterplots via geom_point</a></li>
+<li class="chapter" data-level="12.3.2" data-path="viz.html"><a href="viz.html#overplotting"><i class="fa fa-check"></i><b>12.3.2</b> Over-plotting</a></li>
+<li class="chapter" data-level="12.3.3" data-path="viz.html"><a href="viz.html#summary"><i class="fa fa-check"></i><b>12.3.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="viz.html"><a href="viz.html#histograms"><i class="fa fa-check"></i><b>12.4</b> Histograms</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="viz.html"><a href="viz.html#geomhistogram"><i class="fa fa-check"></i><b>12.4.1</b> Histograms via geom_histogram</a></li>
+<li class="chapter" data-level="12.4.2" data-path="viz.html"><a href="viz.html#adjustbins"><i class="fa fa-check"></i><b>12.4.2</b> Adjusting the bins</a></li>
+<li class="chapter" data-level="12.4.3" data-path="viz.html"><a href="viz.html#summary-1"><i class="fa fa-check"></i><b>12.4.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="viz.html"><a href="viz.html#geombar"><i class="fa fa-check"></i><b>12.5</b> Barplots</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="viz.html"><a href="viz.html#barplots-via-geom_bar-or-geom_col"><i class="fa fa-check"></i><b>12.5.1</b> Barplots via geom_bar or geom_col</a></li>
+<li class="chapter" data-level="12.5.2" data-path="viz.html"><a href="viz.html#summary-2"><i class="fa fa-check"></i><b>12.5.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="viz.html"><a href="viz.html#conclusion-2"><i class="fa fa-check"></i><b>12.6</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="viz.html"><a href="viz.html#summary-table"><i class="fa fa-check"></i><b>12.6.1</b> Summary table</a></li>
+<li class="chapter" data-level="12.6.2" data-path="viz.html"><a href="viz.html#argument-specification"><i class="fa fa-check"></i><b>12.6.2</b> Argument specification</a></li>
+<li class="chapter" data-level="12.6.3" data-path="viz.html"><a href="viz.html#additional-resources-1"><i class="fa fa-check"></i><b>12.6.3</b> Additional resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="wrangling.html"><a href="wrangling.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling</a>
+<ul>
+<li class="chapter" data-level="" data-path="wrangling.html"><a href="wrangling.html#needed-packages"><i class="fa fa-check"></i>Needed packages</a></li>
+<li class="chapter" data-level="13.1" data-path="wrangling.html"><a href="wrangling.html#piping"><i class="fa fa-check"></i><b>13.1</b> The pipe operator: <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="13.2" data-path="wrangling.html"><a href="wrangling.html#filter"><i class="fa fa-check"></i><b>13.2</b> <code>filter</code> rows</a></li>
+<li class="chapter" data-level="13.3" data-path="wrangling.html"><a href="wrangling.html#mutate"><i class="fa fa-check"></i><b>13.3</b> <code>mutate</code> existing variables</a></li>
+<li class="chapter" data-level="13.4" data-path="wrangling.html"><a href="wrangling.html#other-verbs"><i class="fa fa-check"></i><b>13.4</b> Other verbs</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="wrangling.html"><a href="wrangling.html#select"><i class="fa fa-check"></i><b>13.4.1</b> <code>select</code> variables</a></li>
+<li class="chapter" data-level="13.4.2" data-path="wrangling.html"><a href="wrangling.html#rename"><i class="fa fa-check"></i><b>13.4.2</b> <code>rename</code> variables</a></li>
+<li class="chapter" data-level="13.4.3" data-path="wrangling.html"><a href="wrangling.html#top_n-values-of-a-variable"><i class="fa fa-check"></i><b>13.4.3</b> <code>top_n</code> values of a variable</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="wrangling.html"><a href="wrangling.html#conclusion-3"><i class="fa fa-check"></i><b>13.5</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="wrangling.html"><a href="wrangling.html#additional-resources-2"><i class="fa fa-check"></i><b>13.5.1</b> Additional resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>14</b> Simple and Multivariate Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression.html"><a href="regression.html#needed-packages-1"><i class="fa fa-check"></i>Needed packages</a></li>
+<li class="chapter" data-level="14.1" data-path="regression.html"><a href="regression.html#model1"><i class="fa fa-check"></i><b>14.1</b> One numerical explanatory variable</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="regression.html"><a href="regression.html#model1EDA"><i class="fa fa-check"></i><b>14.1.1</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="14.1.2" data-path="regression.html"><a href="regression.html#model1table"><i class="fa fa-check"></i><b>14.1.2</b> Simple linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="regression.html"><a href="regression.html#related-topics"><i class="fa fa-check"></i><b>14.2</b> Related topics</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="regression.html"><a href="regression.html#correlationcoefficient"><i class="fa fa-check"></i><b>14.2.1</b> Correlation coefficient</a></li>
+<li class="chapter" data-level="14.2.2" data-path="regression.html"><a href="regression.html#correlation-is-not-causation"><i class="fa fa-check"></i><b>14.2.2</b> Correlation is not necessarily causation</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="regression.html"><a href="regression.html#model3"><i class="fa fa-check"></i><b>14.3</b> Two numerical explanatory variables</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="regression.html"><a href="regression.html#model3EDA"><i class="fa fa-check"></i><b>14.3.1</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="14.3.2" data-path="regression.html"><a href="regression.html#model3table"><i class="fa fa-check"></i><b>14.3.2</b> Regression plane</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="regression.html"><a href="regression.html#how-to-read-p-values"><i class="fa fa-check"></i><b>14.4</b> How to read p-values</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="regression.html"><a href="regression.html#an-example"><i class="fa fa-check"></i><b>14.4.1</b> An Example</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="regression.html"><a href="regression.html#conclusion-4"><i class="fa fa-check"></i><b>14.5</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="regression.html"><a href="regression.html#additional-resources-basic-regression"><i class="fa fa-check"></i><b>14.5.1</b> Additional resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>15</b> RMarkdown / Quarto output</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="rmarkdown.html"><a href="rmarkdown.html#how-to-create-an-output-file"><i class="fa fa-check"></i><b>15.1</b> How to create an output file</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#error-when-rendering-file"><i class="fa fa-check"></i><b>15.1.1</b> Error when rendering file</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="rmarkdown.html"><a href="rmarkdown.html#add-new-code"><i class="fa fa-check"></i><b>15.2</b> Add new code</a></li>
+<li class="chapter" data-level="15.3" data-path="rmarkdown.html"><a href="rmarkdown.html#add-a-title"><i class="fa fa-check"></i><b>15.3</b> Add a title</a></li>
+<li class="chapter" data-level="15.4" data-path="rmarkdown.html"><a href="rmarkdown.html#add-an-image"><i class="fa fa-check"></i><b>15.4</b> Add an image</a></li>
+<li class="chapter" data-level="15.5" data-path="rmarkdown.html"><a href="rmarkdown.html#submit-your-work"><i class="fa fa-check"></i><b>15.5</b> Submit your work</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="appendixA.html"><a href="appendixA.html"><i class="fa fa-check"></i><b>A</b> Statistical Background</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="appendixA.html"><a href="appendixA.html#basic-statistical-terms"><i class="fa fa-check"></i><b>A.1</b> Basic statistical terms</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="appendixA.html"><a href="appendixA.html#mean"><i class="fa fa-check"></i><b>A.1.1</b> Mean</a></li>
+<li class="chapter" data-level="A.1.2" data-path="appendixA.html"><a href="appendixA.html#median"><i class="fa fa-check"></i><b>A.1.2</b> Median</a></li>
+<li class="chapter" data-level="A.1.3" data-path="appendixA.html"><a href="appendixA.html#standard-deviation"><i class="fa fa-check"></i><b>A.1.3</b> Standard deviation</a></li>
+<li class="chapter" data-level="A.1.4" data-path="appendixA.html"><a href="appendixA.html#five-number-summary"><i class="fa fa-check"></i><b>A.1.4</b> Five-number summary</a></li>
+<li class="chapter" data-level="A.1.5" data-path="appendixA.html"><a href="appendixA.html#appPercentiles"><i class="fa fa-check"></i><b>A.1.5</b> Percentiles or rank</a></li>
+<li class="chapter" data-level="A.1.6" data-path="appendixA.html"><a href="appendixA.html#appDistributions"><i class="fa fa-check"></i><b>A.1.6</b> Distribution</a></li>
+<li class="chapter" data-level="A.1.7" data-path="appendixA.html"><a href="appendixA.html#outliers"><i class="fa fa-check"></i><b>A.1.7</b> Outliers</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Projects</b></span></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html"><i class="fa fa-check"></i>Project 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#stories-from-the-atlas-describing-data-using-maps-regressions-and-correlations"><i class="fa fa-check"></i>Stories from the Atlas: Describing Data using Maps, Regressions, and Correlations</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#instructions"><i class="fa fa-check"></i>Instructions</a>
+<ul>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#specific-questions-to-address-in-your-narrative"><i class="fa fa-check"></i>Specific questions to address in your narrative</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#description"><i class="fa fa-check"></i>Data Description</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#cheatsheetproject1"><i class="fa fa-check"></i>Cheatsheat commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#unweighted-summary-statistics"><i class="fa fa-check"></i>Unweighted summary statistics</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#load-package"><i class="fa fa-check"></i>Load package</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#weighted-summary-statistics"><i class="fa fa-check"></i>Weighted summary statistics</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#subset-observations"><i class="fa fa-check"></i>Subset observations</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#standardize-variables"><i class="fa fa-check"></i>Standardize variables</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#run-regression"><i class="fa fa-check"></i>Run regression</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#how-to-read-the-regression-output"><i class="fa fa-check"></i>How to read the regression output?</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#plotting-the-linear-relationship"><i class="fa fa-check"></i>Plotting the linear relationship</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html"><i class="fa fa-check"></i>Project 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#do-smaller-classes-improve-test-scores-evidence-from-a-regression-discontinuity-design"><i class="fa fa-check"></i>Do Smaller Classes Improve Test Scores? Evidence from a Regression Discontinuity Design</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#instructions-1"><i class="fa fa-check"></i>Instructions</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#questions-to-address-in-your-replication"><i class="fa fa-check"></i>Questions to address in your replication</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#descriptionproject2"><i class="fa fa-check"></i>Data Description</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#cheatsheetproject2"><i class="fa fa-check"></i>Cheatsheat commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#r-command-description"><i class="fa fa-check"></i>R command Description</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#packages-needed"><i class="fa fa-check"></i>Packages needed</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#subset-observations-1"><i class="fa fa-check"></i>Subset observations</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#draw-binned-scatterplots"><i class="fa fa-check"></i>Draw binned scatterplots</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#collapse-or-summarize-datasets"><i class="fa fa-check"></i>Collapse or summarize datasets</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#draw-graph-of-count-of-schools"><i class="fa fa-check"></i>Draw graph of count of schools</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#estimate-the-discontinuity"><i class="fa fa-check"></i>Estimate the discontinuity</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#interpretation"><i class="fa fa-check"></i>Interpretation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html"><i class="fa fa-check"></i>Project 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#social-capital-and-economic-mobility"><i class="fa fa-check"></i>Social Capital and Economic Mobility</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#instructions-2"><i class="fa fa-check"></i>Instructions</a>
+<ul>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#specific-questions-to-address-in-your-narrative-1"><i class="fa fa-check"></i>Specific questions to address in your narrative</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#data-description"><i class="fa fa-check"></i>Data Description</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#cheatsheetproject3"><i class="fa fa-check"></i>Cheatsheat commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#unweighted-summary-statistics-1"><i class="fa fa-check"></i>Unweighted summary statistics</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#load-package-1"><i class="fa fa-check"></i>Load package</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#weighted-summary-statistics-1"><i class="fa fa-check"></i>Weighted summary statistics</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#subset-observations-2"><i class="fa fa-check"></i>Subset observations</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#standardize-variables-1"><i class="fa fa-check"></i>Standardize variables</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#run-regression-1"><i class="fa fa-check"></i>Run regression</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#how-to-read-the-regression-output-1"><i class="fa fa-check"></i>How to read the regression output?</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#confidence-intervals"><i class="fa fa-check"></i>Confidence Intervals</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#plotting-the-linear-relationship-1"><i class="fa fa-check"></i>Plotting the linear relationship</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html"><i class="fa fa-check"></i>Project 4</a>
+<ul>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#using-google-datacommons-to-predict-social-mobility"><i class="fa fa-check"></i>Using Google DataCommons to Predict Social Mobility</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#instructions-3"><i class="fa fa-check"></i>Instructions</a>
+<ul>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#specific-questions"><i class="fa fa-check"></i>Specific questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#data-description-1"><i class="fa fa-check"></i>Data Description</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#cheatsheetproject3"><i class="fa fa-check"></i>Cheatsheat commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#how-to-tell-r-that-you-have-a-categorical-variable"><i class="fa fa-check"></i>How to tell R that you have a categorical variable?</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#load-package-2"><i class="fa fa-check"></i>Load package</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#run-regression-2"><i class="fa fa-check"></i>Run regression</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#measures-of-accuracy-in-prediction-in-a-multiple-regression"><i class="fa fa-check"></i>Measures of accuracy in prediction in a Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#estimating-a-decision-tree"><i class="fa fa-check"></i>Estimating a Decision Tree</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#measures-of-accuracy-in-a-decision-tree"><i class="fa fa-check"></i>Measures of accuracy in a Decision Tree</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.jmorenomedina.com/" target="blank">By Jon Moreno-Medina</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Economics of Public and Social Issues</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="getting-started" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Very Brief Intro to Data in R<a href="getting-started.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="why-r-again" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Why R again?<a href="getting-started.html#why-r-again" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="why-are-we-learning-r-i-wanted-to-learn-about-economics-of-public-and-social-issues" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Why are we learning R? I wanted to learn about economics of public and social issues…<a href="getting-started.html#why-are-we-learning-r-i-wanted-to-learn-about-economics-of-public-and-social-issues" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This class <em>is</em> about social issues in economics. But what are those social issues?</p>
+<ul>
+<li>Economic mobility and inequality</li>
+<li>Effects of education on wages and inequality</li>
+<li>Criminal justice system outcomes</li>
+<li>Pollution and climate change</li>
+<li>and so on…</li>
+</ul>
+<p>How can we know if going to school increases wages? Or if economic mobility is low or high?</p>
+<p>We need to <em>analyze</em> data! We can do that analysis by hand… but that would be very time consuming. Or we can use a super calculator with amazing capabilities to explore data, maps, etc: enter <strong>R</strong> and <strong>R Studio</strong>.</p>
+<p>This course is not about teaching you all about <strong>R</strong>! We will only cover the very basics so you can jump into doing some empirical analysis by yourself. You will be able to expand much more on the tools briefly described here in other, more advanced, courses in the Economics sequence.</p>
+<div class="blackbox">
+<div class="center">
+<p><strong>Important!</strong></p>
+</div>
+<p>For the vast majority of exercises in our course, <em>I will give you all the code you will have to run</em>. So, it’s not like you need to write anything from scratch!</p>
+</div>
+<p>I do want you to get a basic understanding of what we will be doing when we run those lines.</p>
+</div>
+<div id="ok-but-why-r" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> Ok, but why R?<a href="getting-started.html#ok-but-why-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>R</strong> is free and open source!</li>
+<li><strong>R</strong> has a vibrant online community!</li>
+<li><strong>R</strong> is very flexible and powerful — adaptable to nearly any task ( <em>e.g.</em>, correlations, econometrics, spatial data analysis, machine learning, web scraping, data cleaning, website building, teaching.)</li>
+<li>Employers like <strong>R</strong> over alternatives</li>
+</ul>
+</div>
+<div id="added-benefits-of-learning-r" class="section level3 hasAnchor" number="11.1.3">
+<h3><span class="header-section-number">11.1.3</span> Added benefits of learning R<a href="getting-started.html#added-benefits-of-learning-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Employers hire people that knows <strong>R</strong>. Again, we will only cover the essentials, but maybe you want to keep this in mind as you go along with your studies.</p>
+<p><img src="_main_files/figure-html/statistical_languages-1.png" alt="" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="key-concepts-before-we-start" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Key concepts before we start:<a href="getting-started.html#key-concepts-before-we-start" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before we can start exploring data in R, there are some key concepts to understand first:</p>
+<ol style="list-style-type: decimal">
+<li>What are R, Posit Cloud and RStudio?</li>
+<li>How do I code in R?</li>
+<li>What are R packages?</li>
+</ol>
+<p>We’ll introduce these concepts in upcoming Sections <a href="getting-started.html#r-rstudio">11.2.1</a>-<a href="getting-started.html#packages">11.6</a>. Then we’ll introduce our first data set: data on the economic mobility for all neighborhoods across the US in the <code>atlas</code> dataset.</p>
+<div id="r-rstudio" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> What are R and RStudio?<a href="getting-started.html#r-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For much of this book, we will assume that you are using R via RStudio. First time users often confuse the two. At its simplest:</p>
+<ul>
+<li>R is like a car’s engine.</li>
+<li>RStudio is like a car’s dashboard.</li>
+</ul>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">R: Engine</th>
+<th align="center">RStudio: Dashboard</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="images/engine.jpg" style="height:1.7in" /></td>
+<td align="center"><img src="images/dashboard.jpg" style="height:1.7in" /></td>
+</tr>
+</tbody>
+</table>
+<p>More precisely, R is a programming language that runs computations while RStudio is an <em>integrated development environment (IDE)</em> that provides an interface by adding many convenient features and tools. So just as having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio’s interface makes using R much easier as well.</p>
+</div>
+<div id="r-and-rstudio-in-your-computer-or-in-the-cloud-the-benefit-of-posit-cloud" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> R and RStudio: In your computer or in the cloud? The benefit of Posit Cloud<a href="getting-started.html#r-and-rstudio-in-your-computer-or-in-the-cloud-the-benefit-of-posit-cloud" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To use R and RStudio, you can:</p>
+<ul>
+<li>install it in your computer (see the book) or …</li>
+<li>run it on someone else’s computer (the cloud!). We will do that, so you don’t have to worry about installations.</li>
+</ul>
+<p>In this course I won’t require you to install R and RStudio in your own computer. Instead, we will use the cloud! In particular, the website that we will use to manage RStudio is called Posit Cloud.</p>
+<p>You should have received an invitation for the course in your email. If you would still like to install R and RStudio in your own computer, please follow the instructions in Section 1.1.1 in this <a href="https://nulib.github.io/moderndive_book/1-getting-started.html">link</a>. Of course, you are encouraged to experiment in your own machine as well. Notice, however, that you should carry out the assignments and projects in Posit Cloud.</p>
+<div class="blackbox">
+<div class="center">
+<p><strong>Important!</strong></p>
+</div>
+<p>Homework and projects should be carried in Posit Cloud (not your personal computer).</p>
+</div>
+</div>
+</div>
+<div id="lets-open-r" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Let’s open R!<a href="getting-started.html#lets-open-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rstudio-in-posit-cloud" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> RStudio in Posit cloud<a href="getting-started.html#rstudio-in-posit-cloud" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s jump in! You should have received a link for you to access RStudio in the cloud through Posit Cloud. There is a monthly fee to use this service of $5. We will be using the service for the next 4 months, so you should be paying a total of $20 across these 4 months. Recall also that there is no required textbook for this class. Once the Fall semester finishes, it is your responsibility to cancel your subscription.</p>
+<p>Once more: remember that all the <strong>code is running on someone’s computer</strong>. In this case, it is running on a computer owned by the folks at RStudio.</p>
+<ol style="list-style-type: decimal">
+<li>Receive link with invitation</li>
+</ol>
+<p>You should have received an email with a link inviting you to join Posit Cloud. Once you click on the link, you should land in a page like this:</p>
+<p><img src="images/rstudio_cloud1.png" alt="" width="80%" style="display: block; margin: auto;" /></p>
+<p>Then you should fill out the information for your account. Please use your utsa email account (the account you should have received the invitation to). Once you click on <strong>Sign Up</strong>, it will show this:</p>
+<p><img src="images/rstudio_cloud2.png" alt="" width="80%" style="display: block; margin: auto;" /></p>
+<p>Then you need to go back to your email and verify it. Then log back in again!</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Inside Posit Cloud select <strong>ECO3523-Fall23</strong></li>
+</ol>
+<p>Once you have logged back in, you should land in the main page, which should look like this:</p>
+<p><img src="images/rstudio_cloud3.png" alt="" width="80%" style="display: block; margin: auto;" /></p>
+<p>Click on the left where it says <strong>ECO3523-Fall23</strong>. That is where you will see all the material and projects for this class.</p>
+<p><img src="images/rstudio_cloud4.png" alt="" width="80%" style="display: block; margin: auto;" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Select the appropriate project you want to work on</li>
+</ol>
+<p>Once you are in the <strong>ECO3523-Fall23</strong> tab, you should see a list of individual projects we will work on throughout the semester. It should look something like this:</p>
+<p><img src="images/rstudio_cloud5.png" alt="" width="80%" style="display: block; margin: auto;" /></p>
+<p>For our first class on R you will select the link that says <strong>introRClass</strong>. That is it! Now we are ready to get to work!</p>
+</div>
+<div id="using-r-via-rstudio-in-posit-cloud" class="section level3 hasAnchor" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Using R via RStudio in Posit Cloud<a href="getting-started.html#using-r-via-rstudio-in-posit-cloud" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recall our car analogy from above. Much as we don’t drive a car by interacting directly with the engine but rather by interacting with elements on the car’s dashboard, we won’t be using R directly but rather we will use RStudio’s interface.</p>
+<p>After you open Posit Cloud and follow the previous instructions, you should see a panel like the following:</p>
+<p><img src="images/rstudio_cloud6.png" alt="" width="80%" style="display: block; margin: auto;" /></p>
+<p>Note the three panes, which are three panels dividing the screen: The <em>Console pane</em>, the <em>Files pane</em>, and the <em>Environment pane</em>. Over the course of this chapter, you’ll come to learn what purpose each of these panes serve.</p>
+</div>
+</div>
+<div id="code" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> How do I code in R?<a href="getting-started.html#code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that you’re set up with Posit Cloud, you are probably asking yourself “OK. Now how do I use R?” The first thing to note as that unlike other statistical software programs like Excel, STATA, or SAS that provide <a href="https://en.wikipedia.org/wiki/Point_and_click">point and click</a> interfaces, R is an <a href="https://en.wikipedia.org/wiki/Interpreted_language">interpreted language</a>, meaning you have to enter in R commands written in R code. In other words, you have to code/program in R. Note that we’ll use the terms “coding” and “programming” interchangeably in this book.</p>
+<p>While it is not required to be a seasoned coder/computer programmer to use R, there is still a set of basic programming concepts that R users need to understand. Consequently, while this course is not a book on programming, you will still learn just enough of these basic programming concepts needed to explore and analyze data effectively.</p>
+<div id="programming-concepts" class="section level3 hasAnchor" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> Basic programming concepts and terminology<a href="getting-started.html#programming-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We now introduce some basic programming concepts and terminology. Instead of asking you to learn all these concepts and terminology right now, we’ll guide you so that you’ll “learn by doing.” Note that in this book we will always use a different font to distinguish regular text from <code>computer_code</code>. The best way to master these topics is, in our opinions, “learning by doing” and lots of repetition.</p>
+<ul>
+<li>Basics:
+<ul>
+<li><em>Console</em>: Where you enter in commands. </li>
+<li><em>Running code</em>: The act of telling R to perform an action by giving it commands in the console.</li>
+<li><em>Objects</em>: Where values are saved in R. In order to do useful and interesting things in R, we will want to <em>assign</em> a name to an object. For example we could do the following assignments: <code>x &lt;- 44 - 20</code> and <code>three &lt;- 3</code>. This would allow us to run <code>x + three</code> which would return <code>27</code>.</li>
+<li><em>Data types</em>: Integers, doubles/numerics, logicals, and characters.</li>
+</ul></li>
+<li><em>Vectors</em>: A series of values. These are created using the <code>c()</code> function, where <code>c()</code> stands for “combine” or “concatenate.” For example: <code>c(6, 11, 13, 31, 90, 92)</code>.</li>
+<li><em>Factors</em>: <em>Categorical data</em> are represented in R as factors.</li>
+<li><em>Data frames</em>: Data frames are like rectangular spreadsheets: they are representations of datasets in R where the rows correspond to <em>observations</em> and the columns correspond to <em>variables</em> that describe the observations. We’ll cover data frames later in Section <a href="getting-started.html#mobilitydata">11.7.1</a>.</li>
+<li><em>Conditionals</em>:
+<ul>
+<li>Testing for equality in R using <code>==</code> (and not <code>=</code> which is typically used for assignment). Ex: <code>2 + 1 == 3</code> compares <code>2 + 1</code> to <code>3</code> and is correct R code, while <code>2 + 1 = 3</code> will return an error.</li>
+<li>Boolean algebra: <code>TRUE/FALSE</code> statements and mathematical operators such as <code>&lt;</code> (less than), <code>&lt;=</code> (less than or equal), and <code>!=</code> (not equal to).</li>
+<li>Logical operators: <code>&amp;</code> representing “and” as well as <code>|</code> representing “or.” Ex: <code>(2 + 1 == 3) &amp; (2 + 1 == 4)</code> returns <code>FALSE</code> since both clauses are not <code>TRUE</code> (only the first clause is <code>TRUE</code>). On the other hand, <code>(2 + 1 == 3) | (2 + 1 == 4)</code> returns <code>TRUE</code> since at least one of the two clauses is <code>TRUE</code>.</li>
+</ul></li>
+<li><em>Functions</em>, also called <em>commands</em>: Functions perform tasks in R. They take in inputs called <em>arguments</em> and return outputs. You can either manually specify a function’s arguments or use the function’s <em>default values</em>.</li>
+</ul>
+<p>This list is by no means an exhaustive list of all the programming concepts and terminology needed to become a savvy R user; such a list would be so large it wouldn’t be very useful, especially for novices. Rather, we feel this is a minimally viable list of programming concepts and terminology you need to know before getting started. I’m confident you can learn the rest as you go. Remember that your mastery of all of these concepts and terminology will build as you practice more and more.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+</div>
+</div>
+<div id="in-class-exercise" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> In Class Exercise<a href="getting-started.html#in-class-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Try running the following commands in the console. What do you see for each one?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="getting-started.html#cb1-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span></span>
+<span id="cb1-2"><a href="getting-started.html#cb1-2" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>pi</span>
+<span id="cb1-3"><a href="getting-started.html#cb1-3" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span>
+<span id="cb1-4"><a href="getting-started.html#cb1-4" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">2</span>)</span>
+<span id="cb1-5"><a href="getting-started.html#cb1-5" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">25</span>)</span>
+<span id="cb1-6"><a href="getting-started.html#cb1-6" tabindex="-1"></a><span class="dv">3</span><span class="sc">==</span><span class="dv">3</span></span>
+<span id="cb1-7"><a href="getting-started.html#cb1-7" tabindex="-1"></a><span class="dv">3</span><span class="sc">==</span><span class="dv">4</span></span>
+<span id="cb1-8"><a href="getting-started.html#cb1-8" tabindex="-1"></a><span class="dv">3</span><span class="sc">&lt;=</span><span class="dv">4</span></span>
+<span id="cb1-9"><a href="getting-started.html#cb1-9" tabindex="-1"></a><span class="dv">3</span><span class="sc">!=</span><span class="dv">4</span></span>
+<span id="cb1-10"><a href="getting-started.html#cb1-10" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">5</span>)<span class="co"># this is called a &#39;vector&#39;</span></span>
+<span id="cb1-11"><a href="getting-started.html#cb1-11" tabindex="-1"></a>x <span class="co">#what do you see?</span></span>
+<span id="cb1-12"><a href="getting-started.html#cb1-12" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">2</span>)</span>
+<span id="cb1-13"><a href="getting-started.html#cb1-13" tabindex="-1"></a>x <span class="co">#now what do you see?</span></span>
+<span id="cb1-14"><a href="getting-started.html#cb1-14" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>) <span class="co"># USE ARROW!</span></span>
+<span id="cb1-15"><a href="getting-started.html#cb1-15" tabindex="-1"></a><span class="fu">length</span>(x)</span>
+<span id="cb1-16"><a href="getting-started.html#cb1-16" tabindex="-1"></a><span class="fu">length</span>(y)</span>
+<span id="cb1-17"><a href="getting-started.html#cb1-17" tabindex="-1"></a>x<span class="sc">+</span>y</span>
+<span id="cb1-18"><a href="getting-started.html#cb1-18" tabindex="-1"></a><span class="co">#write this</span></span>
+<span id="cb1-19"><a href="getting-started.html#cb1-19" tabindex="-1"></a>write this again</span></code></pre></div>
+<div id="errors-warnings-and-messages" class="section level3 hasAnchor" number="11.5.1">
+<h3><span class="header-section-number">11.5.1</span> Errors, warnings, and messages<a href="getting-started.html#errors-warnings-and-messages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Noticed the last thing that appeared in the console when you wrote <code>write this again</code>? It had scary red letters. It is an example of something that intimidates new R and RStudio users: how it reports <em>errors</em>, <em>warnings</em>, and <em>messages</em>. R reports errors, warnings, and messages in a glaring red font, which makes it seem like it is scolding you. However, seeing red text in the console is not always bad.</p>
+<p>R will show red text in the console pane in three different situations:</p>
+<ul>
+<li><strong>Errors</strong>: When the red text is a legitimate error, it will be prefaced with “Error in…” and try to explain what went wrong. Generally when there’s an error, the code will not run. For example, we’ll see in Subsection <a href="getting-started.html#package-use">11.6.3</a> if you see <code>Error in ggplot(...) : could not find function "ggplot"</code>, it means that the <code>ggplot()</code> function is not accessible because the package that contains the function (<code>ggplot2</code>) was not loaded with <code>library(ggplot2)</code>. Thus you cannot use the <code>ggplot()</code> function without the <code>ggplot2</code> package being loaded first.</li>
+<li><strong>Warnings</strong>: When the red text is a warning, it will be prefaced with “Warning:” and R will try to explain why there’s a warning. Generally your code will still work, but with some caveats. For example, you will see in Chapter <a href="viz.html#viz">12</a> if you create a scatterplot based on a dataset where one of the values is missing, you will see this warning: <code>Warning: Removed 1 rows containing missing values (geom_point)</code>. R will still produce the scatterplot with all the remaining values, but it is warning you that one of the points isn’t there.</li>
+<li><strong>Messages</strong>: When the red text doesn’t start with either “Error” or “Warning”, it’s <em>just a friendly message</em>. You’ll see these messages when you load <em>R packages</em> in the upcoming Subsection <a href="getting-started.html#package-loading">11.6.2</a> or when you read data saved in spreadsheet files with the <code>read_csv()</code> function as you’ll see in Chapter <a href="#tidy"><strong>??</strong></a>. These are helpful diagnostic messages and they don’t stop your code from working. Additionally, you’ll see these messages when you install packages too using <code>install.packages()</code>.</li>
+</ul>
+<div class="blackbox">
+<div class="center">
+<p><strong>Important!</strong></p>
+</div>
+<p>When you see red text in the console, <em>don’t panic</em>! Just check out what it could be.</p>
+</div>
+<p>Remember, when you see red text in the console, <em>don’t panic</em>. It doesn’t necessarily mean anything is wrong. Rather:</p>
+<ul>
+<li>If the text starts with “Error”, figure out what’s causing it. <span style="color:red">Think of errors as a red traffic light: something is wrong!</span></li>
+<li>If the text starts with “Warning”, figure out if it’s something to worry about. For instance, if you get a warning about missing values in a scatterplot and you know there are missing values, you’re fine. If that’s surprising, look at your data and see what’s missing. <span style="color:gold">Think of warnings as a yellow traffic light: everything is working fine, but watch out/pay attention.</span></li>
+<li>Otherwise the text is just a message. Read it, wave back at R, and thank it for talking to you. <span style="color:green">Think of messages as a green traffic light: everything is working fine.</span></li>
+</ul>
+</div>
+<div id="tips-on-learning-to-code" class="section level3 hasAnchor" number="11.5.2">
+<h3><span class="header-section-number">11.5.2</span> Tips on learning to code<a href="getting-started.html#tips-on-learning-to-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Learning to code/program is very much like learning a foreign language, it can be very daunting and frustrating at first. Such frustrations are very common and it is very normal to feel discouraged as you learn. However just as with learning a foreign language, if you put in the effort and are not afraid to make mistakes, anybody can learn.</p>
+<p>Here are a few useful tips to keep in mind as you learn to program:</p>
+<ul>
+<li><strong>Remember that computers are not actually that smart</strong>: You may think your computer or smartphone are “smart,” but really people spent a lot of time and energy designing them to appear “smart.” Rather you have to tell a computer everything it needs to do. Furthermore the instructions you give your computer can’t have any mistakes in them, nor can they be ambiguous in any way.</li>
+<li><strong>Take the “copy, paste, and tweak” approach</strong>: Especially when learning your first programming language, it is often much easier to taking existing code that you know works and modify it to suit your ends, rather than trying to write new code from scratch. We call this the <em>copy, paste, and tweak</em> approach. So early on, we suggest not trying to write code from memory, but rather take existing examples we have provided you, then copy, paste, and tweak them to suit your goals. Don’t be afraid to play around!</li>
+<li><strong>The best way to learn to code is by doing</strong>: Rather than learning to code for its own sake, we feel that learning to code goes much smoother when you have a goal in mind or when you are working on a particular project, like analyzing data that you are interested in.</li>
+<li><strong>Practice is key</strong>: Just as the only method to improving your foreign language skills is through practice, practice, and practice; so also the only method to improving your coding is through practice, practice, and practice. Don’t worry however; we’ll give you plenty of opportunities to do so!</li>
+</ul>
+</div>
+</div>
+<div id="packages" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> What are R packages?<a href="getting-started.html#packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another point of confusion with many new R users is the idea of an R package. R packages extend the functionality of R by providing additional functions, data, and documentation. They are written by a world-wide community of R users and can be downloaded for free from the internet. For example, among the many packages we will use in this book are the <code>ggplot2</code> package for data visualization which we will cover later (or you can check <a href="https://nulib.github.io/moderndive_book/2-viz.html">here</a>) or the <code>dplyr</code> package for data wrangling (again, we will cover later, but check <a href="https://nulib.github.io/moderndive_book/3-wrangling.html#needed-packages-1">this</a> if you want to know more).</p>
+<p>A good analogy for R packages is they are like apps you can download onto a mobile phone:</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">R: A new phone</th>
+<th align="center">R Packages: Apps you can download</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="images/iphone.jpg" style="height:1.5in" /></td>
+<td align="center"><img src="images/apps.jpg" style="height:1.5in" /></td>
+</tr>
+</tbody>
+</table>
+<p>So R is like a new mobile phone: while it has a certain amount of features when you use it for the first time, it doesn’t have everything. R packages are like the apps you can download onto your phone from Apple’s App Store or Android’s Google Play.</p>
+<p>Let’s continue this analogy by considering the Instagram app for editing and sharing pictures. Say you have purchased a new phone and you would like to share a recent photo you have taken on Instagram. You need to:</p>
+<ol style="list-style-type: decimal">
+<li><em>Install the app</em>: Since your phone is new and does not include the Instagram app, you need to download the app from either the App Store or Google Play. You do this once and you’re set. You might do this again in the future any time there is an update to the app.</li>
+<li><em>Open the app</em>: After you’ve installed Instagram, you need to open the app.</li>
+</ol>
+<p>Once Instagram is open on your phone, you can then proceed to share your photo with your friends and family. The process is very similar for using an R package. You need to:</p>
+<ol style="list-style-type: decimal">
+<li><em>Install the package</em>: This is like installing an app on your phone. Most packages are not installed by default when you install R and RStudio. Thus if you want to use a package for the first time, you need to install it first. Once you’ve installed a package, you likely won’t install it again unless you want to update it to a newer version.</li>
+<li><em>“Load” the package</em>: “Loading” a package is like opening an app on your phone. Packages are not “loaded” by default when you start RStudio on your computer; you need to “load” each package you want to use every time you start RStudio.</li>
+</ol>
+<p>Let’s now show you how to perform these two steps for the <code>ggplot2</code> package for data visualization.</p>
+<div id="package-installation" class="section level3 hasAnchor" number="11.6.1">
+<h3><span class="header-section-number">11.6.1</span> Package installation<a href="getting-started.html#package-installation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For the most part, in Posit Cloud, I will pre-install the packages you are going to need to use. But just in case you also want to work on your own machine, or install your own packages, here I explain that a bit more. There are two ways to install an R package. For example, to install the <code>ggplot2</code> package:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Easy way</strong>: In the Files pane of RStudio/Posit Cloud:
+<ol style="list-style-type: lower-alpha">
+<li>Click on the “Packages” tab</li>
+<li>Click on “Install”</li>
+<li>Type the name of the package under “Packages (separate multiple with space or comma):” In this case, type <code>ggplot2</code></li>
+<li>Click “Install”<br />
+<img src="images/install_packages_easy_way.png" style="height:4in" /></li>
+</ol></li>
+<li><strong>Slightly harder way</strong>: An alternative but slightly less convenient way to install a package is by typing <code>install.packages("ggplot2")</code> in the Console pane of RStudio and hitting enter. Note you must include the quotation marks.</li>
+</ol>
+<p>Much like an app on your phone, you only have to install a package once. However, if you want to update an already installed package to a newer verions, you need to re-install it by repeating the above steps.</p>
+<div class="learncheck">
+<p>
+<strong><em>Learning check</em></strong>
+</p>
+</div>
+<strong>(LC2.1)</strong> Repeat the above installing steps, but for the <code>dplyr</code>, and <code>knitr</code> packages. This will install the earlier mentioned <code>dplyr</code> package, and the <code>knitr</code> package for writing reports in R.
+<div class="learncheck">
+
+</div>
+</div>
+<div id="package-loading" class="section level3 hasAnchor" number="11.6.2">
+<h3><span class="header-section-number">11.6.2</span> Package loading<a href="getting-started.html#package-loading" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recall that after you’ve installed a package, you need to “load” it, in other words open it. We do this by using the <code>library()</code> command. For example, to load the <code>ggplot2</code> package, run the following code in the Console pane. What do we mean by “run the following code”? Either type or copy &amp; paste the following code into the Console pane and then hit the enter key.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="getting-started.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>If after running the above code, a blinking cursor returns next to the <code>&gt;</code> “prompt” sign, it means you were successful and the <code>ggplot2</code> package is now loaded and ready to use. If however, you get a red “error message” that reads…</p>
+<pre><code>Error in library(ggplot2) : there is no package called ‘ggplot2’</code></pre>
+<p>… it means that you didn’t successfully install it. In that case, go back to the previous subsection “Package installation” and install it.</p>
+<div class="learncheck">
+<p>
+<strong><em>Learning check</em></strong>
+</p>
+</div>
+<strong>(LC2.2)</strong> “Load” the <code>dplyr</code>, and <code>knitr</code> packages as well by repeating the above steps.
+<div class="learncheck">
+
+</div>
+</div>
+<div id="package-use" class="section level3 hasAnchor" number="11.6.3">
+<h3><span class="header-section-number">11.6.3</span> Package use<a href="getting-started.html#package-use" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One extremely common mistake new R users make when wanting to use particular packages is that they forget to “load” them first by using the <code>library()</code> command we just saw. Remember: <em>you have to load each package you want to use every time you start RStudio.</em> If you don’t first “load” a package, but attempt to use one of its features, you’ll see an error message similar to:</p>
+<pre><code>Error: could not find function</code></pre>
+<p>R is telling you that you are trying to use a function in a package that has not yet been “loaded.” Almost all new users forget do this when starting out, and it is a little annoying to get used to. However, you’ll remember with pratice.</p>
+</div>
+</div>
+<div id="hands-on-exercise" class="section level2 hasAnchor" number="11.7">
+<h2><span class="header-section-number">11.7</span> Hands-on exercise!<a href="getting-started.html#hands-on-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mobilitydata" class="section level3 hasAnchor" number="11.7.1">
+<h3><span class="header-section-number">11.7.1</span> Explore your first dataset: economic mobility in the US<a href="getting-started.html#mobilitydata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s put everything we’ve learned so far into practice and start exploring some real data! These “spreadsheet”-type datasets are called <em>data frames</em> in R; we will focus on working with data saved as data frames throughout this course.</p>
+<p>Step 1: Load all the packages needed for this exercise (assuming you’ve already installed them).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="getting-started.html#cb5-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="getting-started.html#cb5-2" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb5-3"><a href="getting-started.html#cb5-3" tabindex="-1"></a>atlas <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">gzcon</span>(<span class="fu">url</span>(<span class="st">&quot;https://raw.githubusercontent.com/jrm87/ECO3253_fall2023/master/data/atlas.rds&quot;</span>)))</span>
+<span id="cb5-4"><a href="getting-started.html#cb5-4" tabindex="-1"></a>atlas<span class="ot">&lt;-</span><span class="fu">tibble</span>(atlas)</span></code></pre></div>
+</div>
+<div id="economic-mobility-data" class="section level3 hasAnchor" number="11.7.2">
+<h3><span class="header-section-number">11.7.2</span> Economic mobility data<a href="getting-started.html#economic-mobility-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <a href="https://www.opportunityatlas.org/">Opportunity Atlas</a> is a freely available interactive mapping tool that traces the roots of outcomes such as poverty and incarceration back to the neighborhoods in which children grew up. The <code>atlas</code> dataset we loaded has the underlying data to describe equality of opportunity across the 73,278 different neighborhoods in the United States.</p>
+<p>Let’s unpack these data a bit more!</p>
+</div>
+<div id="atlas-data-frame" class="section level3 hasAnchor" number="11.7.3">
+<h3><span class="header-section-number">11.7.3</span> <code>atlas</code> data frame<a href="getting-started.html#atlas-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will begin by exploring the <code>atlas</code> data frame we just loaded to get an idea of its structure. Run the following code in your console (either by typing it or cutting &amp; pasting it): it loads the <code>atlas</code> dataset into your Console. Note depending on the size of your monitor, the output may vary slightly.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="getting-started.html#cb6-1" tabindex="-1"></a>atlas</span></code></pre></div>
+<pre><code>## # A tibble: 73,278 × 62
+##    tract county state    cz czname     hhinc_mean2000 mean_commutetime2000
+##    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt;                &lt;dbl&gt;
+##  1 20100      1     1 11101 Montgomery         68639.                 26.2
+##  2 20200      1     1 11101 Montgomery         57243.                 24.8
+##  3 20300      1     1 11101 Montgomery         75648.                 25.3
+##  4 20400      1     1 11101 Montgomery         74852.                 23.0
+##  5 20500      1     1 11101 Montgomery         96175.                 26.2
+##  6 20600      1     1 11101 Montgomery         68096.                 21.6
+##  7 20700      1     1 11101 Montgomery         65182.                 23.2
+##  8 20801      1     1 11101 Montgomery         76874.                 30.3
+##  9 20802      1     1 11101 Montgomery         77310.                 30.7
+## 10 20900      1     1 11101 Montgomery         66234.                 36.4
+## # ℹ 73,268 more rows
+## # ℹ 55 more variables: frac_coll_plus2010 &lt;dbl&gt;, frac_coll_plus2000 &lt;dbl&gt;,
+## #   foreign_share2010 &lt;dbl&gt;, med_hhinc2016 &lt;dbl&gt;, med_hhinc1990 &lt;dbl&gt;,
+## #   popdensity2000 &lt;dbl&gt;, poor_share2010 &lt;dbl&gt;, poor_share2000 &lt;dbl&gt;,
+## #   poor_share1990 &lt;dbl&gt;, share_black2010 &lt;dbl&gt;, share_hisp2010 &lt;dbl&gt;,
+## #   share_asian2010 &lt;dbl&gt;, share_black2000 &lt;dbl&gt;, share_white2000 &lt;dbl&gt;,
+## #   share_hisp2000 &lt;dbl&gt;, share_asian2000 &lt;dbl&gt;, gsmn_math_g3_2013 &lt;dbl&gt;, …</code></pre>
+<p>Let’s unpack this output:</p>
+<ul>
+<li><code>A tibble: 73,278 x 62</code>: A <code>tibble</code> is a kind of data frame used in R. This particular data frame has
+<ul>
+<li><code>73,278</code> rows (one for each neighborhood)</li>
+<li><code>62</code> columns corresponding to 62 variables describing each observation (e.g. neighborhood in this case)</li>
+</ul></li>
+<li><code>tract county state cz czname hhinc_mean2000 mean_commutetime2000 ...</code> are different columns, in other words variables, of this data frame.</li>
+<li>We then have the first 10 rows of observations corresponding to 10 neighborhoods.</li>
+<li><code>... with 73,268 more rows, and 52 more variables:</code> indicating to us that 73,268 more rows of data and 52 more variables could not fit in this screen.</li>
+</ul>
+<p>Unfortunately, this output does not allow us to explore the data very well. Let’s look at different tools to explore data frames.</p>
+</div>
+<div id="exploredataframes" class="section level3 hasAnchor" number="11.7.4">
+<h3><span class="header-section-number">11.7.4</span> Exploring data frames<a href="getting-started.html#exploredataframes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Among the many ways of getting a feel for the data contained in a data frame such as <code>atlas</code>, we present three functions that take as their “argument”, in other words their input, the data frame in question. We also include a fourth method for exploring one particular column of a data frame:</p>
+<ol style="list-style-type: decimal">
+<li>Using the <code>View()</code> function built for use in RStudio. We will use this the most.</li>
+<li>Using the <code>glimpse()</code> function, which is included in the <code>dplyr</code> package.</li>
+<li>Using the <code>$</code> operator to view a single variable in a data frame.</li>
+</ol>
+<p><strong>1. <code>View()</code></strong>:</p>
+<p>Run <code>View(atlas)</code> in your Console in RStudio, either by typing it or cutting &amp; pasting it into the Console pane, and explore this data frame in the resulting pop-up viewer. You should get into the habit of always <code>View</code>ing any data frames that come your way. Note the capital “V” in <code>View</code>. R is case-sensitive so you’ll receive an error is you run <code>view(atlas)</code> instead of <code>View(atlas)</code>.</p>
+<div class="learncheck">
+<p>
+<strong><em>Learning check</em></strong>
+</p>
+</div>
+<p><strong>(LC2.3)</strong> What does any <em>ONE</em> row in this <code>atlas</code> dataset refer to?</p>
+<ul>
+<li>A. Data on an neighborhood</li>
+<li>B. Data on a state</li>
+<li>C. Data on an person</li>
+<li>D. Data on multiple neighborhood</li>
+</ul>
+<div class="learncheck">
+
+</div>
+<p>By running <code>View(atlas)</code>, we see the different <em>variables</em> listed in the columns and we see that there are different types of variables. Some of the variables like <code>poor_share2010</code>, <code>hhinc_mean2000</code>, and <code>share_hisp2010</code> are what we will call <em>quantitative</em> variables. These variables are numerical in nature. Other variables, like <code>tract</code> are <em>categorical</em>: they are just names (even if they have numbers). For example <code>tract</code> represents a Tract FIPS Code, that is, a 6-digit code assigned by the census folks to each neighborhood in 2010.</p>
+<p>Note that if you look in the leftmost column of the <code>View(atlas)</code> output, you will see a column of numbers. These are the row numbers of the dataset. If you glance across a row with the same number, say row 5, you can get an idea of what each row corresponds to.</p>
+<p><strong>2. <code>glimpse()</code></strong>:</p>
+<p>The second way to explore a data frame is using the <code>glimpse()</code> function included in the <code>dplyr</code> package. Thus, you can only use the <code>glimpse()</code> function after you’ve loaded the <code>dplyr</code> package. This function provides us with an alternative method for exploring a data frame:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="getting-started.html#cb8-1" tabindex="-1"></a><span class="fu">glimpse</span>(atlas)</span></code></pre></div>
+<pre><code>## Rows: 73,278
+## Columns: 62
+## $ tract                        &lt;dbl&gt; 20100, 20200, 20300, 20400, 20500, 20600,…
+## $ county                       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3,…
+## $ state                        &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ cz                           &lt;dbl&gt; 11101, 11101, 11101, 11101, 11101, 11101,…
+## $ czname                       &lt;chr&gt; &quot;Montgomery&quot;, &quot;Montgomery&quot;, &quot;Montgomery&quot;,…
+## $ hhinc_mean2000               &lt;dbl&gt; 68639, 57243, 75648, 74852, 96175, 68096,…
+## $ mean_commutetime2000         &lt;dbl&gt; 26.2, 24.8, 25.3, 23.0, 26.2, 21.6, 23.2,…
+## $ frac_coll_plus2010           &lt;dbl&gt; 0.2544, 0.2672, 0.1642, 0.2527, 0.3751, 0…
+## $ frac_coll_plus2000           &lt;dbl&gt; 0.1565, 0.1469, 0.2244, 0.2305, 0.3212, 0…
+## $ foreign_share2010            &lt;dbl&gt; 0.00995, 0.01634, 0.02710, 0.01508, 0.046…
+## $ med_hhinc2016                &lt;dbl&gt; 66000, 41107, 51250, 52704, 52463, 63750,…
+## $ med_hhinc1990                &lt;dbl&gt; 27375, 19000, 29419, 37891, 41516, 29000,…
+## $ popdensity2000               &lt;dbl&gt; 195.72, 566.38, 624.20, 713.80, 529.93, 4…
+## $ poor_share2010               &lt;dbl&gt; 0.1050, 0.1476, 0.0804, 0.0632, 0.0596, 0…
+## $ poor_share2000               &lt;dbl&gt; 0.1268, 0.2271, 0.0766, 0.0455, 0.0368, 0…
+## $ poor_share1990               &lt;dbl&gt; 0.0989, 0.1983, 0.1140, 0.0679, 0.0547, 0…
+## $ share_black2010              &lt;dbl&gt; 0.1192, 0.5650, 0.1980, 0.0467, 0.1397, 0…
+## $ share_hisp2010               &lt;dbl&gt; 0.02301, 0.03456, 0.02579, 0.01938, 0.032…
+## $ share_asian2010              &lt;dbl&gt; 0.004707, 0.002304, 0.004744, 0.003648, 0…
+## $ share_black2000              &lt;dbl&gt; 0.0755, 0.6221, 0.1491, 0.0259, 0.0601, 0…
+## $ share_white2000              &lt;dbl&gt; 0.897, 0.355, 0.820, 0.938, 0.897, 0.799,…
+## $ share_hisp2000               &lt;dbl&gt; 0.00625, 0.00846, 0.01647, 0.02217, 0.015…
+## $ share_asian2000              &lt;dbl&gt; 0.003644, 0.003171, 0.003893, 0.007288, 0…
+## $ gsmn_math_g3_2013            &lt;dbl&gt; 2.76, 2.76, 2.76, 2.76, 2.76, 2.76, 2.76,…
+## $ rent_twobed2015              &lt;dbl&gt; NA, 907, 583, 713, 923, 765, 645, 532, 67…
+## $ singleparent_share2010       &lt;dbl&gt; 0.1139, 0.4885, 0.2281, 0.2275, 0.2597, 0…
+## $ singleparent_share1990       &lt;dbl&gt; 0.1812, 0.3525, 0.1259, 0.1268, 0.0744, 0…
+## $ singleparent_share2000       &lt;dbl&gt; 0.251, 0.393, 0.245, 0.191, 0.168, 0.289,…
+## $ traveltime15_2010            &lt;dbl&gt; 0.2730, 0.1520, 0.2055, 0.3507, 0.2505, 0…
+## $ emp2000                      &lt;dbl&gt; 0.567, 0.493, 0.579, 0.597, 0.661, 0.643,…
+## $ mail_return_rate2010         &lt;dbl&gt; 83.5, 81.3, 79.5, 83.5, 77.3, 82.8, 83.2,…
+## $ ln_wage_growth_hs_grad       &lt;dbl&gt; 0.03823, 0.08931, -0.17774, -0.07231, -0.…
+## $ jobs_total_5mi_2015          &lt;dbl&gt; 10109, 9948, 10387, 12933, 12933, 9193, 1…
+## $ jobs_highpay_5mi_2015        &lt;dbl&gt; 3396, 3328, 3230, 3635, 3635, 3052, 3389,…
+## $ nonwhite_share2010           &lt;dbl&gt; 0.1627, 0.6111, 0.2476, 0.0812, 0.2162, 0…
+## $ popdensity2010               &lt;dbl&gt; 504.8, 1682.2, 1633.4, 1780.0, 2446.3, 11…
+## $ ann_avg_job_growth_2004_2013 &lt;dbl&gt; -0.00677, -0.00425, 0.01422, -0.01984, 0.…
+## $ job_density_2013             &lt;dbl&gt; 92.133, 971.318, 340.920, 207.386, 800.27…
+## $ kfr_natam_p25                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ kfr_natam_p75                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ kfr_natam_p100               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ kfr_asian_p25                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ kfr_asian_p75                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ kfr_asian_p100               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ kfr_black_p25                &lt;dbl&gt; 26819, 18138, 20515, 12883, 26594, 19108,…
+## $ kfr_black_p75                &lt;dbl&gt; 45926, 33842, 34133, 40334, 42575, 26062,…
+## $ kfr_black_p100               &lt;dbl&gt; 84690, 60512, 56516, 105250, 72565, 35737…
+## $ kfr_hisp_p25                 &lt;dbl&gt; NA, NA, NA, 26363, 17234, NA, NA, NA, 329…
+## $ kfr_hisp_p75                 &lt;dbl&gt; NA, NA, NA, 67532, 44642, NA, NA, NA, 655…
+## $ kfr_hisp_p100                &lt;dbl&gt; NA, NA, NA, NA, 93976, NA, NA, NA, 147274…
+## $ kfr_pooled_p25               &lt;dbl&gt; 27621, 22303, 28215, 33331, 34633, 23583,…
+## $ kfr_pooled_p75               &lt;dbl&gt; 51531, 46650, 50754, 52337, 57007, 47735,…
+## $ kfr_pooled_p100              &lt;dbl&gt; 78922, 74225, 76055, 72586, 81792, 75188,…
+## $ kfr_white_p25                &lt;dbl&gt; 30328, 42189, 33670, 34181, 39540, 27835,…
+## $ kfr_white_p75                &lt;dbl&gt; 50820, 54239, 51579, 52848, 58699, 51198,…
+## $ kfr_white_p100               &lt;dbl&gt; 75126, 66646, 71991, 74330, 80415, 80144,…
+## $ count_pooled                 &lt;dbl&gt; 519, 530, 960, 1123, 1867, 994, 772, 632,…
+## $ count_white                  &lt;dbl&gt; 457, 173, 774, 1033, 1626, 756, 630, 523,…
+## $ count_black                  &lt;dbl&gt; 42, 336, 151, 40, 137, 198, 111, 89, 290,…
+## $ count_asian                  &lt;dbl&gt; 3, 1, 1, 6, 13, 2, 1, 1, 5, 0, 0, 0, 0, 3…
+## $ count_hisp                   &lt;dbl&gt; 4, 5, 21, 37, 39, 19, 14, 9, 29, 17, 7, 3…
+## $ count_natam                  &lt;dbl&gt; 6, 1, 2, 0, 8, 2, 9, 1, 5, 4, 8, 3, 20, 8…</code></pre>
+<p>We see that <code>glimpse()</code> will give you the first few entries of each variable in a row after the variable. In addition, the <em>data type</em> of the variable is given immediately after each variable’s name inside <code>&lt; &gt;</code>. Here, <code>int</code> and <code>dbl</code> refer to “integer” and “double”, which are computer coding terminology for quantitative/numerical variables. In contrast, <code>chr</code> refers to “character”, which is computer terminology for text data. Text data, such as the <code>czname</code> (the name of the metro area), are categorical variables.</p>
+<p><strong>3. <code>$</code> operator</strong></p>
+<p>Lastly, the <code>$</code> operator allows us to explore a single variable within a data frame. For example, run the following in your console</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="getting-started.html#cb10-1" tabindex="-1"></a>atlas<span class="sc">$</span>tract</span></code></pre></div>
+<p>We used the <code>$</code> operator to extract only the <code>tract</code> variable and return it as a vector of length 73,278. We will only be occasionally exploring data frames using this operator, instead favoring the <code>View()</code> and <code>glimpse()</code> functions.</p>
+</div>
+</div>
+<div id="conclusion-1" class="section level2 hasAnchor" number="11.8">
+<h2><span class="header-section-number">11.8</span> Conclusion<a href="getting-started.html#conclusion-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ve given you what we feel are the most essential concepts to know before you can start exploring data in R. There is much more to explore in R but this is a great place to get started!</p>
+<div id="additional-resources" class="section level3 hasAnchor" number="11.8.1">
+<h3><span class="header-section-number">11.8.1</span> Additional resources<a href="getting-started.html#additional-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you want to dive more and feel you could benefit from a more detailed introduction, check this short book: <a href="https://rbasics.netlify.com/">Getting used to R, RStudio, and R Markdown</a> short book.</p>
+<p>It has screencast recordings that you can follow along and pause as you learn. Furthermore, there is an introduction to R Markdown, a tool used for reproducible research in R. We will see more about that in the next class.</p>
+<center>
+<img src="images/gettting-used-to-R.png" style="height:2.5in" />
+</center>
+</center>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>If you truly insist on getting more information, you can check this link explaining some of the basics: <a href="https://rstudio-education.github.io/hopr/basics.html" class="uri">https://rstudio-education.github.io/hopr/basics.html</a> ;but again, <strong>this is not required or expected</strong>.<a href="getting-started.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lec10_criminal-justice.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="viz.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jrm87/ECO3253_spring2026/edit/main/03-getting-started.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

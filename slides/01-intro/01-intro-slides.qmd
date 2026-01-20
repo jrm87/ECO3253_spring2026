@@ -1,0 +1,223 @@
+---
+title: "Intro to ECO 3253"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+# What is this course about?
+
+## This course
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+Welcome to **ECO 3253**!
+
+Big picture: 
+
+- How to use data to understand and solve current and important economic problems! 
+- Get a sense of research frontier in applied economics and social science (equality of opportunity and mobility, education, innovation and entrepreneurship, health care, climate change, and crime, etc) 
+
+- How will we get there? By doing 3 things:
+
+    1. covering the topics with a focus towards using data that can help answer these questions
+    2. understanding the intuition for how to use data to answer these questions (basics of statistical analysis)
+    3. using computational tools to help us with the statistical analysis (basics of R)
+
+## About me
+
+Let me briefly tell you about me: 
+
+- Colombian
+- PhD in Economics at [Duke University](https://econ.duke.edu/) in North Carolina
+- Masters in Economics at [Université Catholique de Louvain](https://uclouvain.be/en/faculties/espo/esl) in Belgium
+- Undergraduate in (you guessed it!) Economics at [Universidad Nacional de Colombia](https://unal.edu.co/). 
+- Applied (micro)economist: 
+    - 'micro': focus on specific markets (housing and media)
+    - 'applied': I use data all the time
+
+## Website
+
+We will have a cool website with the materials covered in class: 
+
+[https://jrm87.github.io/ECO3253_repo/](https://jrm87.github.io/ECO3253_repo/index.html)
+
+Info on blackboard. Write it down. Keep in in mind!
+
+## Topics to be covered - 1
+
+Lectures based on the [course](https://opportunityinsights.org/course/) by [Prof. Raj Chetty](https://rajchetty.com/).
+
+R: Chetty            |  Opportunity Atlas Course
+:-------------------------:|:-------------------------:
+![](../../images/chetty_pic.png){ height=1.7in }  |  ![](../../images/op_insight_screenshot.png){ height=1.7in }
+
+## Topics to be covered - 2
+
+The plan for what we will covered in the semester includes:
+
+- Geography of Upward Mobility in America
+- Causal Effects of Neighborhoods and Characteristics of High-Mobility Areas 
+- Historical and International Evidence on the Drivers of Inequality and Mobility
+- Upward Mobility, Innovation, and Growth
+- Higher Education and Upward Mobility
+- Primary education
+- Teachers and Charter Schools
+- Racial Disparities in Economic Opportunity
+- Improving judicial decisions
+- Immigration 
+- Political Economy
+- Income taxation
+- Savings and wealth
+- Housing markets and COVID
+- Intro to air and water pollution, and externalities
+
+## Data-driven course
+
+- Data driven, not just theoretical 
+- We will work with real world data, and we will try to make sense of it. 
+- Economics is much more empirical now than a few years ago
+
+## Number of data-driven articles in leading journals
+
+```{r fig_econJournals, fig.cap="Source: Mamermesh (JEL 2013)", echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/econ_journals_data_hamermesh13.png")
+```
+
+## What do we need to understand data? 
+
+How can we know if going to school increases wages? Or if economic mobility is low or high? 
+
+- Framework (basic stats and intuition)
+    - I will provide all the basic intuition for the empirical methods. These include: 
+         - Descriptive Data Analysis: correlation, regression
+         - Experiments: randomization, non-compliance
+         - Quasi-Experiments: regression discontinuity, difference-in-differences
+         - Machine Learning: prediction, overfitting, cross-validation
+
+- A powerful (and very cool) calculator: 
+    - **R** as our statistical software
+    - Will follow parts of the book [ModernDive](https://nulib.github.io/moderndive_book/index.html)
+    - I will guide you through it - does not matter if you have no experience with 'programming'
+    
+## Ok, but why R?
+
+- **R** is free and open source!
+- **R** has a vibrant online community!
+- **R** is very flexible and powerful — adaptable to nearly any task ( _e.g._, correlations, econometrics, spatial data analysis, machine learning, web scraping, data cleaning, website building, teaching.)
+- Employers like **R** over alternatives
+
+## Added benefits of learning R
+
+```{r, statistical languages, echo = F, fig.height = 6, fig.width = 9}
+# The popularity data
+pop_df <- data.frame(
+  lang = c("SQL", "Python", "R", "SAS", "Matlab", "SPSS", "Stata"),
+  n_jobs = c(107130, 66976, 48772, 25644, 11464, 3717, 1624),
+  free = c(T, T, T, F, F, F, F)
+)
+pop_df %<>% mutate(lang = lang %>% factor(ordered = T))
+# Plot it
+red_pink <- "#e64173"
+ggplot(data = pop_df, aes(x = lang, y = n_jobs, fill = free)) +
+geom_col() +
+geom_hline(yintercept = 0) +
+aes(x = reorder(lang, -n_jobs), fill = reorder(free, -free)) +
+xlab("Statistical language") +
+scale_y_continuous(label = scales::comma) +
+ylab("Number of jobs") +
+ggtitle(
+  "Comparing statistical languages",
+  subtitle = "Number of job postings on Indeed.com, 2019/01/06"
+) +
+scale_fill_manual(
+  "Free?",
+  labels = c("True", "False"),
+  values = c(red_pink, "darkslategray")
+) +
+theme_pander(base_size = 17) +
+theme(legend.position = "bottom")
+```
+
+## R, RStudio and Posit Cloud
+
+- We will talk more about R and RStudio next Monday. 
+- I will reach out with very simple instructions sometime this week. 
+- You will not have to install **anything** in your computer. 
+    - Will use cloud services. More on that later. 
+
+## Economic Concepts 
+
+Back to the content! We will cover and use several economic concepts you probably learned before. We will see them in practice:
+
+1.	Effects of price incentives
+2.	Supply and demand
+3.	Competitive equilibrium
+4.	Adverse selection
+5.	Behavioral economics vs. rational models
+
+## Grades
+
+```{r tableGrades, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
+tabl <- "
+| Activity              | Perc. Weight |
+| --------------------- | ------------ |
+| Project 0             | 5%          |
+| Projects              | 40%          |
+| Midterm               | 25%          |
+| Final                 | 25%          |
+| Lecture Attendance    | 5%          |
+| Class and lab participation | 5%          |
+| **Total**             | 105%          |
+"
+cat(tabl) # output the table in a format good for HTML/PDF/docx conversion
+```
+
+
+## Projects
+
+- A big part of the course 
+- **4 projects** through the semester
+- These are more involved than most homeworks you have probably worked on
+- Hands-on experience working with real data on real problems. 
+- To be submitted on Blackboard.
+- Start early!
+- Many new elements. You need time to try, fail, experiment. They are not hard, but require that you give yourself time!
+
+>Do not work on these projects just the day before! 

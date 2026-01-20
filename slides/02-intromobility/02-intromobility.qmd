@@ -1,0 +1,121 @@
+---
+title: "Equality of Opportunity"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+## Outline
+
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+1. Geographical Variation in Upward Mobility in America
+
+2. Causal Effects of Places vs. Sorting
+
+Lecture based primarily on the following paper:
+
+>Chetty, Friedman, Hendren, Jones, Porter. “The Opportunity Atlas: Mapping the Childhood Roots of Social Mobility” NBER WP, 2018
+
+# Geographical Variation in Upward Mobility
+
+## Differences in Opportunity Across Local Areas
+
+- How do children’s chances of moving up vary across areas in America?
+
+    - Are there some areas where kids do better than others?  If so, what lessons can we learn from them?
+
+- Recent studies have used big data to measure how upward mobility varies based on where children grow up
+
+## The Opportunity Atlas: Data Sources and Sample Definitions
+
+- Data sources: Anonymized Census data (2000, 2010, ACS) covering U.S. population linked to federal income tax returns from 1989-2015
+
+- Link children to parents based on dependent claiming on tax returns
+
+- Target sample: Children in 1978-83 birth cohorts who were born in the U.S. or are authorized immigrants who came to the U.S. in childhood
+
+- Analysis sample: 20.5 million children, 96% coverage rate of target sample
+
+
+## Measuring Parents’ and Children’s Incomes in Tax Data
+
+- Parents’ household incomes: average income reported on Form 1040 tax return from 1994-2000
+
+- Children’s incomes measured from tax returns in 2014-15 (ages 31-37)
+
+- Focus on percentile ranks in national distribution:
+
+- Rank children relative to others born in the same year and parents relative to other parents
+
+
+## Intergenerational Income Mobility for Children Raised in Chicago
+
+```{r fig_mob_chicago, fig.cap="Source: Chetty, Hendren, Kline, Saez 2014", echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/mob_chicago.png")
+```
+
+## Intergen. Mobility for Children Raised in Hypothetical Census Tract
+
+```{r fig_mob_hyptract, fig.cap="Source: Chetty, Hendren, Kline, Saez 2014", echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/mob_hyptract.png")
+```
+
+## Estimating Children’s Average Outcomes by Census Tract
+
+- Run a separate regression using data for children who grow up in each Census tract in America
+
+- In practice, many children move across areas in childhood
+
+- Weight children by fraction of childhood (up to age 23) spent in a given area
+
+
+## The Geography of Upward Mobility in the United States
+
+```{r mobCZ, fig.cap="Source: Chetty, Friedman, Hendren, Jones and Porter (2018)", echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/mobility_CZ_chetty18.png")
+```
+
+## Jump to Opportunity Atlas website
+
+- [https://www.opportunityatlas.org/](https://www.opportunityatlas.org/)
+
+- Explore Durham and San Antonio briefly
+

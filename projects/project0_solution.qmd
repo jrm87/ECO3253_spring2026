@@ -1,0 +1,201 @@
+---
+title: "Project 0 - Solution"
+author: "Jon Moreno-Medina"
+format: pdf
+editor: visual
+---
+
+## Question 1
+
+R code that calculate how much is the square root of 12.
+
+### Solution
+
+To estimate the square root of 12, we just use the code below, with the function `sqrt()`:
+
+```{r}
+sqrt(12)
+```
+
+## Question 2
+
+R code that loads the data for project 1 into a dataframe called 'atlas'.
+
+### Solution 
+
+As showed in class, we just need to go to the site of the course, and copy the line to load the data at the beginning of [Project 1](https://jrm87.github.io/ECO3253_fall2023/project1.html): 
+
+```{r}
+atlas <- readRDS(gzcon(url("https://raw.githubusercontent.com/jrm87/ECO3253_fall2023/master/data/atlas.rds")))
+```
+
+Here I will also show how the data looks in general, but using the function `head()`:
+
+```{r}
+head(atlas)
+```
+
+As can be seen, the data has 73,278 observations, one for each neighborhood in the US. It also includes 62 variables for each observation. 
+
+## Question 3
+
+R code that estimates the mean and standard deviation of the average income of children of parents in the percentile 25 and 75. 
+
+### Solution 
+
+Recall that in this dataset the average income of children with parents in percentile 25 and 75 are `kfr_pooled_p25`and `kfr_pooled_p25`, respectively. See the [Data Description of Project 1](https://jrm87.github.io/ECO3253_fall2023/project1.html#description).
+
+As showed in class (and in the [Cheat Sheet Section of Project 1](https://jrm87.github.io/ECO3253_fall2023/project1.html#cheatsheetproject1)), we just need to use the function `mean()` and `sd()`, along with the option for `na.rm=TRUE` so we do not include any missing data (or NAs) in the calculation. Perhaps the last thing to remember here is that to select all the whole vector of data in any one variable in a dataset, we can use the operator `$`, as follows. I will save each number, and then print it, but you could have just printed it directly.
+
+- The average income of children of parents in percentile 25 across the US is:
+```{r}
+avg_us_p25<-mean(atlas$kfr_pooled_p25, na.rm=TRUE)
+avg_us_p25
+```
+
+- The standard deviation of income of children of parents in percentile 25 across the US is:
+```{r}
+sd_us_p25<-sd(atlas$kfr_pooled_p25, na.rm=TRUE)
+sd_us_p25
+```
+
+- The average income of children of parents in percentile 25 across the US is:
+```{r}
+avg_us_p75<-mean(atlas$kfr_pooled_p75, na.rm=TRUE)
+avg_us_p75
+```
+
+- The standard deviation of income of children of parents in percentile 75 across the US is:
+```{r}
+sd_us_p75<-sd(atlas$kfr_pooled_p75, na.rm=TRUE)
+sd_us_p75
+```
+
+## Question 4
+
+A ggplot graphic showing the distribution of the variables above across the US, Texas, Utah and South Carolina.
+
+### Solution
+
+As showed in the [Section on Data Visualization](https://jrm87.github.io/ECO3253_fall2023/viz.html), we need to use the package `ggplot2`, and use the syntax for a histogram as follows. Also, I left an example in the Project 'test_project' in Posit Cloud, in the file `data_analysis.R` for you to look at to serve as the basis. 
+
+I will first load the package (this will only work if the package has already been installed in this project): 
+```{r}
+library(ggplot2)
+```
+
+#### US Data - P25
+
+To evaluate the data across the US, we just need to keep using our `atlas` dataset, as it includes all the neighborhoods in the country. 
+Now, let's show the histogram of mobility for children with low income parents, `kfr_pooled_p25`:
+
+```{r}
+# if you want the histogram, you can do this: 
+ggplot(data = atlas, aes(x=kfr_pooled_p25))+
+  geom_histogram()
+
+# this is a nicer version of the one above: 
+ggplot(data = atlas, aes(x=kfr_pooled_p25))+
+  geom_histogram(color = "white", fill = "steelblue")
+```
+
+**Note:** The above two plots represent the same info, but the second looks prettier to me than the first. I will use similar code as in the second going forward, but you could have showed the simple version too. It's up to you. 
+
+Regarding the interpretation, we can see that most neighborhoods provide an average income similar to the average neighborhood in the US (\$34,443), but a few have very low income mobility (just over \$15,000), while some other rare neighborhoods have a large measurement of mobility (over \$50,000). Recall that this is the average income for children with parents with the same income level. This is a remarkable range in opportunity across the US geography that we see here in the data. 
+
+#### Texas Data - P25
+
+Let's define a dataset with just the observations from TX. Recall that these are defined by the variable `state==48`. (You can find the whole list by state [here](https://www.bls.gov/respondents/mwr/electronic-data-interchange/appendix-d-usps-state-abbreviations-and-fips-codes.htm) - I just googled it, by the way.)
+
+To filter the data like that, I need to use pipes (`%>%`), which require us to load the package `dplyr`. So let's do that first.
+
+```{r}
+library(dplyr)
+```
+Ok, now let's select the observations for Texas in a new dataset that I will call `texas_atlas`:
+
+```{r}
+texas_atlas<-atlas%>%
+  filter(state==48)
+```
+
+Now, let's look at the distribution of mobility in Texas: 
+
+```{r}
+ggplot(data = texas_atlas, aes(x=kfr_pooled_p25))+
+  geom_histogram(color = "white", fill = "steelblue")
+```
+
+#### Utah Data - P25
+
+For Utah, we do pretty much the same thing, now choosing the appropriate filter: 
+
+```{r}
+utah_atlas<-atlas%>%
+  filter(state==49)
+```
+
+Now, let's look at the distribution of mobility in Texas: 
+
+```{r}
+ggplot(data = utah_atlas, aes(x=kfr_pooled_p25))+
+  geom_histogram(color = "white", fill = "steelblue")
+```
+
+#### South Carolina Data -P25
+
+Same for South Carolina:
+
+```{r}
+sc_atlas<-atlas%>%
+  filter(state==45)
+```
+
+Now, let's look at the distribution of mobility in Texas: 
+
+```{r}
+ggplot(data = sc_atlas, aes(x=kfr_pooled_p25))+
+  geom_histogram(color = "white", fill = "steelblue")
+```
+
+#### US Data - P75
+
+Now, for the mobility of those children of high income parents (those in percentile 75), we do not need to define any of our data again. Just plot the correct variable and database. 
+
+```{r}
+ggplot(data = atlas, aes(x=kfr_pooled_p75))+
+  geom_histogram(color = "white", fill = "steelblue")
+```
+
+#### Texas Data - P75
+
+```{r}
+ggplot(data = texas_atlas, aes(x=kfr_pooled_p75))+
+  geom_histogram(color = "white", fill = "steelblue")
+```
+
+#### Utah Data - P75
+
+```{r}
+ggplot(data = utah_atlas, aes(x=kfr_pooled_p75))+
+  geom_histogram(color = "white", fill = "steelblue")
+```
+
+#### South Carolina Data - P75
+
+```{r}
+ggplot(data = sc_atlas, aes(x=kfr_pooled_p75))+
+  geom_histogram(color = "white", fill = "steelblue")
+```
+
+## Question 5
+
+A simple description of what you see in those numbers and in those plots.
+
+### Solution
+
+Overall, the distribution of income of children of low income parents in TX looks to be centered around 36,000 or so, similar to the overall US. In contrast, the distribution in Utah seems centered around 40,000, while that in South Carolina around 30,000 or even lower. These plots show that economic opportunity in Utah is on average likely better than in the overall US, while in South Carolina the reverse seems to happen. 
+
+The plots for the distribution for income of children of high income parents tell a similar story, although a bit more nuanced. Overall, it looks like Utah provides higher economic mobility both for children of low and high income parents, while South Carolina has lower mobility for both children of low and high income parents as well. 
+
+We will explore these issues further in class, and in Project 1. 
