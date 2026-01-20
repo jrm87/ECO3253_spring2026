@@ -1,0 +1,29 @@
+delete_merged_file: true
+output_dir: "docs"
+language:
+  ui:
+    chapter_name: "Chapter "
+rmd_files: [
+  "index.Rmd",
+  "00-schedule.Rmd",
+  "01-intro.Rmd",
+  "02-causaleff-neigh.Rmd",
+  "03-mto-placebased.Rmd",
+  "04-mob-hist-int.Rmd",
+  "05-mob-ed.Rmd",
+  "06-ed-higher.Rmd",
+  "07-k12.Rmd",
+  "08-teachers-charters.Rmd",
+  "09-race-ineq.Rmd",
+  "10-criminal-justice.Rmd",
+  "03-getting-started.Rmd",
+  "02-visualization.Rmd",
+  "03-wrangling.Rmd",
+  "05-regression.Rmd",
+  "06-rmarkdown.Rmd",
+  "91-appendixA.Rmd",
+  "project1.Rmd",
+  "project2.Rmd",
+  "project3.Rmd",
+  "project4.Rmd"
+]

@@ -1,0 +1,395 @@
+---
+title: "Racial Disparities"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+      slide-level: 2
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+## Plan for today
+
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+- Intergenerational Perspective of Racial Disparities
+
+# An Intergenerational Perspective on Racial Disparities
+
+## Median Household Income by Race and Ethnicity in 2016
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/medianhhinc2016_race.png")
+```
+
+## An Intergenerational Perspective on Racial Disparities
+
+- Most prior work has studied racial disparities within a single generation
+
+- We will take an intergenerational perspective, focusing on dynamics of income across generations
+
+- Intergenerational approach sheds light on which disparities will persist in the long run and allows us to isolate the factors that drive persistent gaps
+
+    - Methods: dynamics of income and steady states
+
+## Intergenerational Mobility in the United States
+
+Mean Child Household Income Rank vs. Parent Household Income Rank
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob1.png")
+```
+
+## Convergence in Black-White Gap if Intergenerational Mobility is Race-Invariant
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob2.png")
+```
+
+
+## Convergence in Black-White Gap if Intergenerational Mobility is Race-Invariant
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob3.png")
+```
+
+## Convergence in Black-White Gap if Intergenerational Mobility is Race-Invariant
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob4.png")
+```
+
+## Convergence in Black-White Gap if Intergenerational Mobility is Race-Invariant
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob5.png")
+```
+
+## Convergence in Black-White Gap if Intergenerational Mobility is Race-Invariant
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob6.png")
+```
+
+## Convergence in Black-White Gap if Intergenerational Mobility is Race-Invariant
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob7.png")
+```
+
+## Convergence in Black-White Gap if Intergenerational Mobility is Race-Invariant
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob8.png")
+```
+
+
+## Intergenerational Mobility for Whites vs. Blacks
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob_b_w1.png")
+```
+
+
+## Intergenerational Mobility for Whites vs. Blacks
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob_b_w2.png")
+```
+
+
+## Intergenerational Mobility for Whites vs. Blacks
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob_b_w3.png")
+```
+
+## Intergenerational Mobility for Whites vs. Blacks
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob_b_w4.png")
+```
+
+## Intergenerational Mobility for Whites vs. Blacks
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/mob_b_w5.png")
+```
+
+## Mean Child Income Rank vs. Parent Income Rank by Race and Ethnicity
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/rank_parent_child_race1.png")
+```
+
+## Mean Child Income Rank vs. Parent Income Rank by Race and Ethnicity
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/rank_parent_child_race2.png")
+```
+
+## Mean Child Income Rank vs. Parent Income Rank by Race and Ethnicity
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/rank_parent_child_race3.png")
+```
+
+## Mean Child Income Rank vs. Parent Income Rank by Race and Ethnicity
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/rank_parent_child_race4.png")
+```
+
+## Current Mean Ranks vs. Predicted Ranks in Steady State, by Race
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/predicted_ss.png")
+```
+
+## Intergenerational Persistence of Racial Disparities
+
+- Black Americans are close to their long-run steady-state 
+
+    - Suggests that intergenerational gaps (not transitory factors) drive most of the black-white gap today
+
+- Addressing the black-white gap therefore requires understanding sources of intergenerational gaps
+
+    - Why do black children earn less than white children who grow up in families with comparable incomes?
+
+## Gender Differences in Racial Gaps
+
+- First step in understanding this: examine differences by gender
+
+- Focus on individual (own) income for this analysis, excluding spousal income
+
+## Black-White Gap in Child Individual Income Rank vs. Parent Income Rank
+
+Male Children
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec9_race_ineq/b_w_male.png")
+```
+
+## Black-White Gap in Child Individual Income Rank vs. Parent Income Rank
+
+Female Children
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec9_race_ineq/b_w_female.png")
+```
+
+## Employment Rates vs. Parent Income Rank
+
+Male Children
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec9_race_ineq/b_w_male_employment.png")
+```
+
+## Employment Rates vs. Parent Income Rank
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec9_race_ineq/b_w_male_employment_all.png")
+```
+
+## Incarceration Rates vs. Parent Income Rank
+
+Male Children
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec9_race_ineq/b_w_male_incarceration.png")
+```
+
+## Incarceration Rates vs. Parent Income Rank
+
+Female Children
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec9_race_ineq/b_w_female_incarceration.png")
+```
+
+## Explaining the Black-White Intergenerational Income Gap
+
+Family-Level Factors:
+
+- Do family-level factors (e.g., parental wealth, education, etc.) explain the black-white intergenerational gap?
+
+    - No: Black men who grow up in two-parent families with comparable income, education, and wealth to white men still fare worse
+
+- Suggests that environmental factors beyond the family matter
+
+- Study the role of environmental factors by analyzing differences in black-white gaps across neighborhoods
+
+## The Geography of Upward Mobility in the United States
+
+```{r mobCZ, fig.cap="Source: Chetty, Friedman, Hendren, Jones and Porter (2018)", echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/mobility_CZ_chetty18.png")
+```
+
+## Two Americas: The Geography of Upward Mobility by Race
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec9_race_ineq/two_americas_b_w.png")
+```
+
+## Neighborhood Environments and the Black-White Gap
+
+- Commuting-zone level variation illuminates broad regional patterns but does not directly test for “neighborhood” effects
+
+- Blacks live in different neighborhoods from whites within CZs
+
+- Zoom in to examine variation across Census tracts
+
+## Variation in the Black-White Earnings Gap Across Tracts
+
+Four key results:
+
+1. Black boys have lower earnings than white boys in 99% of Census tracts in America, controlling for parental income
+
+## Variation in the Black-White Earnings Gap Across Tracts
+
+Four key results:
+
+1. Black boys have lower earnings than white boys in 99% of Census tracts in America, controlling for parental income
+
+2. Both black and white boys have better outcomes in “good” (e.g., low-poverty, higher rent) neighborhoods, but the black-white gap is bigger in such areas
+
+## Correlations between Tract-Level Characteristics and Incomes of Black vs. White Men
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec9_race_ineq/correlation_tract_men_b_w.png")
+```
+
+
+## Black – White Gap in Individual Income Ranks vs. Share Above Poverty Line
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec9_race_ineq/pov_w_b_gap.png")
+```
+
+## Variation in the Black-White Earnings Gap Across Tracts
+
+Four key results:
+
+1. Black boys have lower earnings than white boys in 99% of Census tracts in America, controlling for parental income
+
+2. Both black and white boys have better outcomes in “good” (e.g., low-poverty, higher rent) neighborhoods, but the black-white gap is bigger in such areas
+
+3. Within low-poverty areas, there are two factors associated with better outcomes for black boys and smaller gaps: greater father presence and less racial bias
+
+## Black-White Gap in Employment Rates vs. Father Presence
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec9_race_ineq/pov_w_b_gap2.png")
+```
+
+## Male-Female Gap in Employment Rates vs. Father Presence
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec9_race_ineq/pov_b_male_female_gap.png")
+```
+
+## Variation in the Black-White Earnings Gap Across Tracts
+
+Four key results:
+
+1. Black boys have lower earnings than white boys in 99% of Census tracts in America, controlling for parental income
+
+2. Both black and white boys have better outcomes in “good” (e.g., low-poverty, higher rent) neighborhoods, but the black-white gap is bigger in such areas
+
+3. Within low-poverty areas, there are two factors associated with better outcomes for black boys and smaller gaps: greater father presence and less racial bias
+
+4. Neighborhoods have causal childhood exposure effects on racial gaps: black boys who move to good areas at a younger age do better
+
+## Summary: Impacts of Neighborhood Environments on Black Men
+
+- Black boys do well in nbhds. with good resources (low poverty rates) and good race-specific factors (e.g., high father presence, less racial bias)
+
+- The problem is that there very few such neighborhoods in America…
+
+# Racial Wealth Gap
+
+## Racial Wealth Gap in the US
+
+- So far we have ignored the role of wealth. 
+
+- (Very!) recent work has started to make important progress in estimating wealth gaps as well (beyond income)
+
+> Ellora Derenoncourt, Chi Hyun Kim, Moritz Kuhn, Moritz Schularick (2022) "Wealth of two nations: The U.S. racial wealth gap, 1860-2020"
+
+## wealth gap, 1860-2020
+
+- Data: 
+    - Historical census data
+    - Early state tax records
+    - Historical waves of the Survey of Consumer Finance
+    
+- Several things could affect wealth accumulation across race groups: 
+
+    - Initial conditions (initial wealth)
+    - Income growth
+    - Savings behavior
+    - Capital returns
+    - What's the role of each?
+    
+## 'Hockey-stick' plot of wealth convergence
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/derenoncourt1.png")
+```
+
+## Contribution of capital gains to the racial wealth gap
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/derenoncourt2.png")
+```
+
+## Contribution of capital gains to the racial wealth gap
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec9_race_ineq/derenoncourt3.png")
+```
+
+## Conclusions about the wealth gap
+
+- The shape of convergence is well explained by initial wealth and income levels of Black and white Americans and observed income convergence between the two groups. 
+- Given extremely low levels of Black wealth under slavery, even modest accumulation can imply a high growth rate for Black wealth that greatly exceeds that of white wealth, thus generating rapid convergence initially
+- As racial wealth gap decreases, convergence slows and differences in returns on wealth and savings begin to matter more for the shape of convergence. 
+- Rising asset prices have become important driver of racial wealth inequality in recent decades. 
+
+    - Average white household holds a significant share of their wealth in equity (benefited from booming stock prices), while the average Black household mainly holds housing as main asset been largely left out of these gains

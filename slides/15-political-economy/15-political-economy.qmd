@@ -1,0 +1,374 @@
+---
+title: "Political Economy"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+      slide-level: 2
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+## Plan for today
+
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+Political Economy: 
+
+1. What is it?
+
+2. Preference formation
+
+3. Intergenerational Mobility and Preferences for Redistribution
+
+> Slides based on those of Stantcheca (2019)
+
+# Political Economy
+
+## What is it?
+
+Interaction between political elements and economic analysis: 
+
+1) How voter’s preferences map into policies?
+
+2) How do politicians respond? (Supply and demand for policies)
+
+3) How are voter preferences formed?
+
+We will focus on 3) today
+
+## How are voter preferences formed?
+
+- Immigration: 
+
+    - No evidence of effects of immigration on native population (at most are small)
+    - Evidence of gains for migrant population, and to aggregate productivity in many cases
+    - So, what explains many native’s attitudes of opposition (or deep ambivalence) to immigration? 
+    - Not necessarily the economics of it. 
+
+> Alesina, Miano and Stantcheva (2020)
+
+
+## How are voter preferences formed?
+
+- Redistribution:
+    - Do people have realistic views about intergenerational mobility?
+    - What are their views on fairness (effort vs luck)?
+    - Link between perceived intergenerational mobility and redistribution policies?
+
+> Alesina, Stantcheva and Teso (2021)
+
+
+# Immigration and redistribution
+
+## Immigration and redistribution
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec15_political_economy/immig.png")
+```
+
+## Data: Survey and RCT
+
+- Alesina and coauthors designed a survey across 6 large countries (US included) asking individuals their perception about:
+
+- Perception of immigration: Number, origin, effort, ‘free riding’-status, economic conditions (education, poverty, unemployment, transfers)
+
+- Immigration policies: Citizenship, when to receive benefits, whether govt should care equally, when are immigrants “truly” American
+
+- But also, about their preferences for redistribution: 
+
+- Redistributive Policies: Overall involvement, income support policies, income taxes, budget + Donation question
+
+- Role of Government: Trust, tools to reduce inequality, is inequality a problem, scope for government to intervene in redistribution.
+
+## The survey
+
+- Respondents are randomly offered financial incentives for correct responses.
+
+- Amount of financial incentive is also randomized.
+
+- Turns out: incentives do not improve the accuracy of responses.
+
+- Suggests people truly “don’t know.”
+
+## Eliciting Perceptions of Number of Immigrants
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/beliefs_immigrants.png")
+```
+
+## Eliciting Perceptions on Origin of Immigrants
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/beliefs_immigrants2.png")
+```
+
+## Question on Economic Conditions of immigrants (I)
+
+Out of every 100 people born in the U.S. how many are currently unemployed? By “unemployed” we mean people who are currently not working but searching for a job (and maybe unable to find one).
+
+Now let’s compare this to the number of unemployed among legal immigrants. Out of every 100 legal immigrants how many do you think are currently unemployed?
+
+## Question on Economic Conditions of immigrants (II)
+
+Out of every 100 people born in the U.S., how many live below the poverty line? The poverty line is the estimated minimum level of income needed to secure the necessities of life.
+
+Let’s compare this to poverty among legal immigrants. Out of every 100 legal immigrants in the U.S. today, how many do you think live below the poverty line?
+
+## Question on Economic Conditions of immigrants (III)
+
+U.S. born residents receive government transfers in the form of public assistance, Medicaid, child credits, unemployment benefits, free school lunches, food stamps or housing subsidies when needed. How much do you think each legal immigrant receives on average from such government transfers? An average immigrant receives... [No transfers/.../More than ten times as much as a US born resident]
+
+## Misperception of Number of Immigrants
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec15_political_economy/beliefs_immigrants3.png")
+```
+
+## Misperception of Number of Immigrants by Individual Chars
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/beliefs_immigrants4.png")
+```
+
+## Who misperceives more? 
+
+1) in high immigration sectors with low education
+2) without college
+3) who are young
+4) who have an immigrant parent
+5) women 
+
+## Willingness to Pay to Receive Correct Info about Immigrants
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec15_political_economy/wtp_info.png")
+```
+
+## Willingness to Pay to Receive Correct Info about Immigrants
+
+- Respondents who misperceive immigrants more negatively are less willing to pay.
+
+- Even conditional on misperceptions, right-wing, women, non-college educated less willing to pay.
+
+- Conditional on accepting to pay, those with higher misperceptions are more surprised by the info received. 
+
+## Perceptions and Redistribution: Experimental Evidence
+
+Randomly ask some individuals questions about immigration first, and then about redistribution preferences, or viceversa.
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec15_political_economy/immigration_redist.png")
+```
+
+## Gifts of the Immigrants, Woes of the Natives
+
+- Tabellini (2020) studies the political and economic effect of immigration and study the causes of anti-immigrant sentiments in the US between 1910 and 1930
+
+- Time of large waves of European immigration (WW1 and Immigration Acts of 1920s)
+
+**Findings: **
+
+1. Immigration triggered hostile political reaction (more conservative legistators, higher support for anti-immigration, lower redistribution)
+
+2. Economic reasons? Like findings of previous lecture: no! Higher employment for natives, higher industrial production, no loss on wages.
+
+3. Cultural reasons? Maybe: discontent grows in cultural difference between immigrants and natives (religion and language)
+
+## Immigration and Religion
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/tabellini1.png")
+```
+
+## Immigration and Language
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/tabellini2.png")
+```
+
+## Are you a Kandinsky or Klee type of person? Tajfel et al (1971)
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/tajfel1.png")
+```
+
+## Evidence of In-group Favoritism and Out-group Discrimination Goes Beyond Language and Religion
+
+- Induce group identity using “minimal group paradigm”, creating groups by trivial criteria or tasks
+Subjects are more likely to give rewards (e.g. in dictator game) to those with the same label, even when anonymous AND no impact on own payoffs (e.g. other-other allocations)
+
+- Subjects also report higher opinions of members of their own group
+
+- Chen and Li (2009) have experiment with players being divided in groups that liked more Klee or Kandisky 
+
+- Then they discuss, by groups, which is the painter of a new painting they see. If they are right, they get money. 
+
+- Third stage, they allocate money between two other anonymous participants, but might just know if the person likes Klee or Kandisky
+
+- Lastly, they play a two-person sequential game
+
+## Large Share of Individuals Show Preference for their In-Group
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/chen_li1.png")
+```
+
+## Large Share of Individuals Show Preference for their In-Group
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/chen_li2.png")
+```
+
+## Takeaways from this research
+
+1. Preferences for immigration are not necessarily tied to economic outcomes
+
+2. In-group / Out-group bias can take many forms, and could explain preferences for immigration and redistribution
+
+# Intergenerational Mobility and Preferences for Redistribution
+
+## Do people know about intergenerational mobility?
+
+Alesina, Stantcheva and Teso (2020) ask: 
+
+1. Do people have realistic views about intergenerational mobility? 
+2. What are their views on fairness (effort vs luck)?
+
+What is the link between perceived intergenerational mobility and preferred redistribution policies?
+
+- Equality of opportunities (education, bequest taxes)
+- Equality of outcomes (social insurance, progressive income taxation)
+
+## Once again, large survey
+
+- Questions on background
+
+- Fairness: of the system, reasons to be poor, reasons to be rich
+
+- Randomize information experiment to see if there is shift on views on mobility
+
+    - **Treatment**: tell them that mobility is very low to make them more pessimistic
+
+- Perceptions of mobility, and policies
+
+## Eliciting Beliefs on Upward Mobility
+
+- For the following questions, we focus on 500 families that represent the U.S. population. We divide them into five groups on the basis of their income, with each group containing 100 families. These groups are: the poorest 100 families, the second poorest 100 families, the middle 100 families, the second richest 100 families, and the richest 100 families.
+
+- In the following questions, we will ask you to evaluate the chances that children born in one of the poorest 100 families, once they grow up, will belong to any of these income groups.
+
+- Please fill out the entries to the right of the figure below to tell us, in your opinion, how many out of 100 children coming from the poorest 100 families will grow up to be in each income group.
+
+## Eliciting Beliefs on Upward Mobility
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/stantcheva1.png")
+```
+
+## Probability of Staying in Bottom Quintile (Actual vs. Perceived)
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/stantcheva2.png")
+```
+
+## Probability of Moving to Top Quintile (Actual vs. Perceived)
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec15_political_economy/stantcheva3.png")
+```
+
+## Probability of Moving From Bottom to Top Quintile (Actual vs. Perceived)
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/stantcheva4.png")
+```
+
+## Pessimism, Optimism, and Top Tax Rate
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec15_political_economy/stantcheva5.png")
+```
+
+## Randomized Perception Experiment
+
+- Is there a causal effect of views about mobility on policy preferences?
+
+- Or simply individual characteristics (policy affiliation)
+
+- Cannot exogenously shift actual mobility, but can shift perceptions instead
+
+## Effect of Showing True Data on Perceptions
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec15_political_economy/stantcheva6.png")
+```
+
+Homogeneous across left and right wing respondents (no significant difference)
+
+## No Effects on Policy Preferences for Full Sample
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec15_political_economy/stantcheva7.png")
+```
+
+## Hides underlying Heterogeneity: Significant Treatment Effects on Policies Only For Left-Wing...
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec15_political_economy/stantcheva8.png")
+```
+
+## …No Treatment Effects on Policies For Right-Wing
+
+```{r, echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec15_political_economy/stantcheva9.png")
+```
+
+## Conclusions
+
+- Preferences for immigration policies are not tied to economic effects of migration
+
+- That is part of a larger issue of formation of in-group and out-group preferences
+
+    - Could depend on migration status, language, race, religion
+    - But might even go beyond those markers
+
+- The distinction affects preferences for redistribution
+
+- Better information does not necessarily changes preferences
+
+

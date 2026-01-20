@@ -1,0 +1,358 @@
+---
+title: "Teachers and Charter Schools"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+      slide-level: 2
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+## Plan for today
+
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+- What is the effect of (better) teachers on children's outcomes?
+- What do we know about the effect of charter schools in the education system?
+
+# Effect of Teachers
+
+## Using Big Data to Study Teachers' Impacts
+
+School district records |  Tax records
+:-------------------------:|:-------------------------:
+2.5 million children; 18 million test scores |  Earnings, College Attendance, Teen Birth
+![](../../images/lec8_teachers_charters/test.png){ height=1.0in } |  ![](../../images/lec8_teachers_charters/tax.png){ height=1.0in }
+
+> Reference: Chetty, Friedman, Rockoff: “Measuring the Impacts of Teachers I and II” AER 2014
+
+## Measuring Teacher Quality: Test-Score Based Metrics
+
+- One prominent measure of teacher quality: teacher value-added
+
+- How much does a teacher raise her/his students’ test scores on average?
+
+## Debate About Teacher Value-Added Measures
+
+- Controversial and highly politicized debate about using teacher value-added (VA) measures to evaluate teachers
+
+- At its core, debate revolves around three statistical issues:
+
+    1. Potential for bias in VA estimates
+
+        - Do differences in test-score gains across teachers capture causal impacts of teachers or are they driven by student sorting?
+    
+    2. Lack of evidence on teachers’ long-term impacts
+
+        - Do teachers who raise test scores improve students’ long-term outcomes or are they simply better at teaching to the test?
+    3. Instability of VA estimates
+
+        - Are estimates of teacher quality based on a few years of data too unstable to be useful for policy?
+
+## Measuring the Impacts of Teachers
+
+- Ideal experiment to answer these questions: randomly assign students to teachers with different value-added
+
+- Test whether those with high value-added teachers have higher test scores and earnings
+
+- Chetty and co-authors use a quasi-experimental approximation to this experiment
+
+    - Exploit the fact that there is a lot of turnover in teachers across school years
+
+    - When high VA teachers arrive at new schools, do scores go up?
+
+    - Methodology: event-study designs
+
+## A Quasi-Experiment: Entry of High Value-Added Teacher
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/tva1.png")
+```
+
+## A Quasi-Experiment: Entry of Low Value-Added Teacher
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/tva2.png")
+```
+
+## Lesson 1: VA Estimates Are Unbiased Measures of Teacher Effectiveness
+
+
+- Students assigned to higher value-added teachers have higher test scores
+
+    - Being assigned to a teacher who is predicted to raise test scores by 10 percentiles increases a given student’s score by $\sim$ 10 percentiles
+
+    - Differences in VA measures largely capture _causal effects_ of teachers, not differences in types of students they are assigned (selection)
+
+## Effect of Teacher Quality on College Attendance Rates
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/tva3.png")
+```
+
+## Effect of Teacher Quality on Earnings
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/tva4.png")
+```
+
+## Effect of Teacher Quality on Teenage Birth Rates
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/tva5.png")
+```
+
+## Lesson 2: VA Estimates Based on Test Scores Predict Teachers’ Long-Term Impacts
+
+- Assigning a student to a higher value-added teacher raises not just test scores but long-term outcomes
+
+    - Teachers who generate high test scores are not just “teaching to the test”
+
+## The Value of Improving Teacher Quality
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/tva_dist1.png")
+```
+
+
+## The Value of Improving Teacher Quality
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/tva_dist2.png")
+```
+
+## Reliability of Teacher Value-Added Estimates
+
+- Previous calculation overstates feasible gain because we do not observe each teacher’s value-added perfectly
+
+- In practice, we usually have performance data for just a couple of years before we need to make personnel decisions
+
+    - VA estimates based on a couple of classes are statistically imprecise
+
+    - Teachers who happen to have students who do well by chance will get a high VA score
+
+- Does this estimation error in VA reduce gains from previous exercise?
+
+## Selecting Teachers on the Basis of Value-Added Estimates
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/tva_dist3.png")
+```
+
+## Selecting Teachers on the Basis of Value-Added Estimates
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/tva_dist4.png")
+```
+
+## Earnings Gain from Teacher Replacement Based on Estimated VA
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/earninggains.png")
+```
+
+## Lesson 3: VA Estimates Based on a Few Years of Data Are Sufficiently Reliable to Generate Large Gains on Average
+
+- VA estimates do fluctuate depend upon which students teachers get
+
+- But even taking this into account, gains from replacing teacher with estimated VA in bottom 5% with teacher of average quality is $250,000 
+
+    - Less than $400,000 gain we’d achieve if there were no measurement error in VA, but still substantial
+
+## Relevance of Findings to Current Policy Debate
+
+- Most school districts in the U.S. do not use any performance metrics to evaluate teachers
+
+    - In many districts, 98%+ of teachers get tenure within 3 years
+
+    - Pay set purely based on experience, not performance
+
+- New evidence on VA metrics has sparked interest in changing this system and finding ways to recruit and retain best teachers more effectively
+
+## Summary: Improving Public Schools
+
+- New data show that changing public schools in certain specific ways can have large long-term returns
+
+- Reducing class size can be very valuable
+
+    - But critical to hire highly effective new teachers when doing so
+
+- There are large, measurable differences in teacher quality, 
+
+    - We should do more to attract and retain top teachers in public schools (not just using value-added metrics but also other tools)
+
+# Marked-Based Solutions: Charter Schools
+
+## Market-Based Solutions to Improving Education
+
+- Alternative approach to improving education: leverage market forces
+
+- Permit school choice $\rightarrow$ best schools will attract more students and other schools will improve their performance to stay in business
+
+- Two ways we currently take such an approach in the U.S.
+
+    1. Charter schools: schools that are publicly funded but independent of public school system
+
+    2. Vouchers that students can use for private schools instead of their local public school
+
+## Do Charter Schools Work?
+
+- **Question**: are private schools/charter schools better than public schools?
+
+- Cannot simply compare outcomes at charters and public schools
+
+    - Charters tend to be concentrated in lower-income, urban areas $\rightarrow$ outcomes worse on average
+
+## Do Charter Schools Work?
+
+- Several recent studies estimate effects of charter schools on students’ outcomes by exploiting lotteries for admission
+
+    - Charter schools often have more applicants than seats  use lotteries to assign seats
+
+    - Comparing outcomes of winners vs. losers identifies causal effects
+
+References:
+
+> Abdulkadiroǧlu, Angrist, Dynarski, Kane, Pathak. “Accountability and Flexibility in Public Schools: Evidence from Boston’s Charters and Pilots.” QJE 2011.
+
+> Chabrier, Cohodes, Oreopoulous. “What Can We Learn From Charter School Lotteries?” JEP 2016
+
+## Effects of Boston Area Charter Schools
+
+- Abdulkadiroglu et al. (2011): compare effects of charter schools and pilot schools in Boston
+
+    - Charter schools are exempt from all public school regulations
+
+    - Pilot schools are like charters but covered by Boston Public School regulations and teachers union contracts
+
+    - Both are financed by payments from students' home district: tax payments transferred to charter/pilot school
+
+## Effects of Boston Charter and Pilot Schools on Test Scores
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/abdikaduroglu1.png")
+```
+
+## Effects of Boston Area Charter Schools
+
+- Subsequent study by Angrist et al. (2013) shows that Boston charters have significant effects on college attendance rates
+
+- Lesson: charters generate positive effects on average; pilots are no better than public schools
+
+- Suggests that the flexibility obtained by relaxing public school restrictions (e.g., on teacher hiring) is a key driver of positive impacts
+
+## Effects of Charter Schools: Summary
+
+- Chabrier et al. (2016) summarize literature on charter schools
+
+    - Small positive mean effects on test scores on average
+
+    - In general, “no excuses" schools (extra hours, discipline, academic focus) tend to have positive impacts
+
+## Market Competition and Charter Schools
+
+- Does market discipline lead to growth of better schools and improvement in performance over time?
+
+- Baude, Casey, Hanushek, and Rivkin (2014) study how quality of charter schools in Texas changed over time
+
+## Distribution of School Math Value-Added by Year: Texas Charters vs. Public Schools
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/baude1.png")
+```
+
+
+## Market Share of “No Excuses" Charter Schools in Texas
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec8_teachers_charters/baude2.png")
+```
+
+## Market Competition and Charter Schools
+
+- Charter school market is evolving in a positive direction
+
+    - Better schools gaining enrollment over time
+
+    - But still a number of relatively low-performing schools, even many years after system began
+
+## Limitations of Market Competition
+
+- Three limitations of relying purely on private market competition
+
+    1. Markets may function poorly when quality is not well observed
+
+        - Difficult to gauge value-added, especially when outcomes (e.g. college, earnings) are realized 10+ years after treatment
+
+## Limitations of Market Competition
+
+- Three limitations of relying purely on private market competition
+
+    2. Cream skimming of students and teachers
+
+        - Private schools have an incentive to reject less qualified applicants
+
+        - Can exacerbate inequality by leaving less qualified students behind in schools with fewer resources and weaker peers
+
+## Limitations of Market Competition
+
+- Three limitations of relying purely on private market competition
+
+    3. Parents may not make well-informed choices
+
+        - Hastings, Kane, and Staiger (2007) study introduction of school choice in Charlotte, NC in 2002
+
+        - Low income parents are much less likely to choose schools with high test scores than high income parents
+
+        - School choice can _amplify_ achievement gaps
+
+## Improving Primary Education: Summary
+
+- We now have simple, empirically proven ways to improve primary education
+
+    - Solutions range across political spectrum: more resources to reduce class size in public schools to expansion of “no excuses” charter schools
+
+- Which approach is better: government or market based?
+
+    - Current constraints in public school system (local property tax funding base, regulations on teacher hiring) limit its effectiveness
+
+    - But unregulated market system likely to deliver highly variable outcomes
+
+- Best system may be a hybrid that preserves flexibility within schools while offering uniform quality and resources across schools
+
+

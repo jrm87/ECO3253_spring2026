@@ -1,0 +1,339 @@
+---
+title: "Education and Upward Mobility"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+      slide-level: 2
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+## Plan for today
+
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+- Correlation of Mobility and Education
+- How to measure how much mobility each college provides
+
+# Education 
+
+## Education and Upward Mobility
+
+- Education is widely viewed as one of the most scalable pathways to upward mobility
+
+- But there is growing concern that education no longer provides a strong pathway to opportunity in the U.S.
+
+    - U.S. students perform worse on standardized tests on average than in many European countries despite higher spending on schools
+
+    - Sharp differences in quality of schools across districts
+
+    - Rising costs of college  lack of access for low-income students
+
+    - Concern that some colleges (e.g., for-profit institutions) may not produce good outcomes
+
+## Education and Upward mobility
+
+- How can we improve education in America? 
+
+    - Traditionally, measuring impacts of education systematically was difficult
+
+    - Administrative data from colleges and school districts are giving us a more scientific understanding of the “education production function”
+
+- Start with higher education, then turn to K-12 education
+
+>Reference: Chetty, Friedman, Saez, Turner, Yagan. “Mobility Report Cards: The Role of Colleges in Intergenerational Mobility” Working Paper 201
+
+
+## How Do Colleges Shape Income Mobility in the U.S.?
+
+- How does the higher education system affect intergenerational income mobility in the U.S.?
+
+    - In principle, higher education can provide a pathway to upward mobility that is not directly shaped by the neighborhood where a child happens to grow up
+
+    - But if children from higher-income families tend to attend  better colleges, higher education system may not promote mobility
+
+    - Colleges could actually increase intergenerational persistence of income if disparities in college attendance are sufficiently large
+
+## Effect of Higher Education System on Mobility
+
+- Effect of higher education system on mobility depends upon three factors:
+
+    - [Inputs] Parental income distributions by college
+
+    - [Outputs] Students’ earnings outcomes conditional on parental income by college
+
+    - [Causal share] Portion of variation in students’ earnings outcomes that is due to colleges’ causal effects
+
+## Estimating the Three Parameters: Data
+
+- Chetty et al. (2017) estimate these three parameters using data covering all college students in the U.S. from 1999-2013 (30 million students) 
+
+- Combine information from three sources to construct an anonymized dataset:
+
+    - Parental and Student Income from income tax records
+
+    - College attendance from 1098-T tax data and Pell grant data
+
+    - SAT scores from College Board
+
+>Note: all statistics are based on college attendance (not completion)
+
+# Parents’ Income Distributions by College: Income Segregation in the American Higher Education System
+
+## Measuring Parents’ Incomes
+
+- Parent income: average pre-tax household income during five year period when child is aged 15-19 
+
+
+- Focus on percentile ranks, ranking parents relative to other parents with children in same birth cohort
+
+## Parent Household Income Distribution
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_inc_density.png")
+```
+
+## College Attendance Rates vs. Parent Income Percentile
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec6_higher_ed/parentrank_college.png")
+```
+
+## Parent Income Distribution at Harvard
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_inc_harvard1.png")
+```
+
+## Parent Income Distribution at Harvard
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_inc_harvard2.png")
+```
+
+## Parent Income Distribution at Harvard
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_inc_harvard3.png")
+```
+
+## Parental Income Distribution of Students at Some Highly Selective Colleges
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_inc_dis_selective.png")
+```
+
+## Income Composition of Ivy Leagues
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec6_higher_ed/access_ivy.png")
+```
+
+## Parent Income Distributions by Quintile for 1980-82 Birth Cohorts - Selected Colleges
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_inc_dist_quintile1.png")
+```
+
+## Parent Income Distributions by Quintile for 1980-82 Birth Cohorts - Selected Colleges
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_inc_dist_quintile2.png")
+```
+
+## Parent Income Distributions by Quintile for 1980-82 Birth Cohorts - Selected Colleges
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_inc_dist_quintile3.png")
+```
+
+## Parent Income Distributions by Quintile for 1980-82 Birth Cohorts - Selected Colleges
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_inc_dist_quintile4.png")
+```
+
+## How does UTSA look?
+
+- All Schools: [https://www.nytimes.com/interactive/projects/college-mobility](https://www.nytimes.com/interactive/projects/college-mobility)
+
+- UTSA: [https://www.nytimes.com/interactive/projects/college-mobility/university-of-texas-at-san-antonio](https://www.nytimes.com/interactive/projects/college-mobility/university-of-texas-at-san-antonio)
+
+## Parental Income Segregation Across Colleges
+
+- Sharp differences in parental income distributions across colleges  there is significant segregation across colleges
+
+- Useful benchmark to quantify magnitude: compare to degree of segregation across neighborhoods
+
+- Common perception: colleges foster greater interaction between children from different socioeconomic backgrounds than places in which they grew up
+
+## Parental Income Distribution of Peers of Children from Bottom Quintile
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_income_peers_bottomq1.png")
+```
+
+## Parental Income Distribution of Peers of Children from Top Quintile
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_income_peers_bottomq2.png")
+```
+
+## Parental Income Distribution of Peers of Ivy-Plus College Students from Top Quintile
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/parent_income_peers_bottomq3.png")
+```
+
+## Trends in Income Segregation
+
+- Preceding estimates are based on children born between 1980-82, who attended college in the early 2000s
+
+- Substantial changes in higher education system since that time, e.g. substantial changes in financial aid and tuition policies
+
+- How has income segregation across colleges changed in recent years?
+
+## Fraction of Peers from the Top Quintile for Children from the Top Quintile
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/frac_peers_topq_topq.png")
+```
+
+## Trends in Low-Income Access from 2000-2011 at Selected Colleges
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/trends_lowincome_access.png")
+```
+
+## Trends in Low-Income Access from 2000-2011 at Selected Colleges
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/trends_lowincome_access2.png")
+```
+
+# Outcomes: Students’ Earnings Distributions
+
+## Students’ Earnings Outcomes
+
+- Measure children’s individual earnings in their mid-30s
+
+- Define percentile ranks by ranking children relative to others in same birth cohort
+
+## Distribution of Children’s Individual Labor Earnings at Age 34
+
+1980 Cohort
+
+```{r, echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec5_mob_ed/dist_income_children.png")
+```
+
+## Students’ Earnings Outcomes: Columbia vs. SUNY-Stony Brook
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/columbia_suny.png")
+```
+
+## Students’ Earnings Outcomes
+
+- Key lesson: most of the gap in outcomes between children from low vs. high-income families is explained by differences between rather than within colleges
+
+- Raises possibility that reallocating student across colleges could potentially have a significant impact on intergenerational mobility
+
+    - If gap in outcomes by parental income were large even within a given college, there would be little scope to have an impact through changes in college admissions policies
+
+
+## Differences in Mobility Rates Across Colleges
+
+- We can combine data on parents’ incomes and students’ outcomes to characterize colleges’ mobility rates
+
+    - At which colleges in America do the largest number of children come from poor families and end up in the upper middle class?
+
+## Students’ Earnings Outcomes: Columbia vs. SUNY-Stony Brook
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/columbia_suny2.png")
+```
+
+## Measuring Mobility Rates
+
+Define a college’s mobility rate (MR) as the fraction of its students who come from bottom quintile and end up in top quintile
+
+Mobility rate is: 
+
+\begin{align*}
+\underbrace{\text{Mobility Rate}}_{\text{Frac. of Parents in Q1 and Children in Q5}}= & \underbrace{\text{Low-Inc. Access}}_{\text{Frac. of Parents in Q1}} \times \\
+& \underbrace{\text{Top-Quintile Rate}}_{\text{Frac. of Students who Reach Q5 Given Parents in Q1}}
+\end{align*}
+
+At SUNY:     
+	
+$$
+8.4\%	=      	     16\%       	\times        	  51\%
+$$
+
+## Mobility Rates: Top-Quintile Outcome Rate vs. Access by College
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/columbia_suny3.png")
+```
+
+## Mobility Rates: Top-Quintile Outcome Rate vs. Access by College
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/columbia_suny4.png")
+```
+
+## Mobility Rates: Top-Quintile Outcome Rate vs. Access by College
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/columbia_suny5.png")
+```
+
+## Mobility Rates: Top-Quintile Outcome Rate vs. Access by College
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/columbia_suny6.png")
+```
+
+## Top 10 Colleges in America By Bottom-to-Top Quintile Mobility Rate
+
+Fraction of Students who come from Bottom Fifth and End up in Top Fifth
+
+```{r, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec5_mob_ed/coll_mob_top.png")
+```

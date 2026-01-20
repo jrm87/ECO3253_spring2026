@@ -1,0 +1,287 @@
+# Project 4 {- #project4}
+
+## Using Google DataCommons to Predict Social Mobility  {-}
+
+- **Posted**: Wednesday, August 28, 2024
+
+- **Due**: Midnight on Friday, November 27, 2024
+
+You have already explored the [Opportunity Atlas](https://www.opportunityatlas.org/) in [Project 1](#project1) and the [Social Capital Atlas](https://socialcapital.org/). In this this empirical project, you will use the Opportunity Atlas mapping tool and the underlying data, plus data from [Google DataCommons](https://www.datacommons.org/), to predict intergenerational mobility using **machine learning** methods. The measure of intergenerational mobility that we will focus on, as usual, is the mean rank of a child whose parents were at the 25th percentile of the national income distribution in each county (`kfr_pooled_p25`). Your goal is to construct the best predictions of this outcome using other variables, an important step in creating forecasts of upward mobility that could be used for future generations, before data on their outcomes become available.
+
+I am passing along a “training” dataset, made of a random sample of 70% of all neighborhoods in the original Opportunity Atlas (`train.rds`). You will use predictors, presented in **Table 1**, to predict the variable `kfr_pooled_p25`. There are 121 predictors in these data. Obviously, you do not need to use all the 121 variables for your prediction. You then need to test your model on the 50% that I have passed along in a different file for testing (`test.rds`).
+
+:::: {.blackbox data-latex=""}
+::: {.center data-latex=""}
+**Important!**
+:::
+
+You do not need to use all the variables in atlas_training for your prediction! Follow the instructions for each question.
+::::
+
+You can load the data by using the following code:
+
+```{r eval=FALSE}
+train<- readRDS(gzcon(url("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_train.rds")))
+test<-readRDS(gzcon(url("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_test.rds")))
+```
+
+## Instructions {-}
+
+As usual, you will work on Posit Cloud for this project. Write your responses within a [Quarto/RMarkdown here](#rmarkdown) file in the **project4** tab in Posit Cloud.
+
+### Specific questions  {-}
+
+1.	Load the `atlas_training.rds` file. 
+
+2.	Produce simple summary statistics (mean and standard deviation) for the 10 predictors you selected from the data and `krf_pooled_p25`. 
+
+3.	Run a linear regression of `krf_pooled_p25` using only 10 predictors, inspect the results, and comment on what you findings. That is, interpret the predicted changes in mobility as your 10 predictors change. 
+
+4.	How well does your linear regression predict `krf_pooled_p25` **in-sample**? Present the RMSE.
+
+5.	How well does your linear regression predict `krf_pooled_p25` **out-of-sample**? Present the RMSE.
+
+6.	Implement a decision tree model to predict `krf_pooled_p25` using the code in below (covered in class). Plot the decision tree if possible. What are the main predictors? 
+
+7.	How well does your decision tree predict `krf_pooled_p25` **in-sample**? Present the RMSE.
+
+8.	How well does your decision tree predict `krf_pooled_p25` **out-of-sample**? Present the RMSE.
+
+9. Which model performs a better prediction?
+
+
+## Data Description {-}
+
+The total data (`train` + `test`) consist of n = 73,278 U.S. Census tracts.  For more details on the construction of the variables included in this data set, please see [Chetty, Raj, John Friedman, Nathaniel Hendren, Maggie R. Jones, and Sonya R. Porter. 2018. “The Opportunity Atlas: Mapping the Childhood Roots of Social Mobility.”](https://opportunityinsights.org/wp-content/uploads/2018/10/atlas_paper.pdf), NBER Working Paper No. 25147.  
+
+**Table 1**
+
+Definitions of Variables in `train` and `test`
+
+```{r tableSocialK_GC, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
+tabl_socialK_GC <- "|                                  **Variable name**                                     |                                                           **Label**                                                             | **Obs.** |
+|--------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+|                                       **(1)**                                          |                                                            **(2)**                                                              |  **(3)** |
+| **1. Geographic identifiers**                                                                 |                                                                                                                                                   |                 |
+|     tract                                                                                                |     Tract FIPS Code (6-digit) 2010                                                                                                                |     73,278      |
+|     county                                                                                               |     County FIPS Code (3-digit)                                                                                                                    |     73,278      |
+|     state                                                                                                |     State FIPS Code (2-digit)                                                                                                                     |     73,278      |
+|     cz                                                                                                   |     Commuting Zone Identifier (1990 Definition)                                                                                                   |     72,473      |
+|                                                                                                          |                                                                                                                                                   |                 |
+| **2. Characteristics of Census   tracts**                                                     |                                                                                                                                                   |                 |
+|     hhinc_mean2000                                                                                       |     Mean Household Income 2000                                                                                                                    |     72,302      |
+|     mean_commutetime2000                                                                                 |     Average Commute Time of Working Adults in 2000                                                                                                |     72,313      |
+|     frac_coll_plus2010                                                                                   |     Fraction of Residents with a College Degree or   More in 2010                                                                                 |     72,993      |
+|     frac_coll_plus2000                                                                                   |     Fraction of Residents with a College Degree or   More in 2000                                                                                 |     72,343      |
+|     foreign_share2010                                                                                    |     Share of Population Born Outside the U.S.                                                                                                     |     72,279      |
+|     med_hhinc2016                                                                                        |     Median Household Income in 2016                                                                                                               |     72,763      |
+|     med_hhinc1990                                                                                        |     Median Household Income in 1999                                                                                                               |     72,313      |
+|     popdensity2000                                                                                       |     Population Density (per square mile) in 2000                                                                                                  |     72,469      |
+|     poor_share2010                                                                                       |     Poverty Rate 2010                                                                                                                             |     72,933      |
+|     poor_share2000                                                                                       |     Poverty Rate 2000                                                                                                                             |     72,315      |
+|     poor_share1990                                                                                       |     Poverty Rate 1990                                                                                                                             |     72,323      |
+|     share_black2010                                                                                      |     Share black 2010                                                                                                                              |     73,111      |
+|     share_hisp2010                                                                                       |     Share Hispanic 2010                                                                                                                           |     73,111      |
+|     share_asian2010                                                                                      |     Share Asian 2010                                                                                                                              |     71,945      |
+|     share_black2000                                                                                      |     Share black 2000                                                                                                                              |     72,368      |
+|     share_white2000                                                                                      |     Share white 2000                                                                                                                              |     72,368      |
+|     share_hisp2000                                                                                       |     Share Hispanic 2000                                                                                                                           |     72,368      |
+|     share_asian2000                                                                                      |     Share Asian 2000                                                                                                                              |     71,050      |
+|     gsmn_math_g3_2013                                                                                    |     Average School District Level Standardized Test   Scores in 3rd Grade in 2013                                                                 |     72,090      |
+|     rent_twobed2015                                                                                      |     Average Rent for Two-Bedroom Apartment in 2015                                                                                                |     56,607      |
+|     singleparent_share2010                                                                               |     Share of Single-Headed Households with Children   2010                                                                                        |     72,564      |
+|     singleparent_share1990                                                                               |     Share of Single-Headed Households with Children   1990                                                                                        |     72,196      |
+|     singleparent_share2000                                                                               |     Share of Single-Headed Households with Children   2000                                                                                        |     72,285      |
+|     traveltime15_2010                                                                                    |     Share of Working Adults w/ Commute Time of 15   Minutes Or Less in 2010                                                                       |     72,939      |
+|     emp2000                                                                                              |     Employment Rate 2000                                                                                                                          |     72,344      |
+|     mail_return_rate2010                                                                                 |     Census Form Rate Return Rate 2010                                                                                                             |     72,547      |
+|     ln_wage_growth_hs_grad                                                                               |     Log wage growth for HS Grad., 2005-2014                                                                                                       |     51,635      |
+|     jobs_total_5mi_2015                                                                                  |     Number of Primary Jobs within 5 Miles in 2015                                                                                                 |     72,311      |
+|     jobs_highpay_5mi_2015                                                                                |     Number of High-Paying (>USD40,000 annually)   Jobs within 5 Miles in 2015                                                                     |     72,311      |
+|     nonwhite_share2010                                                                                   |     Share of People who are not white 2010                                                                                                        |     73,111      |
+|     popdensity2010                                                                                       |     Population Density (per square mile) in 2010                                                                                                  |     73,194      |
+|     ann_avg_job_growth_2004_2013                                                                         |     Average Annual Job Growth Rate 2004-2013                                                                                                      |     70,664      |
+|     job_density_2013                                                                                     |     Job Density (in square miles) in 2013                                                                                                         |     72,463      |
+|                                                                                                          |                                                                                                                                                   |                 |
+| **3. Measures of Upward Mobility   from the Opportunity Atlas**                               |                                                                                                                                                   |                 |
+|     kfr_pooled_p25                                                                                       |     Household income (\\$) at age 31-37 for children   with parents at the 25th percentile of the national income distribution                      |     72,011      |
+|     kfr_pooled_p75                                                                                       |     Household income (\\$) at age 31-37 for children   with parents at the 75th percentile of the national income distribution                      |     72,012      |
+|     kfr_pooled_p100                                                                                      |     Household income (\\$) at age 31-37 for children   with parents at the 100th percentile of the national income distribution                     |     71,968      |
+|     kfr_natam_p25                                                                                        |     Household income (\\$) at age 31-37 for Native   American children with parents at the 25th percentile  of the national income distribution     |     1,733       |
+|     kfr_natam_p75                                                                                        |     Household income (\\$) at age 31-37 for Native   American children with parents at the 75th percentile of the national income   distribution    |     1,728       |
+|     kfr_natam_p100                                                                                       |     Household income (\\$) at age 31-37  for Native American children with parents at   the 100th percentile of the national income distribution    |     1,594       |
+|     kfr_asian_p25                                                                                        |     Household income (\\$) at age 31-37  for Asian children with parents at the 25th   percentile  of the national income   distribution            |     15,434      |
+|     kfr_asian_p75                                                                                        |     Household income (\\$) at age 31-37  for Asian children with parents at the 75th   percentile of the national income distribution               |     15,360      |
+|     kfr_asian_p100                                                                                       |     Household income (\\$) at age 31-37  for Asian children with parents at the 100th   percentile of the national income distribution              |     13,480      |
+|     kfr_black_p25                                                                                        |     Household income (\\$) at age 31-37  for Black children with parents at the 25th   percentile  of the national income   distribution            |     34,086      |
+|     kfr_black_p75                                                                                        |     Household income (\\$) at age 31-37  for Black children with parents at the 75th   percentile of the national income distribution               |     34,049      |
+|     kfr_black_p100                                                                                       |     Household income (\\$) at age 31-37  for Black children with parents at the 100th   percentile of the national income distribution              |     32,536      |
+|     kfr_hisp_p25                                                                                         |     Household income (\\$) at age 31-37  for Hispanic children with parents at the 25th   percentile  of the national income   distribution         |     37,611      |
+|     kfr_hisp_p75                                                                                         |     Household income (\\$) at age 31-37  for Hispanic children with parents at the 75th   percentile of the national income distribution            |     37,579      |
+|     kfr_hisp_p100                                                                                        |     Household income (\\$) at age 31-37  for Hispanic children with parents at the 100th   percentile of the national income distribution           |     35,987      |
+|     kfr_white_p25                                                                                        |     Household income (\\$) at age 31-37  for white children with parents at the 25th   percentile  of the national income   distribution            |     67,978      |
+|     kfr_white_p75                                                                                        |     Household income (\\$) at age 31-37  for white children with parents at the 75th   percentile of the national income distribution               |     67,968      |
+|     kfr_white_p100                                                                                       |     Household income (\\$) at age 31-37  for white children with parents at the 100th   percentile of the national income distribution              |     67,627      |
+|                                                                                                          |                                                                                                                                                   |                 |
+| **3. Counts of number of   children under 18 in 2000 (to calculate weighted summary statistics)** |                                                                                                                                                   |                 |
+|     count_pooled                                                                                         |     Count of all children                                                                                                                         |     72,451      |
+|     count_white                                                                                          |     Count of White children                                                                                                                       |     72,451      |
+|     count_black                                                                                          |     Count of Black children                                                                                                                       |     72,451      |
+|     count_asian                                                                                          |     Count of Asian children                                                                                                                       |     72,451      |
+|     count_hisp                                                                                           |     Count of Hispanic children                                                                                                                    |     72,451      |
+|     count_natam                                                                                          |     Count of Native American children                                                                                                             |     72,451      |
+|                                                                                                          |                                                                                                                                                   |                 |
+| **4. Measures of Social Capital **                               |                                                                                                                                                   |                 |
+|     ec_zip                                                                                       |     Baseline definition of economic connectedness: two times the share of high-SES friends among low-SES individuals, averaged over all low-SES individuals in the ZIP code. See equations (1), (2), and (3) of Chetty et al. (2022a) for a formal definition.                     |     71,516      |
+|     ec_high_zip                                                                                       |     Economic connectedness for high-SES individuals: two times the share of high-SES friends among high-SES individuals, averaged over all high-SES individuals in the ZIP code.                    |     71,516      |
+|     clustering_zip                                                                                       |     The average fraction of an individual’s friend pairs who are also friends with each other. See equations (4) and (5) of Chetty et al. (2022a). They include links to people outside the ZIP code when calculating individual clustering (equation 4), but only average individual clustering over users in the relevant ZIP code to compute clustering at the ZIP code level (equation 5).                   |     71,950      |
+|     volunteering_rate_zip                                                                                       |     The percentage of Facebook users who are members of a group which is predicted to be about ‘volunteering’ or ‘activism’ based on group title and other group characteristics. We do not include groups that have the privacy setting ‘secret’ enabled. We additionally manually review the 50 largest such groups in the United States and the largest group in each state, and remove the very small number of groups that are clearly misclassified.                     |     71,950      |
+|    civic_organizations_zip                                                                                       |     The number of Facebook Pages predicted to be “Public Good” pages based on page title, category, and other page characteristics, per 1,000 users in the ZIP code. They remove pages that do not have a website linked, do not have a description on their Facebook page or do not have an address listed. We then assign the page to a ZIP code on the basis of its listed address.                     |     71,938      |
+| **5. Other variables** |  |   |
+| GenderIncome Inequality_2018 | Gender Income Inequality in 2018, for person 15 years or older with income. | |
+| MedianIncome Person_2020 | Median Income per person in 2020 | |
+| MedianAgePerson_2020 | Median Age per person in 2020 | |
+| CountPersonNoHealth Insurance_2020 | Number of people with no health insurance (public or private) in 2020. | |
+| CountPerson Divorced_2020 | Number of people divorced in 2020 | |
+| CountGedOrAlternative Credential_2020 | Number of people with GED or alternative credential in 2020 | |
+| PersonWithDisability_2019 | Count of people with some type of disability in 2019 | |
+| CountHouseholdInternet WithoutSubscription_2020 | Number of households with internet access without subscription in 2020 | |
+| LimitedEnglishSpeaking Household_SpanishSpokenAtHome_2019 | Count of households that speak limited English and speak Spanish at home in 2019 | |
+| Household_WithFoodStamps InThePast12Months_AbovePovertyLevelInThePast12Months_2019 | Number of households in 2019 that received food stamps and that are above the poverty level in the past 12 months  | |
+| Count_Household_With 0AvailableVehicles_2020 | number of households that have 0 vehicles in 2020 | |
+| Count_Person_Single MotherFamilyHousehold_2020 | Number of single mother family households in 2020 | |
+| Count_Person_Single FatherFamilyHousehold_2020 | Number of single father family households in 2020 | |
+| Count_NotAUS Citizen_2020 | Number of people that were not US Citizens in 2020 | |
+| Count_Person_Speak EnglishNotAtAll_2020 | Number of people that do not speak English at all in 2020 | |
+| Count_Medicare Enrollee_2016 | Number of people enrolled in Medicare in 2016 | |
+| Count_Death_2017 | Number of deaths in 2017 | |
+| LowerConfInterval_Percent_ Person_BingeDrinking_2018 | Percent of people that practice binge drinking in 2018 (reported as the lower confidence interval) | |
+| LowerConfInterval_Percent_ Person_Obesity_2018 | Percent of people with obesity in 2018 (reported as the lower confidence interval) | |
+| Value Percent_Person_ WithDiabetes_2018 | Percent of population with diabetes in 2018 | |
+| Median_Cost_HousingUnit_ WithMortgage_2020 | Median Cost of a housing unit with mortgage in 2020 | |
+| Count_Person_19To 34Years_2020 | Count of people that are between 19 to 34 years old in 2020 | |
+| Median_Income_Household_ HouseholderRaceHispanic OrLatino_2020 | Median household income for households where the householder’s race is Hispanic or Latino in 2020 | |
+| Median_Income_Household_ HouseholderRaceWhite Alone_2020 | Median household income for households where the householder’s race is White only in 2020 | |
+| count_hh_bachhigher_ married_belowp2019 | Number of households  in 2019 where the householder has a bachelor’s degree or higher, for a married household below the poverty level in the past 12 months | |"
+cat(tabl_socialK_GC) # output the table in a format good for HTML/PDF/docx conversion
+# link: https://www.tablesgenerator.com/markdown_tables
+```
+
+To see all other social capital variables not defined above, see [here](https://data.humdata.org/dataset/85ee8e10-0c66-4635-b997-79b6fad44c71/resource/fbe5b0b9-e81c-41c7-a9f2-3ebf8212cf64/download/data_release_readme_31_07_2022_nomatrix.pdf).
+
+***
+
+## Cheatsheat commands  {- #cheatsheetproject3}
+
+**R command	Description**
+
+### How to tell R that you have a categorical variable? {-}
+
+Recall that if you modify one variable in one data set, you should do the same on the other one as well (datasets are `train` and `test`)
+
+Below `X` is just a placeholder for the actual variable you want to converto into a factor. 
+
+```{r, eval=FALSE}
+atlas_train$X<-as.factor(atlas_train$X)
+```
+
+###  Load package {-}
+
+You will need three new packages for this project. Remember to install them first. 
+
+```{r, eval=FALSE}
+install.packages("caret")
+install.packages("rpart")
+install.packages("rpart.plot")
+library(caret)
+library(rpart)
+library(rpart.plot)
+```
+
+### Run regression {-}
+
+As before, I have written a whole section explaining regression in more detail: Section \@ref(regression). Please see that for further details. But here is a quick help.
+
+1. Multivariate linear regression
+
+You might want to understand the relationship between `yvar` and variable `xvar1` **while holding fixed** another variable `xvar2` for neighborhoods only in Milwaukee. You can do this: 
+
+``` {r, eval=FALSE}
+mod2 <- lm(yvar~xvar1+xvar2 + xvar3, data = train)
+```
+
+You would see the output from the model by running:
+
+``` {r, eval=FALSE}
+summary(mod2)
+```
+
+### Measures of accuracy in prediction in a Multiple regression {-}
+
+To assess how good is your model at predicting the outcome, you can use the Root Mean Square Error measurement. That will take the error in the prediction for each observation, square it, average it, and then take the root of that.
+
+You can estimate this measure **in-sample** (within the `train` dataset), or **out-of-sample** (for the `test` dataset). 
+
+To do it **in-sample**, you can calculate it by checking the prediction directly from the estimated linear model:
+
+``` {r, eval=FALSE}
+sqrt(mean(mod2$residuals^2))
+```
+
+where `residuals` is the error that the model predicts for each observation`
+
+To do it **out-of-sample**, you need to use the function `predict` that requires a model, and a dataset with the same variables for the prediction. In this case, you would do something like this: 
+
+```{r, eval=FALSE}
+predict_mlr_model<-predict(mlr_model,test)
+```
+
+and then you can do this: 
+
+```{r, eval=FALSE}
+actual_values<- test$kfr_pooled_p25
+rmse_mlrmodel_outsample <- sqrt(mean((actual_values - predict_mlr_model)^2, na.rm=TRUE))
+rmse_mlrmodel_outsample
+```
+
+### Estimating a Decision Tree {-}
+
+To estimate the decision tree, you can choose which variables you want to select for the prediction by listing them as before. Say, you want to use x1, x2 and x3 for the prediction, you can do:
+
+```{r, eval=FALSE}
+tree <- rpart(kfr_pooled_p25 ~x1+x2+x3, data = train)
+```
+
+If you wan to use all other variables for the prediction, you can do: 
+
+```{r, eval=FALSE}
+tree <- rpart(kfr_pooled_p25 ~., data = train)
+```
+
+To plot the tree you estimated, just do this: 
+
+```{r, eval=FALSE}
+#Plotting the regression tree
+rpart.plot(tree)
+```
+
+### Measures of accuracy in a Decision Tree {-}
+
+The measurement is the same, but to calculate it you need to do use the `predict` function as before. For **in-sample** prediction you would do: 
+
+```{r, eval=FALSE}
+#In-sample prediction
+p <- predict(tree, train)
+#Root mean squared error = 1944.108 (in sample)
+sqrt(mean((train$kfr_pooled_p25-p)^2))
+```
+
+
+For **out-of-sample** prediction, you can run: 
+
+```{r, eval=FALSE}
+pred_tree_outofsample<-predict(tree,test)
+#RMSE out of sample = 5965.278
+sqrt(mean((test$kfr_pooled_p25-pred_tree_outofsample)^2, na.rm=TRUE ))
+```
+

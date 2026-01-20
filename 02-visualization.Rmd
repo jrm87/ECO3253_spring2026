@@ -1,0 +1,527 @@
+# Data Visualization {#viz}
+
+```{r setup-viz, include=FALSE, purl=FALSE}
+chap <- 3
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+)
+
+options(scipen = 99, digits = 3)
+
+# In knitr::kable printing replace all NA's with blanks
+options(knitr.kable.NA = '')
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+
+```
+
+>This chapter is based in big part on the [chapter on visualization](https://nulib.github.io/moderndive_book/2-viz.html) by the folks at Northwestern. Please be check that link if you want to dive into how to make even cooler graphs than the ones we will cover here.
+
+We will learn basic tools to visualize our data. By visualizing our data, we gain valuable insights that we couldn't initially see from just looking at the raw data in spreadsheet form. We will use the `ggplot2` package as it provides an easy way to customize your plots. `ggplot2` is rooted in the data visualization theory known as _The Grammar of Graphics_ [@wilkinson2005].
+
+At the most basic level, graphics/plots/charts (we use these terms interchangeably in this guide) provide a nice way for us to get a sense for how quantitative variables compare in terms of their center (where the values tend to be located) and their spread (how they vary around the center).  Graphics should be designed to emphasize the findings and insight you want your audience to understand.  This does however require a balancing act.  On the one hand, you want to highlight as many meaningful relationships and interesting findings as possible; on the other you don't want to include so many as to overwhelm your audience.  
+
+As we will see, plots/graphics also help us to identify patterns in our data.  We will see that a common extension of these ideas is to compare the *distribution* of one quantitative variable (i.e., what the spread of a variable looks like or how the variable is *distributed* in terms of its values) as we go across the levels of a different categorical variable.
+
+### Needed data and packages {-}
+
+Let's load all the packages and data needed for this chapter (this assumes you've already installed them). Read Section \@ref(packages) for information on how to install and load R packages. As before, we will load the atlas dataset as well. We will also plot some of the information in the package `gapminder` for some of our examples.
+
+```{r message=FALSE}
+atlas <- readRDS(gzcon(url("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas.rds")))
+```
+
+```{r message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(gapminder)
+```
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+# Packages needed internally, but not in text.
+library(knitr)
+library(kableExtra)
+library(readr)
+```
+
+
+***
+
+
+## The Grammar of Graphics {#grammarofgraphics}
+
+We begin with a discussion of a theoretical framework for data visualization known as "The Grammar of Graphics," which serves as the foundation for the `ggplot2` package. Think of how we construct sentences in English to form sentences by combining different elements, like nouns, verbs, particles, subjects, objects, etc. However, we can't just combine these elements in any arbitrary order; we must do so following a set of rules known as a linguistic grammar. Similarly to a linguistic grammar, "The Grammar of Graphics" define a set of rules for constructing *statistical graphics* by combining different types of *layers*. This grammar was created by Leland Wilkinson [@wilkinson2005] and has been implemented in a variety of data visualization software including R. 
+
+### Components of the Grammar
+
+In short, the grammar tells us that:
+
+> **A statistical graphic is a `mapping` of `data` variables to `aes`thetic attributes of `geom`etric objects.**
+
+Specifically, we can break a graphic into the following three essential components:
+
+1. `data`: the data set composed of variables that we map.
+1. `geom`: the geometric object in question. This refers to the type of object we can observe in a plot. For example: points, lines, and bars.
+1. `aes`: aesthetic attributes of the geometric object. For example, x-position, y-position, color, shape, and size.  Each assigned aesthetic attribute can be mapped to a variable in our data set.
+
+You might be wondering why we wrote the terms `data`, `geom`, and `aes` in a computer code type font. We'll see very shortly that we'll specify the elements of the grammar in R using these terms. However, let's first break down the grammar with an example unrelated to our mobility data, but worry not! We will return to the atlas data. First...
+
+### Gapminder data {#gapminder}
+
+```{r, echo=FALSE}
+gapminder_2007 <- gapminder %>% 
+  filter(year == 2007) %>% 
+  select(-year) %>% 
+  rename(
+    Country = country,
+    Continent = continent,
+    `Life Expectancy` = lifeExp,
+    `Population` = pop,
+    `GDP per Capita` = gdpPercap
+  )
+```
+
+In February 2006, a statistician named Hans Rosling gave a TED talk titled ["The best stats you've ever seen"](https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen) where he presented global economic, health, and development data from the website [gapminder.org](http://www.gapminder.org/tools/#_locale_id=en;&chart-type=bubbles). For example, for the `r nrow(gapminder_2007)` countries included from 2007, let's consider only the first 6 countries when listed alphabetically in Table \@ref(tab:gapminder-2007).
+
+```{r gapminder-2007, echo=FALSE}
+gapminder_2007 %>% 
+  head() %>% 
+  kable(
+    digits=2,
+    caption = "Gapminder 2007 Data: First 6 of 142 countries", 
+    booktabs = TRUE
+  ) %>% 
+  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
+                latex_options = c("HOLD_position"))
+```
+
+Each row in this table corresponds to a country in 2007. For each row, we have 5 columns:
+
+1. **Country**: Name of country.
+1. **Continent**: Which of the five continents the country is part of. (Note that "Americas" includes countries in both North and South America and that Antarctica is excluded.)
+1. **Life Expectancy**: Life expectancy in years.
+1. **Population**: Number of people living in the country.
+1. **GDP per Capita**: Gross domestic product (in US dollars).
+
+Now consider Figure \@ref(fig:gapminder), which plots this data for all `r nrow(gapminder_2007)` countries in the data.
+
+<!--
+Note that R will deal with large numbers using scientific notation.  So in the legend for "Population", 1.25e+09 is 1.25 $\times$ 10^9^ = 1,250,000,000 = 1.25 billion. 
+-->
+
+```{r gapminder, echo=FALSE, fig.cap="Life Expectancy over GDP per Capita in 2007"}
+ggplot(data = gapminder_2007, mapping = aes(x=`GDP per Capita`, y=`Life Expectancy`, size=Population, col=Continent)) +
+  geom_point() +
+  labs(x = "GDP per capita", y = "Life expectancy")
+```
+
+Let's view this plot through the grammar of graphics:
+
+1. The `data` variable **GDP per Capita** gets mapped to the `x`-position `aes`thetic of the points.
+1. The `data` variable **Life Expectancy** gets mapped to the `y`-position `aes`thetic of the points.
+1. The `data` variable **Population** gets mapped to the `size` `aes`thetic of the points.
+1. The `data` variable **Continent** gets mapped to the `color` `aes`thetic of the points.
+
+We'll see shortly that `data` corresponds to the particular data frame where our data is saved and a "data variable" corresponds to a particular column in the data frame. Furthermore, the type of `geom`etric object considered in this plot are points. That being said, while in this example we are considering points, graphics are not limited to just points. Other plots involve lines while others involve bars. 
+
+Let's summarize the three essential components of the Grammar in Table \@ref(tab:summary-table-gapminder).
+
+```{r summary-table-gapminder, echo=FALSE}
+data_frame(
+  `data variable` = c("GDP per Capita", "Life Expectancy", "Population", "Continent"),
+  aes = c("x", "y", "size", "color"),
+  geom = c("point", "point", "point", "point")
+) %>% 
+  kable(
+    caption = "Summary of Grammar of Graphics for this plot", 
+    booktabs = TRUE
+  ) %>% 
+  kable_styling(font_size = ifelse(knitr:::is_latex_output(), 10, 16),
+                latex_options = c("HOLD_position"))
+```
+
+### Other components
+
+There are other components of the Grammar of Graphics we can control as well.  As you start to delve deeper into the Grammar of Graphics, you'll start to encounter these topics more frequently. In this book however, we'll keep things simple and only work with the two additional components listed below:
+
+- `facet`ing breaks up a plot into small multiples corresponding to the levels of another variable (Section \@ref(facets))
+- `position` adjustments for barplots (Section \@ref(geombar))
+
+<!--
+- `scales` that both
+    + convert *data units* to *physical units* the computer can display. For example, apply a log-transformation on one of the axes to focus on multiplicative rather than additive changes.
+    + draw a legend and/or axes, which provide an inverse mapping to make it possible to read the original data values from the graph.
+- `coord`inate system for x/y values: typically `cartesian`, but can also be `map` or `polar`.
+- `stat`istical transformations: this includes smoothing, binning values into a histogram, or no transformation at all (known as the `"identity"` transformation).
+-->
+
+Other more complex components like `scales` and `coord`inate systems are left for a more advanced text such as [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html#aesthetic-mappings) [@rds2016].  Generally speaking, the Grammar of Graphics allows for a high degree of customization of plots and also a consistent framework for easily updating and modifying them.
+
+### ggplot2 package
+
+In this book, we will be using the `ggplot2` package for data visualization, which is an implementation of the Grammar of Graphics for R [@R-ggplot2]. As we noted earlier, a lot of the previous section was written in a computer code type font. This is because the various components of the Grammar of Graphics are specified in the `ggplot()` function included in the `ggplot2` package, which expects at a minimum as arguments (i.e. inputs):
+
+* The data frame where the variables exist: the `data` argument.
+* The mapping of the variables to aesthetic attributes: the `mapping` argument which specifies the `aes`thetic attributes involved.
+
+After we've specified these components, we then add *layers* to the plot using the `+` sign. The most essential layer to add to a plot is the layer that specifies which type of `geom`etric object we want the plot to involve: points, lines, bars, and others. Other layers we can add to a plot include layers specifying the plot title, axes labels, visual themes for the plots, and facets (which we'll see in Section \@ref(facets)).
+
+Let's now put the theory of the Grammar of Graphics into practice.
+
+
+
+***
+
+
+
+## Three Important Graphs - {#FiveNG}
+
+In order to keep things simple, we will only focus on 3 types of graphics in this section, each with a commonly given name.  
+
+1. scatterplots
+1. histograms
+1. barplots
+
+We will discuss some variations of these plots, but with this basic repertoire of graphics in your toolbox you can visualize a wide array of different variable types. Note that certain plots are only appropriate for categorical variables and while others are only appropriate for quantitative variables. You'll want to quiz yourself often as we go along on which plot makes sense a given a particular problem or data set.
+
+
+
+***
+
+
+
+## Scatterplots {#scatterplots}
+
+The simplest of the figrue we will cover are *scatterplots*, also called bivariate plots. They allow you to visualize the relationship between two numerical variables. While you may already be familiar with scatterplots, let's view them through the lens of the Grammar of Graphics. Specifically, we will visualize the relationship across neighborhoods between the following two numerical variables in the `atlas` data frame:
+
+1. `kfr_pooled_p25`: upward mobility for children with parents on the percentile 25 on the horizontal "y" axis
+1. `med_hhinc2016`: median household income in 2016 on the vertical "x" axis
+
+### Scatterplots via geom_point {#geompoint}
+
+Let's now go over the code that will create the desired scatterplot, keeping in mind our discussion on the Grammar of Graphics in Section \@ref(grammarofgraphics). We'll be using the `ggplot()` function included in the `ggplot2` package. 
+
+```{r, eval = FALSE}
+ggplot(data = atlas, mapping = aes(x = med_hhinc2016, y = kfr_pooled_p25)) + 
+  geom_point()
+```
+
+Let's break this down piece-by-piece:
+
+* Within the `ggplot()` function, we specify two of the components of the Grammar of Graphics as arguments (i.e. inputs):
+    1. The `data` frame to be `atlas` by setting `data = atlas`.
+    1. The `aes`thetic `mapping` by setting `aes(x = med_hhinc2016, y = kfr_pooled_p25)`. Specifically:
+        * the variable `med_hhinc2016` maps to the `x` position aesthetic
+        * the variable `kfr_pooled_p25` maps to the `y` position aesthetic
+* We add a layer to the `ggplot()` function call using the `+` sign. The layer in question specifies the third component of the grammar:  the `geom`etric object. In this case the geometric object are points, set by specifying `geom_point()`.
+
+After running the above code, you'll notice two outputs: a warning message and the graphic shown in Figure \@ref(fig:noalpha). Let's first unpack the warning message:
+  "y" axis
+
+```{r noalpha, fig.cap="Median Household Income in 2016 vs Mobility for Children with Parents in Percentile 25", warning=TRUE, echo=FALSE}
+ggplot(data = atlas, mapping = aes(x = med_hhinc2016, y = kfr_pooled_p25)) + 
+  geom_point()
+```
+
+After running the above code, R returns a warning message alerting us to the fact that 1372 rows were ignored due to them being missing. For 1372 rows either the value for `med_hhinc2016` or `kfr_pooled_p25` or both were missing (recorded in R as `NA`), and thus these rows were ignored in our plot. Turning our attention to the resulting scatterplot in Figure \@ref(fig:noalpha), we see that a positive relationship exists between `med_hhinc2016` and `kfr_pooled_p25`: as the median income level of the neighborhood increases, the mobility for children of parents in the percentile 25 tend to also increase.
+
+Before we continue, let's consider a few more notes on the layers in the above code that generated the scatterplot:
+
+* Note that the `+` sign comes at the end of lines, and not at the beginning.  You'll get an error in R if you put it at the beginning.
+* When adding layers to a plot, you are encouraged to start a new line after the `+` so that the code for each layer is on a new line.  As we add more and more layers to plots, you'll see this will greatly improve the legibility of your code.
+* To stress the importance of adding layers in particular the layer specifying the `geom`etric object, consider Figure \@ref(fig:nolayers) where no layers are added. A not very useful plot!
+
+```{r nolayers, fig.cap="Plot with No Layers"}
+ggplot(data = atlas, mapping = aes(x = med_hhinc2016, y = kfr_pooled_p25))
+```
+
+```{block lc-scatterplots, type='learncheck', purl=FALSE}
+**_Learning check_**
+```
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** What are some other features of the plot that stand out to you?
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Create a new scatterplot using different variables in the `atlas` data frame by modifying the example above.
+
+```{block, type='learncheck', purl=FALSE}
+```
+
+### Over-plotting {#overplotting}
+
+Sometimes you end up with a large mass of points, which can cause some confusion as it is hard to tell the true number of points that are plotted.  This is the result of a phenomenon called *overplotting*.  As one may guess, this corresponds to values being plotted on top of each other _over_ and _over_ again.  It is often difficult to know just how many values are plotted in this way when looking at a basic scatterplot as we have here. The main methods to address the issue of overplotting is:
+
+- By adjusting the transparency of the points.
+
+**Changing the transparency**
+
+The main way of addressing overplotting is by changing the transparency of the points by using the `alpha` argument in `geom_point()`.  By default, this value is set to `1`.  We can change this to any value between `0` and `1`, where `0` sets the points to be 100% transparent and `1` sets the points to be 100% opaque. Note how the following code is identical to the code in Section \@ref(scatterplots) that created the scatterplot with overplotting, but with `alpha = 0.2` added to the `geom_point()`:
+
+```{r alpha, fig.cap="Delay scatterplot with alpha=0.2"}
+ggplot(data = atlas, mapping = aes(x = med_hhinc2016, y = kfr_pooled_p25))+
+  geom_point(alpha = 0.2)
+```
+
+The key feature to note in Figure \@ref(fig:alpha) is that the transparency of the points is cumulative: areas with a high-degree of overplotting are darker, whereas areas with a lower degree are less dark. Note furthermore that there is no `aes()` surrounding `alpha = 0.2`.  This is because we are not mapping a variable to an aesthetic attribute, but rather merely changing the default setting of `alpha`. In fact, you'll receive an error if you try to change the second line above to read `geom_point(aes(alpha = 0.2))`.
+
+```{block lc-overplotting, type='learncheck', purl=FALSE}
+**_Learning check_**
+```
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**  Why is setting the `alpha` argument value useful with scatterplots? What further information does it give you that a regular scatterplot cannot?
+
+```{block, type='learncheck', purl=FALSE}
+```
+
+### Summary
+
+Scatterplots display the relationship between two numerical variables.  They are among the most commonly used plots because they can provide an immediate way to see the trend in one variable versus another.  However, if you try to create a scatterplot where either one of the two variables is not numerical, you might get strange results.  Be careful! 
+
+With medium to large data sets, you may need to play around with the different modifications one can make to a scatterplot. This tweaking is often a fun part of data visualization, since you'll have the chance to see different relationships come about as you make subtle changes to your plots.
+
+Last thing: remember Figure \@ref(fig:gapminder)? Here is the code of how we did that. It has a few pieces that you would need to figure out on your own, but you should get the essence by now. In particular, in the first line we pass on a filtered data for the year 2007. I'll explain that more in the next Section \@ref(wrangling) on Data Wrangling. Still, try it out! 
+
+```{r gapminder2, eval=FALSE, fig.cap="Life Expectancy over GDP per Capita in 2007"}
+ggplot(data = gapminder%>%filter(year == 2007), mapping = aes(x=gdpPercap, y=lifeExp, size=pop, col=continent)) +
+  geom_point() +
+  labs(x = "GDP per capita", y = "Life expectancy")
+```
+
+
+***
+
+
+
+## Histograms {#histograms}
+
+Let's consider the `kfr_pooled_p25` variable in the `atlas` data frame once again, but now we want to understand how the values of `kfr_pooled_p25` *distribute*. In other words, for economic mobility for children from parents in the percentile 25:
+
+1. What are the smallest and largest values?
+1. What is the "center" value?
+1. How do the values spread out?
+1. What are frequent and infrequent values?
+
+One way to visualize this *distribution* of this single variable `kfr_pooled_p25` is to plot what is know as a *histogram*. A histogram is a plot that visualizes the *distribution* of a numerical value as follows:
+
+1. We first cut up the x-axis into a series of *bins*, where each bin represents a range of values. 
+1. For each bin, we count the number of observations that fall in the range corresponding to that bin.
+1. Then for each bin, we draw a bar whose height marks the corresponding count.
+
+Let's drill-down on an example of a histogram, shown in Figure \@ref(fig:histogramexample).
+
+```{r histogramexample, warning=FALSE, echo=FALSE, fig.cap="Example histogram."}
+ggplot(data = atlas, mapping = aes(x = kfr_pooled_p25)) +
+  geom_histogram(binwidth = 5000, color = "white")
+```
+
+Observe that there are six bins of equal width between \$ 30,000 and \$ 60,000, thus we have three bins of width \$ 5,000 each: one bin for the 30-35k range, and so on, until the bin for the 55-60k range. Since:
+
+1. The bin for the 30-35k range has a height of around 9000, this histogram is telling us that around 9000 neighborhoods in the US have an average mobility measure for children of parents in the percentile 25th of between \$30,000 and \$35,000.
+
+The remaining bins all have a similar interpretation.
+
+### Histograms via geom_histogram {#geomhistogram}
+
+Let's now present the `ggplot()` code to plot your first histogram! Unlike with scatterplots and linegraphs, there is now only one variable being mapped in `aes()`: the single numerical variable `temp`. The y-aesthetic of a histogram gets computed for you automatically. Furthermore, the geometric object layer is now a `geom_histogram()`
+
+```{r weather-histogram, warning=TRUE, fig.cap="Histogram of mobility for children of p25 in the US."}
+ggplot(data = atlas, mapping = aes(x = kfr_pooled_p25)) +
+  geom_histogram()
+```
+
+Let's unpack the messages R sent us first. The first message is telling us that the histogram was constructed using `bins = 30`, in other words 30 equally spaced bins. This is known in computer programming as a default value; unless you override this default number of bins with a number you specify, R will choose 30 by default. We'll see in the next section how to change this default number of bins. The second message is telling us once again that there are some missing values: that because one row has a missing `NA` value for `kfr_pooled_p25`, it was omitted from the histogram. R is just giving us a friendly heads up that this was the case. 
+
+Now's let's unpack the resulting histogram in Figure \@ref(fig:weather-histogram). Observe that values less than \$12,000 as well as values above \$80,000 are rather rare. However, because of the large number of bins, its hard to get a sense for which range of temperatures is covered by each bin; everything is one giant amorphous blob. So let's add white vertical borders demarcating the bins by adding a `color = "white"` argument to `geom_histogram()`:
+
+```{r weather-histogram-2, warning=FALSE, message=FALSE, fig.cap="Histogram of mobility for children of p25 in the US with white borders."}
+ggplot(data = atlas, mapping = aes(x = kfr_pooled_p25)) +
+  geom_histogram(color = "white")
+```
+
+We can now better associate ranges of mobility to each of the bins. We can also vary the color of the bars by setting the `fill` argument. Run `colors()` to see all `r colors() %>% length()` possible choice of colors!
+
+```{r weather-histogram-3, warning=FALSE, message=FALSE, fig.cap="Histogram of mobility for children of p25 in the US with white borders."}
+ggplot(data = atlas, mapping = aes(x = kfr_pooled_p25)) +
+  geom_histogram(color = "white", fill = "steelblue")
+```
+
+
+### Adjusting the bins {#adjustbins}
+
+Let's now adjust the number of bins in our histogram in one of two methods:
+
+1. By adjusting the number of bins via the `bins` argument to `geom_histogram()`. 
+1. By adjusting the width of the bins via the `binwidth` argument to `geom_histogram()`. 
+
+Using the first method, we have the power to specify how many bins we would like to cut the x-axis up in. As mentioned in the previous section, the default number of bins is 30. We can override this default, to say 40 bins, as follows:
+
+```{r, warning=FALSE, message=FALSE, fig.cap= "Histogram with 40 bins."}
+ggplot(data = atlas, mapping = aes(x = kfr_pooled_p25)) +
+  geom_histogram(bins = 40, color = "white")
+```
+
+Using the second method, instead of specifying the number of bins, we specify the width of the bins by using the `binwidth` argument in the `geom_histogram()` layer. For example, let's set the width of each bin to be 10&deg;F.
+
+```{r, warning=FALSE, message=FALSE, fig.cap="Histogram with binwidth 10."}
+ggplot(data = atlas, mapping = aes(x = kfr_pooled_p25)) +
+  geom_histogram(binwidth = 4000, color = "white")
+```
+
+
+```{block lc-histogram, type='learncheck', purl=FALSE}
+**_Learning check_**
+```
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** What does changing the number of bins from 30 to 40 tell us about the distribution of mobility?
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Would you classify the distribution of mobility as symmetric or skewed?
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** What would you guess is the "center" value in this distribution?  Why did you make that choice?
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Is this data spread out greatly from the center or is it close?  Why?
+
+```{block, type='learncheck', purl=FALSE}
+```
+
+### Summary
+
+Histograms, unlike scatterplots, present information on only a single numerical variable. Specifically, they are visualizations of the distribution of the numerical variable in question. 
+
+
+
+***
+
+
+
+## Barplots {#geombar}
+
+Histograms are tools to visualize the distribution of numerical variables. Another common task is visualize the distribution of a categorical variable. This is a simpler task, as we are simply counting different categories, also known as *levels*, of a categorical variable. Often the best way to visualize these different counts, also known as *frequencies*, is with a barplot (also known as a barchart). One complication, however, is how your data is represented: is the categorical variable of interest "pre-counted" or not? For example, run the following code that manually creates two data frames representing a collection of fruit: 3 apples and 2 oranges.
+
+```{r}
+fruits <- data_frame(
+  fruit = c("apple", "apple", "orange", "apple", "orange")
+)
+fruits_counted <- data_frame(
+  fruit = c("apple", "orange"),
+  number = c(3, 2)
+)
+```
+
+We see both the `fruits` and `fruits_counted` data frames represent the same collection of fruit. Whereas `fruits` just lists the fruit individually...
+
+```{r fruits, echo=FALSE}
+fruits
+```
+
+... `fruits_counted` has a variable `count` which represents pre-counted values of each fruit. 
+
+```{r fruitscounted, echo=FALSE}
+fruits_counted
+```
+
+Depending on how your categorical data is represented, you'll need to use add a different `geom` layer to your `ggplot()` to create a barplot, as we now explore. 
+
+### Barplots via geom_bar or geom_col
+
+Let's generate barplots using these two different representations of the same basket of fruit: 3 apples and 2 oranges. Using the `fruits` data frame where all 5 fruits are listed individually in 5 rows, we map the `fruit` variable to the x-position aesthetic and add a `geom_bar()` layer. 
+
+```{r geombar, fig.cap="Barplot when counts are not pre-counted", fig.height=2.5}
+ggplot(data = fruits, mapping = aes(x = fruit)) +
+  geom_bar()
+```
+
+However, using the `fruits_counted` data frame where the fruit have been "pre-counted", we map the `fruit` variable to the x-position aesthetic as with `geom_bar()`, but we also map the `count` variable to the y-position aesthetic, and add a `geom_col()` layer. 
+
+```{r, geomcol, fig.cap="Barplot when counts are pre-counted", fig.height=2.5}
+ggplot(data = fruits_counted, mapping = aes(x = fruit, y = number)) +
+  geom_col()
+```
+
+Compare the barplots in Figures \@ref(fig:geombar) and \@ref(fig:geomcol). They are identical because they reflect count of the same 5 fruit. However depending on how our data is saved, either pre-counted or not, we must add a different `geom` layer. When the categorical variable whose distribution you want to visualize is:
+
+* Is not pre-counted in your data frame: use `geom_bar()`.
+* Is pre-counted in your data frame, use `geom_col()` with the y-position aesthetic mapped to the variable that has the counts.
+
+Let's now go back to the `atlas` data frame and visualize the distribution of the categorical variable `state`. In other words, let's visualize the number of neighborhoodsin the data belonging to each state. Recall from Section \@ref(exploredataframes) when you first explored the `atlas` data frame you saw that each row corresponds to a neighborhood. In other words the `atlas` data frame is more like the `fruits` data frame than the `fruits_counted` data frame above, and thus we should use `geom_bar()` instead of `geom_col()` to create a barplot. Much like a `geom_histogram()`, there is only one variable in the `aes()` aesthetic mapping: the variable `state` gets mapped to the `x`-position.
+
+(ref:geombar) Number of neighborhoods by State in the atlas data using geom_bar
+
+```{r flightsbar, fig.cap='(ref:geombar)', fig.height=2.5}
+ggplot(data = atlas, mapping = aes(x = state)) +
+  geom_bar()
+```
+
+Observe in Figure \@ref(fig:flightsbar) that state 06, which is California, has the most number of neighborhoods in the data.  If you don't know which State FIPS code correspond to which State, you can see it [here](https://www.nrcs.usda.gov/wps/portal/nrcs/detail/?cid=nrcs143_013696). For example: TX is State 48, while NC is State 37. 
+
+```{block lc-barplot, type='learncheck', purl=FALSE}
+**_Learning check_**
+```
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** Why are histograms inappropriate for visualizing categorical variables?
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** What is the difference between histograms and barplots?
+
+**`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`** How many neighborhoods are there in Texas in the atlas data?
+
+```{block, type='learncheck', purl=FALSE}
+```
+
+
+### Summary
+
+Barplots are the preferred way of displaying the distribution of a categorical variable, or in other words the frequency with which the different categories called *levels* occur.  They are easy to understand and make it easy to make comparisons across levels.  When trying to visualize two categorical variables, you have many options: stacked barplots, side-by-side barplots, and faceted barplots. Depending on what aspect of the joint distribution you are trying to emphasize, you will need to make a choice between these three types of barplots.
+
+
+
+***
+
+
+
+## Conclusion
+
+### Summary table
+
+Let's recap all five of the three main figures in Table \@ref(tab:viz-summary-table) summarizing their differences. Using these 5NG, you'll be able to visualize the distributions and relationships of variables contained in a wide array of datasets. 
+
+### Argument specification
+
+Run the following two segments of code. First this:
+
+```{r, eval = FALSE}
+ggplot(data = atlas, mapping = aes(x = state)) +
+  geom_bar()
+```
+
+then this:
+
+```{r, eval = FALSE}
+ggplot(atlas, aes(x = state)) +
+  geom_bar()
+```
+
+You'll notice that that both code segments create the same barplot, even though in the second segment we omitted the `data = ` and `mapping = ` code argument names. This is because the `ggplot()` by default assumes that the `data` argument comes first and the `mapping` argument comes second. So as long as you specify the data frame in question first and the `aes()` mapping second, you can omit the explicit statement of the argument names `data = ` and `mapping = `. 
+
+Going forward for the rest of this book, all `ggplot()` will be like the second segment above: with the `data = ` and `mapping = ` explicit naming of the argument omitted and the default ordering of arguments respected.
+
+### Additional resources
+
+<!-- An R script file of all R code used in this chapter is available [here](scripts/03-visualization.R). -->
+
+If you want to further unlock the power of the `ggplot2` package for data visualization, you can check out RStudio's "Data Visualization with ggplot2" cheatsheet. This cheatsheet summarizes much more than what we've discussed in this chapter, in particular the many more than the 3 `geom` geometric objects we covered in this Chapter, while providing quick and easy to read visual descriptions.
+
+You can access this cheatsheet by going to the RStudio Menu Bar -> Help -> Cheatsheets -> "Data Visualization with ggplot2":
+
+```{r ggplot-cheatsheet, echo=FALSE, fig.cap="Data Visualization with ggplot2 cheatsheat"}
+include_graphics("images/ggplot_cheatsheet-1.png")
+```
+

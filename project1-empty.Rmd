@@ -1,0 +1,5 @@
+# (PART) Projects {-}
+
+# Project 1 {- #project1}
+
+To be filled soon. Check the due date in the [schedule](#schedule) page.

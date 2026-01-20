@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Project 3 | Economics of Public and Social Issues</title>
+  <meta name="description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Project 3 | Economics of Public and Social Issues" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Project 3 | Economics of Public and Social Issues" />
+  
+  <meta name="twitter:description" content="This is the website for the course ECO 3253 at UTSA, taught in the Fall of 2024." />
+  
+
+<meta name="author" content="Jonathan Moreno-Medina" />
+
+
+<meta name="date" content="2024-08-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="project2.html"/>
+<link rel="next" href="project4.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Eco of Public and Social Issues (ECO 3253), Fall 2022</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aboutme"><i class="fa fa-check"></i>About me</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#organization-of-this-site"><i class="fa fa-check"></i>Organization of this site</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#data-driven-course"><i class="fa fa-check"></i>Data-driven course</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#topics-to-be-covered"><i class="fa fa-check"></i>Topics to be covered</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#statistical-tools"><i class="fa fa-check"></i>Statistical tools</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#economic-concepts"><i class="fa fa-check"></i>Economic Concepts</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#projects"><i class="fa fa-check"></i>Projects</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#faqs"><i class="fa fa-check"></i>FAQs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i>Updated Schedule</a></li>
+<li class="part"><span><b>I Ec. &amp; Soc. Issues</b></span></li>
+<li class="chapter" data-level="1" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html"><i class="fa fa-check"></i><b>1</b> Upward Mobility in the US</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#parental-and-children-income-rank"><i class="fa fa-check"></i><b>1.1</b> Parental and children income rank</a></li>
+<li class="chapter" data-level="1.2" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#interpreting-the-regression-line"><i class="fa fa-check"></i><b>1.2</b> Interpreting the regression line</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#percentiles"><i class="fa fa-check"></i><b>1.2.1</b> Percentiles</a></li>
+<li class="chapter" data-level="1.2.2" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#what-is-a-tract"><i class="fa fa-check"></i><b>1.2.2</b> What is a tract?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#geographic-variation-in-upward-mobility-by-commuting-zone"><i class="fa fa-check"></i><b>1.3</b> Geographic Variation in Upward Mobility by Commuting Zone</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#adjustments-for-cost-of-living"><i class="fa fa-check"></i><b>1.3.1</b> Adjustments for cost of living</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="lec1_geomobility.html"><a href="lec1_geomobility.html#local-area-variation-in-upward-mobility-los-angeles-ca"><i class="fa fa-check"></i><b>1.4</b> Local Area Variation in Upward Mobility: Los Angeles, CA</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html"><i class="fa fa-check"></i><b>2</b> The Causal Effect of Neighborhoods</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#causal-effects-of-neighborhoods-vs.-sorting"><i class="fa fa-check"></i><b>2.2</b> Causal Effects of Neighborhoods vs. Sorting</a></li>
+<li class="chapter" data-level="2.3" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#identifying-causal-effects-of-neighborhoods"><i class="fa fa-check"></i><b>2.3</b> Identifying Causal Effects of Neighborhoods</a></li>
+<li class="chapter" data-level="2.4" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#stating-and-assessing-the-identification-assumption-for-the-movers-research-design"><i class="fa fa-check"></i><b>2.4</b> Stating and assessing the identification assumption for the movers research design</a></li>
+<li class="chapter" data-level="2.5" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#why-does-upward-mobility-differ-across-areas"><i class="fa fa-check"></i><b>2.5</b> Why Does Upward Mobility Differ Across Areas?</a></li>
+<li class="chapter" data-level="2.6" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#the-five-strongest-correlates-of-upward-mobility"><i class="fa fa-check"></i><b>2.6</b> The Five Strongest Correlates of Upward Mobility</a></li>
+<li class="chapter" data-level="2.7" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#policy-interest-in-increasing-upward-mobility"><i class="fa fa-check"></i><b>2.7</b> Policy Interest in Increasing Upward Mobility</a></li>
+<li class="chapter" data-level="2.8" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#policies-to-improve-upward-mobility"><i class="fa fa-check"></i><b>2.8</b> Policies to Improve Upward Mobility</a></li>
+<li class="chapter" data-level="2.9" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#affordable-housing-policies-in-the-united-states"><i class="fa fa-check"></i><b>2.9</b> Affordable Housing Policies in the United States</a></li>
+<li class="chapter" data-level="2.10" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#a-framework-for-studying-the-effects-of-housing-vouchers"><i class="fa fa-check"></i><b>2.10</b> A Framework for Studying the Effects of Housing Vouchers</a></li>
+<li class="chapter" data-level="2.11" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#randomized-experiments"><i class="fa fa-check"></i><b>2.11</b> Randomized Experiments</a></li>
+<li class="chapter" data-level="2.12" data-path="lec2_causaleffect.html"><a href="lec2_causaleffect.html#non-compliance-in-randomized-experiments"><i class="fa fa-check"></i><b>2.12</b> Non-Compliance in Randomized Experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html"><i class="fa fa-check"></i><b>3</b> Policies to Increase Upward Mobility</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#the-moving-to-opportunity-experiment"><i class="fa fa-check"></i><b>3.1</b> The Moving to Opportunity Experiment</a></li>
+<li class="chapter" data-level="3.2" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#reevaluating-the-moving-to-opportunities-experiment-with-a-big-data-approach"><i class="fa fa-check"></i><b>3.2</b> Reevaluating the Moving to Opportunities Experiment with a Big Data Approach</a></li>
+<li class="chapter" data-level="3.3" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#the-three-limits-of-randomized-controlled-trials"><i class="fa fa-check"></i><b>3.3</b> The Three Limits of Randomized Controlled Trials</a></li>
+<li class="chapter" data-level="3.4" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#how-quasi-experimental-methods-can-address-randomized-controlled-trial-limitations"><i class="fa fa-check"></i><b>3.4</b> How Quasi-Experimental Methods can Address Randomized Controlled Trial Limitations</a></li>
+<li class="chapter" data-level="3.5" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#implications-for-housing-voucher-policies"><i class="fa fa-check"></i><b>3.5</b> Implications for Housing Voucher Policies</a></li>
+<li class="chapter" data-level="3.6" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#the-stability-of-historical-measures-of-opportunity"><i class="fa fa-check"></i><b>3.6</b> The Stability of Historical Measures of Opportunity</a></li>
+<li class="chapter" data-level="3.7" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#the-creating-moves-to-opportunity-pilot-in-seattle"><i class="fa fa-check"></i><b>3.7</b> The Creating Moves to Opportunity Pilot in Seattle</a></li>
+<li class="chapter" data-level="3.8" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#three-concerns-about-the-cmto-approach"><i class="fa fa-check"></i><b>3.8</b> Three Concerns about the CMTO Approach</a></li>
+<li class="chapter" data-level="3.9" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#the-idea-behind-place-based-investment"><i class="fa fa-check"></i><b>3.9</b> The Idea Behind Place Based Investment</a></li>
+<li class="chapter" data-level="3.10" data-path="lec3_mto-placebased.html"><a href="lec3_mto-placebased.html#place-based-intervention-policies"><i class="fa fa-check"></i><b>3.10</b> Place Based Intervention Policies</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html"><i class="fa fa-check"></i><b>4</b> The American Dream in Historical Perspective</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#a-historical-perspective-on-the-american-dream"><i class="fa fa-check"></i><b>4.1</b> A Historical Perspective on the American Dream</a></li>
+<li class="chapter" data-level="4.2" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#measuring-the-american-dream"><i class="fa fa-check"></i><b>4.2</b> Measuring the American Dream</a></li>
+<li class="chapter" data-level="4.3" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#what-policies-can-increase-economic-mobility"><i class="fa fa-check"></i><b>4.3</b> What Policies Can Increase Economic Mobility?</a></li>
+<li class="chapter" data-level="4.4" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#policies-to-revive-absolute-mobility"><i class="fa fa-check"></i><b>4.4</b> Policies to Revive Absolute Mobility</a></li>
+<li class="chapter" data-level="4.5" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#trends-in-upward-mobility-international-comparisons"><i class="fa fa-check"></i><b>4.5</b> Trends in Upward Mobility: International Comparisons</a></li>
+<li class="chapter" data-level="4.6" data-path="lec4_mob-hist-int.html"><a href="lec4_mob-hist-int.html#restoring-the-american-dream-two-approaches"><i class="fa fa-check"></i><b>4.6</b> Restoring the American Dream: Two Approaches</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html"><i class="fa fa-check"></i><b>5</b> Higher Education and Upward Mobility</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#education-and-upward-mobility"><i class="fa fa-check"></i><b>5.1</b> Education and Upward Mobility</a></li>
+<li class="chapter" data-level="5.2" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#how-do-colleges-shape-income-mobility-in-the-u.s."><i class="fa fa-check"></i><b>5.2</b> How do Colleges Shape Income Mobility in the U.S.?</a></li>
+<li class="chapter" data-level="5.3" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#effect-of-the-higher-education-system-on-mobility"><i class="fa fa-check"></i><b>5.3</b> Effect of the Higher Education System on Mobility</a></li>
+<li class="chapter" data-level="5.4" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#estimating-the-three-parameters-data."><i class="fa fa-check"></i><b>5.4</b> Estimating the Three Parameters: Data.</a></li>
+<li class="chapter" data-level="5.5" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#parents-income-distributions-by-college-income-segregation-in-the-american-higher-education-system.-measuring-parents-income."><i class="fa fa-check"></i><b>5.5</b> Parents’ Income Distributions by College: Income Segregation in the American Higher Education System. Measuring Parents’ Income.</a></li>
+<li class="chapter" data-level="5.6" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#trends-in-income-segregation"><i class="fa fa-check"></i><b>5.6</b> Trends in Income Segregation</a></li>
+<li class="chapter" data-level="5.7" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#outcomes-students-earnings-distributions"><i class="fa fa-check"></i><b>5.7</b> Outcomes: Students’ Earnings Distributions</a></li>
+<li class="chapter" data-level="5.8" data-path="lec5_mob-ed.html"><a href="lec5_mob-ed.html#differences-in-mobility-rates-across-colleges"><i class="fa fa-check"></i><b>5.8</b> Differences in Mobility Rates Across Colleges</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html"><i class="fa fa-check"></i><b>6</b> The Causal Effect of Colleges</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#causal-effects-of-colleges"><i class="fa fa-check"></i><b>6.1</b> Causal Effects of Colleges</a></li>
+<li class="chapter" data-level="6.2" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#estimating-the-causal-effects-of-colleges"><i class="fa fa-check"></i><b>6.2</b> Estimating the Causal Effects of Colleges</a></li>
+<li class="chapter" data-level="6.3" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#regression-discontinuity-methods"><i class="fa fa-check"></i><b>6.3</b> Regression Discontinuity Methods</a></li>
+<li class="chapter" data-level="6.4" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#zimmerman-study"><i class="fa fa-check"></i><b>6.4</b> Zimmerman Study</a></li>
+<li class="chapter" data-level="6.5" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#causal-effects-of-colleges-1"><i class="fa fa-check"></i><b>6.5</b> Causal Effects of Colleges</a></li>
+<li class="chapter" data-level="6.6" data-path="lec6_ed-higher.html"><a href="lec6_ed-higher.html#university-of-michigan-hail-experiment"><i class="fa fa-check"></i><b>6.6</b> University of Michigan HAIL Experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lec7_k12.html"><a href="lec7_k12.html"><i class="fa fa-check"></i><b>7</b> Primary Education</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lec7_k12.html"><a href="lec7_k12.html#a-recap-of-the-discussion-on-the-causal-effects-of-college"><i class="fa fa-check"></i><b>7.1</b> A Recap of the Discussion on the Causal Effects of College</a></li>
+<li class="chapter" data-level="7.2" data-path="lec7_k12.html"><a href="lec7_k12.html#questions-on-causal-effects-of-college"><i class="fa fa-check"></i><b>7.2</b> Questions on Causal Effects of College</a></li>
+<li class="chapter" data-level="7.3" data-path="lec7_k12.html"><a href="lec7_k12.html#an-overview-of-the-k-12-system-in-the-us"><i class="fa fa-check"></i><b>7.3</b> An Overview of the K-12 System in the US</a></li>
+<li class="chapter" data-level="7.4" data-path="lec7_k12.html"><a href="lec7_k12.html#do-test-scores-predict-long-run-outcomes"><i class="fa fa-check"></i><b>7.4</b> Do Test Scores Predict Long-Run Outcomes?</a></li>
+<li class="chapter" data-level="7.5" data-path="lec7_k12.html"><a href="lec7_k12.html#making-test-scores-comparable"><i class="fa fa-check"></i><b>7.5</b> Making Test Scores Comparable</a></li>
+<li class="chapter" data-level="7.6" data-path="lec7_k12.html"><a href="lec7_k12.html#achievement-gaps-in-test-scores-by-socioeconomic-status"><i class="fa fa-check"></i><b>7.6</b> Achievement Gaps in Test Scores by Socioeconomic Status</a></li>
+<li class="chapter" data-level="7.7" data-path="lec7_k12.html"><a href="lec7_k12.html#two-policy-paradigms"><i class="fa fa-check"></i><b>7.7</b> Two Policy Paradigms</a></li>
+<li class="chapter" data-level="7.8" data-path="lec7_k12.html"><a href="lec7_k12.html#government-based-solutions-to-improving-schools"><i class="fa fa-check"></i><b>7.8</b> Government Based Solutions to Improving Schools</a></li>
+<li class="chapter" data-level="7.9" data-path="lec7_k12.html"><a href="lec7_k12.html#the-effect-of-class-size"><i class="fa fa-check"></i><b>7.9</b> The Effect of Class Size</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="lec7_k12.html"><a href="lec7_k12.html#the-tennessee-star-experiment"><i class="fa fa-check"></i><b>7.9.1</b> The Tennessee Star Experiment</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="lec7_k12.html"><a href="lec7_k12.html#class-size-cutoffs-in-sweden"><i class="fa fa-check"></i><b>7.10</b> Class Size Cutoffs in Sweden</a></li>
+<li class="chapter" data-level="7.11" data-path="lec7_k12.html"><a href="lec7_k12.html#questions-on-primary-education"><i class="fa fa-check"></i><b>7.11</b> Questions on Primary Education</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html"><i class="fa fa-check"></i><b>8</b> Teachers and Charter School</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#using-big-data-to-study-teachers-impacts"><i class="fa fa-check"></i><b>8.1</b> Using Big Data to Study Teachers’ Impacts</a></li>
+<li class="chapter" data-level="8.2" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#measuring-teacher-quality-test-score-based-metrics"><i class="fa fa-check"></i><b>8.2</b> Measuring Teacher Quality: Test-Score Based Metrics</a></li>
+<li class="chapter" data-level="8.3" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#debate-about-teacher-value-added-measures"><i class="fa fa-check"></i><b>8.3</b> Debate about Teacher Value-Added Measures</a></li>
+<li class="chapter" data-level="8.4" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#measuring-the-impacts-of-teachers"><i class="fa fa-check"></i><b>8.4</b> Measuring the Impacts of Teachers</a></li>
+<li class="chapter" data-level="8.5" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#a-quasi-experiment-entry-of-a-high-value-added-teacher"><i class="fa fa-check"></i><b>8.5</b> A Quasi-Experiment: Entry of a High Value-Added Teacher</a></li>
+<li class="chapter" data-level="8.6" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#lesson-1-va-estimates-are-unbiased-measures-of-teacher-effectiveness"><i class="fa fa-check"></i><b>8.6</b> Lesson 1: VA Estimates are Unbiased Measures of Teacher Effectiveness</a></li>
+<li class="chapter" data-level="8.7" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#lesson-2-va-estimates-based-on-test-scores-predict-teachers-long-term-impacts"><i class="fa fa-check"></i><b>8.7</b> Lesson 2: VA Estimates Based on Test Scores Predict Teachers’ Long Term Impacts</a></li>
+<li class="chapter" data-level="8.8" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#lesson-3-va-estimates-based-on-a-few-years-of-data-are-sufficiently-reliable-to-generate-large-gains-on-average"><i class="fa fa-check"></i><b>8.8</b> Lesson 3: VA Estimates Based on a Few Years of Data are Sufficiently Reliable to Generate Large Gains on Average</a></li>
+<li class="chapter" data-level="8.9" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#policy-impacts"><i class="fa fa-check"></i><b>8.9</b> Policy Impacts</a></li>
+<li class="chapter" data-level="8.10" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#market-based-solutions-charter-schools"><i class="fa fa-check"></i><b>8.10</b> Market Based-Solutions: Charter Schools</a></li>
+<li class="chapter" data-level="8.11" data-path="lec8_teachers-charters.html"><a href="lec8_teachers-charters.html#do-charter-schools-work"><i class="fa fa-check"></i><b>8.11</b> Do Charter Schools Work?</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html"><i class="fa fa-check"></i><b>9</b> Racial Disparities in Economic Opportunity</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#theories-of-racial-disparities"><i class="fa fa-check"></i><b>9.2</b> Theories of Racial Disparities</a></li>
+<li class="chapter" data-level="9.3" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#an-intergenerational-perspective-on-racial-disparities"><i class="fa fa-check"></i><b>9.3</b> An Intergenerational Perspective on Racial Disparities</a></li>
+<li class="chapter" data-level="9.4" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#intergenerational-mobility-in-the-u.s."><i class="fa fa-check"></i><b>9.4</b> Intergenerational Mobility in the U.S.</a></li>
+<li class="chapter" data-level="9.5" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#intergenerational-mobility-for-whites-vs.-blacks"><i class="fa fa-check"></i><b>9.5</b> Intergenerational Mobility for Whites vs. Blacks</a></li>
+<li class="chapter" data-level="9.6" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#steady-states"><i class="fa fa-check"></i><b>9.6</b> Steady States</a></li>
+<li class="chapter" data-level="9.7" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#other-racial-disparities"><i class="fa fa-check"></i><b>9.7</b> Other Racial Disparities</a></li>
+<li class="chapter" data-level="9.8" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#gender-differences-in-racial-gaps"><i class="fa fa-check"></i><b>9.8</b> Gender Differences in Racial Gaps</a></li>
+<li class="chapter" data-level="9.9" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#explaining-the-black-white-intergenerational-income-gap-family-level-factors"><i class="fa fa-check"></i><b>9.9</b> Explaining the Black-White Intergenerational Income Gap: Family Level Factors</a></li>
+<li class="chapter" data-level="9.10" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#the-role-of-environmental-factors"><i class="fa fa-check"></i><b>9.10</b> The Role of Environmental Factors</a></li>
+<li class="chapter" data-level="9.11" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#neighborhood-environments-and-the-black-white-gap"><i class="fa fa-check"></i><b>9.11</b> Neighborhood Environments and the Black-White Gap</a></li>
+<li class="chapter" data-level="9.12" data-path="lec9_race-ineq.html"><a href="lec9_race-ineq.html#conclusions"><i class="fa fa-check"></i><b>9.12</b> Conclusions</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html"><i class="fa fa-check"></i><b>10</b> Improving Judicial Decisions</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#motivation-bias-in-human-decision-making"><i class="fa fa-check"></i><b>10.1</b> Motivation: Bias in Human Decision Making</a></li>
+<li class="chapter" data-level="10.2" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#decisions-to-jail-vs.-release-defendants"><i class="fa fa-check"></i><b>10.2</b> Decisions to Jail vs. Release Defendants</a></li>
+<li class="chapter" data-level="10.3" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#data-used-for-empirical-analysis"><i class="fa fa-check"></i><b>10.3</b> Data Used for Empirical Analysis</a></li>
+<li class="chapter" data-level="10.4" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#methodology"><i class="fa fa-check"></i><b>10.4</b> Methodology</a></li>
+<li class="chapter" data-level="10.5" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#comparing-machine-predictions-to-human-predictions"><i class="fa fa-check"></i><b>10.5</b> Comparing Machine Predictions to Human Predictions</a></li>
+<li class="chapter" data-level="10.6" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#predictive-policing"><i class="fa fa-check"></i><b>10.6</b> Predictive Policing</a></li>
+<li class="chapter" data-level="10.7" data-path="lec10_criminal-justice.html"><a href="lec10_criminal-justice.html#conclusion"><i class="fa fa-check"></i><b>10.7</b> Conclusion</a></li>
+</ul></li>
+<li class="part"><span><b>II Tools</b></span></li>
+<li class="chapter" data-level="11" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>11</b> Very Brief Intro to Data in R</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="getting-started.html"><a href="getting-started.html#why-r-again"><i class="fa fa-check"></i><b>11.1</b> Why R again?</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="getting-started.html"><a href="getting-started.html#why-are-we-learning-r-i-wanted-to-learn-about-economics-of-public-and-social-issues"><i class="fa fa-check"></i><b>11.1.1</b> Why are we learning R? I wanted to learn about economics of public and social issues…</a></li>
+<li class="chapter" data-level="11.1.2" data-path="getting-started.html"><a href="getting-started.html#ok-but-why-r"><i class="fa fa-check"></i><b>11.1.2</b> Ok, but why R?</a></li>
+<li class="chapter" data-level="11.1.3" data-path="getting-started.html"><a href="getting-started.html#added-benefits-of-learning-r"><i class="fa fa-check"></i><b>11.1.3</b> Added benefits of learning R</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="getting-started.html"><a href="getting-started.html#key-concepts-before-we-start"><i class="fa fa-check"></i><b>11.2</b> Key concepts before we start:</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="getting-started.html"><a href="getting-started.html#r-rstudio"><i class="fa fa-check"></i><b>11.2.1</b> What are R and RStudio?</a></li>
+<li class="chapter" data-level="11.2.2" data-path="getting-started.html"><a href="getting-started.html#r-and-rstudio-in-your-computer-or-in-the-cloud-the-benefit-of-posit-cloud"><i class="fa fa-check"></i><b>11.2.2</b> R and RStudio: In your computer or in the cloud? The benefit of Posit Cloud</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="getting-started.html"><a href="getting-started.html#lets-open-r"><i class="fa fa-check"></i><b>11.3</b> Let’s open R!</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="getting-started.html"><a href="getting-started.html#rstudio-in-posit-cloud"><i class="fa fa-check"></i><b>11.3.1</b> RStudio in Posit cloud</a></li>
+<li class="chapter" data-level="11.3.2" data-path="getting-started.html"><a href="getting-started.html#using-r-via-rstudio-in-posit-cloud"><i class="fa fa-check"></i><b>11.3.2</b> Using R via RStudio in Posit Cloud</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="getting-started.html"><a href="getting-started.html#code"><i class="fa fa-check"></i><b>11.4</b> How do I code in R?</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="getting-started.html"><a href="getting-started.html#programming-concepts"><i class="fa fa-check"></i><b>11.4.1</b> Basic programming concepts and terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="getting-started.html"><a href="getting-started.html#in-class-exercise"><i class="fa fa-check"></i><b>11.5</b> In Class Exercise</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="getting-started.html"><a href="getting-started.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>11.5.1</b> Errors, warnings, and messages</a></li>
+<li class="chapter" data-level="11.5.2" data-path="getting-started.html"><a href="getting-started.html#tips-on-learning-to-code"><i class="fa fa-check"></i><b>11.5.2</b> Tips on learning to code</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="getting-started.html"><a href="getting-started.html#packages"><i class="fa fa-check"></i><b>11.6</b> What are R packages?</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="getting-started.html"><a href="getting-started.html#package-installation"><i class="fa fa-check"></i><b>11.6.1</b> Package installation</a></li>
+<li class="chapter" data-level="11.6.2" data-path="getting-started.html"><a href="getting-started.html#package-loading"><i class="fa fa-check"></i><b>11.6.2</b> Package loading</a></li>
+<li class="chapter" data-level="11.6.3" data-path="getting-started.html"><a href="getting-started.html#package-use"><i class="fa fa-check"></i><b>11.6.3</b> Package use</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="getting-started.html"><a href="getting-started.html#hands-on-exercise"><i class="fa fa-check"></i><b>11.7</b> Hands-on exercise!</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="getting-started.html"><a href="getting-started.html#mobilitydata"><i class="fa fa-check"></i><b>11.7.1</b> Explore your first dataset: economic mobility in the US</a></li>
+<li class="chapter" data-level="11.7.2" data-path="getting-started.html"><a href="getting-started.html#economic-mobility-data"><i class="fa fa-check"></i><b>11.7.2</b> Economic mobility data</a></li>
+<li class="chapter" data-level="11.7.3" data-path="getting-started.html"><a href="getting-started.html#atlas-data-frame"><i class="fa fa-check"></i><b>11.7.3</b> <code>atlas</code> data frame</a></li>
+<li class="chapter" data-level="11.7.4" data-path="getting-started.html"><a href="getting-started.html#exploredataframes"><i class="fa fa-check"></i><b>11.7.4</b> Exploring data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="getting-started.html"><a href="getting-started.html#conclusion-1"><i class="fa fa-check"></i><b>11.8</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="11.8.1" data-path="getting-started.html"><a href="getting-started.html#additional-resources"><i class="fa fa-check"></i><b>11.8.1</b> Additional resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>12</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="viz.html"><a href="viz.html#needed-data-and-packages"><i class="fa fa-check"></i>Needed data and packages</a></li>
+<li class="chapter" data-level="12.1" data-path="viz.html"><a href="viz.html#grammarofgraphics"><i class="fa fa-check"></i><b>12.1</b> The Grammar of Graphics</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="viz.html"><a href="viz.html#components-of-the-grammar"><i class="fa fa-check"></i><b>12.1.1</b> Components of the Grammar</a></li>
+<li class="chapter" data-level="12.1.2" data-path="viz.html"><a href="viz.html#gapminder"><i class="fa fa-check"></i><b>12.1.2</b> Gapminder data</a></li>
+<li class="chapter" data-level="12.1.3" data-path="viz.html"><a href="viz.html#other-components"><i class="fa fa-check"></i><b>12.1.3</b> Other components</a></li>
+<li class="chapter" data-level="12.1.4" data-path="viz.html"><a href="viz.html#ggplot2-package"><i class="fa fa-check"></i><b>12.1.4</b> ggplot2 package</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="viz.html"><a href="viz.html#FiveNG"><i class="fa fa-check"></i><b>12.2</b> Three Important Graphs -</a></li>
+<li class="chapter" data-level="12.3" data-path="viz.html"><a href="viz.html#scatterplots"><i class="fa fa-check"></i><b>12.3</b> Scatterplots</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="viz.html"><a href="viz.html#geompoint"><i class="fa fa-check"></i><b>12.3.1</b> Scatterplots via geom_point</a></li>
+<li class="chapter" data-level="12.3.2" data-path="viz.html"><a href="viz.html#overplotting"><i class="fa fa-check"></i><b>12.3.2</b> Over-plotting</a></li>
+<li class="chapter" data-level="12.3.3" data-path="viz.html"><a href="viz.html#summary"><i class="fa fa-check"></i><b>12.3.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="viz.html"><a href="viz.html#histograms"><i class="fa fa-check"></i><b>12.4</b> Histograms</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="viz.html"><a href="viz.html#geomhistogram"><i class="fa fa-check"></i><b>12.4.1</b> Histograms via geom_histogram</a></li>
+<li class="chapter" data-level="12.4.2" data-path="viz.html"><a href="viz.html#adjustbins"><i class="fa fa-check"></i><b>12.4.2</b> Adjusting the bins</a></li>
+<li class="chapter" data-level="12.4.3" data-path="viz.html"><a href="viz.html#summary-1"><i class="fa fa-check"></i><b>12.4.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="viz.html"><a href="viz.html#geombar"><i class="fa fa-check"></i><b>12.5</b> Barplots</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="viz.html"><a href="viz.html#barplots-via-geom_bar-or-geom_col"><i class="fa fa-check"></i><b>12.5.1</b> Barplots via geom_bar or geom_col</a></li>
+<li class="chapter" data-level="12.5.2" data-path="viz.html"><a href="viz.html#summary-2"><i class="fa fa-check"></i><b>12.5.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="viz.html"><a href="viz.html#conclusion-2"><i class="fa fa-check"></i><b>12.6</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="viz.html"><a href="viz.html#summary-table"><i class="fa fa-check"></i><b>12.6.1</b> Summary table</a></li>
+<li class="chapter" data-level="12.6.2" data-path="viz.html"><a href="viz.html#argument-specification"><i class="fa fa-check"></i><b>12.6.2</b> Argument specification</a></li>
+<li class="chapter" data-level="12.6.3" data-path="viz.html"><a href="viz.html#additional-resources-1"><i class="fa fa-check"></i><b>12.6.3</b> Additional resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="wrangling.html"><a href="wrangling.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling</a>
+<ul>
+<li class="chapter" data-level="" data-path="wrangling.html"><a href="wrangling.html#needed-packages"><i class="fa fa-check"></i>Needed packages</a></li>
+<li class="chapter" data-level="13.1" data-path="wrangling.html"><a href="wrangling.html#piping"><i class="fa fa-check"></i><b>13.1</b> The pipe operator: <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="13.2" data-path="wrangling.html"><a href="wrangling.html#filter"><i class="fa fa-check"></i><b>13.2</b> <code>filter</code> rows</a></li>
+<li class="chapter" data-level="13.3" data-path="wrangling.html"><a href="wrangling.html#mutate"><i class="fa fa-check"></i><b>13.3</b> <code>mutate</code> existing variables</a></li>
+<li class="chapter" data-level="13.4" data-path="wrangling.html"><a href="wrangling.html#other-verbs"><i class="fa fa-check"></i><b>13.4</b> Other verbs</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="wrangling.html"><a href="wrangling.html#select"><i class="fa fa-check"></i><b>13.4.1</b> <code>select</code> variables</a></li>
+<li class="chapter" data-level="13.4.2" data-path="wrangling.html"><a href="wrangling.html#rename"><i class="fa fa-check"></i><b>13.4.2</b> <code>rename</code> variables</a></li>
+<li class="chapter" data-level="13.4.3" data-path="wrangling.html"><a href="wrangling.html#top_n-values-of-a-variable"><i class="fa fa-check"></i><b>13.4.3</b> <code>top_n</code> values of a variable</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="wrangling.html"><a href="wrangling.html#conclusion-3"><i class="fa fa-check"></i><b>13.5</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="wrangling.html"><a href="wrangling.html#additional-resources-2"><i class="fa fa-check"></i><b>13.5.1</b> Additional resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>14</b> Simple and Multivariate Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="regression.html"><a href="regression.html#needed-packages-1"><i class="fa fa-check"></i>Needed packages</a></li>
+<li class="chapter" data-level="14.1" data-path="regression.html"><a href="regression.html#model1"><i class="fa fa-check"></i><b>14.1</b> One numerical explanatory variable</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="regression.html"><a href="regression.html#model1EDA"><i class="fa fa-check"></i><b>14.1.1</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="14.1.2" data-path="regression.html"><a href="regression.html#model1table"><i class="fa fa-check"></i><b>14.1.2</b> Simple linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="regression.html"><a href="regression.html#related-topics"><i class="fa fa-check"></i><b>14.2</b> Related topics</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="regression.html"><a href="regression.html#correlationcoefficient"><i class="fa fa-check"></i><b>14.2.1</b> Correlation coefficient</a></li>
+<li class="chapter" data-level="14.2.2" data-path="regression.html"><a href="regression.html#correlation-is-not-causation"><i class="fa fa-check"></i><b>14.2.2</b> Correlation is not necessarily causation</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="regression.html"><a href="regression.html#model3"><i class="fa fa-check"></i><b>14.3</b> Two numerical explanatory variables</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="regression.html"><a href="regression.html#model3EDA"><i class="fa fa-check"></i><b>14.3.1</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="14.3.2" data-path="regression.html"><a href="regression.html#model3table"><i class="fa fa-check"></i><b>14.3.2</b> Regression plane</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="regression.html"><a href="regression.html#how-to-read-p-values"><i class="fa fa-check"></i><b>14.4</b> How to read p-values</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="regression.html"><a href="regression.html#an-example"><i class="fa fa-check"></i><b>14.4.1</b> An Example</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="regression.html"><a href="regression.html#conclusion-4"><i class="fa fa-check"></i><b>14.5</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="regression.html"><a href="regression.html#additional-resources-basic-regression"><i class="fa fa-check"></i><b>14.5.1</b> Additional resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>15</b> RMarkdown / Quarto output</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="rmarkdown.html"><a href="rmarkdown.html#how-to-create-an-output-file"><i class="fa fa-check"></i><b>15.1</b> How to create an output file</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="rmarkdown.html"><a href="rmarkdown.html#error-when-rendering-file"><i class="fa fa-check"></i><b>15.1.1</b> Error when rendering file</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="rmarkdown.html"><a href="rmarkdown.html#add-new-code"><i class="fa fa-check"></i><b>15.2</b> Add new code</a></li>
+<li class="chapter" data-level="15.3" data-path="rmarkdown.html"><a href="rmarkdown.html#add-a-title"><i class="fa fa-check"></i><b>15.3</b> Add a title</a></li>
+<li class="chapter" data-level="15.4" data-path="rmarkdown.html"><a href="rmarkdown.html#add-an-image"><i class="fa fa-check"></i><b>15.4</b> Add an image</a></li>
+<li class="chapter" data-level="15.5" data-path="rmarkdown.html"><a href="rmarkdown.html#submit-your-work"><i class="fa fa-check"></i><b>15.5</b> Submit your work</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="appendixA.html"><a href="appendixA.html"><i class="fa fa-check"></i><b>A</b> Statistical Background</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="appendixA.html"><a href="appendixA.html#basic-statistical-terms"><i class="fa fa-check"></i><b>A.1</b> Basic statistical terms</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="appendixA.html"><a href="appendixA.html#mean"><i class="fa fa-check"></i><b>A.1.1</b> Mean</a></li>
+<li class="chapter" data-level="A.1.2" data-path="appendixA.html"><a href="appendixA.html#median"><i class="fa fa-check"></i><b>A.1.2</b> Median</a></li>
+<li class="chapter" data-level="A.1.3" data-path="appendixA.html"><a href="appendixA.html#standard-deviation"><i class="fa fa-check"></i><b>A.1.3</b> Standard deviation</a></li>
+<li class="chapter" data-level="A.1.4" data-path="appendixA.html"><a href="appendixA.html#five-number-summary"><i class="fa fa-check"></i><b>A.1.4</b> Five-number summary</a></li>
+<li class="chapter" data-level="A.1.5" data-path="appendixA.html"><a href="appendixA.html#appPercentiles"><i class="fa fa-check"></i><b>A.1.5</b> Percentiles or rank</a></li>
+<li class="chapter" data-level="A.1.6" data-path="appendixA.html"><a href="appendixA.html#appDistributions"><i class="fa fa-check"></i><b>A.1.6</b> Distribution</a></li>
+<li class="chapter" data-level="A.1.7" data-path="appendixA.html"><a href="appendixA.html#outliers"><i class="fa fa-check"></i><b>A.1.7</b> Outliers</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Projects</b></span></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html"><i class="fa fa-check"></i>Project 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#stories-from-the-atlas-describing-data-using-maps-regressions-and-correlations"><i class="fa fa-check"></i>Stories from the Atlas: Describing Data using Maps, Regressions, and Correlations</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#instructions"><i class="fa fa-check"></i>Instructions</a>
+<ul>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#specific-questions-to-address-in-your-narrative"><i class="fa fa-check"></i>Specific questions to address in your narrative</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#description"><i class="fa fa-check"></i>Data Description</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#cheatsheetproject1"><i class="fa fa-check"></i>Cheatsheat commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#unweighted-summary-statistics"><i class="fa fa-check"></i>Unweighted summary statistics</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#load-package"><i class="fa fa-check"></i>Load package</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#weighted-summary-statistics"><i class="fa fa-check"></i>Weighted summary statistics</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#subset-observations"><i class="fa fa-check"></i>Subset observations</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#standardize-variables"><i class="fa fa-check"></i>Standardize variables</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#run-regression"><i class="fa fa-check"></i>Run regression</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#how-to-read-the-regression-output"><i class="fa fa-check"></i>How to read the regression output?</a></li>
+<li class="chapter" data-level="" data-path="project1.html"><a href="project1.html#plotting-the-linear-relationship"><i class="fa fa-check"></i>Plotting the linear relationship</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html"><i class="fa fa-check"></i>Project 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#do-smaller-classes-improve-test-scores-evidence-from-a-regression-discontinuity-design"><i class="fa fa-check"></i>Do Smaller Classes Improve Test Scores? Evidence from a Regression Discontinuity Design</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#instructions-1"><i class="fa fa-check"></i>Instructions</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#questions-to-address-in-your-replication"><i class="fa fa-check"></i>Questions to address in your replication</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#descriptionproject2"><i class="fa fa-check"></i>Data Description</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#cheatsheetproject2"><i class="fa fa-check"></i>Cheatsheat commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#r-command-description"><i class="fa fa-check"></i>R command Description</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#packages-needed"><i class="fa fa-check"></i>Packages needed</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#subset-observations-1"><i class="fa fa-check"></i>Subset observations</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#draw-binned-scatterplots"><i class="fa fa-check"></i>Draw binned scatterplots</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#collapse-or-summarize-datasets"><i class="fa fa-check"></i>Collapse or summarize datasets</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#draw-graph-of-count-of-schools"><i class="fa fa-check"></i>Draw graph of count of schools</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#estimate-the-discontinuity"><i class="fa fa-check"></i>Estimate the discontinuity</a></li>
+<li class="chapter" data-level="" data-path="project2.html"><a href="project2.html#interpretation"><i class="fa fa-check"></i>Interpretation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html"><i class="fa fa-check"></i>Project 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#social-capital-and-economic-mobility"><i class="fa fa-check"></i>Social Capital and Economic Mobility</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#instructions-2"><i class="fa fa-check"></i>Instructions</a>
+<ul>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#specific-questions-to-address-in-your-narrative-1"><i class="fa fa-check"></i>Specific questions to address in your narrative</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#data-description"><i class="fa fa-check"></i>Data Description</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#cheatsheetproject3"><i class="fa fa-check"></i>Cheatsheat commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#unweighted-summary-statistics-1"><i class="fa fa-check"></i>Unweighted summary statistics</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#load-package-1"><i class="fa fa-check"></i>Load package</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#weighted-summary-statistics-1"><i class="fa fa-check"></i>Weighted summary statistics</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#subset-observations-2"><i class="fa fa-check"></i>Subset observations</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#standardize-variables-1"><i class="fa fa-check"></i>Standardize variables</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#run-regression-1"><i class="fa fa-check"></i>Run regression</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#how-to-read-the-regression-output-1"><i class="fa fa-check"></i>How to read the regression output?</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#confidence-intervals"><i class="fa fa-check"></i>Confidence Intervals</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#plotting-the-linear-relationship-1"><i class="fa fa-check"></i>Plotting the linear relationship</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html"><i class="fa fa-check"></i>Project 4</a>
+<ul>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#using-google-datacommons-to-predict-social-mobility"><i class="fa fa-check"></i>Using Google DataCommons to Predict Social Mobility</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#instructions-3"><i class="fa fa-check"></i>Instructions</a>
+<ul>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#specific-questions"><i class="fa fa-check"></i>Specific questions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#data-description-1"><i class="fa fa-check"></i>Data Description</a></li>
+<li class="chapter" data-level="" data-path="project3.html"><a href="project3.html#cheatsheetproject3"><i class="fa fa-check"></i>Cheatsheat commands</a>
+<ul>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#how-to-tell-r-that-you-have-a-categorical-variable"><i class="fa fa-check"></i>How to tell R that you have a categorical variable?</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#load-package-2"><i class="fa fa-check"></i>Load package</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#run-regression-2"><i class="fa fa-check"></i>Run regression</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#measures-of-accuracy-in-prediction-in-a-multiple-regression"><i class="fa fa-check"></i>Measures of accuracy in prediction in a Multiple regression</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#estimating-a-decision-tree"><i class="fa fa-check"></i>Estimating a Decision Tree</a></li>
+<li class="chapter" data-level="" data-path="project4.html"><a href="project4.html#measures-of-accuracy-in-a-decision-tree"><i class="fa fa-check"></i>Measures of accuracy in a Decision Tree</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.jmorenomedina.com/" target="blank">By Jon Moreno-Medina</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Economics of Public and Social Issues</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="project3" class="section level1 unnumbered hasAnchor">
+<h1>Project 3<a href="project3.html#project3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="social-capital-and-economic-mobility" class="section level2 unnumbered hasAnchor">
+<h2>Social Capital and Economic Mobility<a href="project3.html#social-capital-and-economic-mobility" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><strong>Posted</strong>: Wednesday, August 28, 2024</p></li>
+<li><p><strong>Due</strong>: Midnight on Friday, November 8, 2024</p></li>
+</ul>
+<p>You have already explored the <a href="https://www.opportunityatlas.org/">Opportunity Atlas</a> in <a href="project1.html#project1">Project 1</a>. Now you will explore the new data on economic mobility that some of the previous researchers and new ones have made freely available in the <a href="https://socialcapital.org/">Social Capital Atlas</a>. It also provides an interactive mapping tool, as before, that attempts to trace the strength of our relationships and communities.</p>
+<p>In this empirical project, you will use new data on social capital to estimate it’s relationship to economic mobility. To answer some of the questions you will need to refer to the following papers (both of which are in Blackboard under Supplementary Readings):</p>
+<ol style="list-style-type: decimal">
+<li><p><a href="https://www.nature.com/articles/s41586-022-04996-4">Chetty, Raj; Jackson, Matthew O; Kuchler, Theresa; Stroebel, Johannes; Hendren, Nathaniel; Fluegge, Robert B; Gong, Sara; Gonzalez, Federico; Grondin, Armelle; Jacob, Matthew; Johnston, Drew; Koenen, Martin; Laguna-Muggenburg, Eduardo; Mudekereza, Florian; Rutter, Tom; Thor, Nicolaj; Townsend, Wilbur; Zhang, Ruby; Bailey, Mike; Barberá, Pablo; Bhole, Monica; Wernerfelt, Nils, 2022. “Social capital I: measurement and associations with economic mobility”, Nature 608 (7921): 108-121</a></p></li>
+<li><p><a href="https://www.nature.com/articles/s41586-022-04997-3">Chetty, Raj; Jackson, Matthew O; Kuchler, Theresa; Stroebel, Johannes; Hendren, Nathaniel; Fluegge, Robert B; Gong, Sara; Gonzalez, Federico; Grondin, Armelle; Jacob, Matthew; Johnston, Drew; Koenen, Martin; Laguna-Muggenburg, Eduardo; Mudekereza, Florian; Rutter, Tom; Thor, Nicolaj; Townsend, Wilbur; Zhang, Ruby; Bailey, Mike; Barberá, Pablo; Bhole, Monica; Wernerfelt, Nils, 2022. “Social capital II: determinants of economic connectedness”, Nature 608 (7921): 122-134</a></p></li>
+</ol>
+<p>The data file <code>atlas_socialk.rds</code> consists of the same information in <code>atlas</code> that you used for Project 1, but it now includes information from the Social Captal Atlas as well. This version includes the new estimates of social capital described in the papers above at the ZIP level, which in this case have been connected with the tract-level data.</p>
+<p>You can load the data by using the following code:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="project3.html#cb119-1" tabindex="-1"></a>atlas_socialk <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">gzcon</span>(<span class="fu">url</span>(<span class="st">&quot;https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_socialk_tract.rds&quot;</span>)))</span></code></pre></div>
+</div>
+<div id="instructions-2" class="section level2 unnumbered hasAnchor">
+<h2>Instructions<a href="project3.html#instructions-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As usual, you will work on Posit Cloud for this project. Write your responses within a <a href="rmarkdown.html#rmarkdown">Quarto/RMarkdown here</a> file in the <strong>project3</strong> tab in Posit Cloud.</p>
+<div id="specific-questions-to-address-in-your-narrative-1" class="section level3 unnumbered hasAnchor">
+<h3>Specific questions to address in your narrative<a href="project3.html#specific-questions-to-address-in-your-narrative-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Once more, start by looking up the city where you grew up on the <a href="https://socialcapital.org/">Social Capital Atlas</a>. Zoom in to the area around your home (or the one you explored in Project 1).</li>
+</ol>
+<p>Figure 1 should be a map of the Zip codes in your hometown from the Social Capital Atlas. Figure 2 should be a map of the High Schools in your hometown from the Social Capital Atlas. Lastly, Figure 3 should be a map of the colleges in your hometown from the Social Capital Atlas (if there are none, show how the closest set of colleges look in the map).</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Describe the data being used by the authors. What period do the data you are analyzing come from? How should we interpret any possible correlation between these measures of social capital and those of mobility (take into account when each dataset is being measured)?</p></li>
+<li><p>Now turn to the <code>atlas_socialk.rds</code> data set. How does economic connectedness (<code>ec_zip</code>), cohesiveness (<code>clustering_zip</code>) and civic engagement (<code>volunteering_rate_zip</code> and <code>civic_organizations_zip</code>) look like in your home Census tract compare to mean (population-weighted, using <code>count_pooled</code>) across the state and the U.S. overall?</p></li>
+</ol>
+<p><strong>Hint</strong>: Same as before. You can find the tract, county, and state FIPS codes for your home address from the Opportunity Atlas.</p>
+<blockquote>
+<p>Recall that it’s usually a good idea to load the data and packages at the very beggining of your Quarto file. You will need to load <code>tidyverse</code> and <code>Hmisc</code>.</p>
+</blockquote>
+<ol start="4" style="list-style-type: decimal">
+<li><p>What is the standard deviation of the different social capital measures (population-weighted) in your home county? Is it larger or smaller than the standard deviation across tracts in your state? Across tracts in the country? What do you learn from these comparisons?</p></li>
+<li><p>Using a linear regression, estimate the relationship between economic connectedness (<code>ec_zip</code>) and economic mobility (<code>kfr_pooled_p25</code>) across the US and in your state. Generate a scatter plot to visualize this regression. Interpret what you find. In particular, is the relationship statistically significant? Would you conclude that there is a causal effect between the variables? Why?</p></li>
+<li><p>How does the results in (5) change if you consider <code>ec_high_zip</code> instead? How do you interpret this difference?</p></li>
+<li><p>What happens to the results in (5) if you consider adjusting for other covariates? Identify 2 or 3 additional covariates which could explain mobility differences and include them in a multiple regression which includes <code>ec_zip</code>. Some examples of covariates you might examine include housing prices, income inequality, fraction of children with single parents, job density, etc. For 2 or 3 of these, report estimated correlation coefficients along with their 95% confidence intervals.</p></li>
+<li><p>Putting together all the analyses you did above, what have you learned about the relationship between social capital and economic opportunity? Mention any important caveats to your conclusions; for example, can we conclude that the variable you identified as a key predictor in the question above has a causal effect (i.e., changing it would change upward mobility) based on that analysis? Why or why not?</p></li>
+</ol>
+</div>
+</div>
+<div id="data-description" class="section level2 unnumbered hasAnchor">
+<h2>Data Description<a href="project3.html#data-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The data consist of n = 73,278 U.S. Census tracts. For more details on the construction of the variables included in this data set, please see <a href="https://opportunityinsights.org/wp-content/uploads/2018/10/atlas_paper.pdf">Chetty, Raj, John Friedman, Nathaniel Hendren, Maggie R. Jones, and Sonya R. Porter. 2018. “The Opportunity Atlas: Mapping the Childhood Roots of Social Mobility.”</a>, NBER Working Paper No. 25147.</p>
+<p><strong>Table 1</strong></p>
+<p>Definitions of Variables in <code>atlas.rds</code></p>
+<table style="width:100%;">
+<colgroup>
+<col width="39%" />
+<col width="54%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Variable name</strong></th>
+<th><strong>Label</strong></th>
+<th><strong>Obs.</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>(1)</strong></td>
+<td><strong>(2)</strong></td>
+<td><strong>(3)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>1. Geographic identifiers</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>tract</td>
+<td>Tract FIPS Code (6-digit) 2010</td>
+<td>73,278</td>
+</tr>
+<tr class="even">
+<td>county</td>
+<td>County FIPS Code (3-digit)</td>
+<td>73,278</td>
+</tr>
+<tr class="odd">
+<td>state</td>
+<td>State FIPS Code (2-digit)</td>
+<td>73,278</td>
+</tr>
+<tr class="even">
+<td>cz</td>
+<td>Commuting Zone Identifier (1990 Definition)</td>
+<td>72,473</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>2. Characteristics of Census tracts</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>hhinc_mean2000</td>
+<td>Mean Household Income 2000</td>
+<td>72,302</td>
+</tr>
+<tr class="even">
+<td>mean_commutetime2000</td>
+<td>Average Commute Time of Working Adults in 2000</td>
+<td>72,313</td>
+</tr>
+<tr class="odd">
+<td>frac_coll_plus2010</td>
+<td>Fraction of Residents with a College Degree or More in 2010</td>
+<td>72,993</td>
+</tr>
+<tr class="even">
+<td>frac_coll_plus2000</td>
+<td>Fraction of Residents with a College Degree or More in 2000</td>
+<td>72,343</td>
+</tr>
+<tr class="odd">
+<td>foreign_share2010</td>
+<td>Share of Population Born Outside the U.S.</td>
+<td>72,279</td>
+</tr>
+<tr class="even">
+<td>med_hhinc2016</td>
+<td>Median Household Income in 2016</td>
+<td>72,763</td>
+</tr>
+<tr class="odd">
+<td>med_hhinc1990</td>
+<td>Median Household Income in 1999</td>
+<td>72,313</td>
+</tr>
+<tr class="even">
+<td>popdensity2000</td>
+<td>Population Density (per square mile) in 2000</td>
+<td>72,469</td>
+</tr>
+<tr class="odd">
+<td>poor_share2010</td>
+<td>Poverty Rate 2010</td>
+<td>72,933</td>
+</tr>
+<tr class="even">
+<td>poor_share2000</td>
+<td>Poverty Rate 2000</td>
+<td>72,315</td>
+</tr>
+<tr class="odd">
+<td>poor_share1990</td>
+<td>Poverty Rate 1990</td>
+<td>72,323</td>
+</tr>
+<tr class="even">
+<td>share_black2010</td>
+<td>Share black 2010</td>
+<td>73,111</td>
+</tr>
+<tr class="odd">
+<td>share_hisp2010</td>
+<td>Share Hispanic 2010</td>
+<td>73,111</td>
+</tr>
+<tr class="even">
+<td>share_asian2010</td>
+<td>Share Asian 2010</td>
+<td>71,945</td>
+</tr>
+<tr class="odd">
+<td>share_black2000</td>
+<td>Share black 2000</td>
+<td>72,368</td>
+</tr>
+<tr class="even">
+<td>share_white2000</td>
+<td>Share white 2000</td>
+<td>72,368</td>
+</tr>
+<tr class="odd">
+<td>share_hisp2000</td>
+<td>Share Hispanic 2000</td>
+<td>72,368</td>
+</tr>
+<tr class="even">
+<td>share_asian2000</td>
+<td>Share Asian 2000</td>
+<td>71,050</td>
+</tr>
+<tr class="odd">
+<td>gsmn_math_g3_2013</td>
+<td>Average School District Level Standardized Test Scores in 3rd Grade in 2013</td>
+<td>72,090</td>
+</tr>
+<tr class="even">
+<td>rent_twobed2015</td>
+<td>Average Rent for Two-Bedroom Apartment in 2015</td>
+<td>56,607</td>
+</tr>
+<tr class="odd">
+<td>singleparent_share2010</td>
+<td>Share of Single-Headed Households with Children 2010</td>
+<td>72,564</td>
+</tr>
+<tr class="even">
+<td>singleparent_share1990</td>
+<td>Share of Single-Headed Households with Children 1990</td>
+<td>72,196</td>
+</tr>
+<tr class="odd">
+<td>singleparent_share2000</td>
+<td>Share of Single-Headed Households with Children 2000</td>
+<td>72,285</td>
+</tr>
+<tr class="even">
+<td>traveltime15_2010</td>
+<td>Share of Working Adults w/ Commute Time of 15 Minutes Or Less in 2010</td>
+<td>72,939</td>
+</tr>
+<tr class="odd">
+<td>emp2000</td>
+<td>Employment Rate 2000</td>
+<td>72,344</td>
+</tr>
+<tr class="even">
+<td>mail_return_rate2010</td>
+<td>Census Form Rate Return Rate 2010</td>
+<td>72,547</td>
+</tr>
+<tr class="odd">
+<td>ln_wage_growth_hs_grad</td>
+<td>Log wage growth for HS Grad., 2005-2014</td>
+<td>51,635</td>
+</tr>
+<tr class="even">
+<td>jobs_total_5mi_2015</td>
+<td>Number of Primary Jobs within 5 Miles in 2015</td>
+<td>72,311</td>
+</tr>
+<tr class="odd">
+<td>jobs_highpay_5mi_2015</td>
+<td>Number of High-Paying (&gt;USD40,000 annually) Jobs within 5 Miles in 2015</td>
+<td>72,311</td>
+</tr>
+<tr class="even">
+<td>nonwhite_share2010</td>
+<td>Share of People who are not white 2010</td>
+<td>73,111</td>
+</tr>
+<tr class="odd">
+<td>popdensity2010</td>
+<td>Population Density (per square mile) in 2010</td>
+<td>73,194</td>
+</tr>
+<tr class="even">
+<td>ann_avg_job_growth_2004_2013</td>
+<td>Average Annual Job Growth Rate 2004-2013</td>
+<td>70,664</td>
+</tr>
+<tr class="odd">
+<td>job_density_2013</td>
+<td>Job Density (in square miles) in 2013</td>
+<td>72,463</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>3. Measures of Upward Mobility from the Opportunity Atlas</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>kfr_pooled_p25</td>
+<td>Household income ($) at age 31-37 for children with parents at the 25th percentile of the national income distribution</td>
+<td>72,011</td>
+</tr>
+<tr class="odd">
+<td>kfr_pooled_p75</td>
+<td>Household income ($) at age 31-37 for children with parents at the 75th percentile of the national income distribution</td>
+<td>72,012</td>
+</tr>
+<tr class="even">
+<td>kfr_pooled_p100</td>
+<td>Household income ($) at age 31-37 for children with parents at the 100th percentile of the national income distribution</td>
+<td>71,968</td>
+</tr>
+<tr class="odd">
+<td>kfr_natam_p25</td>
+<td>Household income ($) at age 31-37 for Native American children with parents at the 25th percentile of the national income distribution</td>
+<td>1,733</td>
+</tr>
+<tr class="even">
+<td>kfr_natam_p75</td>
+<td>Household income ($) at age 31-37 for Native American children with parents at the 75th percentile of the national income distribution</td>
+<td>1,728</td>
+</tr>
+<tr class="odd">
+<td>kfr_natam_p100</td>
+<td>Household income ($) at age 31-37 for Native American children with parents at the 100th percentile of the national income distribution</td>
+<td>1,594</td>
+</tr>
+<tr class="even">
+<td>kfr_asian_p25</td>
+<td>Household income ($) at age 31-37 for Asian children with parents at the 25th percentile of the national income distribution</td>
+<td>15,434</td>
+</tr>
+<tr class="odd">
+<td>kfr_asian_p75</td>
+<td>Household income ($) at age 31-37 for Asian children with parents at the 75th percentile of the national income distribution</td>
+<td>15,360</td>
+</tr>
+<tr class="even">
+<td>kfr_asian_p100</td>
+<td>Household income ($) at age 31-37 for Asian children with parents at the 100th percentile of the national income distribution</td>
+<td>13,480</td>
+</tr>
+<tr class="odd">
+<td>kfr_black_p25</td>
+<td>Household income ($) at age 31-37 for Black children with parents at the 25th percentile of the national income distribution</td>
+<td>34,086</td>
+</tr>
+<tr class="even">
+<td>kfr_black_p75</td>
+<td>Household income ($) at age 31-37 for Black children with parents at the 75th percentile of the national income distribution</td>
+<td>34,049</td>
+</tr>
+<tr class="odd">
+<td>kfr_black_p100</td>
+<td>Household income ($) at age 31-37 for Black children with parents at the 100th percentile of the national income distribution</td>
+<td>32,536</td>
+</tr>
+<tr class="even">
+<td>kfr_hisp_p25</td>
+<td>Household income ($) at age 31-37 for Hispanic children with parents at the 25th percentile of the national income distribution</td>
+<td>37,611</td>
+</tr>
+<tr class="odd">
+<td>kfr_hisp_p75</td>
+<td>Household income ($) at age 31-37 for Hispanic children with parents at the 75th percentile of the national income distribution</td>
+<td>37,579</td>
+</tr>
+<tr class="even">
+<td>kfr_hisp_p100</td>
+<td>Household income ($) at age 31-37 for Hispanic children with parents at the 100th percentile of the national income distribution</td>
+<td>35,987</td>
+</tr>
+<tr class="odd">
+<td>kfr_white_p25</td>
+<td>Household income ($) at age 31-37 for white children with parents at the 25th percentile of the national income distribution</td>
+<td>67,978</td>
+</tr>
+<tr class="even">
+<td>kfr_white_p75</td>
+<td>Household income ($) at age 31-37 for white children with parents at the 75th percentile of the national income distribution</td>
+<td>67,968</td>
+</tr>
+<tr class="odd">
+<td>kfr_white_p100</td>
+<td>Household income ($) at age 31-37 for white children with parents at the 100th percentile of the national income distribution</td>
+<td>67,627</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>3. Counts of number of children under 18 in 2000 (to calculate weighted summary statistics)</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>count_pooled</td>
+<td>Count of all children</td>
+<td>72,451</td>
+</tr>
+<tr class="odd">
+<td>count_white</td>
+<td>Count of White children</td>
+<td>72,451</td>
+</tr>
+<tr class="even">
+<td>count_black</td>
+<td>Count of Black children</td>
+<td>72,451</td>
+</tr>
+<tr class="odd">
+<td>count_asian</td>
+<td>Count of Asian children</td>
+<td>72,451</td>
+</tr>
+<tr class="even">
+<td>count_hisp</td>
+<td>Count of Hispanic children</td>
+<td>72,451</td>
+</tr>
+<tr class="odd">
+<td>count_natam</td>
+<td>Count of Native American children</td>
+<td>72,451</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>4. Measures of Social Capital </strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ec_zip</td>
+<td>Baseline definition of economic connectedness: two times the share of high-SES friends among low-SES individuals, averaged over all low-SES individuals in the ZIP code. See equations (1), (2), and (3) of Chetty et al. (2022a) for a formal definition.</td>
+<td>71,516</td>
+</tr>
+<tr class="odd">
+<td>ec_high_zip</td>
+<td>Economic connectedness for high-SES individuals: two times the share of high-SES friends among high-SES individuals, averaged over all high-SES individuals in the ZIP code.</td>
+<td>71,516</td>
+</tr>
+<tr class="even">
+<td>clustering_zip</td>
+<td>The average fraction of an individual’s friend pairs who are also friends with each other. See equations (4) and (5) of Chetty et al. (2022a). They include links to people outside the ZIP code when calculating individual clustering (equation 4), but only average individual clustering over users in the relevant ZIP code to compute clustering at the ZIP code level (equation 5).</td>
+<td>71,950</td>
+</tr>
+<tr class="odd">
+<td>volunteering_rate_zip</td>
+<td>The percentage of Facebook users who are members of a group which is predicted to be about ‘volunteering’ or ‘activism’ based on group title and other group characteristics. We do not include groups that have the privacy setting ‘secret’ enabled. We additionally manually review the 50 largest such groups in the United States and the largest group in each state, and remove the very small number of groups that are clearly misclassified.</td>
+<td>71,950</td>
+</tr>
+<tr class="even">
+<td>civic_organizations_zip</td>
+<td>The number of Facebook Pages predicted to be “Public Good” pages based on page title, category, and other page characteristics, per 1,000 users in the ZIP code. They remove pages that do not have a website linked, do not have a description on their Facebook page or do not have an address listed. We then assign the page to a ZIP code on the basis of its listed address.</td>
+<td>71,938</td>
+</tr>
+</tbody>
+</table>
+<p>To see all other social capital variables not defined above, see <a href="https://data.humdata.org/dataset/85ee8e10-0c66-4635-b997-79b6fad44c71/resource/fbe5b0b9-e81c-41c7-a9f2-3ebf8212cf64/download/data_release_readme_31_07_2022_nomatrix.pdf">here</a>.</p>
+<hr />
+</div>
+<div id="cheatsheetproject3" class="section level2 unnumbered hasAnchor">
+<h2>Cheatsheat commands<a href="project3.html#cheatsheetproject3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>R command Description</strong></p>
+<p>Here I present a summary of the commands you could use to work on this project. There are two important issues you should keep in mind while reading this:</p>
+<ol style="list-style-type: decimal">
+<li>Notice that whenever you see <code>yvar</code> this is <strong>not a real variable</strong>. It is only a place holder for the appropriate variable that you decide to analyze or use. For example, if you want to see the mean across neighborhoods of the average household income as measured in 2000, you would not do <code>mean(atlas$yvar, na.rm=TRUE)</code> but <code>mean(atlas$hhinc_mean2000, na.rm=TRUE)</code>.</li>
+</ol>
+<div class="blackbox">
+<div class="center">
+<p><strong>Important!</strong></p>
+</div>
+<p><strong>‘yvar’</strong> is not a real variable. You should replace it for the appropriate variable in your code.</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>The data <code>atlas</code> has missing information for <em>some</em> neighborhoods for <em>some</em> variables. These are called <code>NA</code> or missing. Most R functions do not like that you include missings in the function, because R does not know what to do with that. What is <code>5+NA</code> ? NA !! So, for many of these functions, we will <strong>explicitely tell R to ignore NAs</strong>. That is what the option <code>na.rm=TRUE</code> does. It does not not exist for every function, but it does for most of the ones we will use here.</li>
+</ol>
+<div class="blackbox">
+<div class="center">
+<p><strong>Important!</strong></p>
+</div>
+<p>Careful with missing values (also called <strong>‘NA’</strong>)! We will use <em>‘na.rm=TRUE’</em> as an option for several functions to tell R to ignore the missings.</p>
+</div>
+<div id="unweighted-summary-statistics-1" class="section level3 unnumbered hasAnchor">
+<h3>Unweighted summary statistics<a href="project3.html#unweighted-summary-statistics-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="project3.html#cb120-1" tabindex="-1"></a><span class="fu">summary</span>(atlas<span class="sc">$</span>yvar)</span>
+<span id="cb120-2"><a href="project3.html#cb120-2" tabindex="-1"></a><span class="fu">mean</span>(atlas<span class="sc">$</span>yvar, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb120-3"><a href="project3.html#cb120-3" tabindex="-1"></a><span class="fu">sd</span>(atlas<span class="sc">$</span>yvar, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="load-package-1" class="section level3 unnumbered hasAnchor">
+<h3>Load package<a href="project3.html#load-package-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you wanted to install and open the package <code>Hmisc</code> (which you will need to calculate the weighted statistics), run:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="project3.html#cb121-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Hmisc&quot;</span>)</span>
+<span id="cb121-2"><a href="project3.html#cb121-2" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span></code></pre></div>
+</div>
+<div id="weighted-summary-statistics-1" class="section level3 unnumbered hasAnchor">
+<h3>Weighted summary statistics<a href="project3.html#weighted-summary-statistics-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can weight means or other statistics. In our case, we want to use the <strong>population weighted</strong> statistics in several cases. That is, we want to put more weight on the value of a tract in which more people live than in another with lower population. Recall that the population variable is <code>count_pooled</code>.</p>
+<ol style="list-style-type: decimal">
+<li>Weighted mean:</li>
+</ol>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="project3.html#cb122-1" tabindex="-1"></a><span class="fu">wtd.mean</span>(atlas<span class="sc">$</span>yvar, atlas<span class="sc">$</span>count_pooled)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Weighted standard deviation:</li>
+</ol>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="project3.html#cb123-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">wtd.var</span>(atlas<span class="sc">$</span>yvar, atlas<span class="sc">$</span>count_pooled))</span></code></pre></div>
+</div>
+<div id="subset-observations-2" class="section level3 unnumbered hasAnchor">
+<h3>Subset observations<a href="project3.html#subset-observations-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>State level:</li>
+</ol>
+<p>If you want to select a subset of observations, you can add the rule for selecting those observations, and the <code>filter</code> function. Here we subset the observations for the State of Wisconsin, and called the resulting dataset <code>atlas_wisconsin</code>.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="project3.html#cb124-1" tabindex="-1"></a>atlas_wisconsin <span class="ot">&lt;-</span> atlas <span class="sc">%&gt;%</span> </span>
+<span id="cb124-2"><a href="project3.html#cb124-2" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="dv">55</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>County level:</li>
+</ol>
+<p>We can do the same but now for a specific county, adding an extra rule after a comma <code>,</code> or <code>&amp;</code>. Here we subset the observations for Milwaukee County in Wisconsin:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="project3.html#cb125-1" tabindex="-1"></a>atlas_milwaukee <span class="ot">&lt;-</span> atlas <span class="sc">%&gt;%</span> </span>
+<span id="cb125-2"><a href="project3.html#cb125-2" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="dv">55</span> <span class="sc">&amp;</span> county <span class="sc">==</span> <span class="dv">079</span>) </span></code></pre></div>
+</div>
+<div id="standardize-variables-1" class="section level3 unnumbered hasAnchor">
+<h3>Standardize variables<a href="project3.html#standardize-variables-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can standardize variables by substracting the mean and dividing by the standard deviation. Let us say that you want to standardize only considering the variables in Milwaukee, then you can do this:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="project3.html#cb126-1" tabindex="-1"></a>atlas_milwaukee<span class="ot">&lt;-</span> atlas_milwaukee <span class="sc">%&gt;%</span></span>
+<span id="cb126-2"><a href="project3.html#cb126-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x_std=</span>(xvar <span class="sc">-</span> <span class="fu">mean</span>(atlas_milwaukee<span class="sc">$</span>xvar, <span class="at">na.rm=</span><span class="cn">TRUE</span>))<span class="sc">/</span><span class="fu">sd</span>(atlas_milwaukee<span class="sc">$</span>xvar, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<p>As an example, let’s say you want to standardize both the measure of mobility and the annual job growth for the data in Wisconsin:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="project3.html#cb127-1" tabindex="-1"></a>atlas_wisconsin<span class="ot">&lt;-</span> atlas_wisconsin <span class="sc">%&gt;%</span></span>
+<span id="cb127-2"><a href="project3.html#cb127-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">kfr_pooled_p25_std=</span>(kfr_pooled_p25 <span class="sc">-</span> <span class="fu">mean</span>(atlas_wisconsin<span class="sc">$</span>kfr_pooled_p25, <span class="at">na.rm=</span><span class="cn">TRUE</span>))<span class="sc">/</span><span class="fu">sd</span>(atlas_wisconsin<span class="sc">$</span>kfr_pooled_p25, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb127-3"><a href="project3.html#cb127-3" tabindex="-1"></a>         <span class="at">ann_avg_job_growth_2004_2013_std=</span>(ann_avg_job_growth_2004_2013 <span class="sc">-</span> <span class="fu">mean</span>(atlas_wisconsin<span class="sc">$</span>ann_avg_job_growth_2004_2013, <span class="at">na.rm=</span><span class="cn">TRUE</span>))<span class="sc">/</span><span class="fu">sd</span>(atlas_wisconsin<span class="sc">$</span>ann_avg_job_growth_2004_2013, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+</div>
+<div id="run-regression-1" class="section level3 unnumbered hasAnchor">
+<h3>Run regression<a href="project3.html#run-regression-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I have written a whole section explaining regression in more detail: Section <a href="regression.html#regression">14</a>. Please see that for further details. But here is a quick help.</p>
+<ol style="list-style-type: decimal">
+<li>Simple linear regression</li>
+</ol>
+<p>Let’s say you want to run a simple regression of variable <code>yvar</code> on variable <code>xvar1</code> for the county of Milwaukee. We will save the results of that regression in an object call <code>mod1</code> (we could give it any name). Then you would do this:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="project3.html#cb128-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(yvar<span class="sc">~</span>xvar1, <span class="at">data =</span> atlas_milwaukee)</span></code></pre></div>
+<p>To see what the outcome of the regression is, you would use the function <code>summary</code> and apply it to our new object <code>mod1</code>, like this:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="project3.html#cb129-1" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<p>As an example, we could regress the mobility of children from parents in the 25th percentile (<code>kfr_pooled_p25</code>) on the average annual job growth rate between 2004 and 2013 (<code>ann_avg_job_growth_2004_2013</code>). To do that, we would run:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="project3.html#cb130-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(kfr_pooled_p25<span class="sc">~</span>ann_avg_job_growth_2004_2013, <span class="at">data =</span> atlas_milwaukee)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Multivariate linear regression</li>
+</ol>
+<p>You might want to understand the relationship between <code>yvar</code> and variable <code>xvar1</code> <strong>while holding fixed</strong> another variable <code>xvar2</code> for neighborhoods only in Milwaukee. You can do this:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="project3.html#cb131-1" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(yvar<span class="sc">~</span>xvar1<span class="sc">+</span>xvar2 <span class="sc">+</span> xvar3, <span class="at">data =</span> atlas_milwaukee)</span></code></pre></div>
+</div>
+<div id="how-to-read-the-regression-output-1" class="section level3 unnumbered hasAnchor">
+<h3>How to read the regression output?<a href="project3.html#how-to-read-the-regression-output-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To simplify the interpretation, let’s run a regression where you use the standardize both the measure of mobility and the annual job growth for the data in Wisconsin:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="project3.html#cb132-1" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(kfr_pooled_p25_std <span class="sc">~</span> ann_avg_job_growth_2004_2013_std, <span class="at">data =</span> atlas_wisconsin)</span>
+<span id="cb132-2"><a href="project3.html#cb132-2" tabindex="-1"></a><span class="fu">summary</span>(mod3)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = kfr_pooled_p25_std ~ ann_avg_job_growth_2004_2013_std, 
+##     data = atlas_wisconsin)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -2.829 -0.569  0.035  0.684  5.128 
+## 
+## Coefficients:
+##                                     Estimate  Std. Error t value Pr(&gt;|t|)  
+## (Intercept)                      -0.00000978  0.02681564    0.00    1.000  
+## ann_avg_job_growth_2004_2013_std -0.05131843  0.02679889   -1.91    0.056 .
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.999 on 1386 degrees of freedom
+##   (6 observations deleted due to missingness)
+## Multiple R-squared:  0.00264,    Adjusted R-squared:  0.00192 
+## F-statistic: 3.67 on 1 and 1386 DF,  p-value: 0.0557</code></pre>
+<p>You should focus here on interpreting the coefficient for <code>ann_avg_job_growth_2004_2013_std</code>. You should pay attention to both the magnitude of the number, and the sign. In this case, you would read it like this:</p>
+<blockquote>
+<p>In <strong>Wisconsin</strong>, increasing <strong>one standard deviation</strong> the average annual job growth rate <strong>is correlated</strong> with an <strong>reduction</strong> of <strong>0.05 standard deviations</strong> in the economic mobility for children with parents in the 25th percertile.</p>
+</blockquote>
+</div>
+<div id="confidence-intervals" class="section level3 unnumbered hasAnchor">
+<h3>Confidence Intervals<a href="project3.html#confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To see the confidence intervals for the coefficients, you can run the function <code>confint</code> on the saved linear regression model:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="project3.html#cb134-1" tabindex="-1"></a><span class="fu">confint</span>(mod3)</span></code></pre></div>
+<pre><code>##                                    2.5 %  97.5 %
+## (Intercept)                      -0.0526 0.05259
+## ann_avg_job_growth_2004_2013_std -0.1039 0.00125</code></pre>
+<p>It will give you the range in which the estimated would fall 95 our of 100 times if you would run the same exercise with a different sample of the population.</p>
+</div>
+<div id="plotting-the-linear-relationship-1" class="section level3 unnumbered hasAnchor">
+<h3>Plotting the linear relationship<a href="project3.html#plotting-the-linear-relationship-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You need to load the <code>ggplot2</code> package (which should be installed already).</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="project3.html#cb136-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>Suppose you want to visually see the linear relationship between two variables in the <code>atlas_milwaukee</code> dataset that we filtered above. Then, you can do this:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="project3.html#cb137-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> atlas_milwaukee) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> xvar1, <span class="at">y =</span> yvar)) <span class="sc">+</span> </span>
+<span id="cb137-2"><a href="project3.html#cb137-2" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> xvar1, <span class="at">y =</span> yvar), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F)</span></code></pre></div>
+<p>The function <code>geom_smooth()</code> adds the line that you calculated above for <code>mod1</code>, where you ran <code>mod1 &lt;- lm(yvar~xvar1, data = atlas_milwaukee)</code>.</p>
+<p>For more, see Section <a href="viz.html#viz">12</a>.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="project2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="project4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/project3.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,390 @@
+---
+title: "Policies to Increase Upward Mobility"
+subtitle: "Economics of Public and Social Issues"
+format: 
+  beamer: 
+      aspectratio: 169
+      navigation: horizontal
+      colortheme: rose
+      urlcolor: blue
+author: Jonathan Moreno-Medina
+institute: ECO3253, UTSA
+date: today
+---
+
+## Plan for today
+
+```{r setup_getting_started, include=FALSE, purl=FALSE}
+library(pacman)
+p_load(
+  broom, tidyverse,
+  ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  dplyr, here, magrittr
+)
+chap <- 2
+lc <- 0
+rq <- 0
+# **`r paste0("(LC", chap, ".", (lc <- lc + 1), ")")`**
+# **`r paste0("(RQ", chap, ".", (rq <- rq + 1), ")")`**
+
+knitr::opts_chunk$set(
+  tidy = FALSE, 
+  out.width = '\\textwidth', 
+  fig.height = 4,
+  fig.align='center',
+  warning = FALSE
+  )
+
+options(scipen = 99, digits = 3)
+
+# Set random number generator see value for replicable pseudorandomness. Why 76?
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+#alternative way of loading data:
+#githubURL <- ("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/rds/trials.rds")
+#download.file(githubURL,"trials.rds", method="curl")
+#data <- readRDS("trials.rds")
+```
+
+Reminder: Friday is deadline for submission of Project Part 1 **and** Part 2
+
+1. MTO Experiment
+1. Place based policies
+1. 15 minutes for regression analysis in R: see [https://jrm87.github.io/ECO3253_fall2023/regression.html](https://jrm87.github.io/ECO3253_fall2023/regression.html)
+
+## Two Approaches to Increasing Upward Mobility
+
+- Moving to Opportunity: Provide Affordable Housing in High-Opportunity Areas
+
+- Place-Based Investments: Increase Upward Mobility in Low-Opportunity Areas
+
+# MTO (Moving to Opportunitiy)
+
+## Moving to Opportunity Experiment
+
+
+- Implemented from 1994-1998 at 5 sites: Baltimore, Boston, Chicago, LA, New York
+
+- 4,600 families were randomly assigned to one of three groups:
+
+    - Experimental: offered housing vouchers restricted to low-poverty (<10%) Census tracts
+
+    - Section 8: offered conventional housing vouchers, no restrictions
+
+    - Control: not offered a voucher, stayed in public housing
+
+- Compliance rates: 48% of experimental group used voucher, 66% of Section 8 group used voucher
+
+
+## Common MTO Residential Locations in New York
+
+```{r fig_mob_better1, echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_mto_nyc.png")
+```
+
+## Analysis of MTO Experimental Impacts
+
+- Early research on MTO found little impact of moving to a better area on economic outcomes such as earnings
+
+    - But it focused primarily on adults and older youth at point of move [e.g., Kling, Liebman, and Katz 2007]
+
+- Motivated by quasi-experimental study (Chetty and Hendren 2018), Chetty and ao-authors test for exposure effects among children
+
+    - Does MTO improve outcomes for children who moved when young?
+
+    - Link MTO to tax data to study children’s outcomes in mid 20’s
+
+    - Compare earnings across groups, adjusting for compliance rates
+  
+
+## Analysis of MTO Experimental Impacts
+
+- Early research on MTO found little impact of moving to a better area on economic outcomes such as earnings
+
+    - But it focused primarily on adults and older youth at point of move [e.g., Kling, Liebman, and Katz 2007]
+
+- Motivated by quasi-experimental study (Chetty and Hendren 2018), Chetty and ao-authors test for exposure effects among children
+
+    - Does MTO improve outcomes for children who moved when young?
+
+    - Link MTO to tax data to study children’s outcomes in mid 20’s
+
+    - Compare earnings across groups, adjusting for compliance rates
+
+## Impacts of MTO on Children *Below Age 13* at Random Assignment
+
+```{r , echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_mto_below13.png")
+```
+
+## Impacts of MTO on Children *Below Age 13* at Random Assignment
+
+```{r , echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_mto_below13-2.png")
+```
+
+## Impacts of MTO on Children *Between Age 13 and 18* at Random Assignment
+
+```{r , echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_mto_1318.png")
+```
+
+## Impacts of MTO on Earnings *as Adults*
+
+```{r , echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_mto_adult.png")
+```
+
+
+## Limitations of Randomized Experiments
+
+- Why not use randomized experiments to answer all policy questions?  
+
+- Beyond feasibility, there are three common limitations:
+
+1. Attrition: lose track of participants over time $\rightarrow$ long-term impact evaluation unreliable
+
+    - Especially a problem when attrition rate differs across treatment groups because we lose comparability
+
+    - This problem is largely fixed by the big data revolution: in MTO, we are able to track 99% of participants by linking to tax records
+
+
+## Limitations of Randomized Experiments - Part 2
+
+2. Sample size: small samples make estimates imprecise, especially for long-term impacts
+
+   - This problem is not fixed by big data: cost of data has fallen, but cost of experimentation (in social science) has not
+
+## Impacts of Experimental Voucher by Age of Random Assignment
+
+```{r , echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_mto_income_age.png")
+```
+
+
+## Income Gain from Moving to a Better Neighborhood By Child’s Age at Move
+
+```{r , echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/mob_better5.png")
+```
+
+## Limitations of Randomized Experiments - Part 3
+
+3. Generalizability: results of an experiment may not generalize to other subgroups or areas
+
+    - Difficult to run experiments in all subgroups and areas  “scaling up” can be challenging
+
+## Quasi-Experimental Methods
+
+- Quasi-experimental methods using big data can address these issues
+
+- Consider study of 3 million families that moved across areas discussed earlier
+
+- How did we achieve comparability across groups in this study?
+
+    - People who move to different areas are not comparable to each other
+
+    - But people who move when children are younger vs. older are more likely to be comparable
+
+    - Approximate experimental conditions by comparing children who  move to a new area at different ages
+
+
+## Why Quasi-experimental Methods?
+
+- Quasi-experimental approach addresses limitations of MTO experiment:
+
+    1. Sample size: much larger samples yield precise estimates of childhood exposure effects (4% convergence per year)
+
+    2. Generalizability: results generalize to all areas of the U.S.
+
+- Limitation of quasi-experimental approach: reliance on stronger assumptions
+
+- Bottom line: reassuring to have evidence from both approaches that is consistent $\rightarrow$ clear consensus that moving to opportunity works
+
+
+## Childhood Exposure Effects Around the World
+
+```{r , echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_exposure_world.png")
+```
+
+## Implications for Housing Voucher Policy
+
+
+- Housing vouchers can be very effective but must be targeted carefully
+
+    1. Vouchers should be targeted at families with young children
+
+    2. Vouchers should be explicitly designed to help families move to affordable, high-opportunity areas
+
+        - In MTO experiment, unrestricted “Section 8” vouchers produced smaller gains even though families could have made same moves
+
+        - More generally, low-income families rarely use cash transfers to move to better neighborhoods [Jacob et al. 2015]
+
+        - 80% of the 2.1 million Section 8 vouchers are currently used in high-poverty, low-opportunity neighborhoods
+
+
+## Is Affordable Housing in Seattle Maximizing Opportunities for Upward Mobility?
+
+### Most Common Current Locations of Families Receiving Housing Vouchers
+
+```{r , echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_seattle_locations_vouchers.png")
+```
+
+## Is the Low Income Housing Tax Credit Reducing Mobility out of Poverty?
+
+### Location of LIHTC projects in Seattle 
+
+
+```{r , echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_seattle_locations_vouchers2.png")
+```
+
+## Why Don’t More Low-Income Families Move to Opportunity?
+
+- One simple explanation: areas that offer better opportunity may be unaffordable
+
+- To test whether this is the case, examine relationship between measures of upward mobility and rents
+
+## The Price of Opportunity in Seattle
+
+```{r , echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_mob_seattle_rent.png")
+```
+
+## The Price of Opportunity in Seattle
+
+```{r , echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_mob_seattle_rent2.png")
+```
+
+
+## The Price of Opportunity in Seattle
+
+```{r , echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_mob_seattle_rent3.png")
+```
+
+## Stability of Historical Measures of Opportunity
+
+- Tract-level data on children’s outcomes provide new information that could be helpful in helping families move to opportunity
+
+- Practical concern: data on upward mobility necessarily are historical, since one must wait until children grow up to observe their earnings
+
+    - Opportunity Atlas estimates are based on children born in the early 1980s, who grew up in the 1990s and 2000s
+
+- Are historical estimates useful predictors of opportunity for children who are growing up in these neighborhoods now?
+
+## Stability of Tract-Level Estimates of Upward Mobility
+
+Regression Estimates Using Estimates by Birth Cohort:
+
+```{r , echo=FALSE, out.width = '70%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_coef_stability.png")
+```
+
+# CMTO (Creating Moves to Opportunity)
+
+## CMTO
+
+```{r , echo=FALSE, out.width = '90%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_cmto.png")
+```
+
+## Moving to Opportunity: Potential Concerns - 1
+
+
+1. Costs: is the voucher program too expensive to scale up?
+
+    - Vouchers can save taxpayers money relative to public housing projects in long run
+    
+## Impacts of MTO Experiment on Annual Income Tax Revenue in Adulthood for Children Below Age 13 at Random Assignment
+
+```{r , echo=FALSE, out.width = '50%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_mto_tax.png")
+```
+    
+## Moving to Opportunity: Potential Concerns - 2
+    
+
+2. Negative spillovers: does integration hurt the rich?
+
+    - Evaluate this by examining how outcomes of the rich vary across areas in relation to outcomes of the poor
+
+    - Empirically, more integrated areas do not have worse outcomes for the rich on average…
+
+
+## Children’s Outcomes vs. Parents Incomes in Salt Lake City vs. Charlotte
+
+```{r , echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_charlotte_salktlake.png")
+```
+
+    
+## Moving to Opportunity: Potential Concerns - 3
+
+3. Limits to scalability
+
+    - Moving everyone from one neighborhood to another is unlikely to have significant effects
+
+    - Ultimately need to turn to policies that improve low-mobility neighborhoods rather than moving low-income families
+
+
+# Place-Based Investments: Increase Upward Mobility in Low-Opportunity Areas
+
+##  Place-Based Investments: Characteristics of High-Mobility Neighborhoods
+
+
+```{r , echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_chars_highmob.png")
+```
+
+## Spatial Decay of Correlation between Upward Mobility and Tract-Level Poverty Rates
+
+```{r , echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_spatial_decay.png")
+```
+
+## Spatial Decay of Correlation between Upward Mobility and Tract-Level Poverty Rates
+
+```{r , echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_spatial_decay2.png")
+```
+
+## Spatial Decay of Correlation between Upward Mobility and Block-Level Poverty Rates
+
+```{r , echo=FALSE, out.width = '80%'}
+knitr::include_graphics("../../images/lec3_mto_placebased/lec3_spatial_decay3.png")
+```
+
+## What Place-Based Policies are Most Effective in Increasing Upward Mobility?
+
+- Current research frontier: understanding what types of interventions can improve children’s outcomes in lower-mobility places
+
+- Many efforts by local governments and non-profits to revitalize neighborhoods, but little evidence to date on what works
+
+- Key challenge: traditionally, very difficult to track the outcomes of prior residents rather than current neighborhood conditions
+
+- Ongoing work at Opportunity Insights: tackle this problem using new data and interventions that build on what we know so far
+
+- Organizing framework: building a “pipeline” of opportunity from childhood to adulthood
+
+## Using Historical Data to Evaluate Place-Based Policies
+
+- In parallel to testing new interventions, researchers are using historical data and quasi-experimental methods to analyze previous place-based policies
+
+- First step: digitize data from tapes at the Census Bureau to build a longitudinal dataset that will allow to follow Americans starting with those born in 1954
+
+- Use these data to study the impacts of place-based interventions (Harlem Children’s Zone, Hope VI demolitions, Enterprise Zones, …) on prior residents
+
+- What types of interventions improve prior residents’ outcomes rather than simply displacing them?
+
+
+
+
+
+
+
+
+

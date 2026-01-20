@@ -1,0 +1,168 @@
+# A Simple Machine Learning Model {#ml}
+
+<!--
+Let's briefly recap where we have been so far and where we are headed.  In Chapter \@ref(tidy), we discussed what it means for data to be tidy.  We saw that this refers to observations corresponding to rows and variables being stored in columns (one variable for every column).  The entries in the data frame correspond to different combinations of observations (specific instances of observational units) and variables.  In the `flights` data frame, we saw that each row corresponds to a different flight leaving New York City.  In other words, the **observational unit** of the `flights` tidy data frame is a flight.  The variables are listed as columns, and for `flights` these columns include both quantitative variables like `dep_delay` and `distance` and also categorical variables like `carrier` and `origin`.  An entry in the table corresponds to a particular flight on a given day and a particular value of a given variable representing that flight.
+-->
+I will briefly describe how to set up a simple machine learning model in R, using an algorithm known as decision trees and random forests. We have talked about those in class aready. 
+
+### Needed packages {-}
+
+For this exercise, we will need the following packages: 
+
+```{r, eval=FALSE}
+library(dplyr)
+library(skimr)
+library(caret)
+
+#Decision Tree
+#Loading required libraries for decision tree
+library(rpart)
+library(rpart.plot)
+
+# Random forests
+library(randomForest)
+
+```
+
+
+***
+
+
+## Load the data
+
+As usual, we need to load the data. In this case, we are loading two datasets: one for training the model and one for testing how well the model performed. 
+
+```{r, eval=FALSE}
+# Load data:
+train<- readRDS(gzcon(url("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_train.rds")))
+test<-readRDS(gzcon(url("https://raw.githubusercontent.com/jrm87/ECO3253_repo/master/data/atlas_test.rds")))
+
+```
+
+## What variables are in the dataset?
+
+To check the variables that we have available to make the prediction, you can type 
+
+```{r, eval=FALSE}
+# Check out all the possible variables in this new dataset:
+names(train)
+
+```
+
+## First a linear model as baseline
+
+We will first run a linear model (multiple regression) to assess how well a simple linear model can predict the values of mobility for the percentile 25. To do that, first select 10 variables among all the ones in the data for your model. Here we will use `share_hisp2010`,`CountGedOrAlternativeCredential_2020`,`Count_NotAUSCitizen_2020`,`mean_commutetime2000`, `poor_share2010`, `emp2000`, `jobs_highpay_5mi_2015`, `ec_zip`, `civic_organizations_zip`, `GenderIncomeInequality_2018`. 
+
+```{r, eval=FALSE}
+#Multiple Linear Regression with 10 variables
+mlr_model<-lm(kfr_pooled_p25 ~ share_hisp2010+CountGedOrAlternativeCredential_2020+Count_NotAUSCitizen_2020+
+                mean_commutetime2000+poor_share2010+emp2000+jobs_highpay_5mi_2015+ec_zip+civic_organizations_zip+
+                GenderIncomeInequality_2018, data=train)
+summary(mlr_model)
+#The adjusted R squared of the model is 0.4635, meaning that the model explains 46.35% of the variation in upward mobility.
+```
+
+Now, how well does the model perform? We saw the answer in the R2 number above. You can get it here as well, by checking the values of the sum of squared residual (or error term) for each observation:
+
+```{r, eval=FALSE}
+#MSE for model - in sample
+mean(mlr_model$residuals^2)
+#RMSE - in sample
+sqrt(mean(mlr_model$residuals^2))
+#RMSE = 5957.09
+```
+
+But those results are from IN SAMPLE! Meaning, the model is being tested only with data that was used for the training. But how well would it do predicting mobility for neighborhoods it has not seen at all? Here, we find out: 
+
+```{r, eval=FALSE}
+#Now I will see how this model  performs in the testing dataset
+
+predict_mlr_model<-predict(mlr_model,test)
+#MSE for model  out-of-sample
+actual_values<- test$kfr_pooled_p25
+rmse_mlrmodel_outsample <- sqrt(mean((actual_values - predict_mlr_model)^2, na.rm=TRUE))
+rmse_mlrmodel_outsample
+#RMSE = 5880.183
+```
+
+Now, that is the real (out of sample) error rate!
+
+## A first machine learning model: Decision trees
+
+Now we will estimate the first model, which is a decision tree. The symbol `~` indicated that it plans to use all possible variables. 
+
+```{r, eval=FALSE}
+#Calculating the decision tree with all the variables in the train data set
+#Using kfr_pooled_p25 as dependent variable
+tree <- rpart(kfr_pooled_p25 ~., data = train)
+#Plotting the regression tree
+rpart.plot(tree)
+```
+
+Now, what is wrong with this decision tree? What are the main predictors of mobility? What if you did not have measures of mobility to use in your prediction?
+
+Run a model that does not use any of the mobility measurements. You can ran a code to de-select those variables
+
+```{r, eval=FALSE}
+train2<-train%>%
+  select(-c("kfr_natam_p25","kfr_natam_p75","kfr_natam_p100", "kfr_asian_p25", "kfr_asian_p75", "kfr_asian_p100", "kfr_black_p25", "kfr_black_p75", "kfr_black_p100", "kfr_hisp_p25", "kfr_hisp_p75", "kfr_hisp_p100", "kfr_pooled_p75", "kfr_pooled_p100", "kfr_white_p25", "kfr_white_p75", "kfr_white_p100"))
+
+```
+
+
+### Evaluate the performance of the tree
+
+```{r, eval=FALSE}
+#Complexity parameters for the tree
+printcp(tree)
+plotcp(tree)
+
+#In-sample prediction
+p <- predict(tree, train)
+#Root mean squared error = 1944.108 (in sample)
+sqrt(mean((train$kfr_pooled_p25-p)^2))
+#R squared = 0.8238
+(cor(train$kfr_pooled_p25,p))^2
+
+
+#Out of sample prediction
+pred_tree_outofsample<-predict(tree,test)
+#RMSE out of sample = 5965.278
+sqrt(mean((test$kfr_pooled_p25-pred_tree_outofsample)^2, na.rm=TRUE ))
+
+```
+
+## Random Forest
+
+The rest of the code runs a random forest, which is many decision trees. I will explain the outcomes as we progress in class. 
+
+```{r, eval=FALSE}
+# Random forest
+#Dropping certain varibles not to be included in the random  forest
+#(I drop percent of people with diabetes because the model showed some issues when this variable was included)
+train<-train%>%
+  select(-tract, -`County Name`, -county,-state, -cz, -czname, -'Value:Percent_Person_WithDiabetes_2018')
+#Omit NA values
+train<-na.omit(train)
+
+#Random forest calculation
+rf <- randomForest(kfr_pooled_p25~., data=train, proximity=TRUE)
+print(rf)
+
+#The random forest explains 69.95% of variation in our dependent variable.
+
+# in sample Prediction & Confusion Matrix
+p1 <- predict(rf, train)
+#RMSE - in sample = 848.5397
+sqrt(mean((train$kfr_pooled_p25-p1)^2))
+
+#out of sample prediction
+p2 <- predict(rf, test)
+#rmse - out of sample = 3409.84
+sqrt(mean((test$kfr_pooled_p25-p2)^2 , na.rm = TRUE))
+
+```
+
+
+> Check out this page in the upcoming days, as it will be updated with more info and links for additional resources.
+
