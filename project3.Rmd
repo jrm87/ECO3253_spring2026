@@ -2,9 +2,9 @@
 
 ## Social Capital and Economic Mobility {-}
 
-- **Posted**: Wednesday, August 28, 2024
+- **Posted**: Tuesday, January 20, 2026
 
-- **Due**: Midnight on Friday, November 8, 2024
+- **Due**: Midnight on Friday, April 11, 2026
 
 You have already explored the [Opportunity Atlas](https://www.opportunityatlas.org/) in [Project 1](#project1). Now you will explore the new data on economic mobility that some of the previous researchers and new ones have made freely available in the [Social Capital Atlas](https://socialcapital.org/). It also provides an interactive mapping tool, as before, that attempts to trace the strength of our relationships and communities.  
 

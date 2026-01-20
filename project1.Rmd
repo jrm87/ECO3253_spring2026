@@ -4,11 +4,11 @@
 
 ## Stories from the Atlas: Describing Data using Maps, Regressions, and Correlations {-}
 
-- **Posted**: Wednesday, August 28, 2024
+- **Posted**: Tuesday, January 20, 2026
 
-- **Part 1**: Due at midnight on Tuesday , September 11, 2024
+- **Part 1**: Due at midnight on Thursday, February 5, 2026
 
-- **Part 2**: Due at midnight on Tuesday , September 17, 2024
+- **Part 2**: Due at midnight on Thursday, February 12, 2026
 
 The [Opportunity Atlas](https://www.opportunityatlas.org/) is a freely available interactive mapping tool that traces the roots of outcomes such as poverty and incarceration back to the neighborhoods in which children grew up. Once you are on the main landing page, select **Module 1 (Neighborhoods - MOBILITY OUTCOMES)**.  
 

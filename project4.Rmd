@@ -2,9 +2,9 @@
 
 ## Using Google DataCommons to Predict Social Mobility  {-}
 
-- **Posted**: Wednesday, August 28, 2024
+- **Posted**: Tuesday, January 20, 2026
 
-- **Due**: Midnight on Friday, November 27, 2024
+- **Due**: Midnight on Friday, April 25, 2026
 
 You have already explored the [Opportunity Atlas](https://www.opportunityatlas.org/) in [Project 1](#project1) and the [Social Capital Atlas](https://socialcapital.org/). In this this empirical project, you will use the Opportunity Atlas mapping tool and the underlying data, plus data from [Google DataCommons](https://www.datacommons.org/), to predict intergenerational mobility using **machine learning** methods. The measure of intergenerational mobility that we will focus on, as usual, is the mean rank of a child whose parents were at the 25th percentile of the national income distribution in each county (`kfr_pooled_p25`). Your goal is to construct the best predictions of this outcome using other variables, an important step in creating forecasts of upward mobility that could be used for future generations, before data on their outcomes become available.
 
